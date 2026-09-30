@@ -31,10 +31,18 @@ export default function App() {
     guests?: number;
   }>({});
 
+  const [selectedContinent, setSelectedContinent] = useState<string>('All');
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
 
-  const handleSelectRegion = (region: string) => {
+  const handleSelectRegion = (region: string, continent?: string) => {
     setSelectedRegion(region);
+    if (continent) setSelectedContinent(continent);
+    navigate('/tours');
+  };
+
+  const handleSelectContinent = (continent: string) => {
+    setSelectedContinent(continent);
+    setSelectedRegion('All');
     navigate('/tours');
   };
 
@@ -114,6 +122,7 @@ export default function App() {
         return (
           <ToursPage
             onSelectTour={handleSelectTour}
+            initialContinent={selectedContinent}
             initialRegion={selectedRegion}
           />
         );
@@ -145,6 +154,7 @@ export default function App() {
             onNavigate={navigate}
             onSelectTour={handleSelectTour}
             onSelectRegion={handleSelectRegion}
+            onSelectContinent={handleSelectContinent}
           />
         );
     }

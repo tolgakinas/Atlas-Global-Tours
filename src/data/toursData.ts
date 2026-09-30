@@ -22,6 +22,7 @@ export interface TourDeparture {
 }
 
 export interface Tour {
+  continent?: "Europe" | "Asia" | "Africa";
   region?: string;
   place?: string;
   id: string;
@@ -115,6 +116,7 @@ export const TOURS_DATA: Tour[] = [
       "Heritage"
     ],
     "region": "Istanbul & Marmara",
+    "continent": "Europe",
     "place": "Istanbul - Old Town & Sultanahmet",
     "countries": [
       "Türkiye"
@@ -1530,6 +1532,7 @@ export const TOURS_DATA: Tour[] = [
       "Palace & Architecture"
     ],
     "region": "Istanbul & Marmara",
+    "continent": "Europe",
     "place": "Istanbul - Topkapı Palace",
     "countries": [
       "Türkiye"
@@ -2743,6 +2746,7 @@ export const TOURS_DATA: Tour[] = [
       "First-Time Visitors"
     ],
     "region": "Istanbul & Marmara",
+    "continent": "Europe",
     "place": "Istanbul - Highlights & Essentials",
     "countries": [
       "Türkiye"
@@ -4079,6 +4083,7 @@ export const TOURS_DATA: Tour[] = [
       "Ottoman History"
     ],
     "region": "Istanbul & Marmara",
+    "continent": "Europe",
     "place": "Istanbul - Sultanahmet",
     "countries": [
       "Türkiye"
@@ -5439,6 +5444,7 @@ export const TOURS_DATA: Tour[] = [
       "Historic Neighborhoods"
     ],
     "region": "Istanbul & Marmara",
+    "continent": "Europe",
     "place": "Istanbul - Galata, Fener & Balat",
     "countries": [
       "Türkiye"
@@ -6467,6 +6473,7 @@ export const TOURS_DATA: Tour[] = [
       "Byzantine Wonders"
     ],
     "region": "Istanbul & Marmara",
+    "continent": "Europe",
     "place": "Istanbul - Grand Bazaar & Cistern",
     "countries": [
       "Türkiye"
@@ -7832,6 +7839,7 @@ export const TOURS_DATA: Tour[] = [
       "Modern History"
     ],
     "region": "Istanbul & Marmara",
+    "continent": "Europe",
     "place": "Istanbul - Taksim & Pera",
     "countries": [
       "Türkiye"
@@ -9288,6 +9296,7 @@ export const TOURS_DATA: Tour[] = [
       "Ancient Engineering"
     ],
     "region": "Istanbul & Marmara",
+    "continent": "Europe",
     "place": "Istanbul - Hagia Sophia & Underground",
     "countries": [
       "Türkiye"
@@ -10620,6 +10629,7 @@ export const TOURS_DATA: Tour[] = [
       "Culinary Heritage"
     ],
     "region": "Eastern & Southeastern Türkiye",
+    "continent": "Asia",
     "place": "Eastern Türkiye & Black Sea",
     "countries": [
       "Türkiye"
@@ -10990,6 +11000,7 @@ export const TOURS_DATA: Tour[] = [
       "Mediterranean Sea"
     ],
     "region": "Aegean & Turquoise Coast",
+    "continent": "Europe",
     "place": "Kaş & Kekova Sunken City",
     "countries": [
       "Türkiye"
@@ -11325,6 +11336,7 @@ export const TOURS_DATA: Tour[] = [
       "Aegean Coast"
     ],
     "region": "Aegean & Turquoise Coast",
+    "continent": "Europe",
     "place": "Aegean & Ephesus",
     "countries": [
       "Türkiye"
@@ -11654,6 +11666,7 @@ export const TOURS_DATA: Tour[] = [
       "Biblical History"
     ],
     "region": "Aegean & Turquoise Coast",
+    "continent": "Europe",
     "place": "Biblical Asia Minor & Aegean",
     "countries": [
       "Türkiye"
@@ -12001,6 +12014,7 @@ export const TOURS_DATA: Tour[] = [
       "Ancient Mesopotamia"
     ],
     "region": "Eastern & Southeastern Türkiye",
+    "continent": "Asia",
     "place": "Southeastern Türkiye (Göbeklitepe & Urfa)",
     "countries": [
       "Türkiye"
@@ -12319,6 +12333,7 @@ export const TOURS_DATA: Tour[] = [
       "Highlights Circuit"
     ],
     "region": "Grand Türkiye & Rail",
+    "continent": "Asia",
     "place": "Western Türkiye Classic Circuit",
     "countries": [
       "Türkiye"
@@ -12669,6 +12684,7 @@ export const TOURS_DATA: Tour[] = [
       "East Meets West"
     ],
     "region": "Grand Türkiye & Rail",
+    "continent": "Asia",
     "place": "Grand East & West Türkiye",
     "countries": [
       "Türkiye"
@@ -13032,6 +13048,7 @@ export const TOURS_DATA: Tour[] = [
       "Bosphorus Cruise"
     ],
     "region": "Istanbul & Marmara",
+    "continent": "Europe",
     "place": "Istanbul - City Break",
     "countries": [
       "Türkiye"
@@ -13360,6 +13377,7 @@ export const TOURS_DATA: Tour[] = [
       "Hot Air Balloons"
     ],
     "region": "Cappadocia & Central Anatolia",
+    "continent": "Asia",
     "place": "Cappadocia & Pigeon Valley",
     "countries": [
       "Türkiye"
@@ -13706,6 +13724,7 @@ export const TOURS_DATA: Tour[] = [
       "Coastal Trails"
     ],
     "region": "Aegean & Turquoise Coast",
+    "continent": "Europe",
     "place": "Lycian Way Trail",
     "countries": [
       "Türkiye"
@@ -14034,6 +14053,7 @@ export const TOURS_DATA: Tour[] = [
       "Biking & Forest Trails"
     ],
     "region": "Istanbul & Marmara",
+    "continent": "Europe",
     "place": "Istanbul - Prince Islands & Belgrad Forest",
     "countries": [
       "Türkiye"
@@ -14367,6 +14387,7 @@ export const TOURS_DATA: Tour[] = [
       "All Regions"
     ],
     "region": "Grand Türkiye & Rail",
+    "continent": "Asia",
     "place": "Grand All-Türkiye Explorer",
     "countries": [
       "Türkiye"
@@ -14769,6 +14790,7 @@ export const TOURS_DATA: Tour[] = [
       "Ancient Caria"
     ],
     "region": "Aegean & Turquoise Coast",
+    "continent": "Europe",
     "place": "Gallipoli, Troy & Lycian Coast",
     "countries": [
       "Türkiye"
@@ -15117,6 +15139,7 @@ export const TOURS_DATA: Tour[] = [
       "Hittite Hattusa"
     ],
     "region": "Grand Türkiye & Rail",
+    "continent": "Asia",
     "place": "Eastern Express & Anatolian Railway",
     "countries": [
       "Türkiye"
@@ -15310,6 +15333,7 @@ export const TOURS_DATA: Tour[] = [
       "Hidden Viewpoints"
     ],
     "region": "Istanbul & Marmara",
+    "continent": "Europe",
     "place": "Istanbul - Sunrise & Bosphorus",
     "countries": [
       "Türkiye"
@@ -15437,6 +15461,7 @@ export const TOURS_DATA: Tour[] = [
       "Culinary & Street Food"
     ],
     "region": "Asia & Indian Ocean",
+    "continent": "Asia",
     "place": "Vietnam (Hanoi, Halong, Hoi An, Mekong)",
     "countries": [
       "Vietnam"
@@ -15635,6 +15660,7 @@ export const TOURS_DATA: Tour[] = [
       "African Wildlife"
     ],
     "region": "East Africa",
+    "continent": "Africa",
     "place": "Kenya (Masai Mara & Great Rift)",
     "countries": [
       "Kenya"
@@ -15819,6 +15845,7 @@ export const TOURS_DATA: Tour[] = [
       "Leopard Safari"
     ],
     "region": "Asia & Indian Ocean",
+    "continent": "Asia",
     "place": "Sri Lanka (Sigiriya, Kandy, Yala)",
     "countries": [
       "Sri Lanka"
@@ -16016,7 +16043,8 @@ export const TOURS_DATA: Tour[] = [
       "Dead Sea Floating",
       "Bedouin Culture"
     ],
-    "region": "Middle East & North Africa",
+    "region": "Middle East",
+    "continent": "Asia",
     "place": "Jordan (Petra, Wadi Rum, Dead Sea)",
     "countries": [
       "Jordan"
@@ -16186,7 +16214,8 @@ export const TOURS_DATA: Tour[] = [
       "Petra & Wadi Rum",
       "Nile Sailing"
     ],
-    "region": "Middle East & North Africa",
+    "region": "North Africa",
+    "continent": "Africa",
     "place": "Egypt & Jordan Grand Journey",
     "countries": [
       "Egypt",
@@ -16421,6 +16450,7 @@ export const TOURS_DATA: Tour[] = [
       "Saxon Fortresses"
     ],
     "region": "Balkans & Eastern Europe",
+    "continent": "Europe",
     "place": "Romania (Transylvania & Carpathians)",
     "countries": [
       "Romania",
@@ -16619,7 +16649,8 @@ export const TOURS_DATA: Tour[] = [
       "El Jem Amphitheatre",
       "Troglodyte Villages"
     ],
-    "region": "Middle East & North Africa",
+    "region": "North Africa",
+    "continent": "Africa",
     "place": "Tunisia (Carthage to Sahara)",
     "countries": [
       "Tunisia"
@@ -16824,7 +16855,8 @@ export const TOURS_DATA: Tour[] = [
       "Medinas & Souqs",
       "High Atlas Mountains"
     ],
-    "region": "Middle East & North Africa",
+    "region": "North Africa",
+    "continent": "Africa",
     "place": "Morocco (Marrakech, Fes, Sahara)",
     "countries": [
       "Morocco"
@@ -17037,6 +17069,7 @@ export const TOURS_DATA: Tour[] = [
       "Budapest Danube"
     ],
     "region": "Balkans & Eastern Europe",
+    "continent": "Europe",
     "place": "Balkans (Budapest, Belgrade, Sarajevo, Kotor)",
     "countries": [
       "Hungary",
@@ -17238,7 +17271,8 @@ export const TOURS_DATA: Tour[] = [
       "Caspian to Black Sea",
       "High Caucasus Peaks"
     ],
-    "region": "Caucasus",
+    "region": "The Caucasus",
+    "continent": "Asia",
     "place": "Caucasus (Tbilisi, Yerevan, Baku)",
     "countries": [
       "Georgia",
@@ -17438,7 +17472,8 @@ export const TOURS_DATA: Tour[] = [
       "Karnak & Luxor",
       "Nile River Cruise"
     ],
-    "region": "Middle East & North Africa",
+    "region": "North Africa",
+    "continent": "Africa",
     "place": "Egypt (Cairo, Luxor, Aswan, Nile)",
     "countries": [
       "Egypt"
@@ -17629,7 +17664,8 @@ export const TOURS_DATA: Tour[] = [
       "Musandam Fjords",
       "Old Dubai Souqs"
     ],
-    "region": "Middle East & North Africa",
+    "region": "Middle East",
+    "continent": "Asia",
     "place": "Oman & UAE (Muscat, Wahiba, Dubai)",
     "countries": [
       "Oman",
@@ -17800,6 +17836,7 @@ export const TOURS_DATA: Tour[] = [
 export interface DestinationRegion {
   id: string;
   name: string;
+  continent: "Europe" | "Asia" | "Africa";
   subtitle: string;
   description: string;
   heroImage: string;
@@ -17807,33 +17844,49 @@ export interface DestinationRegion {
 }
 
 export const DESTINATION_REGIONS: DestinationRegion[] = [
+  // EUROPE
   {
     id: "istanbul-marmara",
     name: "Istanbul & Marmara",
+    continent: "Europe",
     subtitle: "Byzantine & Ottoman Crossroads",
     description: "The imperial capital where East meets West — historic Sultanahmet, secret rooftop passages, Bosphorus ferries, Galata, and the Princes Islands.",
     heroImage: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80",
     places: ["Sultanahmet & Old City", "Topkapı Palace", "Galata, Fener & Balat", "Taksim & Pera", "Princes Islands"]
   },
   {
-    id: "cappadocia-central",
-    name: "Cappadocia & Central Anatolia",
-    subtitle: "Land of Fairy Chimneys & Underground Cities",
-    description: "Surreal volcanic valleys, troglodyte rock-carved churches, subterranean labyrinth settlements, and dawn balloon flights over Göreme.",
-    heroImage: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=1200&q=80",
-    places: ["Göreme & Rose Valley", "Pigeon Valley", "Uçhisar", "Derinkuyu Underground City", "Hattusa Hittite Capital"]
-  },
-  {
     id: "aegean-turquoise",
     name: "Aegean & Turquoise Coast",
+    continent: "Europe",
     subtitle: "Ancient Ionia, Olive Groves & Mediterranean Coves",
     description: "Classical marble cities of Ephesus and Aphrodisias, crystalline Lycian coves for sea kayaking in Kaş, and private gulet cruises.",
     heroImage: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
     places: ["Ephesus & Selçuk", "Kaş & Kekova", "Lycian Way Trail", "Dalyan Turtle Beach", "Pamukkale & Hierapolis"]
   },
   {
+    id: "balkans-eastern-europe",
+    name: "Balkans & Eastern Europe",
+    continent: "Europe",
+    subtitle: "Medieval Castles, Fjord-Like Bays & Forest Ranges",
+    description: "From Danube riverfronts in Budapest through Sarajevo and the Bay of Kotor, to Transylvania fortified Saxon churches and the Carpathian range.",
+    heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80",
+    places: ["Budapest & Danube", "Sarajevo & Mostar", "Bay of Kotor Montenegro", "Transylvania Bran Castle", "Maramureș"]
+  },
+
+  // ASIA
+  {
+    id: "cappadocia-central",
+    name: "Cappadocia & Central Anatolia",
+    continent: "Asia",
+    subtitle: "Land of Fairy Chimneys & Underground Cities",
+    description: "Surreal volcanic valleys, troglodyte rock-carved churches, subterranean labyrinth settlements, and dawn balloon flights over Göreme.",
+    heroImage: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=1200&q=80",
+    places: ["Göreme & Rose Valley", "Pigeon Valley", "Uçhisar", "Derinkuyu Underground City", "Hattusa Hittite Capital"]
+  },
+  {
     id: "eastern-southeastern",
     name: "Eastern & Southeastern Türkiye",
+    continent: "Asia",
     subtitle: "Cradle of Civilization & Mesopotamia",
     description: "The 12,000-year-old sanctuary of Göbeklitepe, Mount Nemrut summit statues, UNESCO gastronomy in Gaziantep, Urfa bazaars, and the ruins of Ani.",
     heroImage: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80",
@@ -17842,49 +17895,57 @@ export const DESTINATION_REGIONS: DestinationRegion[] = [
   {
     id: "grand-turkiye-rail",
     name: "Grand Türkiye & Rail",
+    continent: "Asia",
     subtitle: "Epic Cross-Country Journeys",
     description: "Travel Türkiye the poetic way — onboard historic railways across Anatolian plateaus, or embark on seamless multi-region grand expeditions.",
-    heroImage: "https://atlasglobaltours.com/wp-content/uploads/2026/09/train-going-over-the-glenfinnan-railway-viaduct-in-2026-03-18-06-58-09-utc-scaled.jpeg",
+    heroImage: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80",
     places: ["Eastern Express Route", "Ankara to Kars", "Western & Eastern Combined Circuit", "All-Türkiye Expedition"]
-  },
-  {
-    id: "middle-east-north-africa",
-    name: "Middle East & North Africa",
-    subtitle: "Ancient Wonders, Desert Canyons & Oases",
-    description: "The rose-red rock city of Petra, Wadi Rum desert camps, Egypt pyramids with Dahabiya Nile cruises, Morocco imperial souqs, and Carthage.",
-    heroImage: "https://atlasglobaltours.com/wp-content/uploads/2026/08/the-treasury-al-khazneh-ancient-city-of-petra-2026-03-13-17-57-23-utc-scaled.jpg",
-    places: ["Jordan (Petra & Wadi Rum)", "Egypt (Pyramids & Nile)", "Morocco (Marrakech & Sahara)", "Tunisia (Carthage & Ksar)", "Oman & UAE"]
-  },
-  {
-    id: "balkans-eastern-europe",
-    name: "Balkans & Eastern Europe",
-    subtitle: "Medieval Castles, Fjord-Like Bays & Forest Ranges",
-    description: "From Danube riverfronts in Budapest through Sarajevo and the Bay of Kotor, to Transylvania fortified Saxon churches and the Carpathian range.",
-    heroImage: "https://atlasglobaltours.com/wp-content/uploads/2026/09/view-of-kotor-bay-montenegro-2026-01-09-08-46-17-utc-scaled.jpg",
-    places: ["Budapest & Danube", "Sarajevo & Mostar", "Bay of Kotor Montenegro", "Transylvania Bran Castle", "Maramureș"]
   },
   {
     id: "caucasus",
     name: "The Caucasus",
+    continent: "Asia",
     subtitle: "Cradle of Wine & Mountain Strongholds",
     description: "Old Tbilisi balconies, 8,000 years of Georgian winemaking in Kakheti, Armenia cliff-hanging monasteries beneath Mount Ararat, and Baku.",
-    heroImage: "https://atlasglobaltours.com/wp-content/uploads/2026/08/khor-virap-monastery-in-front-of-mount-ararat-ar-2026-03-13-00-51-16-utc-scaled.jpg",
+    heroImage: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80",
     places: ["Tbilisi & Kazbegi", "Khor Virap Armenia", "Baku Old City", "Caucasus Mountain Passes"]
   },
   {
-    id: "east-africa",
-    name: "East Africa",
-    subtitle: "The Great Migration & Savanna Wildlife",
-    description: "Unfiltered wilderness in Masai Mara and Lake Nakuru — witness the Great Migration, tracking the Big Five with expert Maasai naturalists.",
-    heroImage: "https://atlasglobaltours.com/wp-content/uploads/2026/09/lion-panthera-leo-in-the-grass-in-masai-mara-nat-2026-03-18-09-32-34-utc-scaled.jpg",
-    places: ["Masai Mara National Reserve", "Lake Nakuru", "Great Rift Valley", "Nairobi Heritage"]
+    id: "middle-east",
+    name: "Middle East",
+    continent: "Asia",
+    subtitle: "Rose-Red Canyons, Bedouin Glamping & Desert Forts",
+    description: "The ancient rock-hewn treasury of Petra, lunar red sands of Wadi Rum, dramatic fjords of Musandam in Oman, and traditional spice souqs.",
+    heroImage: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80",
+    places: ["Jordan (Petra & Wadi Rum)", "Dead Sea", "Oman (Muscat & Nizwa)", "Wahiba Sands Desert", "Dubai Heritage"]
   },
   {
     id: "asia-indian-ocean",
     name: "Asia & Indian Ocean",
+    continent: "Asia",
     subtitle: "Emerald Waters, Ancient Citadels & Spice Hills",
     description: "Limestone karsts of Halong Bay and Hoi An lantern streets in Vietnam; Sigiriya Lion Rock and wild elephant sanctuaries in Sri Lanka.",
-    heroImage: "https://atlasglobaltours.com/wp-content/uploads/2026/08/halong-bay-in-vietnam-2026-03-13-17-00-52-utc-scaled.jpg",
+    heroImage: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80",
     places: ["Halong Bay & Hanoi", "Ancient Hoi An", "Sigiriya Rock Fortress", "Kandy & Tea Hills", "Yala National Park"]
+  },
+
+  // AFRICA
+  {
+    id: "north-africa",
+    name: "North Africa",
+    continent: "Africa",
+    subtitle: "Pyramids, Sahara Dunes & Imperial Medinas",
+    description: "Giza Pyramids and private Dahabiya Nile river sailing in Egypt; labyrinth souqs and Erg Chebbi dunes in Morocco; Carthage and troglodyte ksars in Tunisia.",
+    heroImage: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80",
+    places: ["Egypt (Giza Pyramids & Nile)", "Morocco (Marrakech & Sahara)", "Tunisia (Carthage & El Jem)", "Abu Simbel"]
+  },
+  {
+    id: "east-africa",
+    name: "East Africa",
+    continent: "Africa",
+    subtitle: "The Great Migration & Savanna Wildlife",
+    description: "Unfiltered wilderness in Masai Mara and Lake Nakuru — witness the Great Migration, tracking the Big Five with expert Maasai naturalists.",
+    heroImage: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80",
+    places: ["Masai Mara National Reserve", "Lake Nakuru", "Great Rift Valley", "Nairobi Heritage"]
   }
 ];

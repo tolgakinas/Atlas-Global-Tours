@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { ArrowRight, ShieldCheck, MapPin, Users, HeartHandshake, Compass, Globe } from 'lucide-react';
 import { HeroVideo } from '../components/HeroVideo';
 import { TourCard } from '../components/TourCard';
-import { TOURS_DATA, DESTINATION_REGIONS } from '../data/toursData';
+import { TOURS_DATA, DESTINATION_REGIONS, DestinationRegion } from '../data/toursData';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
   onSelectTour: (slug: string) => void;
-  onSelectRegion?: (region: string) => void;
+  onSelectRegion?: (region: string, continent?: string) => void;
+  onSelectContinent?: (continent: string) => void;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectTour, onSelectRegion }) => {
+export const HomePage: React.FC<HomePageProps> = ({
+  onNavigate,
+  onSelectTour,
+  onSelectRegion,
+  onSelectContinent,
+}) => {
+  const [selectedContinent, setSelectedContinent] = useState<string>('All');
+
   const multiDayTours = TOURS_DATA.filter((t) => t.tour_type === 'multi_day');
   const dayTours = TOURS_DATA.filter((t) => t.tour_type === 'day');
 
@@ -37,12 +45,37 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectTour, on
     },
   ];
 
-  const handleRegionClick = (regionName: string) => {
+  const continents = ['All', 'Europe', 'Asia', 'Africa'];
+
+  const filteredRegions = useMemo(() => {
+    if (selectedContinent === 'All') return DESTINATION_REGIONS;
+    return DESTINATION_REGIONS.filter((r) => r.continent === selectedContinent);
+  }, [selectedContinent]);
+
+  const handleRegionClick = (region: DestinationRegion) => {
     if (onSelectRegion) {
-      onSelectRegion(regionName);
+      onSelectRegion(region.name, region.continent);
     } else {
       onNavigate('/tours');
     }
+  };
+
+  const handleContinentClick = (cont: string) => {
+    setSelectedContinent(cont);
+  };
+
+  const handleViewAllContinentTrips = (cont: string) => {
+    if (onSelectContinent) {
+      onSelectContinent(cont);
+    } else {
+      onNavigate('/tours');
+    }
+  };
+
+  const fallbackImages: Record<string, string> = {
+    Europe: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80',
+    Asia: 'https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=1200&q=80',
+    Africa: 'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80',
   };
 
   return (
@@ -58,7 +91,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectTour, on
             Small group immersive tours run by locals.
           </h1>
           <p className="mt-4 max-w-2xl text-background/85 text-base sm:text-lg leading-relaxed">
-            Multi-day journeys organized regarding places — through Istanbul, Cappadocia, the Aegean, Eastern Anatolia, and signature expeditions across the Middle East, Balkans & Africa.
+            Multi-day journeys categorized regarding continents & places — spanning Europe (Istanbul, Aegean, Balkans), Asia (Cappadocia, Mesopotamia, Caucasus, Middle East, Vietnam), and Africa (Egypt, Morocco, Kenya).
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3.5">
@@ -93,47 +126,91 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectTour, on
         </div>
       </section>
 
-      {/* Explore by Place / Destination Showcase */}
+      {/* Destinations & Places (Categorized by Continent) */}
       <section className="container-page py-16 lg:py-20 border-b border-border">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <p className="eyebrow text-primary">Destinations & Places</p>
+            <p className="eyebrow text-primary">Destinations & Places by Continent</p>
             <h2 className="text-3xl sm:text-4xl font-display font-bold mt-1 text-foreground">
-              Explore journeys regarding places
+              Explore places by continent
             </h2>
             <p className="mt-2 text-sm text-muted-foreground max-w-xl">
-              Choose your destination to view curated routes, small group departures, and authentic local experiences.
+              Curated small group journeys structured regarding continents — Europe, Asia, and Africa. Select a continent or place to view complete itineraries and dates.
             </p>
           </div>
-          <button
-            onClick={() => onNavigate('/tours')}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 transition-colors cursor-pointer self-start sm:self-auto"
-          >
-            Browse all places
-            <ArrowRight className="size-3.5" />
-          </button>
+
+          {/* Continent Filter Tabs */}
+          <div className="flex flex-wrap items-center gap-2 self-start md:self-auto bg-card border border-border p-1.5 rounded-xl shadow-xs">
+            {continents.map((cont) => {
+              const count = cont === 'All'
+                ? DESTINATION_REGIONS.length
+                : DESTINATION_REGIONS.filter((r) => r.continent === cont).length;
+              const tripsCount = cont === 'All'
+                ? TOURS_DATA.length
+                : TOURS_DATA.filter((t) => t.continent === cont).length;
+
+              return (
+                <button
+                  key={cont}
+                  onClick={() => handleContinentClick(cont)}
+                  className={`inline-flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs font-semibold cursor-pointer transition-all ${
+                    selectedContinent === cont
+                      ? 'bg-primary text-primary-foreground shadow-sm'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                  }`}
+                >
+                  <Globe className="size-3.5" />
+                  <span>{cont === 'All' ? 'All Continents' : cont}</span>
+                  <span className={`text-[0.65rem] px-1.5 py-0.2 rounded-full ${
+                    selectedContinent === cont
+                      ? 'bg-primary-foreground/20 text-primary-foreground'
+                      : 'bg-muted text-muted-foreground'
+                  }`}>
+                    {tripsCount} trips
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {DESTINATION_REGIONS.map((region) => {
+        {/* Region Cards Grid */}
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {filteredRegions.map((region) => {
             const count = TOURS_DATA.filter((t) => t.region === region.name).length;
+            const fallback = fallbackImages[region.continent] || fallbackImages.Europe;
+
             return (
               <div
                 key={region.id}
-                onClick={() => handleRegionClick(region.name)}
-                className="group relative flex flex-col justify-end overflow-hidden rounded-xl border border-border bg-card p-5 h-64 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl"
+                onClick={() => handleRegionClick(region)}
+                className="group relative flex flex-col justify-end overflow-hidden rounded-xl border border-border bg-card p-5 h-72 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl"
               >
-                {/* Background Image */}
+                {/* Background Image with Error Fallback */}
                 <img
                   src={region.heroImage}
                   alt={region.name}
+                  loading="lazy"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== fallback) {
+                      target.src = fallback;
+                    }
+                  }}
                   className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/55 to-ink/20" />
+
+                {/* Continent Badge at Top Left */}
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="rounded-full border border-sand/30 bg-ink/75 backdrop-blur-xs px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-sand shadow-xs">
+                    {region.continent}
+                  </span>
+                </div>
 
                 {/* Region Details */}
                 <div className="relative z-10 text-background">
-                  <span className="text-[0.65rem] uppercase tracking-widest font-bold text-sand block mb-1">
+                  <span className="text-[0.65rem] uppercase tracking-widest font-semibold text-sand/90 block mb-1">
                     {region.subtitle}
                   </span>
                   <h3 className="font-display text-xl font-bold leading-snug group-hover:text-sand transition-colors">
@@ -142,9 +219,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectTour, on
                   <p className="mt-1 text-xs text-background/80 line-clamp-1">
                     {region.places.slice(0, 3).join(' · ')}
                   </p>
-                  <div className="mt-3 flex items-center justify-between pt-2 border-t border-background/20 text-xs font-semibold text-sand">
+                  <div className="mt-3 flex items-center justify-between pt-2.5 border-t border-background/20 text-xs font-semibold text-sand">
                     <span>{count} journey{count !== 1 ? 's' : ''}</span>
-                    <span className="inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform text-[0.7rem] uppercase tracking-wider">
+                    <span className="inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform text-[0.7rem] uppercase tracking-wider text-sand font-bold">
                       View trips <ArrowRight className="size-3" />
                     </span>
                   </div>
@@ -153,6 +230,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onSelectTour, on
             );
           })}
         </div>
+
+        {/* View All Trips by Selected Continent Action */}
+        {selectedContinent !== 'All' && (
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => handleViewAllContinentTrips(selectedContinent)}
+              className="inline-flex items-center gap-2 rounded-lg border border-primary/30 bg-primary/10 px-5 py-2.5 text-xs font-semibold text-primary hover:bg-primary hover:text-primary-foreground transition-all cursor-pointer"
+            >
+              Browse all {selectedContinent} itineraries
+              <ArrowRight className="size-3.5" />
+            </button>
+          </div>
+        )}
       </section>
 
       {/* Featured Multi-day Journeys */}
