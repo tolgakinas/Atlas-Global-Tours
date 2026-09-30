@@ -1,0 +1,6 @@
+{
+  "name": "Atlas Global Tours",
+  "description": "Small group multi-day journeys and day tours across Türkiye — Istanbul, Cappadocia, Ephesus, and the Aegean — run by licensed local guides.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
