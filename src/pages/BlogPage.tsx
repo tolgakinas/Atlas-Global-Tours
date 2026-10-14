@@ -23,10 +23,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onSelectPost }) => {
         <div className="max-w-2xl">
           <p className="eyebrow text-primary">Journal</p>
           <h1 className="mt-2 text-4xl font-display font-bold sm:text-5xl text-foreground">
-            Notes from the road in Türkiye
+            Notes from the road & global dispatches
           </h1>
           <p className="mt-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
-            Route ideas, seasons, food and the practical details we get asked most often by travellers before visiting.
+            Route ideas, seasons, food and the practical details we get asked most often by travellers before visiting destinations worldwide.
           </p>
         </div>
 

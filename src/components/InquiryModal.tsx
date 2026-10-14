@@ -27,7 +27,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ tour, isOpen, onClos
       name,
       email,
       phone,
-      destination: tour ? tour.title : 'General Türkiye Inquiry',
+      destination: tour ? tour.title : 'General Expedition Inquiry',
       travelDate,
       guests,
       message,
@@ -56,7 +56,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ tour, isOpen, onClos
             </div>
             <h3 className="font-display text-2xl font-bold text-foreground">Message Received!</h3>
             <p className="mt-2 text-sm text-muted-foreground max-w-sm mx-auto">
-              Thank you {name}. Our local Türkiye tour specialist will review your request and get back to you within 12 hours.
+              Thank you {name}. Our destination tour specialist will review your request and get back to you within 12 hours.
             </p>
           </div>
         ) : (
@@ -64,7 +64,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({ tour, isOpen, onClos
             <div className="mb-5">
               <span className="eyebrow text-primary">Personalized Service</span>
               <h2 className="mt-1 font-display text-xl font-bold text-foreground">
-                {tour ? `Inquire about ${tour.title}` : 'Plan Your Türkiye Journey'}
+                {tour ? `Inquire about ${tour.title}` : 'Plan Your Global Expedition'}
               </h2>
               <p className="mt-1 text-xs text-muted-foreground">
                 Ask about custom dates, private groups, or personalized route adjustments.

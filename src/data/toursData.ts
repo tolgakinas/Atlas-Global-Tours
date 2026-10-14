@@ -21,6 +21,20 @@ export interface TourDeparture {
   [key: string]: any;
 }
 
+export type RoomType = 'single' | 'double' | 'twin';
+
+export interface RoomingSelection {
+  travelerIndex: number;
+  roomType: RoomType;
+  label?: string;
+}
+
+export interface RoomPolicyNotes {
+  double?: string;
+  twin?: string;
+  single?: string;
+}
+
 export interface Tour {
   continent?: "Europe" | "Asia" | "Africa";
   region?: string;
@@ -59,6 +73,11 @@ export interface Tour {
   meals_breakfasts: number | null;
   meals_lunches: number | null;
   meals_dinners: number | null;
+  single_supplement_percent?: number; // Default 15%
+  single_supplement_cents?: number | null; // Optional flat surcharge
+  double_room_supplement_percent?: number; // Default 0%
+  twin_room_supplement_percent?: number; // Default 0%
+  room_policy_notes?: RoomPolicyNotes;
   daysList: TourDay[];
   departuresList: TourDeparture[];
   created_at?: string;
@@ -17949,3 +17968,245 @@ export const DESTINATION_REGIONS: DestinationRegion[] = [
     places: ["Masai Mara National Reserve", "Lake Nakuru", "Great Rift Valley", "Nairobi Heritage"]
   }
 ];
+
+export interface DestinationCountry {
+  id: string;
+  name: string;
+  continent: "Europe" | "Asia" | "Africa";
+  flag: string;
+  subtitle: string;
+  description: string;
+  heroImage: string;
+  places: string[];
+}
+
+export const DESTINATION_COUNTRIES: DestinationCountry[] = [
+  // EUROPE
+  {
+    id: "turkiye-europe",
+    name: "Türkiye",
+    continent: "Europe",
+    flag: "🇹🇷",
+    subtitle: "Byzantine Crossroads & Aegean Turquoise Coast",
+    description: "Imperial Sultanahmet, secret rooftop passages, Bosphorus waterways, ancient Ephesus, and crystal-clear Lycian coves in Kaş.",
+    heroImage: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80",
+    places: ["Istanbul Sultanahmet", "Galata & Balat", "Ephesus & Aegean", "Kaş Sea Kayaking", "Pamukkale"]
+  },
+  {
+    id: "hungary",
+    name: "Hungary",
+    continent: "Europe",
+    flag: "🇭🇺",
+    subtitle: "Danube Pearl & Central European Splendor",
+    description: "The grand Danube riverfront in Budapest, Gothic Parliament, historic thermal baths, and royal castle vistas.",
+    heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80",
+    places: ["Budapest Danube Riverfront", "Buda Castle District", "Fisherman's Bastion"]
+  },
+  {
+    id: "romania",
+    name: "Romania",
+    continent: "Europe",
+    flag: "🇷🇴",
+    subtitle: "Transylvanian Castles & Carpathian Vistas",
+    description: "Legendary Bran Castle, Saxon fortified churches, medieval Brașov, and wild Carpathian mountain routes.",
+    heroImage: "https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=1200&q=80",
+    places: ["Transylvania Bran Castle", "Brașov Citadel", "Carpathian Ranges", "Sighișoara"]
+  },
+  {
+    id: "bosnia",
+    name: "Bosnia & Herzegovina",
+    continent: "Europe",
+    flag: "🇧🇦",
+    subtitle: "Ottoman Bridges & Emerald Neretva Valley",
+    description: "Historic Mostar Old Bridge, cobblestone Baščaršija in Sarajevo, and lush Balkan gorge landscapes.",
+    heroImage: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80",
+    places: ["Mostar Old Bridge", "Sarajevo Old Town", "Neretva River Canyon"]
+  },
+  {
+    id: "montenegro",
+    name: "Montenegro",
+    continent: "Europe",
+    flag: "🇲🇪",
+    subtitle: "Fjord of Kotor & Dinaric Alps",
+    description: "Sublime fjord-like Bay of Kotor, Venetian coastal citadels, and dramatic mountain peaks meeting the Adriatic.",
+    heroImage: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80",
+    places: ["Bay of Kotor", "Perast Islets", "Kotor Old Town Fortress"]
+  },
+  {
+    id: "croatia",
+    name: "Croatia",
+    continent: "Europe",
+    flag: "🇭🇷",
+    subtitle: "Dalmatian Coast & Adriatic Heritage",
+    description: "The fortified marble walls of Dubrovnik, pristine Adriatic archipelagos, and ancient Roman palace cities.",
+    heroImage: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+    places: ["Dubrovnik Old City Walls", "Dalmatian Coastline", "Pelješac Peninsula"]
+  },
+  {
+    id: "serbia",
+    name: "Serbia",
+    continent: "Europe",
+    flag: "🇷🇸",
+    subtitle: "Belgrade Fortress & Danube Confluence",
+    description: "Where the Sava meets the Danube — historic Kalemegdan fortress, lively Bohemian quarters, and riverside culture.",
+    heroImage: "https://images.unsplash.com/photo-1584448141569-69f342da535c?auto=format&fit=crop&w=1200&q=80",
+    places: ["Belgrade Kalemegdan", "Skadarlija Quarter", "Danube Riverbanks"]
+  },
+
+  // ASIA
+  {
+    id: "turkiye-asia",
+    name: "Türkiye",
+    continent: "Asia",
+    flag: "🇹🇷",
+    subtitle: "Cappadocia Fairy Chimneys & Mesopotamian Antiquities",
+    description: "Dawn hot air balloons over Göreme valleys, underground cities, 12,000-year-old Göbeklitepe, and Mount Nemrut.",
+    heroImage: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=1200&q=80",
+    places: ["Göreme & Rose Valley", "Derinkuyu Underground City", "Göbeklitepe Sanctuary", "Mount Nemrut", "Ani Silk Road"]
+  },
+  {
+    id: "jordan",
+    name: "Jordan",
+    continent: "Asia",
+    flag: "🇯🇴",
+    subtitle: "Rose-Red Petra & Mars-Like Wadi Rum",
+    description: "Walk the Siq to the Treasury in ancient Nabataean Petra, sleep under desert stars in Wadi Rum, and float in the Dead Sea.",
+    heroImage: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80",
+    places: ["Petra Rock Treasury", "Wadi Rum Red Dunes", "Dead Sea Floating", "Amman Citadel", "Jerash Ruins"]
+  },
+  {
+    id: "georgia",
+    name: "Georgia",
+    continent: "Asia",
+    flag: "🇬🇪",
+    subtitle: "High Caucasus Peaks & 8,000-Year Wine Cradles",
+    description: "Gergeti Trinity Church beneath Mount Kazbek, ancient amphora wine cellars of Kakheti, and Tbilisi's carved balconies.",
+    heroImage: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80",
+    places: ["Tbilisi Old Town", "Kazbegi Mount Gergeti", "Kakheti Wine Valley", "Gudauri Pass"]
+  },
+  {
+    id: "armenia",
+    name: "Armenia",
+    continent: "Asia",
+    flag: "🇦🇲",
+    subtitle: "Monasteries in the Shadow of Mount Ararat",
+    description: "Cliffside Khor Virap monastery, pagan temple of Garni, azure Lake Sevan, and millennia of UNESCO sacred architecture.",
+    heroImage: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1200&q=80",
+    places: ["Khor Virap Monastery", "Yerevan Cascade", "Lake Sevan", "Garni Temple & Geghard"]
+  },
+  {
+    id: "azerbaijan",
+    name: "Azerbaijan",
+    continent: "Asia",
+    flag: "🇦🇿",
+    subtitle: "Land of Fire, Silk Road & Caspian Winds",
+    description: "Walled medieval fortress of Icherisheher in Baku, ancient Gobustan petroglyphs, bubbling mud volcanoes, and Sheki palaces.",
+    heroImage: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80",
+    places: ["Baku Icherisheher", "Gobustan Rock Art", "Sheki Silk Road Palace", "Ateshgah Fire Temple"]
+  },
+  {
+    id: "oman",
+    name: "Oman",
+    continent: "Asia",
+    flag: "🇴🇲",
+    subtitle: "Frankincense Canyons, Oases & Wahiba Dunes",
+    description: "Grand Sultan Qaboos Mosque, swimming through emerald pools of Wadi Shab, historic Nizwa fort, and Bedouin desert camps.",
+    heroImage: "https://images.unsplash.com/photo-1549144511-f099e773c147?auto=format&fit=crop&w=1200&q=80",
+    places: ["Muscat Grand Mosque", "Wadi Shab Canyon Pools", "Wahiba Sands Desert", "Nizwa Fort Souq"]
+  },
+  {
+    id: "uae",
+    name: "United Arab Emirates",
+    continent: "Asia",
+    flag: "🇦🇪",
+    subtitle: "Futuristic Skylines & Arabian Heritage",
+    description: "The gleaming white marble domes of Sheikh Zayed Grand Mosque, historic Al Fahidi creekside, and golden dunes.",
+    heroImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
+    places: ["Abu Dhabi Sheikh Zayed Mosque", "Dubai Old Creek & Souqs", "Liwa Desert Oasis"]
+  },
+  {
+    id: "vietnam",
+    name: "Vietnam",
+    continent: "Asia",
+    flag: "🇻🇳",
+    subtitle: "Halong Bay Limestone Karsts & Hoi An Lanterns",
+    description: "Sail emerald waters among towering karst islands in Halong Bay, explore Hanoi's French-colonial quarters, and stroll lantern-lit Hoi An.",
+    heroImage: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80",
+    places: ["Halong Bay Overnight Junk", "Hanoi Old Quarter", "Hoi An Ancient Town", "Mekong Delta"]
+  },
+  {
+    id: "sri-lanka",
+    name: "Sri Lanka",
+    continent: "Asia",
+    flag: "🇱🇰",
+    subtitle: "Lion Rock Citadel, Tea Hills & Leopard Safaris",
+    description: "Climb the ancient fifth-century palace fortress of Sigiriya, ride the scenic mountain tea train, and track leopards in Yala.",
+    heroImage: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1200&q=80",
+    places: ["Sigiriya Rock Fortress", "Kandy Temple of Tooth", "Ella Scenic Tea Train", "Yala Wildlife Safari"]
+  },
+
+  // AFRICA
+  {
+    id: "egypt",
+    name: "Egypt",
+    continent: "Africa",
+    flag: "🇪🇬",
+    subtitle: "Pyramids of Giza & Private Dahabiya Nile Cruise",
+    description: "The Great Pyramids and Sphinx, royal tombs in the Valley of the Kings, serene Nile sailing on a traditional Dahabiya, and colossal Abu Simbel.",
+    heroImage: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80",
+    places: ["Giza Pyramids & Sphinx", "Valley of the Kings Luxor", "Nile Dahabiya Sailing", "Abu Simbel Sun Temples", "Aswan Philae"]
+  },
+  {
+    id: "morocco",
+    name: "Morocco",
+    continent: "Africa",
+    flag: "🇲🇦",
+    subtitle: "Imperial Medinas, Atlas Passes & Sahara Erg Chebbi",
+    description: "Spice-scented alleys of Marrakech and Fez, mudbrick kasbahs of Ouarzazate, and camel treks across shifting Sahara dunes.",
+    heroImage: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=1200&q=80",
+    places: ["Marrakech Jemaa el-Fnaa", "Fez Ancient Medina", "Aït Benhaddou Kasbah", "Merzouga Sahara Dunes"]
+  },
+  {
+    id: "tunisia",
+    name: "Tunisia",
+    continent: "Africa",
+    flag: "🇹🇳",
+    subtitle: "Carthage Antiquities & Blue-and-White Sidi Bou Said",
+    description: "Legendary Roman Carthage, seaside cobblestones of Sidi Bou Said, magnificent Roman amphitheater of El Jem, and desert ksars.",
+    heroImage: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80",
+    places: ["Carthage Archaeological Site", "Sidi Bou Said Cliffs", "El Jem Roman Amphitheater", "Kairouan Medina"]
+  },
+  {
+    id: "kenya",
+    name: "Kenya",
+    continent: "Africa",
+    flag: "🇰🇪",
+    subtitle: "Maasai Mara Big Five & Great Rift Valley",
+    description: "Witness the legendary Great Migration across the endless plains of the Maasai Mara, guided by native naturalist trackers.",
+    heroImage: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80",
+    places: ["Masai Mara National Reserve", "Lake Nakuru Rhino Sanctuary", "Great Rift Valley Scarp", "Amboseli Kilimanjaro Views"]
+  }
+];
+
+export function tourMatchesCountry(tour: Tour, countryName: string, continent?: string): boolean {
+  if (!tour.countries || tour.countries.length === 0) return false;
+  const target = countryName.toLowerCase().trim();
+  if (target === "türkiye" || target === "turkey") {
+    const hasTurk = tour.countries.some(c => c.toLowerCase() === "türkiye" || c.toLowerCase() === "turkey");
+    if (!hasTurk) return false;
+    if (continent === "Europe") {
+      return tour.continent === "Europe" || tour.region === "Istanbul & Marmara" || tour.region === "Aegean & Turquoise Coast";
+    }
+    if (continent === "Asia") {
+      return tour.continent === "Asia" || tour.region === "Cappadocia & Central Anatolia" || tour.region === "Eastern & Southeastern Türkiye" || tour.region === "Grand Türkiye & Rail";
+    }
+    return true;
+  }
+  return tour.countries.some(c => {
+    const cLower = c.toLowerCase().trim();
+    if (cLower === target) return true;
+    if (target.includes("bosnia") && cLower.includes("bosnia")) return true;
+    if (target.includes("emirates") && (cLower.includes("emirates") || cLower === "uae")) return true;
+    return false;
+  });
+}

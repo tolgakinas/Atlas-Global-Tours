@@ -1,26 +1,50 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Search, MapPin, SlidersHorizontal, RotateCcw, Compass, LayoutGrid, Layers, Globe } from 'lucide-react';
-import { TOURS_DATA, DESTINATION_REGIONS, DestinationRegion, Tour } from '../data/toursData';
+import { Search, MapPin, SlidersHorizontal, RotateCcw, Compass, LayoutGrid, Layers, Globe, Sparkles } from 'lucide-react';
+import { DESTINATION_COUNTRIES, DestinationCountry, tourMatchesCountry, Tour } from '../data/toursData';
+import { useTours } from '../context/ToursContext';
 import { TourCard } from '../components/TourCard';
 
 interface ToursPageProps {
   onSelectTour: (slug: string) => void;
   initialContinent?: string;
   initialRegion?: string;
+  initialCountry?: string;
 }
 
 export const ToursPage: React.FC<ToursPageProps> = ({
   onSelectTour,
   initialContinent,
   initialRegion,
+  initialCountry,
 }) => {
+  const {
+    tours,
+    searchQuery,
+    setSearchQuery,
+    selectedActivityFilter,
+    setSelectedActivityFilter,
+    clearFilters,
+  } = useTours();
   const [selectedContinent, setSelectedContinent] = useState<string>(initialContinent || 'All');
-  const [selectedRegion, setSelectedRegion] = useState<string>(initialRegion || 'All');
-  const [search, setSearch] = useState('');
-  const [selectedTheme, setSelectedTheme] = useState('All');
+  const [selectedCountry, setSelectedCountry] = useState<string>(initialCountry || 'All');
+  const [search, setSearch] = useState(searchQuery || '');
+  const [selectedTheme, setSelectedTheme] = useState(
+    selectedActivityFilter !== 'All' ? selectedActivityFilter : 'All'
+  );
   const [selectedDuration, setSelectedDuration] = useState('All');
   const [selectedDifficulty, setSelectedDifficulty] = useState('All');
   const [viewMode, setViewMode] = useState<'grouped' | 'grid'>('grouped');
+
+  // Sync when ToursContext search query changes (e.g. from header search bar)
+  useEffect(() => {
+    setSearch(searchQuery);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    if (selectedActivityFilter && selectedActivityFilter !== 'All') {
+      setSelectedTheme(selectedActivityFilter);
+    }
+  }, [selectedActivityFilter]);
 
   useEffect(() => {
     if (initialContinent) {
@@ -29,26 +53,28 @@ export const ToursPage: React.FC<ToursPageProps> = ({
   }, [initialContinent]);
 
   useEffect(() => {
-    if (initialRegion) {
-      setSelectedRegion(initialRegion);
+    if (initialCountry) {
+      setSelectedCountry(initialCountry);
       // Auto-set matching continent if known
-      const match = DESTINATION_REGIONS.find((r) => r.name === initialRegion);
+      const match = DESTINATION_COUNTRIES.find(
+        (c) => c.name.toLowerCase() === initialCountry.toLowerCase()
+      );
       if (match) {
         setSelectedContinent(match.continent);
       }
     }
-  }, [initialRegion]);
+  }, [initialCountry]);
 
   const multiDayTours = useMemo(() => {
-    return TOURS_DATA.filter((t) => t.tour_type === 'multi_day');
-  }, []);
+    return tours.filter((t) => t.tour_type === 'multi_day' && t.is_published);
+  }, [tours]);
 
   const continents = ['All', 'Europe', 'Asia', 'Africa'];
 
-  // Regions belonging to the selected continent
-  const availableRegions = useMemo(() => {
-    if (selectedContinent === 'All') return DESTINATION_REGIONS;
-    return DESTINATION_REGIONS.filter((r) => r.continent === selectedContinent);
+  // Countries belonging to the active continent
+  const availableCountries = useMemo(() => {
+    if (selectedContinent === 'All') return DESTINATION_COUNTRIES;
+    return DESTINATION_COUNTRIES.filter((c) => c.continent === selectedContinent);
   }, [selectedContinent]);
 
   // Available themes
@@ -58,16 +84,6 @@ export const ToursPage: React.FC<ToursPageProps> = ({
       t.themes.forEach((th) => set.add(th));
     });
     return ['All', ...Array.from(set).sort()];
-  }, [multiDayTours]);
-
-  // Counts by region
-  const regionCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    multiDayTours.forEach((t) => {
-      const reg = t.region || 'Other Destinations';
-      counts[reg] = (counts[reg] || 0) + 1;
-    });
-    return counts;
   }, [multiDayTours]);
 
   // Counts by continent
@@ -80,6 +96,7 @@ export const ToursPage: React.FC<ToursPageProps> = ({
     return counts;
   }, [multiDayTours]);
 
+  // Filtered tours for search/theme/duration/country
   const filteredTours = useMemo(() => {
     return multiDayTours.filter((tour) => {
       const matchSearch =
@@ -94,8 +111,8 @@ export const ToursPage: React.FC<ToursPageProps> = ({
       const matchContinent =
         selectedContinent === 'All' || tour.continent === selectedContinent;
 
-      const matchRegion =
-        selectedRegion === 'All' || tour.region === selectedRegion;
+      const matchCountry =
+        selectedCountry === 'All' || tourMatchesCountry(tour, selectedCountry, tour.continent);
 
       const matchTheme =
         selectedTheme === 'All' || tour.themes.includes(selectedTheme);
@@ -112,7 +129,7 @@ export const ToursPage: React.FC<ToursPageProps> = ({
       return (
         matchSearch &&
         matchContinent &&
-        matchRegion &&
+        matchCountry &&
         matchTheme &&
         matchDifficulty &&
         matchDuration
@@ -122,46 +139,55 @@ export const ToursPage: React.FC<ToursPageProps> = ({
     multiDayTours,
     search,
     selectedContinent,
-    selectedRegion,
+    selectedCountry,
     selectedTheme,
     selectedDifficulty,
     selectedDuration,
   ]);
 
-  // Group filtered tours by continent, then by region
-  const toursByContinentAndRegion = useMemo(() => {
+  // Categorize by Continent -> then categorize according to Countries.
+  // Rule: If any tour has multiple countries, show the same tour under every regarding country!
+  const toursByContinentAndCountry = useMemo(() => {
     const activeContinents =
       selectedContinent === 'All' ? ['Europe', 'Asia', 'Africa'] : [selectedContinent];
 
     const result: Array<{
       continent: string;
-      regions: Array<{ regionDef: DestinationRegion; tours: Tour[] }>;
+      countries: Array<{ countryDef: DestinationCountry; tours: Tour[] }>;
     }> = [];
 
     activeContinents.forEach((cont) => {
-      const regionsInCont = DESTINATION_REGIONS.filter((r) => r.continent === cont);
-      const regionGroups: Array<{ regionDef: DestinationRegion; tours: Tour[] }> = [];
+      const countriesInCont = DESTINATION_COUNTRIES.filter((c) => c.continent === cont);
+      const countryGroups: Array<{ countryDef: DestinationCountry; tours: Tour[] }> = [];
 
-      regionsInCont.forEach((reg) => {
-        if (selectedRegion !== 'All' && selectedRegion !== reg.name) return;
-        const tours = filteredTours.filter((t) => t.region === reg.name);
-        if (tours.length > 0) {
-          regionGroups.push({ regionDef: reg, tours });
+      countriesInCont.forEach((countryDef: DestinationCountry) => {
+        if (selectedCountry !== 'All' && selectedCountry.toLowerCase() !== countryDef.name.toLowerCase()) {
+          return;
+        }
+
+        // Multi-country rule: Any tour that includes this country will be present under this country!
+        const matchingTours = filteredTours.filter((t) =>
+          tourMatchesCountry(t, countryDef.name, cont)
+        );
+
+        if (matchingTours.length > 0) {
+          countryGroups.push({ countryDef, tours: matchingTours });
         }
       });
 
-      if (regionGroups.length > 0) {
-        result.push({ continent: cont, regions: regionGroups });
+      if (countryGroups.length > 0) {
+        result.push({ continent: cont, countries: countryGroups });
       }
     });
 
     return result;
-  }, [filteredTours, selectedContinent, selectedRegion]);
+  }, [filteredTours, selectedContinent, selectedCountry]);
 
   const resetFilters = () => {
     setSearch('');
+    clearFilters();
     setSelectedContinent('All');
-    setSelectedRegion('All');
+    setSelectedCountry('All');
     setSelectedTheme('All');
     setSelectedDuration('All');
     setSelectedDifficulty('All');
@@ -179,12 +205,12 @@ export const ToursPage: React.FC<ToursPageProps> = ({
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
-            <span className="eyebrow text-primary">Worldwide Journeys Regarding Continents & Places</span>
+            <span className="eyebrow text-primary">Destinations & Places by Continent</span>
             <h1 className="mt-2 text-4xl font-display font-bold sm:text-5xl text-foreground">
-              Small group journeys by continent
+              Small group journeys by country
             </h1>
             <p className="mt-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
-              Explore authentic expeditions organized regarding continents & places — spanning Europe (Istanbul, Aegean coast, Balkans & Carpathians), Asia (Cappadocia, Eastern Anatolia, Caucasus, Jordan & Vietnam), and Africa (Egypt, Morocco, Tunisia & Kenya safari).
+              Curated small group journeys categorized regarding continents and their respective countries. Cross-border expeditions and multi-country itineraries are featured under every country visited.
             </p>
           </div>
 
@@ -197,10 +223,10 @@ export const ToursPage: React.FC<ToursPageProps> = ({
                   ? 'bg-primary text-primary-foreground shadow-xs'
                   : 'text-muted-foreground hover:text-foreground hover:bg-muted'
               }`}
-              title="View trips organized regarding continents & places"
+              title="View trips organized regarding continents & countries"
             >
               <Layers className="size-3.5" />
-              By Continent & Place
+              By Continent & Country
             </button>
             <button
               onClick={() => setViewMode('grid')}
@@ -239,7 +265,7 @@ export const ToursPage: React.FC<ToursPageProps> = ({
                   key={cont}
                   onClick={() => {
                     setSelectedContinent(cont);
-                    setSelectedRegion('All'); // Reset region when changing continent
+                    setSelectedCountry('All'); // Reset country when changing continent
                   }}
                   className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold whitespace-nowrap cursor-pointer transition-all ${
                     isSelected
@@ -264,39 +290,43 @@ export const ToursPage: React.FC<ToursPageProps> = ({
           </div>
         </div>
 
-        {/* 2. Sub-Places / Regions Pills under selected continent */}
+        {/* 2. Countries Selector under selected continent */}
         <div className="mt-4 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
           <span className="text-[0.7rem] uppercase font-bold text-muted-foreground shrink-0 flex items-center gap-1 mr-1">
-            <MapPin className="size-3 text-primary" /> Place:
+            <MapPin className="size-3 text-primary" /> Country:
           </span>
 
           <button
-            onClick={() => setSelectedRegion('All')}
+            onClick={() => setSelectedCountry('All')}
             className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap cursor-pointer transition-all ${
-              selectedRegion === 'All'
+              selectedCountry === 'All'
                 ? 'bg-ink text-background shadow-xs'
                 : 'border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground'
             }`}
           >
-            All {selectedContinent !== 'All' ? selectedContinent : ''} Places
+            All {selectedContinent !== 'All' ? selectedContinent : ''} Countries
           </button>
 
-          {availableRegions.map((reg) => {
-            const count = regionCounts[reg.name] || 0;
+          {availableCountries.map((country) => {
+            const count = multiDayTours.filter((t) =>
+              tourMatchesCountry(t, country.name, country.continent)
+            ).length;
             if (count === 0) return null;
-            const isSelected = selectedRegion === reg.name;
+            const isSelected = selectedCountry.toLowerCase() === country.name.toLowerCase();
 
             return (
               <button
-                key={reg.id}
-                onClick={() => setSelectedRegion(reg.name)}
-                className={`rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap cursor-pointer transition-all ${
+                key={country.id}
+                onClick={() => setSelectedCountry(country.name)}
+                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold whitespace-nowrap cursor-pointer transition-all ${
                   isSelected
                     ? 'bg-ink text-background shadow-xs'
                     : 'border border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground'
                 }`}
               >
-                {reg.name} ({count})
+                <span>{country.flag}</span>
+                <span>{country.name}</span>
+                <span className="text-[0.65rem] opacity-75">({count})</span>
               </button>
             );
           })}
@@ -311,8 +341,11 @@ export const ToursPage: React.FC<ToursPageProps> = ({
               <input
                 type="text"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search places, countries, towns (e.g. Egypt, Göbeklitepe, Kenya, Petra)..."
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setSearchQuery(e.target.value);
+                }}
+                placeholder="Search places, countries, tours (e.g. Jordan, Transylvania, Cappadocia)..."
                 className="w-full rounded-md border border-input bg-background pl-9 pr-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary"
               />
             </div>
@@ -320,7 +353,7 @@ export const ToursPage: React.FC<ToursPageProps> = ({
             {/* Reset button if filtered */}
             {(search ||
               selectedContinent !== 'All' ||
-              selectedRegion !== 'All' ||
+              selectedCountry !== 'All' ||
               selectedTheme !== 'All' ||
               selectedDuration !== 'All' ||
               selectedDifficulty !== 'All') && (
@@ -393,7 +426,7 @@ export const ToursPage: React.FC<ToursPageProps> = ({
             <Compass className="mx-auto size-12 text-muted-foreground/60 mb-3" />
             <h3 className="font-display text-lg font-bold text-foreground">No journeys found</h3>
             <p className="mt-1 text-sm text-muted-foreground max-w-md mx-auto">
-              We couldn't find any trips matching your criteria. Try resetting your search filters or select a different continent or place.
+              We couldn't find any trips matching your criteria. Try resetting your search filters or select a different continent or country.
             </p>
             <button
               onClick={resetFilters}
@@ -404,10 +437,10 @@ export const ToursPage: React.FC<ToursPageProps> = ({
           </div>
         )}
 
-        {/* Content Presentation: Grouped by Continent & Place vs Standard Grid */}
+        {/* Content Presentation: Grouped by Continent & Country vs Standard Grid */}
         {viewMode === 'grouped' ? (
           <div className="mt-14 space-y-20">
-            {toursByContinentAndRegion.map(({ continent, regions }) => (
+            {toursByContinentAndCountry.map(({ continent, countries }) => (
               <section key={continent} className="space-y-12">
                 {/* Continent Section Header */}
                 <div className="flex items-center gap-3 border-b-2 border-primary/20 pb-3">
@@ -423,24 +456,27 @@ export const ToursPage: React.FC<ToursPageProps> = ({
                     </h2>
                   </div>
                   <span className="ml-auto text-xs font-semibold text-muted-foreground">
-                    {regions.reduce((acc, r) => acc + r.tours.length, 0)} journeys in {continent}
+                    {countries.length} {countries.length === 1 ? 'country' : 'countries'}
                   </span>
                 </div>
 
-                {/* Regions in this Continent */}
+                {/* Countries in this Continent */}
                 <div className="space-y-16">
-                  {regions.map(({ regionDef, tours }) => {
+                  {countries.map(({ countryDef, tours: countryTours }) => {
                     const fallback =
-                      fallbackImages[regionDef.continent] || fallbackImages.Europe;
+                      fallbackImages[countryDef.continent] || fallbackImages.Europe;
+                    const multiCountryList = countryTours.filter(
+                      (t) => (t.countries || []).length > 1
+                    );
 
                     return (
-                      <div key={regionDef.id} className="scroll-mt-20">
-                        {/* Region Banner Card with Error Fallback */}
+                      <div key={countryDef.id} className="scroll-mt-20">
+                        {/* Country Banner Card */}
                         <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm mb-7">
-                          <div className="relative h-52 sm:h-60 w-full overflow-hidden bg-muted">
+                          <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-muted">
                             <img
-                              src={regionDef.heroImage}
-                              alt={regionDef.name}
+                              src={countryDef.heroImage}
+                              alt={countryDef.name}
                               loading="lazy"
                               onError={(e) => {
                                 const target = e.currentTarget;
@@ -450,24 +486,39 @@ export const ToursPage: React.FC<ToursPageProps> = ({
                               }}
                               className="size-full object-cover"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-card via-card/75 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-card via-card/80 to-transparent" />
                             <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 flex flex-col justify-end">
-                              <div className="flex items-center gap-2 mb-1">
+                              <div className="flex flex-wrap items-center gap-2 mb-1.5">
                                 <span className="rounded-full bg-primary/20 text-primary px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider">
-                                  {regionDef.continent}
+                                  {countryDef.continent}
                                 </span>
+                                {multiCountryList.length > 0 && (
+                                  <span className="rounded-full bg-primary/15 text-primary border border-primary/30 px-2 py-0.5 text-[0.65rem] font-bold flex items-center gap-1">
+                                    <Sparkles className="size-3" />
+                                    Multi-Country Routes Included
+                                  </span>
+                                )}
                                 <span className="text-xs uppercase tracking-widest font-semibold text-sand">
-                                  {regionDef.subtitle}
+                                  {countryDef.subtitle}
                                 </span>
                               </div>
-                              <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground">
-                                {regionDef.name}
-                              </h3>
-                              <p className="mt-1 text-xs sm:text-sm text-muted-foreground max-w-2xl line-clamp-2">
-                                {regionDef.description}
+
+                              <div className="flex items-center gap-2.5">
+                                <span className="text-3xl leading-none">{countryDef.flag}</span>
+                                <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground">
+                                  {countryDef.name}
+                                </h3>
+                                <span className="text-xs font-semibold text-muted-foreground ml-2">
+                                  ({countryTours.length} {countryTours.length === 1 ? 'journey' : 'journeys'})
+                                </span>
+                              </div>
+
+                              <p className="mt-1.5 text-xs sm:text-sm text-muted-foreground max-w-2xl line-clamp-2">
+                                {countryDef.description}
                               </p>
+
                               <div className="mt-3 flex flex-wrap gap-1.5">
-                                {regionDef.places.map((placeName) => (
+                                {countryDef.places.map((placeName) => (
                                   <span
                                     key={placeName}
                                     className="rounded-full border border-border/80 bg-background/80 backdrop-blur-xs px-2.5 py-0.5 text-[0.65rem] font-medium text-foreground/85"
@@ -480,11 +531,25 @@ export const ToursPage: React.FC<ToursPageProps> = ({
                           </div>
                         </div>
 
-                        {/* Tour Cards Grid */}
+                        {/* Tour Cards Grid (Featuring both single-country and multi-country tours visiting this country) */}
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                          {tours.map((tour) => (
-                            <TourCard key={tour.id} tour={tour} onSelect={onSelectTour} />
-                          ))}
+                          {countryTours.map((tour) => {
+                            const isMultiCountry = (tour.countries || []).length > 1;
+
+                            return (
+                              <div key={`${countryDef.id}-${tour.id}`} className="relative flex flex-col">
+                                {isMultiCountry && (
+                                  <div className="mb-1 flex items-center gap-1 text-[0.65rem] font-semibold text-primary">
+                                    <Sparkles className="size-3 shrink-0" />
+                                    <span>
+                                      Cross-Border Itinerary: {tour.countries.join(' · ')}
+                                    </span>
+                                  </div>
+                                )}
+                                <TourCard tour={tour} onSelect={onSelectTour} />
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     );
@@ -494,7 +559,7 @@ export const ToursPage: React.FC<ToursPageProps> = ({
             ))}
           </div>
         ) : (
-          /* Grid View */
+          /* Standard Catalog Grid View */
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredTours.map((tour) => (
               <TourCard key={tour.id} tour={tour} onSelect={onSelectTour} />

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Clock, Users, Gauge, ArrowRight, MapPin } from 'lucide-react';
+import { Clock, Users, Gauge, ArrowRight, MapPin, Star } from 'lucide-react';
 import { Tour } from '../data/toursData';
 import { useCurrency } from '../context/CurrencyContext';
+import { useReviews } from '../context/ReviewsContext';
 
 interface TourCardProps {
   tour: Tour;
@@ -10,6 +11,9 @@ interface TourCardProps {
 
 export const TourCard: React.FC<TourCardProps> = ({ tour, onSelect }) => {
   const { formatPrice } = useCurrency();
+  const { getTourRatingStats } = useReviews();
+
+  const ratingStats = getTourRatingStats(tour.slug, tour.title);
 
   const durationLabel = tour.tour_type === 'day'
     ? (tour.duration_hours ? `${tour.duration_hours}H` : 'Half / full day')
@@ -49,13 +53,25 @@ export const TourCard: React.FC<TourCardProps> = ({ tour, onSelect }) => {
 
       {/* Tour Content */}
       <div className="flex flex-1 flex-col p-5">
-        {/* Place / Destination */}
-        {(tour.place || tour.region) && (
-          <div className="flex items-center gap-1.5 text-xs text-primary font-medium mb-1.5">
-            <MapPin className="size-3.5 shrink-0" />
-            <span className="truncate">{tour.place || tour.region}</span>
+        {/* Place / Destination & Rating */}
+        <div className="flex items-center justify-between gap-2 text-xs mb-1.5">
+          {(tour.place || tour.region) ? (
+            <div className="flex items-center gap-1.5 text-primary font-medium min-w-0">
+              <MapPin className="size-3.5 shrink-0" />
+              <span className="truncate">{tour.place || tour.region}</span>
+            </div>
+          ) : (
+            <div />
+          )}
+
+          <div className="flex items-center gap-1 shrink-0 font-bold text-foreground">
+            <Star className="size-3 fill-amber-400 text-amber-400" />
+            <span className="text-xs">{ratingStats.averageRating.toFixed(1)}</span>
+            <span className="text-[0.65rem] text-muted-foreground font-normal">
+              ({ratingStats.totalReviews})
+            </span>
           </div>
-        )}
+        </div>
 
         <h3 className="font-display text-lg font-bold leading-snug text-foreground transition-colors group-hover:text-primary line-clamp-2">
           {tour.title}
@@ -136,14 +152,19 @@ export const TourCard: React.FC<TourCardProps> = ({ tour, onSelect }) => {
         <div className="mt-auto flex items-end justify-between border-t border-border pt-4">
           <div>
             <span className="block text-[0.6rem] uppercase tracking-widest text-muted-foreground">
-              Starting from
+              {tour.tour_type === 'day' ? 'Adult Fare from' : 'Starting from'}
             </span>
             <span className="font-display text-lg font-bold text-primary">
               {formatPrice(tour.price_cents, tour.currency)}
               <span className="ml-1 text-xs font-normal text-muted-foreground">
-                per person
+                {tour.tour_type === 'day' ? '/ adult' : 'per person'}
               </span>
             </span>
+            {tour.tour_type === 'day' && (
+              <span className="block text-[0.62rem] font-medium text-emerald-600 dark:text-emerald-400">
+                Group discount up to 12
+              </span>
+            )}
           </div>
 
           <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary transition-all group-hover:bg-primary group-hover:text-primary-foreground">

@@ -35,7 +35,7 @@ export const AuthPage: React.FC<AuthPageProps> = ({ onNavigate }) => {
         <div className="text-center mb-6">
           <img
             src="/atlas-logo.png"
-            alt="Atlas Türkiye Tours"
+            alt="Atlas Global Tours"
             className="h-8 w-auto mx-auto mb-3"
           />
           <h1 className="font-display text-2xl font-bold text-foreground">

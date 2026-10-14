@@ -12,14 +12,21 @@ import {
   Lock,
   Download
 } from 'lucide-react';
-import { Tour, TOURS_DATA } from '../data/toursData';
+import { Tour, TOURS_DATA, RoomingSelection } from '../data/toursData';
+import { useTours } from '../context/ToursContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
+import { DepartureDropdown } from '../components/DepartureDropdown';
+import { RoomingSelector } from '../components/RoomingSelector';
+import { DayTourCalendarPicker } from '../components/DayTourCalendarPicker';
+import { DayTourPricingSelector } from '../components/DayTourPricingSelector';
+import { calculateDayTourPricing } from '../utils/dayTourPricing';
 
 interface BookTourPageProps {
   slug: string;
   initialDepartureId?: string;
   initialGuests?: number;
+  initialRoomSelections?: RoomingSelection[];
   onNavigate: (path: string) => void;
   onSelectTour: (slug: string) => void;
 }
@@ -28,21 +35,37 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
   slug,
   initialDepartureId,
   initialGuests = 2,
+  initialRoomSelections,
   onNavigate,
   onSelectTour,
 }) => {
+  const { tours, siteContent } = useTours();
   const { formatPrice } = useCurrency();
   const { user, addBooking } = useAuth();
 
   const tour = useMemo(() => {
-    return TOURS_DATA.find((t) => t.slug === slug) || TOURS_DATA[0];
-  }, [slug]);
+    return tours.find((t) => t.slug === slug) || TOURS_DATA.find((t) => t.slug === slug) || TOURS_DATA[0];
+  }, [tours, slug]);
 
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [guests, setGuests] = useState(initialGuests);
   const [selectedDepartureId, setSelectedDepartureId] = useState(
     initialDepartureId || (tour.departuresList?.[0]?.id ?? '')
   );
+
+  const [roomSelections, setRoomSelections] = useState<RoomingSelection[]>(() => {
+    if (initialRoomSelections && initialRoomSelections.length > 0) {
+      return initialRoomSelections;
+    }
+    const defaults: RoomingSelection[] = [];
+    for (let i = 0; i < initialGuests; i++) {
+      defaults.push({
+        travelerIndex: i,
+        roomType: initialGuests === 1 ? 'single' : (initialGuests === 2 ? 'double' : 'twin'),
+      });
+    }
+    return defaults;
+  });
 
   // Traveler form state
   const [leadName, setLeadName] = useState(user?.name || '');
@@ -63,13 +86,62 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
     return tour.departuresList?.[0];
   }, [tour, selectedDepartureId]);
 
+  const isDayTour = tour.tour_type === 'day' || tour.days === 1;
+
   const pricePerPersonCents = selectedDeparture?.price_cents || tour.price_cents;
-  const totalPriceCents = pricePerPersonCents * guests;
+
+  const dayTourPricing = useMemo(() => {
+    return calculateDayTourPricing(pricePerPersonCents, guests);
+  }, [pricePerPersonCents, guests]);
+
+  const singleSupplementPercent =
+    tour.single_supplement_percent ?? siteContent.defaultSingleSupplementPercent ?? 15;
+
+  const supplementPerPersonCents =
+    typeof tour.single_supplement_cents === 'number' && tour.single_supplement_cents > 0
+      ? tour.single_supplement_cents
+      : Math.round(pricePerPersonCents * (singleSupplementPercent / 100));
+
+  const singleRoomsCount = isDayTour
+    ? 0
+    : roomSelections
+        .slice(0, guests)
+        .filter((s) => s.roomType === 'single').length;
+
+  const doubleCount = isDayTour
+    ? 0
+    : roomSelections.slice(0, guests).filter((s) => s.roomType === 'double').length;
+  const twinCount = isDayTour
+    ? 0
+    : roomSelections.slice(0, guests).filter((s) => s.roomType === 'twin').length;
+
+  const totalSupplementCents = isDayTour ? 0 : singleRoomsCount * supplementPerPersonCents;
+  const totalPriceCents = isDayTour
+    ? dayTourPricing.totalPriceCents
+    : pricePerPersonCents * guests + totalSupplementCents;
   const depositCents = Math.round(totalPriceCents * 0.2); // 20% deposit
+
+  const roomSummaryString = useMemo(() => {
+    if (isDayTour) {
+      return 'Day Excursion (No lodging required)';
+    }
+    const parts: string[] = [];
+    if (doubleCount > 0) parts.push(`${Math.ceil(doubleCount / 2)} Double Room (Couples)`);
+    if (twinCount > 0) parts.push(`${Math.ceil(twinCount / 2)} Twin Share (2 Beds)`);
+    if (singleRoomsCount > 0) parts.push(`${singleRoomsCount} Single Room (+${singleSupplementPercent}% supplement)`);
+    return parts.join(', ') || 'Standard rooming';
+  }, [isDayTour, doubleCount, twinCount, singleRoomsCount, singleSupplementPercent]);
 
   const handleCompleteBooking = (e: React.FormEvent) => {
     e.preventDefault();
     if (!agreeTerms) return;
+
+    const fullSpecialRequests = [
+      `Room Configuration: ${roomSummaryString}`,
+      specialRequests ? `Special Requests: ${specialRequests}` : '',
+    ]
+      .filter(Boolean)
+      .join('\n');
 
     const newBooking = addBooking({
       tourId: tour.id,
@@ -83,7 +155,7 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
       leadName,
       leadEmail,
       leadPhone,
-      specialRequests,
+      specialRequests: fullSpecialRequests,
     });
 
     setConfirmedBookingRef(newBooking.reference);
@@ -100,7 +172,7 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
 
             <span className="eyebrow text-primary">Booking Confirmed</span>
             <h1 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-foreground">
-              You're heading to Türkiye!
+              You're heading on your journey!
             </h1>
             <p className="mt-3 text-sm text-muted-foreground max-w-md mx-auto">
               Your reservation has been confirmed. A confirmation receipt and detailed packing & travel briefing has been sent to <strong className="text-foreground">{leadEmail}</strong>.
@@ -235,85 +307,61 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
               <div className="rounded-xl border border-border bg-card p-6 shadow-sm space-y-6">
                 <div>
                   <h2 className="font-display text-xl font-bold text-foreground">
-                    1. Choose Departure & Party Size
+                    1. Choose Departure Date
                   </h2>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    All departures are guaranteed once booked. Small group limit is 12 travellers.
+                    All departures are guaranteed once booked. Booking for{' '}
+                    <span className="font-semibold text-foreground">
+                      {guests} {guests === 1 ? (isDayTour ? 'adult' : 'traveller') : (isDayTour ? 'adults' : 'travellers')}
+                    </span>
+                    . Small group limit is 12 travellers.
                   </p>
                 </div>
 
-                {/* Departure selection */}
-                <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-                    Available Dates ({tour.departuresList?.length || 0})
-                  </label>
-                  <div className="max-h-60 overflow-y-auto space-y-2 pr-1 custom-scrollbar">
-                    {tour.departuresList?.slice(0, 12).map((dep) => {
-                      const isSelected = selectedDeparture?.id === dep.id;
-                      return (
-                        <div
-                          key={dep.id}
-                          onClick={() => setSelectedDepartureId(dep.id)}
-                          className={`p-3.5 rounded-lg border text-xs cursor-pointer transition-all ${
-                            isSelected
-                              ? 'border-primary bg-primary/5 ring-1 ring-primary'
-                              : 'border-border bg-background hover:bg-muted/60'
-                          }`}
-                        >
-                          <div className="flex items-center justify-between font-bold">
-                            <span>
-                              {new Date(dep.start_date).toLocaleDateString('en-US', {
-                                weekday: 'short',
-                                month: 'short',
-                                day: 'numeric',
-                                year: 'numeric',
-                              })}
-                              {dep.end_date !== dep.start_date && (
-                                <>
-                                  {' – '}
-                                  {new Date(dep.end_date).toLocaleDateString('en-US', {
-                                    month: 'short',
-                                    day: 'numeric',
-                                  })}
-                                </>
-                              )}
-                            </span>
-                            <span className="text-primary">
-                              {formatPrice(dep.price_cents, tour.currency)} / person
-                            </span>
-                          </div>
-                          <div className="mt-1 text-[0.7rem] text-muted-foreground flex justify-between">
-                            <span className="text-success font-medium">Instant confirmation</span>
-                            <span>{dep.capacity - dep.seats_booked} spots remaining</span>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+                {isDayTour ? (
+                  <>
+                    <DayTourCalendarPicker
+                      departures={tour.departuresList || []}
+                      selectedDepartureId={selectedDeparture?.id}
+                      onSelectDeparture={(depId) => setSelectedDepartureId(depId)}
+                      currency={tour.currency}
+                      label="Choose Tour Date"
+                    />
 
-                {/* Number of guests */}
-                <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-                    Number of Travellers
-                  </label>
-                  <div className="flex items-center gap-3">
-                    {[1, 2, 3, 4, 5, 6].map((num) => (
-                      <button
-                        key={num}
-                        type="button"
-                        onClick={() => setGuests(num)}
-                        className={`size-10 rounded-lg border text-sm font-bold cursor-pointer transition-all ${
-                          guests === num
-                            ? 'bg-primary text-primary-foreground border-primary'
-                            : 'border-border bg-background hover:bg-muted text-foreground'
-                        }`}
-                      >
-                        {num}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+                    <DayTourPricingSelector
+                      baseAdultPriceCents={pricePerPersonCents}
+                      passengers={guests}
+                      onChangePassengers={(count) => setGuests(count)}
+                      currency={tour.currency}
+                      maxPax={tour.max_pax || 12}
+                    />
+                  </>
+                ) : (
+                  <>
+                    {/* Departure selection dropdown */}
+                    <DepartureDropdown
+                      departures={tour.departuresList || []}
+                      selectedDepartureId={selectedDeparture?.id}
+                      onSelectDeparture={(depId) => setSelectedDepartureId(depId)}
+                      currency={tour.currency}
+                      label="Select Departure Date"
+                    />
+
+                    {/* Rooming selection */}
+                    <div className="pt-2 border-t border-border">
+                      <RoomingSelector
+                        passengers={guests}
+                        basePricePerPersonCents={pricePerPersonCents}
+                        currency={tour.currency}
+                        singleSupplementPercent={singleSupplementPercent}
+                        singleSupplementCents={tour.single_supplement_cents}
+                        policyNotes={tour.room_policy_notes}
+                        selections={roomSelections}
+                        onChange={setRoomSelections}
+                      />
+                    </div>
+                  </>
+                )}
 
                 <div className="flex justify-end pt-4 border-t border-border">
                   <button
@@ -557,15 +605,42 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span>Travellers:</span>
-                <span className="font-semibold text-foreground">{guests} Guest{guests > 1 ? 's' : ''}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>Rate per person:</span>
+                <span>{isDayTour ? 'Adults:' : 'Travellers:'}</span>
                 <span className="font-semibold text-foreground">
-                  {formatPrice(pricePerPersonCents, tour.currency)}
+                  {guests} {isDayTour ? (guests === 1 ? 'Adult' : 'Adults') : (guests === 1 ? 'Guest' : 'Guests')}
                 </span>
               </div>
+              <div className="flex items-center justify-between">
+                <span>{isDayTour ? 'Lodging:' : 'Rooming:'}</span>
+                <span
+                  className={`font-semibold text-right max-w-[180px] truncate ${
+                    isDayTour ? 'text-emerald-600 dark:text-emerald-400' : 'text-foreground'
+                  }`}
+                  title={roomSummaryString}
+                >
+                  {isDayTour ? 'Not required (Day Excursion)' : roomSummaryString}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>{isDayTour ? 'Adult Rate:' : 'Base per person:'}</span>
+                <span className="font-semibold text-foreground">
+                  {isDayTour
+                    ? `${formatPrice(dayTourPricing.pricePerPersonCents, tour.currency)} / adult`
+                    : formatPrice(pricePerPersonCents, tour.currency)}
+                </span>
+              </div>
+              {isDayTour && dayTourPricing.isGroupDiscountApplied && (
+                <div className="flex items-center justify-between text-emerald-600 dark:text-emerald-400 font-medium">
+                  <span>Group Discount ({dayTourPricing.tierLabel}):</span>
+                  <span>-{formatPrice(dayTourPricing.totalSavingsCents, tour.currency)}</span>
+                </div>
+              )}
+              {!isDayTour && totalSupplementCents > 0 && (
+                <div className="flex items-center justify-between text-amber-700 dark:text-amber-400 font-medium">
+                  <span>Single Supplement (+{singleSupplementPercent}%):</span>
+                  <span>+{formatPrice(totalSupplementCents, tour.currency)}</span>
+                </div>
+              )}
             </div>
 
             <div className="border-t border-border pt-3">
@@ -577,8 +652,14 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
                   {formatPrice(totalPriceCents, tour.currency)}
                 </span>
               </div>
-              <p className="mt-1 text-[0.65rem] text-muted-foreground">
-                Includes all scheduled activities, licensed guide, transfers, and entrance fees.
+              <div className="mt-1 flex items-center justify-between text-xs text-muted-foreground">
+                <span>Deposit Due Today (20%):</span>
+                <span className="font-semibold text-foreground">{formatPrice(depositCents, tour.currency)}</span>
+              </div>
+              <p className="mt-2 text-[0.65rem] text-muted-foreground">
+                {isDayTour
+                  ? 'Includes licensed historian guide, skip-the-line admissions, audio headsets, and all taxes.'
+                  : 'Includes all accommodations, licensed guide, transfers, and entrance fees.'}
               </p>
             </div>
           </div>

@@ -1,14 +1,16 @@
 import React, { useState, useMemo } from 'react';
-import { ArrowRight, ShieldCheck, MapPin, Users, HeartHandshake, Compass, Globe } from 'lucide-react';
+import { ArrowRight, ShieldCheck, MapPin, Users, HeartHandshake, Compass, Globe, Sparkles } from 'lucide-react';
 import { HeroVideo } from '../components/HeroVideo';
 import { TourCard } from '../components/TourCard';
-import { TOURS_DATA, DESTINATION_REGIONS, DestinationRegion } from '../data/toursData';
+import { DestinationRegion, DESTINATION_COUNTRIES, DestinationCountry, tourMatchesCountry } from '../data/toursData';
+import { useTours } from '../context/ToursContext';
 
 interface HomePageProps {
   onNavigate: (path: string) => void;
   onSelectTour: (slug: string) => void;
   onSelectRegion?: (region: string, continent?: string) => void;
   onSelectContinent?: (continent: string) => void;
+  onSelectCountry?: (country: string, continent?: string) => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({
@@ -16,11 +18,13 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectTour,
   onSelectRegion,
   onSelectContinent,
+  onSelectCountry,
 }) => {
+  const { tours, destinationRegions, siteContent } = useTours();
   const [selectedContinent, setSelectedContinent] = useState<string>('All');
 
-  const multiDayTours = TOURS_DATA.filter((t) => t.tour_type === 'multi_day');
-  const dayTours = TOURS_DATA.filter((t) => t.tour_type === 'day');
+  const multiDayTours = tours.filter((t) => t.tour_type === 'multi_day' && t.is_published);
+  const dayTours = tours.filter((t) => t.tour_type === 'day' && t.is_published);
 
   const valueProps = [
     {
@@ -30,7 +34,7 @@ export const HomePage: React.FC<HomePageProps> = ({
     },
     {
       title: 'Local guides',
-      description: 'Licensed Türkiye guides who live where they lead.',
+      description: 'Licensed local guides who live where they lead.',
       icon: Compass,
     },
     {
@@ -47,14 +51,16 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   const continents = ['All', 'Europe', 'Asia', 'Africa'];
 
-  const filteredRegions = useMemo(() => {
-    if (selectedContinent === 'All') return DESTINATION_REGIONS;
-    return DESTINATION_REGIONS.filter((r) => r.continent === selectedContinent);
+  const filteredCountries = useMemo(() => {
+    if (selectedContinent === 'All') return DESTINATION_COUNTRIES;
+    return DESTINATION_COUNTRIES.filter((c) => c.continent === selectedContinent);
   }, [selectedContinent]);
 
-  const handleRegionClick = (region: DestinationRegion) => {
-    if (onSelectRegion) {
-      onSelectRegion(region.name, region.continent);
+  const handleCountryClick = (country: DestinationCountry) => {
+    if (onSelectCountry) {
+      onSelectCountry(country.name, country.continent);
+    } else if (onSelectContinent) {
+      onSelectContinent(country.continent);
     } else {
       onNavigate('/tours');
     }
@@ -80,18 +86,18 @@ export const HomePage: React.FC<HomePageProps> = ({
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-[75vh] overflow-hidden bg-ink flex items-end">
+      {/* Hero Section - Full Width Stretched Video Across All Devices */}
+      <section className="relative w-full min-h-[75vh] sm:min-h-[82vh] lg:min-h-[90vh] overflow-hidden bg-ink flex items-end">
         <HeroVideo />
         <div className="absolute inset-0 z-[1] bg-gradient-to-t from-ink via-ink/40 to-transparent" aria-hidden="true" />
         
         <div className="container-page relative z-10 flex min-h-[75vh] flex-col justify-end pb-16 pt-32">
-          <p className="eyebrow text-sand">Türkiye specialists & Worldwide Journeys · Since 2012</p>
+          <p className="eyebrow text-sand">{siteContent.heroTagline}</p>
           <h1 className="mt-3 max-w-3xl text-4xl font-display font-bold text-background sm:text-5xl md:text-6xl leading-[1.15]">
-            Small group immersive tours run by locals.
+            {siteContent.heroHeadline}
           </h1>
           <p className="mt-4 max-w-2xl text-background/85 text-base sm:text-lg leading-relaxed">
-            Multi-day journeys categorized regarding continents & places — spanning Europe (Istanbul, Aegean, Balkans), Asia (Cappadocia, Mesopotamia, Caucasus, Middle East, Vietnam), and Africa (Egypt, Morocco, Kenya).
+            {siteContent.heroSubtitle}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3.5">
@@ -126,28 +132,25 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* Destinations & Places (Categorized by Continent) */}
+      {/* Destinations & Places by Continent (Categorized According to Countries) */}
       <section className="container-page py-16 lg:py-20 border-b border-border">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <p className="eyebrow text-primary">Destinations & Places by Continent</p>
             <h2 className="text-3xl sm:text-4xl font-display font-bold mt-1 text-foreground">
-              Explore places by continent
+              Explore places categorized by countries
             </h2>
             <p className="mt-2 text-sm text-muted-foreground max-w-xl">
-              Curated small group journeys structured regarding continents — Europe, Asia, and Africa. Select a continent or place to view complete itineraries and dates.
+              Curated small group journeys structured regarding continents — Europe, Asia, and Africa — and categorized by country. Multi-country and cross-border expeditions are featured under every country visited.
             </p>
           </div>
 
           {/* Continent Filter Tabs */}
           <div className="flex flex-wrap items-center gap-2 self-start md:self-auto bg-card border border-border p-1.5 rounded-xl shadow-xs">
             {continents.map((cont) => {
-              const count = cont === 'All'
-                ? DESTINATION_REGIONS.length
-                : DESTINATION_REGIONS.filter((r) => r.continent === cont).length;
-              const tripsCount = cont === 'All'
-                ? TOURS_DATA.length
-                : TOURS_DATA.filter((t) => t.continent === cont).length;
+              const countryCount = cont === 'All'
+                ? DESTINATION_COUNTRIES.length
+                : DESTINATION_COUNTRIES.filter((c) => c.continent === cont).length;
 
               return (
                 <button
@@ -166,7 +169,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                       ? 'bg-primary-foreground/20 text-primary-foreground'
                       : 'bg-muted text-muted-foreground'
                   }`}>
-                    {tripsCount} trips
+                    {countryCount} countries
                   </span>
                 </button>
               );
@@ -174,22 +177,25 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
         </div>
 
-        {/* Region Cards Grid */}
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {filteredRegions.map((region) => {
-            const count = TOURS_DATA.filter((t) => t.region === region.name).length;
-            const fallback = fallbackImages[region.continent] || fallbackImages.Europe;
+        {/* Countries Grid (Multi-country tours are featured under each regarding country) */}
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {filteredCountries.map((country) => {
+            // Find all tours visiting this country (single and multi-country)
+            const matchingTours = tours.filter((t) => tourMatchesCountry(t, country.name, country.continent));
+            const count = matchingTours.length;
+            const multiCountryTours = matchingTours.filter((t) => (t.countries || []).length > 1);
+            const fallback = fallbackImages[country.continent] || fallbackImages.Europe;
 
             return (
               <div
-                key={region.id}
-                onClick={() => handleRegionClick(region)}
-                className="group relative flex flex-col justify-end overflow-hidden rounded-xl border border-border bg-card p-5 h-72 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl"
+                key={country.id}
+                onClick={() => handleCountryClick(country)}
+                className="group relative flex flex-col justify-end overflow-hidden rounded-2xl border border-border bg-card p-5 h-80 cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/50 hover:shadow-xl"
               >
                 {/* Background Image with Error Fallback */}
                 <img
-                  src={region.heroImage}
-                  alt={region.name}
+                  src={country.heroImage}
+                  alt={country.name}
                   loading="lazy"
                   onError={(e) => {
                     const target = e.currentTarget;
@@ -199,30 +205,60 @@ export const HomePage: React.FC<HomePageProps> = ({
                   }}
                   className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/55 to-ink/20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/65 to-ink/20" />
 
-                {/* Continent Badge at Top Left */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="rounded-full border border-sand/30 bg-ink/75 backdrop-blur-xs px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-sand shadow-xs">
-                    {region.continent}
+                {/* Badges: Continent at Top Left & Multi-Country indicator at Top Right */}
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 pointer-events-none">
+                  <span className="rounded-full border border-sand/30 bg-ink/80 backdrop-blur-xs px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-sand shadow-xs">
+                    {country.continent}
                   </span>
+                  {multiCountryTours.length > 0 && (
+                    <span className="rounded-full border border-primary/40 bg-primary/90 text-primary-foreground backdrop-blur-xs px-2 py-0.5 text-[0.62rem] font-bold shadow-xs flex items-center gap-1">
+                      <Sparkles className="size-3" />
+                      Multi-Country Route
+                    </span>
+                  )}
                 </div>
 
-                {/* Region Details */}
+                {/* Country Details & Places */}
                 <div className="relative z-10 text-background">
-                  <span className="text-[0.65rem] uppercase tracking-widest font-semibold text-sand/90 block mb-1">
-                    {region.subtitle}
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-2xl leading-none">{country.flag}</span>
+                    <h3 className="font-display text-2xl font-bold leading-tight group-hover:text-sand transition-colors">
+                      {country.name}
+                    </h3>
+                  </div>
+
+                  <span className="text-[0.68rem] font-medium text-sand/90 line-clamp-1 block mb-2">
+                    {country.subtitle}
                   </span>
-                  <h3 className="font-display text-xl font-bold leading-snug group-hover:text-sand transition-colors">
-                    {region.name}
-                  </h3>
-                  <p className="mt-1 text-xs text-background/80 line-clamp-1">
-                    {region.places.slice(0, 3).join(' · ')}
-                  </p>
-                  <div className="mt-3 flex items-center justify-between pt-2.5 border-t border-background/20 text-xs font-semibold text-sand">
-                    <span>{count} journey{count !== 1 ? 's' : ''}</span>
+
+                  {/* Highlighted Places Tags */}
+                  <div className="flex flex-wrap gap-1 mb-3">
+                    {country.places.slice(0, 3).map((place) => (
+                      <span
+                        key={place}
+                        className="rounded-md bg-background/15 backdrop-blur-xs px-1.5 py-0.5 text-[0.62rem] text-background/90"
+                      >
+                        {place}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Multi-country callout if present */}
+                  {multiCountryTours.length > 0 && (
+                    <p className="text-[0.62rem] text-sand/80 mb-2 italic line-clamp-1">
+                      Includes {multiCountryTours.length} cross-border expedition{multiCountryTours.length > 1 ? 's' : ''}
+                    </p>
+                  )}
+
+                  {/* Bottom Stats & Navigation */}
+                  <div className="flex items-center justify-between pt-2.5 border-t border-background/20 text-xs font-semibold text-sand">
+                    <span>
+                      {count} {count === 1 ? 'journey' : 'journeys'}
+                    </span>
                     <span className="inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform text-[0.7rem] uppercase tracking-wider text-sand font-bold">
-                      View trips <ArrowRight className="size-3" />
+                      View journeys <ArrowRight className="size-3" />
                     </span>
                   </div>
                 </div>
@@ -246,156 +282,150 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* Featured Multi-day Journeys */}
-      <section className="container-page py-16 lg:py-20">
-        <div className="flex items-end justify-between gap-4">
+      <section className="container-page py-16 lg:py-20 border-b border-border">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <p className="eyebrow text-primary">Signature Expeditions</p>
+            <p className="eyebrow text-primary">Signature routes</p>
             <h2 className="text-3xl sm:text-4xl font-display font-bold mt-1 text-foreground">
-              Multi-day journeys
+              Small group multi-day journeys
             </h2>
+            <p className="mt-2 text-sm text-muted-foreground max-w-xl">
+              Slow-travel itineraries designed around UNESCO landmarks, local home dining, scenic railways, and boutique stays.
+            </p>
           </div>
           <button
             onClick={() => onNavigate('/tours')}
-            className="inline-flex items-center gap-1.5 rounded-md border border-input bg-background px-4 py-2 text-xs font-semibold text-foreground shadow-sm hover:bg-muted transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary hover:underline self-start md:self-auto cursor-pointer"
           >
-            See all ({multiDayTours.length})
-            <ArrowRight className="size-3.5" />
+            <span>View all journeys ({multiDayTours.length})</span>
+            <ArrowRight className="size-4" />
           </button>
         </div>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {multiDayTours.slice(0, 6).map((tour) => (
-            <TourCard key={tour.id} tour={tour} onSelect={onSelectTour} />
+            <TourCard
+              key={tour.id}
+              tour={tour}
+              onSelect={() => onSelectTour(tour.slug)}
+            />
           ))}
         </div>
       </section>
 
-      {/* Brand Ethos Banner */}
-      <section className="border-y border-border bg-paper/60 py-16">
-        <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="relative aspect-4/3 overflow-hidden rounded-xl shadow-lg">
-            <img
-              src="https://atlasglobaltours.com/wp-content/uploads/2025/01/patient-woman-doing-pottery-1365x2048.jpg"
-              alt="Anatolian pottery craft artisan"
-              className="size-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
-            <div className="absolute bottom-4 left-4 right-4 text-background">
-              <span className="text-xs uppercase tracking-widest text-sand font-bold block mb-1">
-                Authentic Encounters
-              </span>
-              <p className="text-sm font-medium">
-                Centuries-old pottery traditions in Avanos, Cappadocia
-              </p>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <p className="eyebrow text-primary">The Atlas Difference</p>
-            <h2 className="text-3xl font-display font-bold text-foreground">
-              Travel designed like you are visiting old friends.
-            </h2>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              We started Atlas Global Tours with one principle: skip the megaphone bus tours. 
-              Instead, we travel in groups of 8 to 12 with guides who grew up in the valleys they show you.
-            </p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              You will dine in village homes, sip çay in Ottoman caravanserai courtyards, and walk ancient trails long after the day-tripper coaches have departed.
-            </p>
-
-            <div className="pt-2 grid grid-cols-2 gap-4 border-t border-border">
-              <div>
-                <span className="font-display text-2xl font-bold text-primary block">100%</span>
-                <span className="text-xs text-muted-foreground">Licensed Ministry Guides</span>
-              </div>
-              <div>
-                <span className="font-display text-2xl font-bold text-primary block">Max 12</span>
-                <span className="text-xs text-muted-foreground">Travellers per group</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Day Tours */}
-      <section className="container-page py-16 lg:py-20">
-        <div className="flex items-end justify-between gap-4">
+      {/* Day Tours Section */}
+      <section className="container-page py-16 lg:py-20 border-b border-border">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <p className="eyebrow text-primary">Short Adventures</p>
+            <p className="eyebrow text-primary">Day itineraries</p>
             <h2 className="text-3xl sm:text-4xl font-display font-bold mt-1 text-foreground">
-              Day tours & excursions
+              Istanbul & regional day tours
             </h2>
+            <p className="mt-2 text-sm text-muted-foreground max-w-xl">
+              Single-day deep dives led by licensed guides — secret rooftop panoramas, culinary tasting walks, and private Bosphorus yacht charters.
+            </p>
           </div>
           <button
             onClick={() => onNavigate('/day-tours')}
-            className="inline-flex items-center gap-1.5 rounded-md border border-input bg-background px-4 py-2 text-xs font-semibold text-foreground shadow-sm hover:bg-muted transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary hover:underline self-start md:self-auto cursor-pointer"
           >
-            See all ({dayTours.length})
-            <ArrowRight className="size-3.5" />
+            <span>View all day tours ({dayTours.length})</span>
+            <ArrowRight className="size-4" />
           </button>
         </div>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {dayTours.slice(0, 6).map((tour) => (
-            <TourCard key={tour.id} tour={tour} onSelect={onSelectTour} />
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {dayTours.slice(0, 4).map((tour) => (
+            <TourCard
+              key={tour.id}
+              tour={tour}
+              onSelect={() => onSelectTour(tour.slug)}
+            />
           ))}
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="border-t border-border bg-paper py-16">
-        <div className="container-page">
-          <div className="text-center max-w-xl mx-auto mb-10">
-            <p className="eyebrow text-primary">Traveller Reflections</p>
-            <h2 className="text-3xl font-display font-bold mt-1 text-foreground">
-              Memories from our guests
+      {/* About & Ethos Section */}
+      <section className="bg-paper py-20 border-b border-border">
+        <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div>
+            <p className="eyebrow text-primary">The Atlas way</p>
+            <h2 className="mt-2 text-3xl sm:text-4xl font-display font-bold text-foreground leading-tight">
+              {siteContent.brandEthosTitle}
             </h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
+              {siteContent.brandEthosText1}
+            </p>
+            <p className="mt-3 text-muted-foreground leading-relaxed text-sm sm:text-base">
+              {siteContent.brandEthosText2}
+            </p>
+
+            <div className="mt-8 grid grid-cols-2 gap-4 border-t border-border pt-6">
+              <div>
+                <span className="font-display text-2xl font-bold text-primary">
+                  12
+                </span>
+                <p className="text-xs text-muted-foreground mt-0.5">Maximum guests per group</p>
+              </div>
+              <div>
+                <span className="font-display text-2xl font-bold text-primary">
+                  100%
+                </span>
+                <p className="text-xs text-muted-foreground mt-0.5">Licensed local guides</p>
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <button
+                onClick={() => onNavigate('/about')}
+                className="inline-flex items-center gap-2 rounded-md bg-foreground px-5 py-2.5 text-xs font-semibold text-background hover:bg-foreground/90 transition-colors cursor-pointer"
+              >
+                Learn our story & meet our guides
+                <ArrowRight className="size-3.5" />
+              </button>
+            </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            <div className="rounded-xl border border-border bg-card p-6 shadow-sm flex flex-col justify-between">
-              <p className="text-sm italic text-foreground/85 leading-relaxed">
-                "Our guide Serkan did not just take us to Göbeklitepe; he unlocked 12,000 years of civilization for us. The dinner in Urfa with local musicians was the absolute highlight of our year."
+          <div className="relative overflow-hidden rounded-2xl border border-border shadow-xl">
+            <img
+              src="https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80"
+              alt="Local guide in Istanbul with travellers"
+              className="h-96 w-full object-cover sm:h-[450px]"
+            />
+            <div className="absolute bottom-4 left-4 right-4 rounded-xl bg-ink/85 backdrop-blur-md p-4 text-xs text-background border border-background/10">
+              <p className="font-semibold text-sand">Direct Boutique Operator</p>
+              <p className="mt-1 text-background/80">
+                Istanbul Operations Desk: Sultanahmet Mah., Divanyolu Cad. No: 42, Fatih.
               </p>
-              <div className="mt-5 pt-4 border-t border-border flex items-center gap-3">
-                <div className="size-8 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs">
-                  DL
-                </div>
-                <div>
-                  <span className="text-xs font-semibold block text-foreground">David & Laura M.</span>
-                  <span className="text-[0.65rem] text-muted-foreground">San Francisco, CA · Eastern Türkiye Tour</span>
-                </div>
-              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="rounded-xl border border-border bg-card p-6 shadow-sm flex flex-col justify-between">
-              <p className="text-sm italic text-foreground/85 leading-relaxed">
-                "The small group size made all the difference. Walking through the Grand Bazaar secret rooftops and eating authentic katmer in Gaziantep was an experience you could never get on a big commercial tour."
-              </p>
-              <div className="mt-5 pt-4 border-t border-border flex items-center gap-3">
-                <div className="size-8 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs">
-                  EH
-                </div>
-                <div>
-                  <span className="text-xs font-semibold block text-foreground">Elena H.</span>
-                  <span className="text-[0.65rem] text-muted-foreground">London, UK · Aegean & Istanbul Tour</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-xl border border-border bg-card p-6 shadow-sm flex flex-col justify-between">
-              <p className="text-sm italic text-foreground/85 leading-relaxed">
-                "Flawless organization from airport transfers to boutique cave suites in Cappadocia. The private hike through Rose Valley felt like being in another world. Atlas is the only company we will use in Türkiye."
-              </p>
-              <div className="mt-5 pt-4 border-t border-border flex items-center gap-3">
-                <div className="size-8 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs">
-                  MK
-                </div>
-                <div>
-                  <span className="text-xs font-semibold block text-foreground">Marcus & Karin T.</span>
-                  <span className="text-[0.65rem] text-muted-foreground">Sydney, Australia · Cappadocia Hiking Adventure</span>
-                </div>
-              </div>
+      {/* Call to Action Banner */}
+      <section className="container-page py-16">
+        <div className="relative overflow-hidden rounded-2xl bg-ink px-6 py-14 text-center sm:px-12 sm:py-18">
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <p className="eyebrow text-sand">Custom & set departures</p>
+            <h2 className="mt-2 text-3xl sm:text-4xl font-display font-bold text-background">
+              Ready to sketch your route?
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-background/80 leading-relaxed">
+              Whether you want to join a guaranteed set departure with a like-minded small group or request a bespoke route across Europe, Asia, Africa, the Mediterranean, or the Americas, our operations team is here to help.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <button
+                onClick={() => onNavigate('/tours')}
+                className="rounded-md bg-primary px-6 py-3 text-xs font-semibold text-primary-foreground shadow-md hover:bg-primary/90 transition-colors cursor-pointer"
+              >
+                Browse all small group journeys
+              </button>
+              <button
+                onClick={() => onNavigate('/contact')}
+                className="rounded-md bg-background/15 backdrop-blur-sm px-6 py-3 text-xs font-semibold text-background hover:bg-background/25 transition-colors cursor-pointer border border-background/20"
+              >
+                Inquire about custom trip
+              </button>
             </div>
           </div>
         </div>
