@@ -17,12 +17,14 @@ import {
   ShieldCheck,
   HelpCircle,
   ArrowRight,
-  Compass
+  Compass,
+  SlidersHorizontal
 } from 'lucide-react';
 import { Tour, TOURS_DATA, RoomingSelection } from '../data/toursData';
 import { useTours } from '../context/ToursContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useReviews } from '../context/ReviewsContext';
+import { useComparison } from '../context/ComparisonContext';
 import { InquiryModal } from '../components/InquiryModal';
 import { TourCard } from '../components/TourCard';
 import { StarRating } from '../components/StarRating';
@@ -36,6 +38,7 @@ import { DayTourPricingSelector } from '../components/DayTourPricingSelector';
 import { calculateDayTourPricing } from '../utils/dayTourPricing';
 import { useTourSEO } from '../utils/tourSeo';
 import { ShareTourModal } from '../components/ShareTourModal';
+import { getTourFallbackImage } from '../utils/tourImageFallback';
 
 interface TourDetailPageProps {
   slug: string;
@@ -65,6 +68,7 @@ export const TourDetailPage: React.FC<TourDetailPageProps> = ({
 
   const { tours, siteContent } = useTours();
   const { getTourRatingStats } = useReviews();
+  const { isTourInComparison, toggleTourComparison, openComparisonModal } = useComparison();
 
   const tour = useMemo(() => {
     return tours.find((t) => t.slug === slug) || TOURS_DATA.find((t) => t.slug === slug) || TOURS_DATA[0];
@@ -235,8 +239,16 @@ export const TourDetailPage: React.FC<TourDetailPageProps> = ({
       <section className="relative">
         <div className="relative h-[48vh] min-h-[320px] w-full overflow-hidden bg-ink image-fade sm:h-[58vh]">
           <img
-            src={tour.hero_image}
+            src={tour.hero_image || getTourFallbackImage(tour)}
             alt={tour.title}
+            referrerPolicy="no-referrer"
+            onError={(e) => {
+              const target = e.currentTarget;
+              const fallback = getTourFallbackImage(tour);
+              if (!target.src.endsWith(fallback)) {
+                target.src = fallback;
+              }
+            }}
             className="absolute inset-0 size-full object-cover object-center"
           />
         </div>
@@ -261,6 +273,19 @@ export const TourDetailPage: React.FC<TourDetailPageProps> = ({
                     Code: {tour.code}
                   </span>
                 )}
+                <button
+                  type="button"
+                  onClick={() => toggleTourComparison(tour.slug)}
+                  className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold transition-all cursor-pointer shadow-2xs ${
+                    isTourInComparison(tour.slug)
+                      ? 'border-primary bg-primary text-primary-foreground'
+                      : 'border-border bg-card text-foreground hover:border-primary/50 hover:bg-primary/5 hover:text-primary'
+                  }`}
+                  title={isTourInComparison(tour.slug) ? 'Remove from comparison' : 'Add to side-by-side comparison'}
+                >
+                  <SlidersHorizontal className="size-3" />
+                  <span>{isTourInComparison(tour.slug) ? 'In Comparison' : 'Compare'}</span>
+                </button>
                 <button
                   type="button"
                   onClick={() => setShareModalOpen(true)}
@@ -614,16 +639,30 @@ export const TourDetailPage: React.FC<TourDetailPageProps> = ({
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
                 {tour.gallery.slice(0, 8).map((img, i) => (
                   <div
-                    key={i}
+                    key={`${img}-${i}`}
                     onClick={() => setLightboxIndex(i)}
                     className="group relative aspect-4/3 overflow-hidden rounded-lg bg-muted cursor-pointer shadow-sm hover:shadow-md transition-shadow"
                   >
                     <img
                       src={img}
                       alt={`${tour.title} photo ${i + 1}`}
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        const target = e.currentTarget;
+                        const fallback = getTourFallbackImage(tour);
+                        if (!target.src.endsWith(fallback)) {
+                          target.src = fallback;
+                        }
+                      }}
                       className="size-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-ink/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {i === 7 && tour.gallery.length > 8 && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-ink/55 text-background font-semibold text-xs sm:text-sm backdrop-blur-[1px]">
+                        +{tour.gallery.length - 8} more photos
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -923,7 +962,15 @@ export const TourDetailPage: React.FC<TourDetailPageProps> = ({
 
           <img
             src={tour.gallery[lightboxIndex]}
-            alt="Gallery preview"
+            alt={`${tour.title} gallery preview ${lightboxIndex + 1}`}
+            referrerPolicy="no-referrer"
+            onError={(e) => {
+              const target = e.currentTarget;
+              const fallback = getTourFallbackImage(tour);
+              if (!target.src.endsWith(fallback)) {
+                target.src = fallback;
+              }
+            }}
             className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
           />
 

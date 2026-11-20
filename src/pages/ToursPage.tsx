@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { Search, MapPin, SlidersHorizontal, RotateCcw, Compass, LayoutGrid, Layers, Globe, Sparkles } from 'lucide-react';
 import { DESTINATION_COUNTRIES, DestinationCountry, tourMatchesCountry, Tour } from '../data/toursData';
 import { useTours } from '../context/ToursContext';
+import { useComparison } from '../context/ComparisonContext';
 import { TourCard } from '../components/TourCard';
 
 interface ToursPageProps {
@@ -25,6 +26,7 @@ export const ToursPage: React.FC<ToursPageProps> = ({
     setSelectedActivityFilter,
     clearFilters,
   } = useTours();
+  const { comparedSlugs, openComparisonModal } = useComparison();
   const [selectedContinent, setSelectedContinent] = useState<string>(initialContinent || 'All');
   const [selectedCountry, setSelectedCountry] = useState<string>(initialCountry || 'All');
   const [search, setSearch] = useState(searchQuery || '');
@@ -194,9 +196,9 @@ export const ToursPage: React.FC<ToursPageProps> = ({
   };
 
   const fallbackImages: Record<string, string> = {
-    Europe: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80',
-    Asia: 'https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=1200&q=80',
-    Africa: 'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80',
+    Europe: '/countries/turkiye-europe.jpg',
+    Asia: '/countries/jordan.jpg',
+    Africa: '/countries/egypt.jpg',
   };
 
   return (
@@ -240,6 +242,17 @@ export const ToursPage: React.FC<ToursPageProps> = ({
               <LayoutGrid className="size-3.5" />
               All Trips Grid
             </button>
+            {comparedSlugs.length > 0 && (
+              <button
+                type="button"
+                onClick={openComparisonModal}
+                className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 px-3 py-1.5 text-xs font-semibold cursor-pointer transition-colors"
+                title="Open side-by-side comparison"
+              >
+                <SlidersHorizontal className="size-3.5" />
+                <span>Compare ({comparedSlugs.length})</span>
+              </button>
+            )}
           </div>
         </div>
 
@@ -478,6 +491,7 @@ export const ToursPage: React.FC<ToursPageProps> = ({
                               src={countryDef.heroImage}
                               alt={countryDef.name}
                               loading="lazy"
+                              referrerPolicy="no-referrer"
                               onError={(e) => {
                                 const target = e.currentTarget;
                                 if (target.src !== fallback) {

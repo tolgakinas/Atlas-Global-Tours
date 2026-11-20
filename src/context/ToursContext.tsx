@@ -51,7 +51,7 @@ const DEFAULT_SITE_CONTENT: SiteContent = {
   brandEthosText1: 'We started Atlas Global Tours with one principle: skip the megaphone bus tours. Instead, we travel in groups of 8 to 12 with guides who grew up in the valleys they show you.',
   brandEthosText2: 'You will dine in village homes, sip çay in Ottoman caravanserai courtyards, and walk ancient trails long after the day-tripper coaches have departed.',
   licensedGuideStat: '100% Licensed Ministry Guides',
-  maxPaxStat: 'Max 12 Travellers per group',
+  maxPaxStat: 'Max 10 Travellers per group',
   officeIstanbul: 'Sultanahmet Mah., Divanyolu Cad. No: 42, Fatih, Istanbul, Türkiye',
   officeUS: '1201 3rd Ave, Suite 2200, Seattle, WA 98101, United States',
   contactEmail: 'contact@atlasglobaltours.com',
@@ -122,7 +122,7 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // 1. Tours State
   const [tours, setTours] = useState<Tour[]>(() => {
     try {
-      const saved = localStorage.getItem('agt_tours_data_v2');
+      const saved = localStorage.getItem('agt_tours_data_v5');
       if (saved) return JSON.parse(saved);
       return TOURS_DATA;
     } catch {
@@ -133,7 +133,7 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // 2. Destination Regions State
   const [destinationRegions, setDestinationRegions] = useState<DestinationRegion[]>(() => {
     try {
-      const saved = localStorage.getItem('agt_destinations_data_v2');
+      const saved = localStorage.getItem('agt_destinations_data_v4');
       if (saved) return JSON.parse(saved);
       return DESTINATION_REGIONS;
     } catch {
@@ -175,7 +175,7 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Sync to LocalStorage
   useEffect(() => {
     try {
-      localStorage.setItem('agt_tours_data_v2', JSON.stringify(tours));
+      localStorage.setItem('agt_tours_data_v5', JSON.stringify(tours));
     } catch (e) {
       console.error('Failed to save tours to localStorage', e);
     }
@@ -183,7 +183,7 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     try {
-      localStorage.setItem('agt_destinations_data_v2', JSON.stringify(destinationRegions));
+      localStorage.setItem('agt_destinations_data_v4', JSON.stringify(destinationRegions));
     } catch (e) {
       console.error('Failed to save destination regions to localStorage', e);
     }
@@ -391,8 +391,8 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const resetAllToDefaults = () => {
     if (window.confirm('Reset all website tours, destinations, and settings to original defaults?')) {
-      localStorage.removeItem('agt_tours_data_v2');
-      localStorage.removeItem('agt_destinations_data_v2');
+      localStorage.removeItem('agt_tours_data_v5');
+      localStorage.removeItem('agt_destinations_data_v4');
       localStorage.removeItem('agt_posts_data_v2');
       localStorage.removeItem('agt_site_content_v2');
       setTours(TOURS_DATA);

@@ -72,12 +72,10 @@ export const TourRouteMap: React.FC<TourRouteMapProps> = ({
     return extractTourRouteStops(tour);
   }, [tour]);
 
-  // Initial stop to highlight
+  // Reset active stop whenever the tour changes
   useEffect(() => {
-    if (routeStops.length > 0 && !activeStopId) {
-      setActiveStopId(routeStops[0].id);
-    }
-  }, [routeStops, activeStopId]);
+    setActiveStopId(routeStops[0]?.id ?? null);
+  }, [tour.id, routeStops]);
 
   // Sync when selectedDay prop changes (e.g. from Day-by-day Itinerary)
   useEffect(() => {
@@ -347,12 +345,17 @@ export const TourRouteMap: React.FC<TourRouteMapProps> = ({
       markersRef.current.set(stop.id, marker);
     });
 
-    // Fit map bounds to encompass route
+    // Fit map bounds with adaptive maxZoom (closer zoom for single-city walking tours)
     if (routeCoords.length > 0) {
       const bounds = L.latLngBounds(routeCoords);
+      const latSpan = Math.abs(bounds.getNorth() - bounds.getSouth());
+      const lngSpan = Math.abs(bounds.getEast() - bounds.getWest());
+      const span = Math.max(latSpan, lngSpan);
+      const adaptiveMaxZoom = routeCoords.length === 1 ? 14 : span < 0.05 ? 15 : span < 0.35 ? 12 : 9;
+
       map.fitBounds(bounds, {
         padding: [50, 50],
-        maxZoom: routeCoords.length === 1 ? 12 : 9,
+        maxZoom: adaptiveMaxZoom,
       });
     }
 
@@ -367,7 +370,7 @@ export const TourRouteMap: React.FC<TourRouteMapProps> = ({
     setActiveStopId(stop.id);
     const map = mapInstanceRef.current;
     if (map) {
-      map.flyTo([stop.lat, stop.lng], 12, { duration: 1.2 });
+      map.flyTo([stop.lat, stop.lng], tour.tour_type === 'day' ? 15 : 11, { duration: 1.1 });
       const marker = markersRef.current.get(stop.id);
       if (marker) {
         marker.openPopup();
@@ -383,9 +386,14 @@ export const TourRouteMap: React.FC<TourRouteMapProps> = ({
     const map = mapInstanceRef.current;
     if (map && routeStops.length > 0) {
       const bounds = L.latLngBounds(routeStops.map((s) => [s.lat, s.lng]));
+      const span = Math.max(
+        Math.abs(bounds.getNorth() - bounds.getSouth()),
+        Math.abs(bounds.getEast() - bounds.getWest())
+      );
+      const adaptiveMaxZoom = routeStops.length === 1 ? 14 : span < 0.05 ? 15 : span < 0.35 ? 12 : 9;
       map.fitBounds(bounds, {
         padding: [50, 50],
-        maxZoom: 9,
+        maxZoom: adaptiveMaxZoom,
       });
       map.invalidateSize();
     }
@@ -414,10 +422,6 @@ export const TourRouteMap: React.FC<TourRouteMapProps> = ({
           <div className="flex items-center gap-2 text-primary mb-1">
             <Compass className="size-4 animate-spin-slow" />
             <span className="eyebrow text-primary">Interactive Journey Map</span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[0.65rem] font-bold text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">
-              <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              CARTO Basemaps Active
-            </span>
           </div>
           <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
             Tour Route & Destination Highlights
@@ -556,7 +560,7 @@ export const TourRouteMap: React.FC<TourRouteMapProps> = ({
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-muted/60 backdrop-blur-xs z-20">
             <Compass className="size-8 text-primary animate-spin" />
             <span className="mt-2 text-xs font-semibold text-foreground">
-              Initializing CARTO interactive map...
+              Loading interactive route map...
             </span>
           </div>
         )}
@@ -566,9 +570,6 @@ export const TourRouteMap: React.FC<TourRouteMapProps> = ({
           <div className="flex items-center justify-between gap-2 border-b border-border/60 pb-1">
             <span className="font-bold text-foreground text-[0.68rem] uppercase tracking-wider">
               Map Legend
-            </span>
-            <span className="text-[0.6rem] text-emerald-700 dark:text-emerald-400 font-semibold flex items-center gap-1">
-              <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span> CARTO API Key
             </span>
           </div>
           <div className="flex items-center gap-2">

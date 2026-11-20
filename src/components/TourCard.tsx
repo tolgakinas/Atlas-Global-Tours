@@ -1,8 +1,10 @@
 import React from 'react';
-import { Clock, Users, Gauge, ArrowRight, MapPin, Star } from 'lucide-react';
+import { Clock, Users, Gauge, ArrowRight, MapPin, Star, SlidersHorizontal, Check } from 'lucide-react';
 import { Tour } from '../data/toursData';
 import { useCurrency } from '../context/CurrencyContext';
 import { useReviews } from '../context/ReviewsContext';
+import { useComparison } from '../context/ComparisonContext';
+import { getTourFallbackImage } from '../utils/tourImageFallback';
 
 interface TourCardProps {
   tour: Tour;
@@ -12,7 +14,9 @@ interface TourCardProps {
 export const TourCard: React.FC<TourCardProps> = ({ tour, onSelect }) => {
   const { formatPrice } = useCurrency();
   const { getTourRatingStats } = useReviews();
+  const { isTourInComparison, toggleTourComparison } = useComparison();
 
+  const isCompared = isTourInComparison(tour.slug);
   const ratingStats = getTourRatingStats(tour.slug, tour.title);
 
   const durationLabel = tour.tour_type === 'day'
@@ -31,9 +35,17 @@ export const TourCard: React.FC<TourCardProps> = ({ tour, onSelect }) => {
       {/* Tour Image */}
       <div className="relative aspect-4/3 w-full shrink-0 overflow-hidden bg-muted">
         <img
-          src={tour.hero_image}
+          src={tour.hero_image || getTourFallbackImage(tour)}
           alt={tour.title}
           loading="lazy"
+          referrerPolicy="no-referrer"
+          onError={(e) => {
+            const target = e.currentTarget;
+            const fallback = getTourFallbackImage(tour);
+            if (!target.src.endsWith(fallback)) {
+              target.src = fallback;
+            }
+          }}
           className="absolute inset-0 size-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink/75 to-transparent pointer-events-none" />
@@ -49,6 +61,33 @@ export const TourCard: React.FC<TourCardProps> = ({ tour, onSelect }) => {
             </span>
           )}
         </div>
+
+        {/* Compare Button */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleTourComparison(tour.slug);
+          }}
+          className={`absolute right-3 top-3 z-10 flex items-center gap-1 rounded-full px-2.5 py-1 text-[0.65rem] font-semibold backdrop-blur-md shadow-xs transition-all cursor-pointer ${
+            isCompared
+              ? 'border border-primary bg-primary text-primary-foreground shadow-sm scale-102'
+              : 'border border-border/80 bg-background/85 text-foreground/80 hover:bg-background hover:text-primary hover:border-primary/40'
+          }`}
+          title={isCompared ? 'Remove from comparison' : 'Add to side-by-side comparison'}
+        >
+          {isCompared ? (
+            <>
+              <Check className="size-3" />
+              <span>Comparing</span>
+            </>
+          ) : (
+            <>
+              <SlidersHorizontal className="size-3" />
+              <span>Compare</span>
+            </>
+          )}
+        </button>
       </div>
 
       {/* Tour Content */}

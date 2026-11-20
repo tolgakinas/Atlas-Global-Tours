@@ -283,6 +283,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <li>
               <button
                 type="button"
+                onClick={() => onNavigate('/compare')}
+                className="h-7.5 flex items-center hover:text-sidebar-primary transition-colors cursor-pointer text-left"
+              >
+                Compare Journeys
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
                 onClick={() => onNavigate('/blog')}
                 className="h-7.5 flex items-center hover:text-sidebar-primary transition-colors cursor-pointer text-left"
               >
@@ -409,6 +418,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 className="h-7.5 flex items-center hover:text-sidebar-primary transition-colors cursor-pointer text-left"
               >
                 Privacy Policy
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                onClick={() => onNavigate('/sitemap')}
+                className="h-7.5 flex items-center hover:text-sidebar-primary transition-colors cursor-pointer text-left font-medium"
+              >
+                Sitemap & Directory
               </button>
             </li>
           </ul>
@@ -779,6 +797,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               className="text-sidebar-primary hover:underline font-medium transition-colors cursor-pointer text-left"
             >
               Atlas Cares
+            </button>
+            <span className="text-sidebar-foreground/30">•</span>
+            <button
+              type="button"
+              onClick={() => onNavigate('/sitemap')}
+              className="hover:text-sidebar-primary transition-colors cursor-pointer text-left"
+            >
+              Sitemap
             </button>
           </div>
 

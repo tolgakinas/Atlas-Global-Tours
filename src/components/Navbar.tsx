@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Menu, X, User, ChevronDown, LogOut, Check } from 'lucide-react';
+import { Menu, X, User, ChevronDown, LogOut, Check, SlidersHorizontal } from 'lucide-react';
 import { useCurrency, Currency, CURRENCIES } from '../context/CurrencyContext';
 import { useAuth } from '../context/AuthContext';
+import { useComparison } from '../context/ComparisonContext';
 import { HeaderSearchBar } from './HeaderSearchBar';
 
 interface NavbarProps {
@@ -13,8 +14,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currencyDropdownOpen, setCurrencyDropdownOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-  const { currency, setCurrency, detectedCountry, source } = useCurrency();
+  const {
+    currency,
+    setCurrency,
+    detectedCountry,
+    userIp,
+    isAutoDetected,
+    resetToIpCurrency,
+  } = useCurrency();
   const { user, logout } = useAuth();
+  const { comparedSlugs, openComparisonModal } = useComparison();
 
   const currencyRef = useRef<HTMLDivElement>(null);
   const userRef = useRef<HTMLDivElement>(null);
@@ -48,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
     setCurrencyDropdownOpen(false);
   };
 
-  const currencyList: Currency[] = ['USD', 'EUR', 'GBP', 'AUD', 'CAD', 'NZD'];
+  const currencyList: Currency[] = ['USD', 'EUR', 'AUD', 'NZD', 'CAD', 'GBP'];
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-md">
@@ -95,42 +104,85 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
 
         {/* Right Actions: Minimal Currency & Traveler Account */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          {/* Minimal Currency Switcher */}
+          {/* Quick Tour Comparison Button */}
+          {comparedSlugs.length > 0 && (
+            <button
+              onClick={openComparisonModal}
+              className="relative inline-flex items-center gap-1.5 h-8 px-2.5 rounded-full border border-primary/30 bg-primary/10 hover:bg-primary/20 text-primary transition-all text-xs font-semibold cursor-pointer shadow-2xs"
+              title={`Compare ${comparedSlugs.length} selected tour${comparedSlugs.length !== 1 ? 's' : ''}`}
+            >
+              <SlidersHorizontal className="size-3.5" />
+              <span className="hidden sm:inline">Compare</span>
+              <span className="flex size-4 items-center justify-center rounded-full bg-primary text-primary-foreground text-[0.62rem] font-bold">
+                {comparedSlugs.length}
+              </span>
+            </button>
+          )}
+
+          {/* Minimalist Currency Switcher */}
           <div className="relative" ref={currencyRef}>
             <button
               onClick={() => setCurrencyDropdownOpen(!currencyDropdownOpen)}
-              className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground rounded-lg px-2 py-1.5 transition-colors cursor-pointer hover:bg-muted/70"
-              title="Change Currency (OANDA FX rates)"
-              aria-label="Select currency"
+              className="inline-flex items-center gap-1.5 h-8 px-2 sm:px-2.5 rounded-full border border-border/70 hover:border-border bg-background/50 hover:bg-muted/60 transition-all text-xs font-medium text-foreground/85 hover:text-foreground cursor-pointer shadow-2xs focus:outline-none"
+              title={`Active Currency: ${currency} (${CURRENCIES[currency].symbol})${userIp ? ` · Auto-detected from IP: ${userIp} (${detectedCountry || ''})` : ''}`}
+              aria-label="Toggle currency selector"
+              aria-expanded={currencyDropdownOpen}
             >
-              <span>{currency}</span>
-              <span className="text-[0.68rem] text-muted-foreground/80 font-mono">
+              <span className="text-xs leading-none select-none">{CURRENCIES[currency].flag}</span>
+              <span className="font-semibold text-xs tracking-tight">{currency}</span>
+              <span className="hidden sm:inline text-[0.6875rem] text-muted-foreground/80 font-mono">
                 {CURRENCIES[currency].symbol}
               </span>
-              <ChevronDown className="size-3 text-muted-foreground transition-transform duration-150" />
+              <ChevronDown
+                className={`size-3 text-muted-foreground/70 transition-transform duration-200 ${
+                  currencyDropdownOpen ? 'rotate-180 text-foreground' : ''
+                }`}
+              />
             </button>
 
             {currencyDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-64 rounded-xl border border-border bg-card p-2 shadow-2xl z-50 animate-in fade-in slide-in-from-top-2">
-                <div className="px-2.5 py-1.5 border-b border-border/70 mb-1">
+              <div className="absolute right-0 mt-2 w-64 rounded-2xl border border-border/80 bg-background/95 backdrop-blur-xl p-2 shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                <div className="px-2.5 py-1.5 border-b border-border/60 mb-1">
                   <div className="flex items-center justify-between">
-                    <span className="text-[0.7rem] font-bold text-foreground uppercase tracking-wider">
+                    <span className="text-[0.6875rem] font-bold text-foreground uppercase tracking-wider">
                       Currency
                     </span>
                     <a
                       href="https://www.oanda.com/currency-converter/en/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[0.62rem] font-medium text-primary hover:underline"
+                      className="text-[0.625rem] font-medium text-primary hover:underline"
                     >
-                      OANDA Rates
+                      OANDA FX
                     </a>
                   </div>
-                  {detectedCountry && (
-                    <p className="text-[0.65rem] text-muted-foreground mt-0.5">
-                      Auto-detected location: {detectedCountry}
-                    </p>
-                  )}
+
+                  {/* IP Location Status */}
+                  <div className="flex items-center justify-between gap-1.5 mt-1 text-[0.6875rem] text-muted-foreground">
+                    <span className="flex items-center gap-1.5 truncate">
+                      <span className="size-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+                      <span className="truncate">
+                        {userIp ? `IP ${userIp}` : 'IP Detected'}{detectedCountry ? ` · ${detectedCountry}` : ''}
+                      </span>
+                    </span>
+                    {isAutoDetected ? (
+                      <span className="text-[0.6rem] bg-emerald-500/10 text-emerald-600 px-1.5 py-0.2 rounded font-semibold shrink-0">
+                        Auto
+                      </span>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          resetToIpCurrency();
+                        }}
+                        className="text-[0.625rem] text-primary hover:underline font-medium cursor-pointer shrink-0"
+                        title="Reset to currency auto-detected from your IP"
+                      >
+                        Reset to IP
+                      </button>
+                    )}
+                  </div>
                 </div>
 
                 <div className="space-y-0.5">
@@ -144,20 +196,21 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
                           setCurrency(c);
                           setCurrencyDropdownOpen(false);
                         }}
-                        className={`w-full text-left px-2.5 py-2 text-xs rounded-lg font-medium cursor-pointer transition-colors flex items-center justify-between ${
+                        className={`w-full text-left px-2.5 py-1.5 text-xs rounded-xl font-medium cursor-pointer transition-all flex items-center justify-between ${
                           isSelected
                             ? 'bg-primary text-primary-foreground font-bold shadow-xs'
-                            : 'text-foreground hover:bg-muted'
+                            : 'text-foreground/90 hover:bg-muted/70 hover:text-foreground'
                         }`}
                       >
                         <div className="flex items-center gap-2">
-                          <span className="text-sm">{info.flag}</span>
-                          <span>
-                            {info.code} <span className={isSelected ? 'text-primary-foreground/80' : 'text-muted-foreground'}>({info.symbol})</span>
+                          <span className="text-sm select-none">{info.flag}</span>
+                          <span className="font-semibold">{info.code}</span>
+                          <span className={`text-[0.7rem] ${isSelected ? 'text-primary-foreground/80' : 'text-muted-foreground'}`}>
+                            {info.symbol}
                           </span>
                         </div>
                         <div className="flex items-center gap-1.5">
-                          <span className={`text-[0.7rem] ${isSelected ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
+                          <span className={`text-[0.6875rem] ${isSelected ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
                             {info.name}
                           </span>
                           {isSelected && <Check className="size-3.5 shrink-0" />}
@@ -167,8 +220,9 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
                   })}
                 </div>
 
-                <div className="mt-2 pt-2 border-t border-border/70 px-2 py-1 text-[0.63rem] text-muted-foreground leading-snug">
-                  Rates converted using OANDA interbank benchmark FX feeds (oanda.com).
+                <div className="mt-2 pt-2 border-t border-border/60 px-2 py-0.5 text-[0.625rem] text-muted-foreground flex items-center justify-between">
+                  <span>Converted via OANDA live rates</span>
+                  <span className="font-mono text-[0.65rem] font-semibold">{currency}</span>
                 </div>
               </div>
             )}
@@ -284,6 +338,42 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
                   <span>Traveler Login & Booking Lookup</span>
                 </button>
               )}
+            </div>
+
+            {/* Mobile Currency Switcher */}
+            <div className="pt-3 pb-2 border-t border-border/60 mt-3 space-y-1.5">
+              <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <span className="font-semibold uppercase tracking-wider text-[0.6875rem]">
+                  Currency
+                </span>
+                <span className="flex items-center gap-1 text-[0.65rem] text-emerald-600 font-medium">
+                  <span className="size-1.5 rounded-full bg-emerald-500"></span>
+                  {userIp ? `IP ${userIp} · ` : ''}{detectedCountry ? `${detectedCountry}` : 'Auto'}
+                </span>
+              </div>
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
+                {currencyList.map((c) => {
+                  const info = CURRENCIES[c];
+                  const isSelected = currency === c;
+                  return (
+                    <button
+                      key={c}
+                      type="button"
+                      onClick={() => {
+                        setCurrency(c);
+                      }}
+                      className={`py-1.5 px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 transition-all cursor-pointer ${
+                        isSelected
+                          ? 'bg-primary text-primary-foreground shadow-xs'
+                          : 'bg-muted/60 hover:bg-muted text-foreground/85 border border-border/60'
+                      }`}
+                    >
+                      <span className="text-xs">{info.flag}</span>
+                      <span>{info.code}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Quick Impact & Care navigation */}

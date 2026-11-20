@@ -8,9 +8,13 @@ import { CurrencyProvider } from './context/CurrencyContext';
 import { AuthProvider } from './context/AuthContext';
 import { ToursProvider } from './context/ToursContext';
 import { ReviewsProvider } from './context/ReviewsContext';
+import { ComparisonProvider, useComparison } from './context/ComparisonContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { ScrollUpDown } from './components/ScrollUpDown';
+import { TourComparisonBar } from './components/TourComparisonBar';
+import { TourComparisonModal } from './components/TourComparisonModal';
+import { StickyInquiryBar } from './components/StickyInquiryBar';
 import { HomePage } from './pages/HomePage';
 import { ToursPage } from './pages/ToursPage';
 import { DayToursPage } from './pages/DayToursPage';
@@ -26,7 +30,43 @@ import { OperationsPage } from './pages/OperationsPage';
 import { AdminPage } from './pages/AdminPage';
 import { AdvisorPage } from './pages/AdvisorPage';
 import { PoliciesPage, PolicyTab } from './pages/PoliciesPage';
+import { SitemapPage } from './pages/SitemapPage';
+import { ComparePage } from './pages/ComparePage';
 import { RoomingSelection } from './data/toursData';
+
+// Inner layout component to access comparison context
+const AppLayout: React.FC<{
+  currentPath: string;
+  navigate: (path: string) => void;
+  renderCurrentPage: () => React.ReactNode;
+  handleSelectTour: (slug: string) => void;
+  handleBookTour: (slug: string) => void;
+}> = ({ currentPath, navigate, renderCurrentPage, handleSelectTour, handleBookTour }) => {
+  const { isComparisonModalOpen, closeComparisonModal } = useComparison();
+
+  const isBookingFlow = currentPath.includes('/book');
+
+  return (
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
+      <Navbar currentPath={currentPath} onNavigate={navigate} />
+      {!isBookingFlow && <StickyInquiryBar />}
+      <main className="flex-1">{renderCurrentPage()}</main>
+      <Footer onNavigate={navigate} />
+      <ScrollUpDown />
+
+      {/* Floating Bottom Comparison Tray */}
+      <TourComparisonBar onNavigateCompare={() => navigate('/compare')} />
+
+      {/* Side-by-Side Comparison Modal */}
+      <TourComparisonModal
+        isOpen={isComparisonModalOpen}
+        onClose={closeComparisonModal}
+        onSelectTour={handleSelectTour}
+        onBookTour={handleBookTour}
+      />
+    </div>
+  );
+};
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
@@ -98,14 +138,15 @@ export default function App() {
     navigate(`/blog/${slug}`);
   };
 
-  // Route resolver
+  // Route matching helper
   const renderCurrentPage = () => {
-    // Check for tour booking /tours/:slug/book
-    const bookMatch = currentPath.match(/^\/tours\/([a-zA-Z0-9_\-]+)\/book/);
-    if (bookMatch) {
+    // Dynamic tour booking: /tours/:slug/book
+    if (currentPath.startsWith('/tours/') && currentPath.endsWith('/book')) {
+      const parts = currentPath.split('/');
+      const slug = parts[2];
       return (
         <BookTourPage
-          slug={bookMatch[1]}
+          slug={slug}
           initialDepartureId={bookingParams.departureId}
           initialGuests={bookingParams.guests}
           initialRoomSelections={bookingParams.roomSelections}
@@ -115,12 +156,12 @@ export default function App() {
       );
     }
 
-    // Check for tour detail /tours/:slug
-    const tourMatch = currentPath.match(/^\/tours\/([a-zA-Z0-9_\-]+)/);
-    if (tourMatch && !['/tours', '/tours/'].includes(currentPath)) {
+    // Dynamic tour detail: /tours/:slug
+    if (currentPath.startsWith('/tours/')) {
+      const slug = currentPath.replace('/tours/', '').split('/')[0];
       return (
         <TourDetailPage
-          slug={tourMatch[1]}
+          slug={slug}
           onNavigate={navigate}
           onSelectTour={handleSelectTour}
           onBookTour={handleBookTour}
@@ -128,12 +169,12 @@ export default function App() {
       );
     }
 
-    // Check for blog post /blog/:slug
-    const blogMatch = currentPath.match(/^\/blog\/([a-zA-Z0-9_\-]+)/);
-    if (blogMatch && !['/blog', '/blog/'].includes(currentPath)) {
+    // Dynamic blog detail: /blog/:slug
+    if (currentPath.startsWith('/blog/')) {
+      const slug = currentPath.replace('/blog/', '').split('/')[0];
       return (
         <BlogPostPage
-          slug={blogMatch[1]}
+          slug={slug}
           onNavigate={navigate}
           onSelectPost={handleSelectPost}
         />
@@ -154,6 +195,15 @@ export default function App() {
       case '/day-tours':
       case '/day-tours/':
         return <DayToursPage onSelectTour={handleSelectTour} />;
+      case '/compare':
+      case '/compare/':
+        return (
+          <ComparePage
+            onNavigate={navigate}
+            onSelectTour={handleSelectTour}
+            onBookTour={handleBookTour}
+          />
+        );
       case '/blog':
       case '/blog/':
         return <BlogPage onSelectPost={handleSelectPost} onNavigate={navigate} />;
@@ -225,6 +275,16 @@ export default function App() {
       case '/policies':
       case '/policies/':
         return <PoliciesPage initialTab="terms" onNavigate={navigate} />;
+      case '/sitemap':
+      case '/sitemap/':
+      case '/sitemap.html':
+        return (
+          <SitemapPage
+            onNavigate={navigate}
+            onSelectTour={handleSelectTour}
+            onSelectPost={handleSelectPost}
+          />
+        );
       case '/':
       default:
         return (
@@ -244,12 +304,15 @@ export default function App() {
       <ToursProvider>
         <ReviewsProvider>
           <CurrencyProvider>
-            <div className="flex min-h-screen flex-col bg-background text-foreground">
-              <Navbar currentPath={currentPath} onNavigate={navigate} />
-              <main className="flex-1">{renderCurrentPage()}</main>
-              <Footer onNavigate={navigate} />
-              <ScrollUpDown />
-            </div>
+            <ComparisonProvider>
+              <AppLayout
+                currentPath={currentPath}
+                navigate={navigate}
+                renderCurrentPage={renderCurrentPage}
+                handleSelectTour={handleSelectTour}
+                handleBookTour={handleBookTour}
+              />
+            </ComparisonProvider>
           </CurrencyProvider>
         </ReviewsProvider>
       </ToursProvider>

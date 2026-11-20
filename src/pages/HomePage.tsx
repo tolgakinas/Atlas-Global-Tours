@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { ArrowRight, ShieldCheck, MapPin, Users, HeartHandshake, Compass, Globe, Sparkles } from 'lucide-react';
+import { ArrowRight, ShieldCheck, MapPin, Users, HeartHandshake, Compass, Globe, Sparkles, Mail } from 'lucide-react';
 import { HeroVideo } from '../components/HeroVideo';
 import { TourCard } from '../components/TourCard';
+import { NewsletterModal } from '../components/NewsletterModal';
 import { DestinationRegion, DESTINATION_COUNTRIES, DestinationCountry, tourMatchesCountry } from '../data/toursData';
 import { useTours } from '../context/ToursContext';
 
@@ -22,6 +23,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 }) => {
   const { tours, destinationRegions, siteContent } = useTours();
   const [selectedContinent, setSelectedContinent] = useState<string>('All');
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState<boolean | undefined>(undefined);
 
   const multiDayTours = tours.filter((t) => t.tour_type === 'multi_day' && t.is_published);
   const dayTours = tours.filter((t) => t.tour_type === 'day' && t.is_published);
@@ -29,7 +31,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   const valueProps = [
     {
       title: 'Small groups',
-      description: 'Never more than 12 travellers on a departure.',
+      description: 'Never more than 10 travellers on a departure.',
       icon: Users,
     },
     {
@@ -79,9 +81,9 @@ export const HomePage: React.FC<HomePageProps> = ({
   };
 
   const fallbackImages: Record<string, string> = {
-    Europe: 'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80',
-    Asia: 'https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=1200&q=80',
-    Africa: 'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80',
+    Europe: '/countries/turkiye-europe.jpg',
+    Asia: '/countries/jordan.jpg',
+    Africa: '/countries/egypt.jpg',
   };
 
   return (
@@ -112,6 +114,14 @@ export const HomePage: React.FC<HomePageProps> = ({
               className="inline-flex items-center justify-center rounded-md bg-card/90 backdrop-blur-sm px-6 py-3 text-sm font-semibold text-foreground shadow-md hover:bg-card transition-colors cursor-pointer"
             >
               Day tours ({dayTours.length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setIsNewsletterModalOpen(true)}
+              className="inline-flex items-center justify-center gap-1.5 rounded-md bg-sand/20 backdrop-blur-sm px-5 py-3 text-sm font-semibold text-sand hover:bg-sand/30 transition-colors cursor-pointer border border-sand/30"
+            >
+              <Sparkles className="size-4" />
+              <span>Get $150 Welcome Voucher</span>
             </button>
           </div>
         </div>
@@ -197,6 +207,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   src={country.heroImage}
                   alt={country.name}
                   loading="lazy"
+                  referrerPolicy="no-referrer"
                   onError={(e) => {
                     const target = e.currentTarget;
                     if (target.src !== fallback) {
@@ -363,9 +374,9 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="mt-8 grid grid-cols-2 gap-4 border-t border-border pt-6">
               <div>
                 <span className="font-display text-2xl font-bold text-primary">
-                  12
+                  2 – 10
                 </span>
-                <p className="text-xs text-muted-foreground mt-0.5">Maximum guests per group</p>
+                <p className="text-xs text-muted-foreground mt-0.5">Small group size (Guaranteed from 2)</p>
               </div>
               <div>
                 <span className="font-display text-2xl font-bold text-primary">
@@ -426,10 +437,47 @@ export const HomePage: React.FC<HomePageProps> = ({
               >
                 Inquire about custom trip
               </button>
+              <button
+                type="button"
+                onClick={() => setIsNewsletterModalOpen(true)}
+                className="rounded-md bg-sand/20 backdrop-blur-sm px-6 py-3 text-xs font-semibold text-sand hover:bg-sand/30 transition-colors cursor-pointer border border-sand/30 inline-flex items-center gap-1.5"
+              >
+                <Sparkles className="size-3.5" />
+                <span>Join Explorer Circle ($150 Off)</span>
+              </button>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Floating Travel Inspiration & $150 Voucher Launcher */}
+      <aside
+        aria-label="Newsletter sign-up offer"
+        className="fixed bottom-6 left-5 z-40"
+      >
+        <button
+          type="button"
+          onClick={() => setIsNewsletterModalOpen(true)}
+          className="group inline-flex items-center gap-2 rounded-full border border-border/80 bg-card/95 px-3.5 py-2 text-xs font-semibold text-foreground shadow-md backdrop-blur-md transition-all hover:bg-card hover:border-primary/50 hover:shadow-lg cursor-pointer"
+          title="Subscribe for field dispatches & get $150 welcome credit"
+        >
+          <span className="relative flex size-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex size-2 rounded-full bg-primary" />
+          </span>
+          <Mail className="size-3.5 text-primary group-hover:rotate-12 transition-transform" />
+          <span className="font-medium hidden sm:inline">Travel Dispatches</span>
+          <span className="rounded-full bg-primary/10 px-1.5 py-0.5 text-[0.65rem] font-bold text-primary">
+            $150 Off
+          </span>
+        </button>
+      </aside>
+
+      {/* Interactive Newsletter Modal */}
+      <NewsletterModal
+        isOpen={isNewsletterModalOpen}
+        onClose={() => setIsNewsletterModalOpen(false)}
+      />
     </div>
   );
 };

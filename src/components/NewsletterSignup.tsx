@@ -1,19 +1,34 @@
 import React, { useState } from 'react';
-import { Mail, Check, AlertCircle, Sparkles, ArrowRight, ShieldCheck, CheckCircle2, Loader2 } from 'lucide-react';
+import {
+  Mail,
+  Check,
+  AlertCircle,
+  Sparkles,
+  ArrowRight,
+  ShieldCheck,
+  CheckCircle2,
+  Loader2,
+  Copy,
+  Tag,
+  Compass
+} from 'lucide-react';
 
 export interface NewsletterSignupProps {
-  variant?: 'footer' | 'card' | 'inline';
+  variant?: 'footer' | 'card' | 'inline' | 'modal';
   className?: string;
   hideHeader?: boolean;
-  onSuccess?: (email: string) => void;
+  source?: string;
+  onSuccess?: (email: string, voucherCode?: string) => void;
 }
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const VOUCHER_CODE = 'ATLAS150';
 
 export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
   variant = 'footer',
   className = '',
   hideHeader = false,
+  source = 'website',
   onSuccess,
 }) => {
   const [email, setEmail] = useState('');
@@ -21,7 +36,8 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
   const [touched, setTouched] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [selectedTopic, setSelectedTopic] = useState<'all' | 'multiday' | 'daytours'>('all');
+  const [selectedTopic, setSelectedTopic] = useState<'all' | 'multiday' | 'cultural' | 'nature'>('all');
+  const [copiedCode, setCopiedCode] = useState(false);
 
   const validate = (val: string): string | null => {
     const trimmed = val.trim();
@@ -32,8 +48,9 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       if (!trimmed.includes('@')) {
         return 'Please include an "@" in your email address.';
       }
-      if (!trimmed.split('@')[1] || !trimmed.split('@')[1].includes('.')) {
-        return 'Please include a valid domain (e.g. .com, .org).';
+      const parts = trimmed.split('@');
+      if (!parts[1] || !parts[1].includes('.')) {
+        return 'Please include a valid domain (e.g. .com, .org, .co.uk).';
       }
       return 'Please enter a valid email address (e.g. traveler@example.com).';
     }
@@ -77,9 +94,11 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
         const newSubscriber = {
           email: email.trim().toLowerCase(),
           topic: selectedTopic,
+          source,
+          voucherCode: VOUCHER_CODE,
           subscribedAt: new Date().toISOString(),
         };
-        // avoid duplicate entries
+
         const existingIdx = subscribers.findIndex(
           (s: { email: string }) => s.email === newSubscriber.email
         );
@@ -88,7 +107,9 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
         } else {
           subscribers.push(newSubscriber);
         }
+
         localStorage.setItem('atlas_newsletter_subscribers', JSON.stringify(subscribers));
+        localStorage.setItem('atlas_newsletter_subscribed', 'true');
       } catch (err) {
         console.error('Failed to store newsletter subscriber', err);
       }
@@ -96,9 +117,20 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
       setIsSubmitting(false);
       setIsSuccess(true);
       if (onSuccess) {
-        onSuccess(email.trim());
+        onSuccess(email.trim(), VOUCHER_CODE);
       }
-    }, 600);
+    }, 550);
+  };
+
+  const handleCopyCode = async () => {
+    try {
+      await navigator.clipboard.writeText(VOUCHER_CODE);
+      setCopiedCode(true);
+      setTimeout(() => setCopiedCode(false), 2500);
+    } catch {
+      setCopiedCode(true);
+      setTimeout(() => setCopiedCode(false), 2500);
+    }
   };
 
   const handleReset = () => {
@@ -106,50 +138,102 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
     setError(null);
     setTouched(false);
     setIsSuccess(false);
+    setCopiedCode(false);
   };
 
   const isFooter = variant === 'footer';
+  const isModal = variant === 'modal';
 
   if (isSuccess) {
     return (
       <div
         className={`rounded-xl border transition-all duration-300 ${
           isFooter
-            ? 'border-sidebar-primary/40 bg-sidebar-primary/10 p-4 text-sidebar-foreground'
-            : 'border-success-border bg-success-soft/50 p-5 text-foreground'
+            ? 'border-sidebar-primary/40 bg-sidebar-primary/10 p-4.5 text-sidebar-foreground'
+            : isModal
+            ? 'border-primary/30 bg-primary/5 p-6 text-foreground'
+            : 'border-emerald-500/30 bg-emerald-50/70 dark:bg-emerald-950/20 p-5 text-foreground'
         } ${className}`}
       >
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-3.5">
           <div
-            className={`flex size-8 shrink-0 items-center justify-center rounded-full ${
-              isFooter ? 'bg-sidebar-primary text-sidebar-primary-foreground' : 'bg-success text-white'
+            className={`flex size-9 shrink-0 items-center justify-center rounded-full ${
+              isFooter
+                ? 'bg-sidebar-primary text-sidebar-primary-foreground'
+                : 'bg-emerald-600 text-white'
             }`}
           >
-            <CheckCircle2 className="size-4" />
+            <CheckCircle2 className="size-5" />
           </div>
-          <div className="flex-1 space-y-1">
-            <h4 className="text-sm font-semibold tracking-tight">
-              Welcome aboard the travel dispatches!
-            </h4>
-            <p
-              className={`text-xs leading-relaxed ${
-                isFooter ? 'text-sidebar-foreground/80' : 'text-muted-foreground'
-              }`}
-            >
-              We've registered <span className="font-medium underline">{email}</span>. You'll receive our monthly curated itineraries, seasonal insider tips, and early access to small group departures.
-            </p>
-            <div className="pt-2 flex items-center gap-3">
+
+          <div className="flex-1 space-y-2">
+            <div>
+              <h4 className="text-base font-display font-semibold tracking-tight text-foreground dark:text-foreground">
+                You're in the Atlas Explorer Circle!
+              </h4>
+              <p
+                className={`text-xs leading-relaxed mt-0.5 ${
+                  isFooter ? 'text-sidebar-foreground/80' : 'text-muted-foreground'
+                }`}
+              >
+                We have registered <strong className="font-semibold underline">{email}</strong>. Field dispatches and secret departure announcements will arrive in your inbox monthly.
+              </p>
+            </div>
+
+            {/* Voucher Card Incentive */}
+            <div className="rounded-lg border border-primary/20 bg-card p-3 shadow-xs">
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <div className="space-y-0.5">
+                  <div className="flex items-center gap-1.5 text-xs font-semibold text-primary">
+                    <Sparkles className="size-3.5" />
+                    <span>$150 Welcome Expedition Credit</span>
+                  </div>
+                  <p className="text-[0.7rem] text-muted-foreground">
+                    Valid toward any guaranteed multi-day departure booking.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-xs font-bold px-2 py-1 bg-muted rounded border border-border tracking-wider text-foreground">
+                    {VOUCHER_CODE}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleCopyCode}
+                    className="inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded bg-primary text-primary-foreground hover:bg-primary/90 transition-colors cursor-pointer"
+                    title="Copy coupon code"
+                  >
+                    {copiedCode ? (
+                      <>
+                        <Check className="size-3" />
+                        <span>Copied</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="size-3" />
+                        <span>Copy Code</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-1 flex items-center justify-between gap-3 text-xs">
               <button
                 type="button"
                 onClick={handleReset}
-                className={`text-[0.7rem] font-medium transition-colors underline cursor-pointer ${
+                className={`text-[0.72rem] font-medium transition-colors underline cursor-pointer ${
                   isFooter
                     ? 'text-sidebar-primary hover:text-sidebar-primary/80'
                     : 'text-primary hover:text-primary/80'
                 }`}
               >
-                Sign up another email
+                Register another email
               </button>
+              <span className="text-[0.7rem] text-muted-foreground">
+                Check spam/promotions if not received within 5 minutes.
+              </span>
             </div>
           </div>
         </div>
@@ -158,11 +242,15 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
   }
 
   return (
-    <div className={`space-y-2.5 ${className}`}>
+    <div className={`space-y-3 ${className}`}>
       {!hideHeader && (
         <div className="space-y-1">
+          <div className="flex items-center gap-1.5 text-primary text-xs font-semibold tracking-wider uppercase">
+            <Compass className="size-3.5" />
+            <span>Atlas Explorer Circle</span>
+          </div>
           <h4
-            className={`text-sm font-semibold tracking-tight ${
+            className={`font-display text-lg font-bold tracking-tight ${
               isFooter ? 'text-sidebar-foreground' : 'text-foreground'
             }`}
           >
@@ -173,14 +261,14 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
               isFooter ? 'text-sidebar-foreground/75' : 'text-muted-foreground'
             }`}
           >
-            Get curated guides, licensed guide perspectives, and early access to newly released departure dates.
+            Curated small group departures, field dispatches from licensed guides, and an instant $150 credit for your next expedition.
           </p>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} noValidate className="space-y-2">
+      <form onSubmit={handleSubmit} noValidate className="space-y-2.5">
         <div className="relative">
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
             <div className="relative flex-1">
               <Mail
                 className={`pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 transition-colors ${
@@ -192,7 +280,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
                 }`}
               />
               <input
-                id="newsletter-email"
+                id={`newsletter-email-${variant}`}
                 type="email"
                 inputMode="email"
                 autoComplete="email"
@@ -201,7 +289,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
                 onChange={handleChange}
                 onBlur={handleBlur}
                 aria-invalid={!!error}
-                aria-describedby={error ? 'newsletter-email-error' : undefined}
+                aria-describedby={error ? `newsletter-email-error-${variant}` : undefined}
                 className={`h-10 w-full rounded-lg pl-9 pr-3 text-sm transition-all outline-none ${
                   isFooter
                     ? 'border bg-sidebar/80 text-sidebar-foreground placeholder:text-sidebar-foreground/45 focus:ring-1 ' +
@@ -215,23 +303,24 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
                 }`}
               />
             </div>
+
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`h-10 inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-lg px-5 text-sm font-medium transition-all cursor-pointer shrink-0 disabled:opacity-60 disabled:cursor-not-allowed ${
+              className={`h-10 inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-lg px-5 text-sm font-semibold transition-all cursor-pointer shrink-0 disabled:opacity-60 disabled:cursor-not-allowed shadow-xs ${
                 isFooter
-                  ? 'bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90 focus-visible:ring-2 focus-visible:ring-sidebar-primary shadow-xs'
-                  : 'bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary shadow-xs'
+                  ? 'bg-sidebar-primary text-sidebar-primary-foreground hover:bg-sidebar-primary/90 focus-visible:ring-2 focus-visible:ring-sidebar-primary'
+                  : 'bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary'
               }`}
             >
               {isSubmitting ? (
                 <>
                   <Loader2 className="size-4 animate-spin" />
-                  <span>Joining...</span>
+                  <span>Subscribing...</span>
                 </>
               ) : (
                 <>
-                  <span>Subscribe</span>
+                  <span>Subscribe & Get $150</span>
                   <ArrowRight className="size-3.5" />
                 </>
               )}
@@ -241,7 +330,7 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
           {/* Validation Error Message */}
           {error && (
             <div
-              id="newsletter-email-error"
+              id={`newsletter-email-error-${variant}`}
               role="alert"
               className="mt-1.5 flex items-center gap-1.5 text-xs text-destructive animate-in fade-in slide-in-from-top-1"
             >
@@ -251,10 +340,10 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
           )}
         </div>
 
-        {/* Optional interest tag segmented buttons on an even line */}
+        {/* Travel Interest Preferences */}
         <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
           <span
-            className={`text-xs mr-0.5 font-medium ${
+            className={`text-xs font-medium mr-1 ${
               isFooter ? 'text-sidebar-foreground/60' : 'text-muted-foreground'
             }`}
           >
@@ -288,13 +377,13 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
                 : 'border-border text-muted-foreground hover:text-foreground'
             }`}
           >
-            Multi-Day Small Group
+            Small Group Expeditions
           </button>
           <button
             type="button"
-            onClick={() => setSelectedTopic('daytours')}
+            onClick={() => setSelectedTopic('cultural')}
             className={`h-6.5 rounded-md px-2.5 text-xs font-medium transition-colors cursor-pointer border flex items-center justify-center ${
-              selectedTopic === 'daytours'
+              selectedTopic === 'cultural'
                 ? isFooter
                   ? 'border-sidebar-primary bg-sidebar-primary/25 text-sidebar-primary'
                   : 'border-primary bg-primary/10 text-primary'
@@ -303,18 +392,33 @@ export const NewsletterSignup: React.FC<NewsletterSignupProps> = ({
                 : 'border-border text-muted-foreground hover:text-foreground'
             }`}
           >
-            Day Excursions
+            Cultural Heritage
+          </button>
+          <button
+            type="button"
+            onClick={() => setSelectedTopic('nature')}
+            className={`h-6.5 rounded-md px-2.5 text-xs font-medium transition-colors cursor-pointer border flex items-center justify-center ${
+              selectedTopic === 'nature'
+                ? isFooter
+                  ? 'border-sidebar-primary bg-sidebar-primary/25 text-sidebar-primary'
+                  : 'border-primary bg-primary/10 text-primary'
+                : isFooter
+                ? 'border-sidebar-border/70 text-sidebar-foreground/70 hover:text-sidebar-foreground bg-sidebar/50 hover:bg-sidebar'
+                : 'border-border text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            Active & Nature
           </button>
         </div>
 
-        {/* Privacy Note on an even line */}
+        {/* Privacy Note & Guarantee */}
         <div
           className={`flex items-center gap-1.5 text-xs ${
-            isFooter ? 'text-sidebar-foreground/50' : 'text-muted-foreground/80'
+            isFooter ? 'text-sidebar-foreground/55' : 'text-muted-foreground/80'
           }`}
         >
-          <ShieldCheck className="size-3.5 text-sidebar-primary/80 shrink-0" />
-          <span>Strict privacy. No spam. One-click unsubscribe at any time.</span>
+          <ShieldCheck className="size-3.5 text-primary shrink-0" />
+          <span>Strict privacy. No third-party sharing. One-click unsubscribe at any time.</span>
         </div>
       </form>
     </div>

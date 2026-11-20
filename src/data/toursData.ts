@@ -90,7 +90,7 @@ export const TOURS_DATA: Tour[] = [
     "id": "077e0f0b-dc14-4b41-818a-16c39669bf40",
     "slug": "istanbul-small-group-city-and-secret-streets-tour-with-guide",
     "title": "Istanbul Small-Group City and Secret Streets Tour with Guide",
-    "code": null,
+    "code": "WTE-9600",
     "summary": "Learn about the city’s Byzantine and Ottoman history from an English-speaking guide. Pass by Hagia Sophia, the Hippodrome, the Blue Mosque and the Spice Bazaar. On this tour, learn about the attractions, but not venture inside.",
     "description": "The former capital of the Ottoman Empire, Istanbul is a vibrant city filled with magnificent architecture and a rich history as the bridge between east and west. Perfect for first-time visitors, this in-depth guided walking tour covers the main attractions while also venturing to hard-to-find secret spots. Leave the navigation to your guide, who also provides illuminating commentary.\n\nAfter meeting your guide at Sultanahmet Square, head off on a scenic stroll through one of the world’s most spectacular cities. Your guide will tell stories from the heyday of Byzantine and Ottoman rule as you wander the picturesque streets. This tour aims to give you an overview of the city, its historic attractions, museums, local arts and traditions etc.",
     "hero_image": "https://bokun.s3.amazonaws.com/61b69405-69fb-4fb6-b92f-39b6ccbac301.jpg",
@@ -126,7 +126,7 @@ export const TOURS_DATA: Tour[] = [
     "deposit_cents": 6000,
     "currency": "EUR",
     "min_pax": 1,
-    "max_pax": 12,
+    "max_pax": 10,
     "difficulty": "Easy",
     "themes": [
       "Istanbul",
@@ -154,9 +154,9 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": false,
     "is_published": true,
     "created_at": "2026-08-21T18:54:49.014058+00:00",
-    "updated_at": "2026-08-21T18:55:41.799872+00:00",
+    "updated_at": "2026-10-14T11:49:56",
     "tour_type": "day",
-    "duration_hours": 3,
+    "duration_hours": 5,
     "meeting_point": "Foodie-ist Cafe and Brasserie",
     "activity_level": "3 - Active",
     "travel_style": "Spotlight",
@@ -272,7 +272,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-08-23",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -284,7 +284,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-08-25",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -296,7 +296,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-08-26",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -308,7 +308,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-08-27",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -320,7 +320,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-08-28",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -332,7 +332,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-08-29",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -344,7 +344,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-08-30",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -356,7 +356,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-01",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -368,7 +368,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-02",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -380,7 +380,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-03",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -392,7 +392,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-04",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -404,7 +404,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-05",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -416,7 +416,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-06",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -428,7 +428,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-08",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -440,7 +440,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-09",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -452,7 +452,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-10",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -464,7 +464,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-11",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -476,7 +476,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-12",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -488,7 +488,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-13",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -500,7 +500,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-15",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -512,7 +512,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-16",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -524,7 +524,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-17",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -536,7 +536,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-18",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -548,7 +548,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-19",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -560,7 +560,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-20",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -572,7 +572,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-22",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -584,7 +584,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-23",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -596,7 +596,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-24",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -608,7 +608,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-25",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -620,7 +620,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-26",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -632,7 +632,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-27",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -644,7 +644,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-29",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -656,7 +656,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-09-30",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -668,7 +668,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-01",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -680,7 +680,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-02",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -692,7 +692,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-03",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -704,7 +704,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-04",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -716,7 +716,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-06",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -728,7 +728,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-07",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -740,7 +740,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-08",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -752,7 +752,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-09",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -764,7 +764,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-10",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -776,7 +776,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-11",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -788,7 +788,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-13",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -800,7 +800,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-14",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -812,7 +812,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-15",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -824,7 +824,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-16",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -836,7 +836,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-17",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -848,7 +848,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-18",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -860,7 +860,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-20",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -872,7 +872,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-21",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -884,7 +884,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-22",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -896,7 +896,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-23",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -908,7 +908,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-24",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -920,7 +920,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-25",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -932,7 +932,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-27",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -944,7 +944,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-28",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -956,7 +956,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-29",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -968,7 +968,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-30",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -980,7 +980,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-10-31",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -992,7 +992,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-01",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1004,7 +1004,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-03",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1016,7 +1016,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-04",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1028,7 +1028,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-05",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1040,7 +1040,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-06",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1052,7 +1052,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-07",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1064,7 +1064,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-08",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1076,7 +1076,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-10",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1088,7 +1088,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-11",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1100,7 +1100,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-12",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1112,7 +1112,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-13",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1124,7 +1124,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-14",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1136,7 +1136,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-15",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1148,7 +1148,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-17",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1160,7 +1160,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-18",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1172,7 +1172,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-19",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1184,7 +1184,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-20",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1196,7 +1196,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-21",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1208,7 +1208,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-22",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1220,7 +1220,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-24",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1232,7 +1232,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-25",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1244,7 +1244,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-26",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1256,7 +1256,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-27",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1268,7 +1268,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-28",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1280,7 +1280,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-11-29",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1292,7 +1292,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-01",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1304,7 +1304,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-02",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1316,7 +1316,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-03",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1328,7 +1328,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-04",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1340,7 +1340,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-05",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1352,7 +1352,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-06",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1364,7 +1364,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-08",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1376,7 +1376,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-09",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1388,7 +1388,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-10",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1400,7 +1400,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-11",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1412,7 +1412,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-12",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1424,7 +1424,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-13",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1436,7 +1436,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-15",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1448,7 +1448,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-16",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1460,7 +1460,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-17",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1472,7 +1472,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-18",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1484,7 +1484,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-19",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -1496,7 +1496,7 @@ export const TOURS_DATA: Tour[] = [
         "end_date": "2026-12-20",
         "price_cents": 6000,
         "deposit_cents": 6000,
-        "capacity": 12,
+        "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:54:49.211396+00:00"
@@ -10616,11 +10616,9 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-osman-karagoz-314140183-18054264-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-bozanguzel-12651500-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-memet-soban-734730021-18466034-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-memet-soban-734730021-25893589-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-ozgursehrinfotografcisi-9283649-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-busra-bedel-1095132454-20808822-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-huseyin-kubat-297237942-29928093-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-osman-karagoz-314140183-18054267-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-furkanelveren-16161743-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-ahmet-hilmi-ermis-480844837-29996918-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/julia-char-S0Pd27QwbjU-unsplash-scaled.jpg",
@@ -10630,7 +10628,19 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/umit-yildirim-AcaR9tDeMmM-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/gobeklitepe-in-sanliurfa-the-oldest-temple-of-the-2026-01-08-00-31-19-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/gobeklitepe-in-sanliurfa-the-oldest-temple-of-the-2026-01-08-00-31-13-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/03/gobeklitepe-in-sanliurfa-the-oldest-temple-of-the-2026-01-08-00-20-23-utc-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/03/gobeklitepe-in-sanliurfa-the-oldest-temple-of-the-2026-01-08-00-20-23-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/10/close-up-of-middle-eastern-woman-serving-food-for-2026-01-07-02-27-49-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/10/bowl-with-various-pieces-of-turkish-delight-lokum-2026-01-06-10-19-30-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/snapsaga-nPDimBfQo6g-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/pexels-sami-aksu-48867324-31028120-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/serhat-tug-uqWKfIgGnk8-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/roxanne-desgagnes-jWqushQqmT4-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/pexels-brc-sngn-959446-32142909-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/pexels-cihan-cimen-1725918569-28239906-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/pexels-ecenaz-keskin-17373847-32032333-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/pexels-efrail-tunc-746876534-18610068-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/igor-sporynin-XkJpVdda1BA-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/aerial-drone-view-to-the-streets-of-the-old-city-m-2026-01-05-05-52-51-utc-scaled.jpg"
     ],
     "days": 10,
     "nights": 9,
@@ -10648,7 +10658,7 @@ export const TOURS_DATA: Tour[] = [
       "Culinary Heritage"
     ],
     "region": "Eastern & Southeastern Türkiye",
-    "continent": "Asia",
+    "continent": "Europe",
     "place": "Eastern Türkiye & Black Sea",
     "countries": [
       "Türkiye"
@@ -10673,7 +10683,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": false,
     "is_published": true,
     "created_at": "2026-08-21T18:37:18.641097+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-10-03T09:49:12",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
@@ -10972,7 +10982,9 @@ export const TOURS_DATA: Tour[] = [
         "status": "open",
         "created_at": "2026-08-21T18:37:18.828227+00:00"
       }
-    ]
+    ],
+    "single_supplement_cents": 50000,
+    "single_supplement_percent": 14
   },
   {
     "id": "32aa3df5-92bb-4f5f-8f20-a4df3f242746",
@@ -10990,10 +11002,8 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/man-with-sitting-on-top-of-hill-and-enjoying-on-vi-2026-01-05-00-15-22-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/man-hiker-relaxing-in-the-mountains-2026-01-08-08-13-10-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/lycian-way-2026-01-07-01-31-14-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/04/couple-hiking-mount-charleston-wilderness-trail-2026-01-09-09-15-38-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/beautiful-nature-landscapes-in-turkey-mountains-l-2026-01-11-10-03-52-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/ancient-lycian-city-of-arykanda-2026-01-08-00-55-33-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/04/wonderful-sandy-beach-at-aegean-sea-on-sithonia-h-2026-01-09-13-41-45-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/woman-with-mountain-bike-watching-a-valley-below-2026-01-09-10-07-50-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/woman-standing-on-rocky-trail-in-forest-holding-pu-2026-01-09-11-57-43-utc.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/view-of-two-bicycles-by-an-old-tall-tree-in-a-fiel-2026-01-07-23-12-50-utc-scaled.jpeg",
@@ -11001,8 +11011,13 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/two-young-couples-taking-a-picture-of-themselves-2026-01-11-08-05-23-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/two-young-couples-standing-with-mountain-bikes-2026-01-11-08-05-52-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/two-professional-male-cyclists-riding-their-racing-2026-01-08-06-56-32-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/04/two-canoe-kayak-with-oar-in-vast-blue-calm-greek-s-2026-01-06-09-40-59-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/04/tourist-standing-on-turkish-mountains-background-2026-01-09-00-44-31-utc-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/04/tourist-standing-on-turkish-mountains-background-2026-01-09-00-44-31-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/04/overjoyed-couple-of-caucasian-adult-tourist-man-an-2026-01-08-06-33-30-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/04/mountain-biking-2026-01-11-10-31-51-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/04/men-cycling-mountain-road-at-morning-2026-01-06-11-01-14-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/04/kayaking-in-mediterranean-sea-2026-01-09-14-04-58-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/04/happy-couple-of-tourist-taking-selfie-inside-a-kay-2026-01-08-06-37-36-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/04/active-couples-wearing-helmets-riding-bikes-in-cou-2026-01-11-09-58-13-utc-scaled.jpg"
     ],
     "days": 7,
     "nights": 6,
@@ -11032,26 +11047,22 @@ export const TOURS_DATA: Tour[] = [
       "All activities listed in the itinerary, including:",
       "Sea kayaking tour in Kekova",
       "Guided mountain biking tour",
-      "Guided Lycian Way hikes",
       "Letoon, Xanthos & Saklıkent Gorge day tour",
-      "Apollonia to Aperlai hike & boat trip",
-      "All necessary equipment (kayaks, paddles, bikes, helmets, life vests)",
+      "Apollonia to Aperlai Hike & Boat Trip",
+      "All necessary equipment (kayak, paddles, bikes, helmets, life vests)",
       "Transportation for all excursions and transfers during the tour",
       "Entrance fees to archaeological sites, national parks, and museums listed",
       "Boat trip with lunch on Day 6",
-      "Snacks and water during activity days",
-      "Luggage transfers and support vehicle (where needed)"
+      "Airport Arrival transfer"
     ],
     "excludes": [
       "International and domestic flights",
-      "Airport transfers (can be arranged upon request)",
       "Travel insurance (required)",
       "Lunches and dinners not specified in the itinerary",
       "Personal expenses (souvenirs, drinks, etc.)",
       "Gratuities for guides and drivers",
       "Optional activities or excursions not included in the program",
-      "Entry fees to additional sites not listed in the inclusions",
-      "Equipment damage or loss outside of normal use"
+      "Entry fees to additional sites not listed in the inclusions"
     ],
     "adventure_level": 3,
     "culture_level": 4,
@@ -11059,7 +11070,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": false,
     "is_published": true,
     "created_at": "2026-08-21T18:37:16.315951+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-09-09T16:17:52",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
@@ -11313,7 +11324,9 @@ export const TOURS_DATA: Tour[] = [
         "status": "open",
         "created_at": "2026-08-21T18:37:16.513934+00:00"
       }
-    ]
+    ],
+    "single_supplement_cents": 55000,
+    "single_supplement_percent": 22
   },
   {
     "id": "1e90f326-7aec-4c07-9ebe-56787e59a3b7",
@@ -11325,14 +11338,11 @@ export const TOURS_DATA: Tour[] = [
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2026/04/pexels-okan-demi-rcan-694014155-33278533-scaled.jpg",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2026/04/pexels-okan-demi-rcan-694014155-33278533-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/04/pexels-okan-demi-rcan-694014155-33278525-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/04/pexels-nicole-ashley-rahayu-densmoor-3632088-9376012-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/04/pexels-okan-demi-rcan-694014155-33278535-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/beautiful-new-mosque-fatih-mosque-in-istanbul-tur-2026-01-07-07-30-27-utc-scaled.jpeg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/person-fishing-on-galata-bridge-with-istanbul-city-2025-12-31-01-01-36-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/maiden-tower-kiz-kulesi-istanbul-turkey-2026-01-09-07-56-05-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/variety-of-blue-fatima-eye-protective-amulets-aga-2026-01-08-22-26-55-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/03/spices-in-a-market-in-marrakesh-2026-01-05-00-24-57-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/top-view-of-suleymaniye-mosque-with-four-minaret-i-2026-01-06-08-58-06-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/glowing-lantern-lamp-in-a-row-2026-01-07-00-01-03-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/traditional-colorful-ceramic-plates-and-souvenirs-2026-01-07-05-50-03-utc-scaled.jpeg",
@@ -11380,7 +11390,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": false,
     "is_published": true,
     "created_at": "2026-08-21T18:37:15.411278+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-11-20T14:59:38",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
@@ -11646,34 +11656,33 @@ export const TOURS_DATA: Tour[] = [
         "status": "open",
         "created_at": "2026-08-21T18:37:15.599642+00:00"
       }
-    ]
+    ],
+    "single_supplement_cents": 50000,
+    "single_supplement_percent": 22
   },
   {
     "id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
     "slug": "seven-churches-turkey",
-    "title": "7 Churches of Revelation Tour",
+    "title": "Christian Heritage Tour: Seven Churches of Revelation & Hagia Sophia | Chora | Nicaea",
     "code": "WTE-7530",
-    "summary": "The Seven Churches Tour is an incredible journey through history, where ancient ruins meet profound spirituality. Walking through the remains of Ephesus, you’ll be awed by the grandeur of the Temple of Artemis and the lively ancient theater. In Smyrna, a modern city brimming with life, you can almost feel the echoes of early Christian saints, while the hills of Pergamum offer breathtaking views an",
-    "description": "The Seven Churches Tour is an incredible journey through history, where ancient ruins meet profound spirituality. Walking through the remains of Ephesus, you��ll be awed by the grandeur of the Temple of Artemis and the lively ancient theater. In Smyrna, a modern city brimming with life, you can almost feel the echoes of early Christian saints, while the hills of Pergamum offer breathtaking views and an air of mystique, with ancient temples reaching for the sky.\n\nThyatira and Sardis bring you closer to the heart of an ancient civilization, where remnants of once-great cities paint a vivid picture of life long ago. In Philadelphia, the stories of perseverance and faith linger, and Laodicea captivates with its stunning ruins, including the fascinating blend of Roman baths and theaters.\n\nEvery step on this tour is an invitation to connect with both the past and the present—a harmonious blend of history, culture, and deep spiritual reflection. The Seven Churches Tour isn’t just about visiting ancient sites; it’s about walking in the footsteps of history, letting its stories resonate with your own. The tour typically includes:\n\nEphesus – Famous for its well-preserved ruins, including the Temple of Artemis and the ancient theater.\n\nSmyrna (Izmir) – Known for its vibrant modern city and historical ruins, including ancient walls and a church dedicated to Saint Polycarp.\n\nPergamum (Bergama) – Home to the Acropolis and the ancient Temple of Zeus, it has significant historical ruins.\n\nThyatira (Akhisar) – Known for its ancient ruins, particularly the foundations of its old church.\n\nSardis (Salihli) – Features remnants of an ancient city, including the Temple of Artemis and a large synagogue.\n\nPhiladelphia (Alaşehir) – Famous for its ruins, especially the church and a Byzantine-era fortress.\n\nLaodicea (Denizli) – Known for its ancient theaters, agoras, and hot springs.",
+    "summary": "Follow the footsteps of early Christianity on an extraordinary journey through the spiritual and historical heritage of Türkiye. Discover the Seven Churches of Revelation, explore some of the most remarkable Byzantine monuments in Istanbul, and visit Nicaea, the historic city where pivotal decisions shaped the foundati",
+    "description": "Follow the footsteps of early Christianity on an extraordinary journey through the spiritual and historical heritage of Türkiye. Discover the Seven Churches of Revelation, explore some of the most remarkable Byzantine monuments in Istanbul, and visit Nicaea, the historic city where pivotal decisions shaped the foundations of Christian faith.\n\nBeginning in Istanbul, this journey takes you beyond the familiar landmarks to explore the stories, places, and communities that shaped Christianity throughout the centuries. Visit the magnificent Hagia Sophia, admire the extraordinary Byzantine mosaics and frescoes of the Chora Church, and discover Nicaea (modern-day İznik), where the First Council of Nicaea was held in AD 325, establishing a defining moment in Christian history.\n\nContinue into Western Türkiye, following the biblical route of the Seven Churches of Revelation: Ephesus, Smyrna, Pergamum, Thyatira, Sardis, Philadelphia, and Laodicea. Mentioned in the Book of Revelation, these ancient cities were important centres of early Christian life. Walk among impressive archaeological remains, explore ancient streets and sacred sites, and learn about the messages addressed to each church and their significance in the early Christian world.\n\nAlong the way, experience the remarkable connection between biblical history, Roman civilization, and Byzantine heritage. From the ancient city of Ephesus and the monumental remains of Pergamum to the impressive ruins of Sardis and Laodicea, every destination reveals another chapter in the story of Christianity.\n\nMore than a sightseeing tour, this is a meaningful cultural and spiritual journey through the landscapes where early Christianity took root and flourished. Accompanied by knowledgeable local guides, discover the history, traditions, and enduring legacy of Christian heritage in Türkiye.",
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278525-scaled.jpg",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278525-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-ayse-58498816-17314051-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278533-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278535-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278536-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278539-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/12/hierapolis-ancient-city-pamukkale-turkey-young-wo-2025-01-09-15-33-57-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/vladyslav-cherkasenko-xH-cy_RP0tI-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/sardis-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/smryna-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/pergamon-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pergamon2-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pergamon2-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/03/hagia-sophia-in-the-evening-istanbul-turkey-2026-03-17-04-24-17-utc-2.jpg"
     ],
-    "days": 7,
-    "nights": 6,
-    "price_cents": 245000,
-    "deposit_cents": 49000,
+    "days": 10,
+    "nights": 9,
+    "price_cents": 350000,
+    "deposit_cents": 70000,
     "currency": "USD",
     "min_pax": 2,
     "max_pax": 10,
@@ -11693,8 +11702,9 @@ export const TOURS_DATA: Tour[] = [
     "includes": [
       "Professional guide",
       "Private transport between sites",
-      "Entry fees to archaeological sites",
-      "Accommodation with breakfast"
+      "Entry fees to archaeological sites & Museums",
+      "Accommodation with breakfast",
+      "1 Domestic Flight"
     ],
     "excludes": [
       "Lunch & dinner",
@@ -11708,14 +11718,14 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": false,
     "is_published": true,
     "created_at": "2026-08-21T18:37:17.626457+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-11-05T10:20:24",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
     "activity_level": "3 - Active",
     "travel_style": "Spotlight",
     "best_time": "Apr–Jun & Sep–Oct",
-    "meals_breakfasts": 6,
+    "meals_breakfasts": 9,
     "meals_lunches": 7,
     "meals_dinners": 6,
     "daysList": [
@@ -11723,50 +11733,71 @@ export const TOURS_DATA: Tour[] = [
         "id": "c023af89-9e8f-4e23-b6ae-3428928b532b",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "day_number": 1,
-        "title": "Welcome to İzmir (Smyrna)",
-        "body": "Upon arrival, transfer to your hotel and enjoy some time to settle in. At 1:00 PM, meet your guide for a welcome briefing before beginning your exploration of this vibrant Aegean city.\n\nStart your journey with a visit to the ancient Agora of Smyrna, once the bustling heart of Roman-era trade and daily life. Continue to Kadifekale (Velvet Castle), where you’ll be rewarded with panoramic views over the city and the Gulf of İzmir. Then visit the historic Church of Saint Polycarp, one of the oldest churches in the city, rich in history and religious significance.\n\nIn the evening, enjoy a relaxing dinner along the lively Kordon Waterfront, famous for its seaside promenade, cafés, and beautiful sunset views.\n\nAccommodation: Pier Passport Hotel or similar"
+        "title": "Arrival in Istanbul",
+        "body": "Arrival, airport transfer and hotel check-in. 6 pm welcome meeting and dinner.\n\nAccommodation: Wyndham Old Town Hotel or Similar ( 4 * )"
       },
       {
         "id": "95d2d6c1-b16e-40fe-a428-87c168751024",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "day_number": 2,
-        "title": "Pergamum Discovery – Ancient Wonders of the North Aegean",
-        "body": "After breakfast, enjoy a scenic drive (approx. 2 hours) to Bergama, the site of the ancient city of Pergamum, one of the most powerful cultural centers of the Hellenistic world.\nExplore the magnificent Pergamon Acropolis, dramatically perched on a hilltop overlooking the valley below. Here, you will visit the impressive Theater of Pergamon, one of the steepest ancient theaters in the world, and the remains of the Temple of Zeus at Pergamon, once a grand sanctuary dedicated to the king of the gods.\nContinue to the remarkable Red Basilica, a massive Roman temple complex later converted into a Christian basilica, showcasing layers of religious history.\nAfter your visit, you may choose to stay overnight in Bergama for a more relaxed experience, or return to İzmir.\nAccommodation: Pier Passport Hotel or similar"
+        "title": "Byzantine & Christian Istanbul",
+        "body": "Visit Hagia Sophia, the Hippodrome, Chora Church and the Ecumenical Patriarchate at Fener.\n\nAccommodation: Wyndham Old Town Hotel or Similar ( 4 * )"
       },
       {
         "id": "33fc61c0-550c-498d-b9c9-1ad86e189fab",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "day_number": 3,
-        "title": "Thyatira & Sardis – Tracing Ancient Civilizations",
-        "body": "After breakfast, depart for Thyatira (approx. 1.5 hours), one of the ancient cities mentioned in the Book of Revelation. Explore the remains of the basilica and visit the small local museum, offering insight into the city's early Christian heritage.\nContinue your journey to Sardis (approx. 1 hour), once the capital of the ancient Lydian Kingdom and home of the legendary King Croesus. Here, you will visit the impressive Temple of Artemis at Sardis, the grand Sardis Gymnasium, and the beautifully restored Ancient Synagogue of Sardis, one of the largest synagogues of the ancient world.\nAfter the tour, continue to your hotel for an overnight stay in Salihli or Alaşehir.\nAccommodation: Can Deluxe Hotel or similar"
+        "title": "Istanbul | Nicaea (İznik)",
+        "body": "Travel to historic Nicaea. Visit the Hagia Sophia of Nicaea, ancient city walls and sites associated with the First and Seventh Ecumenical Councils.\n\nAccommodation: Limeades Hotel or Similar | Iznik"
       },
       {
         "id": "e53d10f5-636d-4f76-951e-c6ab6e9dccc9",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "day_number": 4,
-        "title": "Philadelphia & Laodicea – Echoes of Early Christianity",
-        "body": "After breakfast, visit Philadelphia, one of the Seven Churches of Revelation. Explore the remains of a Byzantine-era church and sections of the ancient fortress walls, offering a glimpse into the city’s enduring spiritual heritage.\n\nContinue your journey to Laodicea (approx. 2 hours), an important ancient city known for its wealth and significance in early Christianity. Discover its impressive ruins, including ancient theaters, agoras, and remarkably preserved early Christian structures.\n\nAfter the tour, drive to Pamukkale, famous for its stunning white travertine terraces and thermal waters.\n\nOvernight in Pamukkale, near the hot springs.\n\nAccommodation: Venus Boutique Hotel or similar"
+        "title": "iznik | Pergamon",
+        "body": "Drive to Pegamon. Visit ancient Pergamon, one of the Seven Churches of Revelation. Explore the Acropolis and ancient city.\n\nAccommodation: Hera Boutique Hotel or Similar ( 4 * )"
       },
       {
         "id": "c4fe1e53-b592-49cd-bdf4-5394e3eae114",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "day_number": 5,
-        "title": "Pamukkale & Ephesus – Natural Wonders and Ancient Glory",
-        "body": "After breakfast, visit the breathtaking Pamukkale Travertines, a natural wonder of cascading white terraces formed by mineral-rich thermal waters. You may also choose to explore the nearby Hierapolis (optional but highly recommended), an ancient spa city featuring impressive ruins including a grand theater, necropolis, and the famous Antique Pool.\nFollowing your visit, enjoy a scenic drive (approx. 2 hours) to Ephesus, one of the best-preserved ancient cities in the Mediterranean.\nOvernight in Selçuk.\nAccommodation: Kalehan Boutique Hotel or similar"
+        "title": "Pergamon | Thyatira | Sardis",
+        "body": "Visit Thyatira in Akhisar, followed by Sardis, the ancient capital of Lydia and another important Christian community.\n\nAccommodation:  Double Tree by Hilton or similar ( 4 * )"
       },
       {
         "id": "c8d079aa-0b36-4237-ad19-cbd604c22dde",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "day_number": 6,
-        "title": "Ephesus – A Journey Through Ancient Splendor",
-        "body": "After breakfast, explore the magnificent ancient city of Ephesus, one of the best-preserved classical cities in the world. Walk along its marble streets and discover iconic landmarks such as the stunning Library of Celsus and the impressive Grand Theater of Ephesus, once capable of holding thousands of spectators.\nContinue to the remains of the Temple of Artemis, one of the Seven Wonders of the Ancient World. You may also choose to visit the sacred House of the Virgin Mary or the historic Basilica of St. John, both important pilgrimage sites with deep religious significance.\nAfter your visit, enjoy a comfortable drive back to İzmir (approx. 1 hour).\nOvernight in İzmir.\nAccommodation: Pier Passport Hotel or similar"
+        "title": "Philadelphia | Laodicea",
+        "body": "Visit Philadelphia (Alaşehir), the sixth Church of Revelation. Continue to Laodicea and explore the Laodicea. The seventh Church of Revelation. Explore its impressive archaeological remains before visiting Hierapolis and the Tomb of St. Philip.\n\nAccommodation: Hierapark Hotel or Similar ( 5 * )"
       },
       {
         "id": "b67439fc-b2b1-4ac2-9fc6-8f7b8c0c6a1c",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "day_number": 7,
-        "title": "DEPARTURE DAY",
-        "body": "As you embark on your journey home, may the memories you've gathered during our trip stay with you like treasures in your heart. \n\nSafe travels and may your path ahead be as enriching and joyful as your time here. Until we meet again, cherish the moments and carry a piece of Turkey's spirit with you wherever you go.\n\nFarewell and best wishes for your future adventures!\n\nWarm regards\n\nAGT GROUP LLC TEAM"
+        "title": "Pamukkale | Hierapolis",
+        "body": "Explore its impressive archaeological remains before visiting Hierapolis and the Tomb of St. Philip.\n\nAccommodation: Hierapark Hotel or Similar ( 5 * )"
+      },
+      {
+        "id": "981daffc-6ceb-4b1d-a18f-71a0991eba24",
+        "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
+        "day_number": 8,
+        "title": "Pamukkale | Ephesus",
+        "body": "Travel to Ephesus. Explore the ancient city, including the Library of Celsus and Great Theatre. Visit the House of the Virgin Mary and Basilica of St. John.\n\nAccommodation: La Vista Boutique Hotel or Similar"
+      },
+      {
+        "id": "79ba6778-a309-4408-a5ac-186b63edddc2",
+        "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
+        "day_number": 9,
+        "title": "Ephesus | Izmir",
+        "body": "Explore the Agora of Smyrna and the Church of St. Polycarp.\n\nAccommodation: La Vista Boutique Hotel or Similar"
+      },
+      {
+        "id": "a8953db0-d47c-4ca6-8c84-2f2d3df45959",
+        "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
+        "day_number": 10,
+        "title": "Flight to Istanbul",
+        "body": "Morning flight to istanbul and Tour Finishes at the airport.\n\nThank you for Choosing Atlas Global Tours"
       }
     ],
     "departuresList": [
@@ -11774,9 +11805,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "c77e5a96-7bfa-4b08-8301-70ec6f8e3722",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2026-09-11",
-        "end_date": "2026-09-17",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2026-09-20",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 0,
         "status": "open",
@@ -11786,9 +11817,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "4a87dda0-54a7-4f26-9c9b-302bdf61d251",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2026-09-25",
-        "end_date": "2026-10-01",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2026-10-04",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 2,
         "status": "open",
@@ -11798,9 +11829,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "2e4d4eb1-35b8-4112-8bd1-fbf388f21f8a",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2026-10-23",
-        "end_date": "2026-10-29",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2026-11-01",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 0,
         "status": "open",
@@ -11810,9 +11841,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "b9cf3968-b429-438b-b22e-7d6cfaf6de4a",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2026-11-06",
-        "end_date": "2026-11-12",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2026-11-15",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 3,
         "status": "open",
@@ -11822,9 +11853,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "2684136d-fb02-44bf-81f5-fe6832734848",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2026-11-27",
-        "end_date": "2026-12-03",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2026-12-06",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 1,
         "status": "open",
@@ -11834,9 +11865,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "655b9cd3-4755-454c-b2a1-f8cceb7d83e7",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2026-12-25",
-        "end_date": "2026-12-31",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-01-03",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 0,
         "status": "open",
@@ -11846,9 +11877,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "f4e5ddd7-3feb-4830-98f5-4c83f2170495",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2027-01-08",
-        "end_date": "2027-01-14",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-01-17",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 1,
         "status": "open",
@@ -11858,9 +11889,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "9c7be72b-3050-4b07-927e-e56a13ea1bc2",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2027-01-29",
-        "end_date": "2027-02-04",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-02-07",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 1,
         "status": "open",
@@ -11870,9 +11901,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "918785e8-8018-46a1-a2f4-b9f6c1e3bb51",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2027-02-12",
-        "end_date": "2027-02-18",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-02-21",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 10,
         "status": "open",
@@ -11882,9 +11913,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "909ddb1f-e20e-498c-8a7e-8dd39a900cd0",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2027-03-12",
-        "end_date": "2027-03-18",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-03-21",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 1,
         "status": "open",
@@ -11894,9 +11925,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "62017b2d-6a55-4b50-a9e2-f19c18c1e09f",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2027-04-02",
-        "end_date": "2027-04-08",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-04-11",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 10,
         "status": "open",
@@ -11906,9 +11937,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "46fa9c9e-f4e2-4408-8c2e-900a4d6b20f9",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2027-04-23",
-        "end_date": "2027-04-29",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-05-02",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 1,
         "status": "open",
@@ -11918,9 +11949,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "a98b23ba-b30b-4ac6-bdde-ba500e6e1c17",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2027-05-07",
-        "end_date": "2027-05-13",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-05-16",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 0,
         "status": "open",
@@ -11930,9 +11961,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "9b95cf77-5983-4ee3-a767-126a23c93b94",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2027-05-21",
-        "end_date": "2027-05-27",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-05-30",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 0,
         "status": "open",
@@ -11942,9 +11973,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "f72dd5b1-611d-4f66-81b0-d1761349effb",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2027-06-11",
-        "end_date": "2027-06-17",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-06-20",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 0,
         "status": "open",
@@ -11954,9 +11985,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "0271aded-6859-4bc6-989f-5066fc5bd4d8",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2027-07-02",
-        "end_date": "2027-07-08",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-07-11",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 0,
         "status": "open",
@@ -11966,9 +11997,9 @@ export const TOURS_DATA: Tour[] = [
         "id": "0ed5bf95-778c-4373-94ee-0b46483de425",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2027-07-23",
-        "end_date": "2027-07-29",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-08-01",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 3,
         "status": "open",
@@ -11978,20 +12009,22 @@ export const TOURS_DATA: Tour[] = [
         "id": "3bba6c10-1015-4450-b5ea-ef620f97b72e",
         "tour_id": "df52c4a9-5a45-442c-a8f6-ff6e9c8b0545",
         "start_date": "2027-08-20",
-        "end_date": "2027-08-26",
-        "price_cents": 245000,
-        "deposit_cents": 49000,
+        "end_date": "2027-08-29",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
         "capacity": 10,
         "seats_booked": 0,
         "status": "open",
         "created_at": "2026-08-21T18:37:17.818658+00:00"
       }
-    ]
+    ],
+    "single_supplement_cents": 50000,
+    "single_supplement_percent": 14
   },
   {
     "id": "25d9f18c-e79f-4e38-a9a3-4761533869d6",
     "slug": "shortbreak-eastern-turkiye",
-    "title": "immersive South Eastern Turkiye : Culinary & Cultural tour",
+    "title": "Immersive South Eastern Turkiye : Culinary & Cultural tour",
     "code": "WTE-2762",
     "summary": "Experience the timeless beauty and cultural depth of Türkiye on this unforgettable 5-day journey. Ancient history, natural wonders, and delicious cuisines ... We don’t just show you destinations – we let you taste them. At Atlas Global Tours, history and food come together to create memories that last a lifetime.",
     "description": "Experience the timeless beauty and cultural depth of Türkiye on this unforgettable 5-day journey. Ancient history, natural wonders, and delicious cuisines ... We don’t just show you destinations – we let you taste them. At Atlas Global Tours, history and food come together to create memories that last a lifetime.\n\nBegin your adventure in Istanbul, where East meets West, and explore the city’s most iconic landmarks — the majestic Topkapı Palace, the awe-inspiring Blue Mosque and the vibrant Grand Bazaar.\n\nContinue to Gaziantep famous with Baklava and kebabs, Şanlıurfa, the cradle of civilization, to uncover the mysteries of the ancient world at Göbeklitepe — the world’s oldest known temple. Immerse yourself in history at the Şanlıurfa Archaeological Museum and the Haleplibahçe Mosaic Museum, home to exquisite Roman-era artworks.\n\nYour journey concludes with an ascent to Mount Nemrut, a UNESCO World Heritage Site, where colossal stone statues stand guard over the tomb of King Antiochus I. Witness one of the most spectacular sunsets in Türkiye, a perfect finale to a tour that blends history, adventure, and breathtaking landscapes.",
@@ -12006,17 +12039,9 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/victoria-shes-UC0HZdUitWY-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/umit-yildirim-AcaR9tDeMmM-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/gobeklitepe-in-sanliurfa-the-oldest-temple-of-the-2026-01-08-00-20-23-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2022/03/sanliurfa-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/tolga-ahmetler-rt7J3iHNpuo-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/Topkapi-palace-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2022/03/umit-yildirim-AcaR9tDeMmM-unsplash-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2022/03/birgul-zengin-78h6uHmSUNk-unsplash-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2022/03/philippines-2429845_1920.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/02/Dubrovnik_Croatia5.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/02/Dubrovnik_Croatia6.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/02/Dubrovnik_Croatia8.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/02/Dubrovnik_Croatia10.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/02/Dubrovnik_Croatia11.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/birgul-zengin-78h6uHmSUNk-unsplash-scaled.jpg"
     ],
     "days": 6,
     "nights": 5,
@@ -12033,7 +12058,7 @@ export const TOURS_DATA: Tour[] = [
       "Ancient Mesopotamia"
     ],
     "region": "Eastern & Southeastern Türkiye",
-    "continent": "Asia",
+    "continent": "Europe",
     "place": "Southeastern Türkiye (Göbeklitepe & Urfa)",
     "countries": [
       "Türkiye"
@@ -12058,7 +12083,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": false,
     "is_published": true,
     "created_at": "2026-08-21T18:37:19.570765+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-06-21T19:58:25",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
@@ -12305,7 +12330,9 @@ export const TOURS_DATA: Tour[] = [
         "status": "open",
         "created_at": "2026-08-21T18:37:19.75558+00:00"
       }
-    ]
+    ],
+    "single_supplement_cents": 65000,
+    "single_supplement_percent": 31
   },
   {
     "id": "bcb621d1-3993-42d2-8cdc-465699c5138d",
@@ -12321,12 +12348,10 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/whirling-figure-in-red-robe-in-darkness-2026-03-18-05-43-08-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-kubra-aydin-85161907-27137417-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-caglar-gelmis-762374035-27637374-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/10/closeup-shot-of-traditional-syrian-food-meat-on-e-2025-02-11-16-51-05-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/cooking-course-senior-male-chef-in-cook-uniform-2026-01-08-22-42-40-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/raki-glasses-and-seafood-appetizers-background-cl-2026-01-07-02-06-21-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/authentic-turkish-testi-kebab-cooked-in-earthenwar-2026-01-09-09-19-55-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/bowl-with-various-pieces-of-turkish-delight-lokum-2026-01-06-10-19-30-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/10/a-traditional-israeli-lunch-2026-01-07-23-16-51-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/caroline-attwood-z38uTGNpNnA-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/igor-sporynin-XkJpVdda1BA-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/roxanne-desgagnes-jWqushQqmT4-unsplash-scaled.jpg",
@@ -12335,7 +12360,11 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/victoria-shes-UC0HZdUitWY-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/hierapolis-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/hierapolis2-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2022/03/amazing-sunset-over-cappadocia-turkey-europe-2026-01-08-23-30-12-utc-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/amazing-sunset-over-cappadocia-turkey-europe-2026-01-08-23-30-12-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/balloons-in-love-valley-cappadocia-flights-in-go-2026-01-07-06-42-34-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/cappadocia-2026-01-07-00-11-52-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/horse-in-cappadocia-2026-01-07-01-44-38-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/hot-air-balloon-flying-over-rock-landscape-at-capp-2026-01-09-00-12-40-utc-scaled.jpg"
     ],
     "days": 10,
     "nights": 9,
@@ -12352,7 +12381,7 @@ export const TOURS_DATA: Tour[] = [
       "Highlights Circuit"
     ],
     "region": "Grand Türkiye & Rail",
-    "continent": "Asia",
+    "continent": "Europe",
     "place": "Western Türkiye Classic Circuit",
     "countries": [
       "Türkiye"
@@ -12381,7 +12410,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": true,
     "is_published": true,
     "created_at": "2026-08-21T18:37:19.299705+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-07-01T19:43:44",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
@@ -12656,7 +12685,9 @@ export const TOURS_DATA: Tour[] = [
         "status": "open",
         "created_at": "2026-08-21T18:37:19.488435+00:00"
       }
-    ]
+    ],
+    "single_supplement_cents": 200000,
+    "single_supplement_percent": 16
   },
   {
     "id": "eed03f9d-2940-48eb-b2da-32d0925f81a0",
@@ -12675,10 +12706,8 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-axp-photography-500641970-27634358-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-brc-sngn-959446-32142909-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/authentic-turkish-testi-kebab-cooked-in-earthenwar-2026-01-09-09-19-55-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/10/closeup-shot-of-traditional-syrian-food-meat-on-e-2025-02-11-16-51-05-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/close-up-of-middle-eastern-woman-serving-food-for-2026-01-07-02-27-49-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/bowl-with-various-pieces-of-turkish-delight-lokum-2026-01-06-10-19-30-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/10/a-traditional-israeli-lunch-2026-01-07-23-16-51-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/gobeklitepe-in-sanliurfa-the-oldest-temple-of-the-2026-01-08-00-20-23-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/gobeklitepe-in-sanliurfa-the-oldest-temple-of-the-2026-01-08-00-31-13-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/gobeklitepe-in-sanliurfa-the-oldest-temple-of-the-2026-01-08-00-31-19-utc-scaled.jpg",
@@ -12686,7 +12715,9 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/umit-yildirim-AcaR9tDeMmM-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/sanliurfa-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-sami-aksu-48867324-31028120-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-shvets-2563602-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-shvets-2563602-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/03/engin-akyurt-KYTCFLOuG60-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/03/julia-char-S0Pd27QwbjU-unsplash-scaled.jpg"
     ],
     "days": 14,
     "nights": 13,
@@ -12703,7 +12734,7 @@ export const TOURS_DATA: Tour[] = [
       "East Meets West"
     ],
     "region": "Grand Türkiye & Rail",
-    "continent": "Asia",
+    "continent": "Europe",
     "place": "Grand East & West Türkiye",
     "countries": [
       "Türkiye"
@@ -12733,7 +12764,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": false,
     "is_published": true,
     "created_at": "2026-08-21T18:37:17.315297+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-06-21T20:35:12",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
@@ -13036,12 +13067,14 @@ export const TOURS_DATA: Tour[] = [
         "status": "open",
         "created_at": "2026-08-21T18:37:17.540826+00:00"
       }
-    ]
+    ],
+    "single_supplement_cents": 125000,
+    "single_supplement_percent": 28
   },
   {
     "id": "ac731593-1f57-4a2f-940e-9b5036ec0202",
     "slug": "istanbul-short-break-tour",
-    "title": "istanbul Short Break Tour",
+    "title": "Istanbul Short Break Tour",
     "code": "WTE-7534",
     "summary": "This 3-day Istanbul itinerary offers a perfect mix of history, culture, and scenic views and especially we offer you hidden Gems of Istanbul. Explore the Old Town by walking  with your licensed local guide On Day 1, it will be unforgettable orientation walk and learning about the city. We fokus immersive trip more than spending time with crowd. We will visit iconic landmarks like Blue Mosque and T",
     "description": "This 3-day Istanbul itinerary offers a perfect mix of history, culture, and scenic views and especially we offer you hidden Gems of Istanbul. Explore the Old Town by walking  with your licensed local guide On Day 1, it will be unforgettable orientation walk and learning about the city. We fokus immersive trip more than spending time with crowd. We will visit iconic landmarks like Blue Mosque and Topkapi Palace  and You will learn about Great Ottoman Empire History. On Day 2, Enjoy a Bosphorus boat trip and discover the charming, colorful streets of Balat District. Finally, on Day 3, step into the grandeur of Dolmabahçe Palace and experience the modern side of Istanbul with visits to Galata Tower, Istiklal Street, and Taksim Square. This trip blends tradition and modernity, making for an unforgettable experience!",
@@ -13088,7 +13121,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": false,
     "is_published": true,
     "created_at": "2026-08-21T18:37:17.01902+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-02-23T19:30:55",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
@@ -13103,22 +13136,22 @@ export const TOURS_DATA: Tour[] = [
         "id": "e26b443d-873b-4dd8-b25f-ae19956444e9",
         "tour_id": "ac731593-1f57-4a2f-940e-9b5036ec0202",
         "day_number": 1,
-        "title": "ISTANBUL - Topkapı Palace, Blue Mosque, Hippodrome",
-        "body": "Welcome to Türkiye. Your adventure will start in istanbul city, known for its rich history and unique geographical location. Meet your leader and fellow travelers at 9  am  Welcome Meeting and after, We are heading to old town. Discover Topkapı Palace, Blue Mosque, Hippodrome and Grand Bazaar. Learn about Famous Ottoman Life and Constantinapol roman city. Maybe head out together to seek out some tasty Turkish cuisine in a local popular restaurant. \n\nAccomodation : N/A\n\nMeeting Point :  Caferağa Medresesi\n\nCaferiye Sokak, Soğukkuyu Çk. No:5, 34122 Fatih"
+        "title": "ISTANBUL - Topkapı Palace, Blue Mosque,  Hippodrome",
+        "body": "Welcome to Türkiye. Your adventure will start in istanbul city, known for its rich history and unique geographical location. Meet your leader and fellow travelers at 9  am  Welcome Meeting and after, We are heading to old town. Discover Topkapı Palace, Blue Mosque, Hippodrome and Grand Bazaar. Learn about Famous Ottoman Life and Constantinapol roman city. Maybe head out together to seek out some tasty Turkish cuisine in a local popular restaurant.\n\nAccomodation : N/A\n\nMeeting Point :  Caferağa Medresesi\n\nCaferiye Sokak, Soğukkuyu Çk. No:5, 34122 Fatih"
       },
       {
         "id": "440ab2fa-b743-4793-9704-a48e5176c4f3",
         "tour_id": "ac731593-1f57-4a2f-940e-9b5036ec0202",
         "day_number": 2,
         "title": "ISTANBUL - Bosphorus Boat Trip & Balat District",
-        "body": "Today we have  Bosphorus Cruise – Take a 1.5-2 hour ferry ride along the Bosphorus to see palaces, bridges, and waterfront mansions. We will take a public ferry from Eminönü. Your local Tour Guide will tell you all stories from water side.\n\nLunch time We Eat in Karaköy, an artsy neighborhood with cool cafes like Karaköy Güllüoğlu for baklava. The Best. \n\nThis Afternoon we will visit  Balat District\n\nWander the colorful streets filled with historic wooden houses and street art.\n\nEcumenical Patriarchate of Constantinople – The spiritual center of Orthodox Christianity. Ahrida Synagogue (outside view) – One of the oldest synagogues in Istanbul."
+        "body": "Today we have  Bosphorus Cruise – Take a 1.5-2 hour ferry ride along the Bosphorus to see palaces, bridges, and waterfront mansions. We will take a public ferry from Eminönü. Your local Tour Guide will tell you all stories from water side.\n\nLunch time We Eat in Karaköy, an artsy neighborhood with cool cafes like Karaköy Güllüoğlu for baklava. The Best.\n\nThis Afternoon we will visit  Balat District\n\nWander the colorful streets filled with historic wooden houses and street art.\n\nEcumenical Patriarchate of Constantinople – The spiritual center of Orthodox Christianity. Ahrida Synagogue (outside view) – One of the oldest synagogues in Istanbul."
       },
       {
         "id": "b6afd582-0e69-440b-8be0-05a5673d2308",
         "tour_id": "ac731593-1f57-4a2f-940e-9b5036ec0202",
         "day_number": 3,
         "title": "ISTANBUL - Dolmabahçe Palace & Modern Istanbul",
-        "body": "This Morning we will visit Dolmabahçe Palace – A breathtaking 19th-century palace with stunning interiors. Arrive early to beat the crowds. \n\nWe head to Istiklal Street & Galata Tower – Walk down Istiklal Street, shop, and visit the historic Galata Tower for panoramic city views. Taksim Square is a lively area with modern shops and restaurants.  \n\nToday is the last day of our trip. We hope you enjoyed being with us. \n\nhope to see you again in other destinations. \n\nAtlas Global LLC."
+        "body": "This Morning we will visit Dolmabahçe Palace – A breathtaking 19th-century palace with stunning interiors. Arrive early to beat the crowds.\n\nWe head to Istiklal Street & Galata Tower – Walk down Istiklal Street, shop, and visit the historic Galata Tower for panoramic city views. Taksim Square is a lively area with modern shops and restaurants.\n\nToday is the last day of our trip. We hope you enjoyed being with us.\n\nhope to see you again in other destinations.\n\nAtlas Global LLC."
       }
     ],
     "departuresList": [
@@ -13396,7 +13429,7 @@ export const TOURS_DATA: Tour[] = [
       "Hot Air Balloons"
     ],
     "region": "Cappadocia & Central Anatolia",
-    "continent": "Asia",
+    "continent": "Europe",
     "place": "Cappadocia & Pigeon Valley",
     "countries": [
       "Türkiye"
@@ -13418,7 +13451,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": true,
     "is_published": true,
     "created_at": "2026-08-21T18:37:14.729282+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-07-13T17:35:57",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
@@ -13696,12 +13729,14 @@ export const TOURS_DATA: Tour[] = [
         "status": "open",
         "created_at": "2026-08-21T18:37:15.0057+00:00"
       }
-    ]
+    ],
+    "single_supplement_cents": 35000,
+    "single_supplement_percent": 32
   },
   {
     "id": "3d5e8383-74b2-410a-9c82-5d1912e38348",
     "slug": "lycian-way-hike-in-turkey",
-    "title": "Lycian Way Hike with Private Boat Trip",
+    "title": "Lycian Way Hike with Boat Trip",
     "code": "WTE-7525",
     "summary": "Embark on an unforgettable 7-day journey along Turkey’s Lycian Way, where rugged mountain trails meet the sparkling Mediterranean. Starting in a tranquil village, you’ll hike through abandoned stone settlements, pine-covered slopes, dramatic cliffs, and ancient ruins, covering scenic stretches from Kayakoy to Oludeniz, Faralya, Alinca, and Patara Village. Each day reveals breathtaking sea views, c",
     "description": "Embark on an unforgettable 7-day journey along Turkey’s Lycian Way, where rugged mountain trails meet the sparkling Mediterranean. Starting in a tranquil village, you’ll hike through abandoned stone settlements, pine-covered slopes, dramatic cliffs, and ancient ruins, covering scenic stretches from Kayakoy to Oludeniz, Faralya, Alinca, and Patara Village. Each day reveals breathtaking sea views, cultural heritage, and the warmth of rural Turkish life. The adventure culminates with a private boat trip in the Kekova region, where you’ll swim in hidden coves, explore a sunken Lycian city, and unwind on deck. This trip blends active exploration, history, and coastal relaxation for the ultimate Mediterranean experience.",
@@ -13723,10 +13758,8 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/man-with-sitting-on-top-of-hill-and-enjoying-on-vi-2026-01-05-00-15-22-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/man-hiker-relaxing-in-the-mountains-2026-01-08-08-13-10-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/lycian-way-2026-01-07-01-31-14-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/04/couple-hiking-mount-charleston-wilderness-trail-2026-01-09-09-15-38-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/04/beautiful-nature-landscapes-in-turkey-mountains-l-2026-01-11-10-03-52-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/04/ancient-lycian-city-of-arykanda-2026-01-08-00-55-33-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/04/wonderful-sandy-beach-at-aegean-sea-on-sithonia-h-2026-01-09-13-41-45-utc-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/04/ancient-lycian-city-of-arykanda-2026-01-08-00-55-33-utc-scaled.jpg"
     ],
     "days": 7,
     "nights": 6,
@@ -13771,7 +13804,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": true,
     "is_published": true,
     "created_at": "2026-08-21T18:37:17.903181+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-09-15T20:34:17",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
@@ -14025,7 +14058,9 @@ export const TOURS_DATA: Tour[] = [
         "status": "open",
         "created_at": "2026-08-21T18:37:18.086096+00:00"
       }
-    ]
+    ],
+    "single_supplement_cents": 35000,
+    "single_supplement_percent": 22
   },
   {
     "id": "55cdd7c9-1296-4483-baf1-809f8a6c98c5",
@@ -14039,23 +14074,30 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/young-caucasian-female-hiking-in-the-wood-2026-01-11-08-49-24-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/woman-hiking-in-the-woods-in-autumn-2026-01-08-08-00-32-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/woman-chooses-in-the-market-nuts-and-dried-fruit-2026-01-05-00-55-51-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/03/view-on-colorful-autumn-prague-city-with-its-tower-2026-01-09-13-09-24-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/variety-of-blue-fatima-eye-protective-amulets-aga-2026-01-08-22-26-55-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/03/trees-the-soderasen-national-park-in-sweden-2026-01-09-08-27-40-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/traditional-colorful-ceramic-plates-and-souvenirs-2026-01-07-05-50-03-utc-scaled.jpeg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/towel-bucket-and-scoop-in-sauna-2026-01-05-23-14-56-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/top-view-of-suleymaniye-mosque-with-four-minaret-i-2026-01-06-08-58-06-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/the-pristine-bosphorus-strait-is-framed-by-colorfu-2026-01-09-06-26-38-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/03/stone-roman-construction-in-spain-2026-01-08-22-47-56-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/03/spices-in-a-market-in-marrakesh-2026-01-05-00-24-57-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/spa-turkish-hammam-foam-peeling-for-young-woman-to-2026-02-28-23-50-41-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/senior-cyclist-man-wearing-helmet-standing-with-op-2026-01-05-23-28-07-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/02/women-in-hamam-2026-01-05-01-03-18-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/glowing-lantern-lamp-in-a-row-2026-01-07-00-01-03-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/03/hiker-walking-across-woods-montseny-barcelona-c-2026-01-09-08-28-22-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/istanbul-turkey-january-2022-suleymaniye-mosqu-2026-01-05-05-29-19-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/istanbul-view-on-the-bosphorus-with-a-ship-yacht-s-2026-01-06-09-21-16-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/03/maiden-tower-kiz-kulesi-istanbul-turkey-2026-01-09-07-56-05-utc-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/maiden-tower-kiz-kulesi-istanbul-turkey-2026-01-09-07-56-05-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/namazgah-hamam-in-izmir-the-aegean-region-of-turk-2026-01-08-00-25-24-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/person-fishing-on-galata-bridge-with-istanbul-city-2025-12-31-01-01-36-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/portrait-of-beautiful-brunette-woman-riding-white-2026-01-08-07-38-17-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/a-high-angle-shot-of-a-group-of-people-paddling-on-2026-01-11-10-10-27-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/adventurous-woman-on-a-kayak-paddling-in-the-medit-2026-01-09-09-03-42-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/bath-spa-accessories-on-the-pool-2026-01-09-06-23-45-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/beautiful-green-forest-2026-01-11-08-02-41-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/beautiful-new-mosque-fatih-mosque-in-istanbul-tur-2026-01-07-07-30-27-utc-scaled.jpeg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/beautiful-shot-of-travelling-tourist-in-the-sea-s-2026-01-11-08-17-46-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/blue-mosque-sultan-ahmet-mosque-and-cupolas-seen-2026-01-05-00-45-24-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/couple-in-life-jackets-kayaking-on-river-back-vie-2026-01-02-21-42-33-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/03/couple-in-love-sitting-on-roof-with-view-of-eveni-2026-01-05-01-04-47-utc-scaled.jpg"
     ],
     "days": 6,
     "nights": 5,
@@ -14100,7 +14142,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": false,
     "is_published": true,
     "created_at": "2026-08-21T18:37:15.700413+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-03-04T17:55:21",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
@@ -14359,12 +14401,14 @@ export const TOURS_DATA: Tour[] = [
         "status": "open",
         "created_at": "2026-08-21T18:37:15.941939+00:00"
       }
-    ]
+    ],
+    "single_supplement_cents": 110000,
+    "single_supplement_percent": 46
   },
   {
     "id": "9bb28adf-7540-458a-a7d1-e25dbf23790d",
     "slug": "immersive-all-turkiye-culinary-cultural-tour",
-    "title": "immersive All Turkiye : Culinary & Cultural Tour",
+    "title": "Immersive All Turkiye : Culinary & Cultural Tour",
     "code": "WTE-9137",
     "summary": "Begin in Istanbul, where iconic landmarks such as Topkapı Palace, Blue Mosque, and the vibrant Grand Bazaar showcase the city’s rich history and dynamic culture.",
     "description": "Begin in Istanbul, where iconic landmarks such as Topkapı Palace, Blue Mosque, and the vibrant Grand Bazaar showcase the city’s rich history and dynamic culture.\n\nContinue to the moving battlefields of Gallipoli and the legendary ancient city of Troy. Discover the remarkably preserved ruins of Ephesus, then marvel at the dazzling white terraces of Pamukkale.\n\nRelax along the Mediterranean coast in Antalya before heading inland to explore the unique landscapes of Cappadocia.\n\nYour journey continues in Gaziantep, a culinary capital rich in culture and history. Visit the extraordinary Göbeklitepe, the world’s oldest known temple, Continue to Capital of Mezopotamia. Visit Mardin, Van & Kars city.\n\nStep further back in time as you explore these ancient settlements, then journey to Mount Nemrut for an unforgettable experience. Enjoy a rewarding hike to witness the colossal statues of the Commagene Kingdom and take in one of the most breathtaking sunset views in the region.\n\nMardin is the hidden gem of messopotamia. Amazing meals and great history blends here. Van Lake and Akdamar church , old Armenian Capital waits you...\n\nThis carefully curated journey offers the perfect blend of history, nature, and culture—an experience you will cherish long after your travels end.",
@@ -14374,7 +14418,6 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/istanbul-view-on-the-bosphorus-with-a-ship-yacht-s-2026-01-06-09-21-16-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/variety-of-blue-fatima-eye-protective-amulets-aga-2026-01-08-22-26-55-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/03/top-view-of-suleymaniye-mosque-with-four-minaret-i-2026-01-06-08-58-06-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/03/spices-in-a-market-in-marrakesh-2026-01-05-00-24-57-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/02/woman-on-the-top-of-the-world-sitting-on-a-mounta-2026-01-05-04-56-45-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/02/cooking-course-close-up-female-cooking-class-stu-2026-01-08-06-58-05-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/balloons-in-love-valley-cappadocia-flights-in-go-2026-01-07-06-42-34-utc-scaled.jpg",
@@ -14386,10 +14429,11 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/aerial-drone-view-to-the-streets-of-the-old-city-m-2026-01-05-05-52-51-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/igor-sporynin-XkJpVdda1BA-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/pexels-efrail-tunc-746876534-18610068-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/04/birgul-zengin-78h6uHmSUNk-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/04/pexels-brc-sngn-959446-32142909-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/04/pexels-cihan-cimen-1725918569-28239906-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/04/pexels-msglc-18134731-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2026/04/pexels-msglc-18134731-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/04/pexels-nicole-ashley-rahayu-densmoor-3632088-9376012-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/04/pexels-okan-demi-rcan-694014155-33278525-scaled.jpg"
     ],
     "days": 18,
     "nights": 17,
@@ -14406,7 +14450,7 @@ export const TOURS_DATA: Tour[] = [
       "All Regions"
     ],
     "region": "Grand Türkiye & Rail",
-    "continent": "Asia",
+    "continent": "Europe",
     "place": "Grand All-Türkiye Explorer",
     "countries": [
       "Türkiye"
@@ -14431,7 +14475,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": false,
     "is_published": true,
     "created_at": "2026-08-21T18:37:15.098777+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-07-09T07:44:26",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
@@ -14762,7 +14806,9 @@ export const TOURS_DATA: Tour[] = [
         "status": "open",
         "created_at": "2026-08-21T18:37:15.292673+00:00"
       }
-    ]
+    ],
+    "single_supplement_cents": 70000,
+    "single_supplement_percent": 11
   },
   {
     "id": "6ecdb054-9388-4ddc-8818-4b4c5bab5ebd",
@@ -14774,11 +14820,7 @@ export const TOURS_DATA: Tour[] = [
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278533-scaled.jpg",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278533-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278525-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-osmanozumut-8120863-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278535-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278536-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278539-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-alexazabache-3185493-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-artekm-30380764-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-axp-photography-500641970-27634358-scaled.jpg",
@@ -14788,11 +14830,11 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/a-mediterranean-feast-an-array-of-seafood-and-sala-2026-01-09-09-24-40-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/caroline-attwood-z38uTGNpNnA-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/a-picture-from-above-of-a-table-with-dishes-of-fis-2026-01-05-00-23-03-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/10/a-traditional-israeli-lunch-2026-01-07-23-16-51-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/bowl-with-various-pieces-of-turkish-delight-lokum-2026-01-06-10-19-30-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/10/close-up-of-middle-eastern-woman-serving-food-for-2026-01-07-02-27-49-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/10/closeup-shot-of-traditional-syrian-food-meat-on-e-2025-02-11-16-51-05-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/10/cooking-course-senior-male-chef-in-cook-uniform-2026-01-08-22-42-40-utc-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/10/cooking-course-senior-male-chef-in-cook-uniform-2026-01-08-22-42-40-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/10/authentic-turkish-testi-kebab-cooked-in-earthenwar-2026-01-09-09-19-55-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/10/derek-lu-QG8f_B2m6O4-unsplash-scaled.jpg"
     ],
     "days": 10,
     "nights": 9,
@@ -14834,7 +14876,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": false,
     "is_published": true,
     "created_at": "2026-08-21T18:37:16.035451+00:00",
-    "updated_at": "2026-08-22T21:23:36.147541+00:00",
+    "updated_at": "2026-06-21T20:34:40",
     "tour_type": "multi_day",
     "duration_hours": null,
     "meeting_point": null,
@@ -15121,35 +15163,35 @@ export const TOURS_DATA: Tour[] = [
         "status": "open",
         "created_at": "2026-08-21T18:37:16.231575+00:00"
       }
-    ]
+    ],
+    "single_supplement_cents": 50000,
+    "single_supplement_percent": 14
   },
-{
+  {
     "id": "tour-turkiye-by-rail",
     "slug": "turkiye-by-rail",
     "title": "Discover Turkiye By Rail",
     "code": "AGT-TURK",
-    "summary": "Experience Türkiye by train on an extraordinary journey from Istanbul to the far east and back. Travel scenic rail routes through Anatolia, including the Kars–Erzurum and overnight Divriği–Ankara journeys, before returning to Istanbul by high-speed train. Along the way, discover ancient Ani, Erzurum, Trabzon and Sümela Monastery, UNESCO-listed Divriği, Ankara and the Hittite capital of Hattusa.",
-    "description": "Experience Türkiye by train on an extraordinary journey from Istanbul to the far east and back. Travel scenic rail routes through Anatolia, including the Kars–Erzurum and overnight Divriği–Ankara journeys, before returning to Istanbul by high-speed train. Along the way, discover ancient Ani, Erzurum, Trabzon and Sümela Monastery, UNESCO-listed Divriği, Ankara and the Hittite capital of Hattusa.\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
-    "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2026/09/train-going-over-the-glenfinnan-railway-viaduct-in-2026-03-18-06-58-09-utc-scaled.jpeg",
+    "summary": "Discover a different side of Türkiye on an immersive journey that combines iconic cities, ancient civilizations, dramatic landscapes, and memorable railway experiences. From the historic streets of Istanbul to the remote ruins of Ani, the Black Sea mountains, the Hittite capital of Hattusa, and the cultural heart of An",
+    "description": "Discover a different side of Türkiye on an immersive journey that combines iconic cities, ancient civilizations, dramatic landscapes, and memorable railway experiences. From the historic streets of Istanbul to the remote ruins of Ani, the Black Sea mountains, the Hittite capital of Hattusa, and the cultural heart of Ankara, this itinerary goes far beyond the classic tourist route.\n\nYour journey begins in Istanbul, exploring Ottoman heritage and the treasures of the Old Town before flying east to Kars, where Russian-era architecture and the ancient city of Ani reveal the region’s fascinating history. Travel by train through eastern Anatolia to Erzurum, continue to the lush Black Sea coast and Trabzon, and discover the spectacular Sümela Monastery.\n\nThe journey then moves inland to Divriği, home to the UNESCO-listed Great Mosque and Hospital, before boarding an overnight train toward Ankara. In Türkiye’s capital, explore Anıtkabir, the Museum of Anatolian Civilizations, and the city’s Roman heritage, followed by a full day journey to Hattusa, the ancient capital of the Hittite Empire.\n\nThe adventure concludes with a high-speed train journey from Ankara back to Istanbul, bringing together Türkiye’s ancient past, diverse cultures, regional cuisines, and modern railway network in one unforgettable journey.\n\nHighlights include: Istanbul’s Ottoman heritage, Kars and Ani, scenic eastern Anatolian train journeys, Erzurum, Trabzon and the Black Sea, Sümela Monastery, UNESCO-listed Divriği, an overnight train experience, Ankara, Hattusa and Yazılıkaya.\n\nThis is a journey designed for travelers who want to see more of Türkiye, travel more meaningfully, and experience the country beyond its most familiar destinations.",
+    "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2026/09/red-train-traveling-through-golden-autumn-mountain-2026-09-08-00-49-41-utc-scaled.jpg",
     "gallery": [
-      "https://atlasglobaltours.com/wp-content/uploads/2026/09/train-going-over-the-glenfinnan-railway-viaduct-in-2026-03-18-06-58-09-utc-scaled.jpeg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/09/red-train-traveling-through-golden-autumn-mountain-2026-09-08-00-49-41-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/09/train-traveling-through-autumn-scenery-by-turquois-2026-03-16-01-25-58-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/09/aerial-view-of-the-landscape-of-hattusa-bogazkale-2026-03-18-05-43-59-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/09/ataturk-mausoleum-in-ankara-building-landmark-in-2026-03-25-05-27-29-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/09/blue-and-white-train-travelling-through-green-coun-2026-03-16-01-08-11-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/09/cliffside-architecture-historic-monastery-carved-2026-03-25-09-07-21-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/09/closeup-of-stone-sculptures-at-the-sphinx-gate-of-2026-03-18-06-38-52-utc-scaled.jpeg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/09/eastern-anatolia-turkey-cityscape-of-the-kars-to-2026-03-18-16-03-38-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/09/red-train-traveling-through-golden-autumn-mountain-2026-09-08-00-49-41-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/12/2078020-267x300.png"
+      "https://atlasglobaltours.com/wp-content/uploads/2026/09/eastern-anatolia-turkey-cityscape-of-the-kars-to-2026-03-18-16-03-38-utc-scaled.jpg"
     ],
     "days": 10,
     "nights": 9,
     "price_cents": 350000,
     "deposit_cents": 70000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Rail & Train Journeys",
@@ -15158,25 +15200,37 @@ export const TOURS_DATA: Tour[] = [
       "Hittite Hattusa"
     ],
     "region": "Grand Türkiye & Rail",
-    "continent": "Asia",
+    "continent": "Europe",
     "place": "Eastern Express & Anatolian Railway",
     "countries": [
       "Türkiye"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "Accommodation in carefully selected 4-star hotels",
+      "Daily breakfast",
+      "Selected dinners featuring regional Turkish cuisine",
+      "Domestic flight from Istanbul to Kars",
+      "Kars–Erzurum train journey",
+      "Divriği–Ankara overnight train journey",
+      "Ankara–Istanbul high-speed train journey",
+      "Private transportation for road journeys and day trips",
+      "Professional English-speaking local guides",
+      "Entrance fees to all sites included in the itinerary",
+      "Guided visits to Topkapı Palace, Ani, Sümela Monastery, Divriği Great Mosque and Hospital, Anıtkabir, Museum of Anatolian Civilizations, Hattusa and Yazılıkaya",
+      "Welcome dinner in Istanbul",
+      "Local culinary experiences as specified in the itinerary"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "International flights",
+      "Travel insurance",
+      "Lunches, except where specifically mentioned",
+      "Dinners, except where specifically mentioned",
+      "Drinks and beverages",
+      "Personal expenses",
+      "Tips for guides and drivers",
+      "Optional activities and excursions",
+      "Airport transfers unless specifically stated",
+      "Any services not listed under “Includes”"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -15205,7 +15259,7 @@ export const TOURS_DATA: Tour[] = [
         "tour_id": "turkiye-by-rail",
         "day_number": 2,
         "title": "Kars | Russian Heritage & Ancient Kars",
-        "body": "After breakfast, take a domestic flight to Kars, gateway to the far east of Türkiye.\n\n\n\nUpon arrival, begin your exploration of this fascinating border city with Kars Castle, rising above the historic center and offering panoramic views across the city. Continue to the Church of the Twelve Apostles (Kümbet Mosque), a remarkable 10th century Armenian monument that reflects the many cultural and religious layers of Kars.\n\n\n\nEnjoy an orientation walk through the historic city center, discovering Kars&#039;s distinctive Russian-era architecture. Wide streets, basalt stone buildings and the city&#039;s planned grid reflect the period of Russian rule in the late 19th and early 20th centuries.\n\n\n\nIn the evening, enjoy dinner at a local restaurant, experiencing some of the distinctive flavors of eastern Türkiye.\n\n\n\nOvernight: KarsMeals: Breakfast, DinnerIncluded: Domestic flight, local guide, Kars Castle, Church of the Twelve Apostles, city orientation walk"
+        "body": "After breakfast, take a domestic flight to Kars, gateway to the far east of Türkiye.\n\n\n\nUpon arrival, begin your exploration of this fascinating border city with Kars Castle, rising above the historic center and offering panoramic views across the city. Continue to the Church of the Twelve Apostles (Kümbet Mosque), a remarkable 10th century Armenian monument that reflects the many cultural and religious layers of Kars.\n\n\n\nEnjoy an orientation walk through the historic city center, discovering Kars's distinctive Russian-era architecture. Wide streets, basalt stone buildings and the city's planned grid reflect the period of Russian rule in the late 19th and early 20th centuries.\n\n\n\nIn the evening, enjoy dinner at a local restaurant, experiencing some of the distinctive flavors of eastern Türkiye.\n\n\n\nOvernight: KarsMeals: Breakfast, DinnerIncluded: Domestic flight, local guide, Kars Castle, Church of the Twelve Apostles, city orientation walk"
       },
       {
         "id": "day-turkiye-by-rail-3",
@@ -15247,7 +15301,7 @@ export const TOURS_DATA: Tour[] = [
         "tour_id": "turkiye-by-rail",
         "day_number": 8,
         "title": "Ankara | The Heart of Modern Türkiye",
-        "body": "Arrive in Ankara at approximately 10:30 AM after your overnight train journey. Meet your local guide and begin exploring Türkiye’s capital.\n\n\n\nStart with Anıtkabir, the monumental mausoleum of Mustafa Kemal Atatürk and one of the most important symbols of modern Türkiye.\n\n\n\nAfter the visit, continue to your hotel for check-in and some time to refresh.\n\n\n\nIn the afternoon, visit the Museum of Anatolian Civilizations, home to an exceptional collection tracing thousands of years of Anatolian history, including the remarkable heritage of the Hittites.\n\n\n\nContinue with a walk through Ankara’s ancient past, visiting the Temple of Augustus, an important Roman monument, followed by the Roman Baths of Ankara, where you can see the remains of the city&#039;s Roman-era public life.\n\n\n\nAfter a full day exploring Ankara from its ancient civilizations to the foundation of the modern Turkish Republic, enjoy the evening at leisure.\n\n\n\nOvernight: AnkaraMeals: BreakfastIncluded: Local guide, Anıtkabir, Museum of Anatolian Civilizations, Temple of Augustus, Roman Baths"
+        "body": "Arrive in Ankara at approximately 10:30 AM after your overnight train journey. Meet your local guide and begin exploring Türkiye’s capital.\n\n\n\nStart with Anıtkabir, the monumental mausoleum of Mustafa Kemal Atatürk and one of the most important symbols of modern Türkiye.\n\n\n\nAfter the visit, continue to your hotel for check-in and some time to refresh.\n\n\n\nIn the afternoon, visit the Museum of Anatolian Civilizations, home to an exceptional collection tracing thousands of years of Anatolian history, including the remarkable heritage of the Hittites.\n\n\n\nContinue with a walk through Ankara’s ancient past, visiting the Temple of Augustus, an important Roman monument, followed by the Roman Baths of Ankara, where you can see the remains of the city's Roman-era public life.\n\n\n\nAfter a full day exploring Ankara from its ancient civilizations to the foundation of the modern Turkish Republic, enjoy the evening at leisure.\n\n\n\nOvernight: AnkaraMeals: BreakfastIncluded: Local guide, Anıtkabir, Museum of Anatolian Civilizations, Temple of Augustus, Roman Baths"
       },
       {
         "id": "day-turkiye-by-rail-9",
@@ -15266,84 +15320,103 @@ export const TOURS_DATA: Tour[] = [
     ],
     "departuresList": [
       {
-        "id": "dep-turkiye-by-rail-1",
-        "tour_id": "turkiye-by-rail",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-19",
+        "id": "7afb4bf4-c5a6-4f85-943c-a04e71506dc9",
+        "tour_id": "tour-turkiye-by-rail",
+        "start_date": "2026-12-04",
+        "end_date": "2026-12-13",
         "price_cents": 350000,
         "deposit_cents": 70000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.139Z"
       },
       {
-        "id": "dep-turkiye-by-rail-2",
-        "tour_id": "turkiye-by-rail",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-24",
+        "id": "869c712d-bf85-462c-bc2d-79012aa3de03",
+        "tour_id": "tour-turkiye-by-rail",
+        "start_date": "2026-12-06",
+        "end_date": "2026-12-15",
         "price_cents": 350000,
         "deposit_cents": 70000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.139Z"
       },
       {
-        "id": "dep-turkiye-by-rail-3",
-        "tour_id": "turkiye-by-rail",
-        "start_date": "2026-09-20",
-        "end_date": "2026-09-29",
+        "id": "afddf62c-fdd5-4fdf-acbb-3fd11f5b7802",
+        "tour_id": "tour-turkiye-by-rail",
+        "start_date": "2026-12-08",
+        "end_date": "2026-12-17",
         "price_cents": 350000,
         "deposit_cents": 70000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.139Z"
       },
       {
-        "id": "dep-turkiye-by-rail-4",
-        "tour_id": "turkiye-by-rail",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-19",
+        "id": "67de1a65-1ddc-4f70-a910-6353e7a5dedc",
+        "tour_id": "tour-turkiye-by-rail",
+        "start_date": "2026-12-10",
+        "end_date": "2026-12-19",
         "price_cents": 350000,
         "deposit_cents": 70000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.139Z"
       },
       {
-        "id": "dep-turkiye-by-rail-5",
-        "tour_id": "turkiye-by-rail",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-24",
+        "id": "fd92af0c-b702-4626-ac82-a83d9f70366d",
+        "tour_id": "tour-turkiye-by-rail",
+        "start_date": "2026-12-12",
+        "end_date": "2026-12-21",
         "price_cents": 350000,
         "deposit_cents": 70000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.139Z"
+      },
+      {
+        "id": "51e375f2-2ac4-40f5-bedf-3b0554cd2b63",
+        "tour_id": "tour-turkiye-by-rail",
+        "start_date": "2026-12-14",
+        "end_date": "2026-12-23",
+        "price_cents": 350000,
+        "deposit_cents": 70000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.139Z"
       }
-    ]
+    ],
+    "single_supplement_cents": 100000,
+    "single_supplement_percent": 29,
+    "updated_at": "2026-09-14T19:21:35"
   },
   {
     "id": "tour-sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
     "slug": "sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
     "title": "Sunrise Walking Tour of Istanbul With Traditional Breakfast",
     "code": "AGT-SUNR",
-    "summary": "Experience Istanbul as the city wakes up. Watch the sunrise over the Bosphorus and Golden Horn from Sultanahmet, wander tranquil historic alleyways, and savor a rich traditional Turkish breakfast in a panoramic local terrace.",
-    "description": "Experience Istanbul as the city wakes up. Watch the sunrise over the Bosphorus and Golden Horn from Sultanahmet, wander tranquil historic alleyways, and savor a rich traditional Turkish breakfast in a panoramic local terrace.\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
+    "summary": "Experience Istanbul before the city wakes up on our Sunrise Walking Tour, a peaceful and unforgettable way to discover the historic heart of the city.",
+    "description": "Experience Istanbul before the city wakes up on our Sunrise Walking Tour, a peaceful and unforgettable way to discover the historic heart of the city.\n\nStart your morning in Sultanahmet, where the streets and squares are beautifully quiet at sunrise. Walk through the historic Hippodrome and admire the magnificent Blue Mosque and Hagia Sophia in the soft morning light. Continue through the atmospheric streets of the Old City, discovering Istanbul’s fascinating history while avoiding the crowds of the later hours.\n\nAfter your morning walk, cross to the Asian side of Istanbul by local ferry and enjoy the city from the water as the Bosphorus comes alive. Finish your experience with a traditional Turkish breakfast, featuring fresh bread, cheeses, olives, eggs, tomatoes, cucumbers, jams, honey, and Turkish tea.\n\nThis experience combines history, local life, the Bosphorus, and authentic Turkish cuisine—all in one beautiful morning.",
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2026/08/sultan-ahmet-camii-the-blue-mosque-at-sunset-is-2026-03-13-01-58-11-utc-scaled.jpg",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2026/08/sultan-ahmet-camii-the-blue-mosque-at-sunset-is-2026-03-13-01-58-11-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/08/hagia-sophia-2026-03-09-23-05-09-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/08/inviting-breakfast-platter-with-bagel-cheese-cof-2026-01-05-01-01-01-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/08/flying-seagull-over-sultan-ahmed-mosque-istanbul-2026-01-08-07-27-30-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/12/2078020-267x300.png"
+      "https://atlasglobaltours.com/wp-content/uploads/2026/08/flying-seagull-over-sultan-ahmed-mosque-istanbul-2026-01-08-07-27-30-utc-scaled.jpg"
     ],
     "days": 1,
     "nights": 0,
     "price_cents": 15000,
     "deposit_cents": 3000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Istanbul",
@@ -15358,19 +15431,13 @@ export const TOURS_DATA: Tour[] = [
       "Türkiye"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "Local Tour Guide",
+      "Transportation",
+      "Traditional Breakfast"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "Travel Insurance",
+      "Tiprs and Gestures"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -15378,7 +15445,7 @@ export const TOURS_DATA: Tour[] = [
     "is_featured": true,
     "is_published": true,
     "tour_type": "day",
-    "duration_hours": 4,
+    "duration_hours": 6,
     "meeting_point": "Sultanahmet Square, Istanbul",
     "activity_level": "Moderate",
     "travel_style": "Small Group Cultural Immersion",
@@ -15389,89 +15456,109 @@ export const TOURS_DATA: Tour[] = [
     "daysList": [],
     "departuresList": [
       {
-        "id": "dep-sunrise-walking-tour-of-istanbul-with-traditional-breakfast-1",
-        "tour_id": "sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-10",
+        "id": "18cdb98e-a0ba-4516-bf24-64599610fdd2",
+        "tour_id": "tour-sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
+        "start_date": "2026-11-25",
+        "end_date": "2026-11-25",
         "price_cents": 15000,
         "deposit_cents": 3000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.139Z"
       },
       {
-        "id": "dep-sunrise-walking-tour-of-istanbul-with-traditional-breakfast-2",
-        "tour_id": "sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-15",
+        "id": "3dc6fca0-f118-4af4-8cec-c596d5ed6b3d",
+        "tour_id": "tour-sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
+        "start_date": "2026-11-27",
+        "end_date": "2026-11-27",
         "price_cents": 15000,
         "deposit_cents": 3000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.139Z"
       },
       {
-        "id": "dep-sunrise-walking-tour-of-istanbul-with-traditional-breakfast-3",
-        "tour_id": "sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
-        "start_date": "2026-09-20",
-        "end_date": "2026-09-20",
+        "id": "f4102ba1-d599-41d9-bbb0-62d3a2856197",
+        "tour_id": "tour-sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
+        "start_date": "2026-11-29",
+        "end_date": "2026-11-29",
         "price_cents": 15000,
         "deposit_cents": 3000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.139Z"
       },
       {
-        "id": "dep-sunrise-walking-tour-of-istanbul-with-traditional-breakfast-4",
-        "tour_id": "sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-10",
+        "id": "53d7e38b-32ef-4736-93dd-b5fa5df7d6e5",
+        "tour_id": "tour-sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
+        "start_date": "2026-12-01",
+        "end_date": "2026-12-01",
         "price_cents": 15000,
         "deposit_cents": 3000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.139Z"
       },
       {
-        "id": "dep-sunrise-walking-tour-of-istanbul-with-traditional-breakfast-5",
-        "tour_id": "sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-15",
+        "id": "ee18e522-669f-4c2c-9df9-71cec13729e1",
+        "tour_id": "tour-sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
+        "start_date": "2026-12-03",
+        "end_date": "2026-12-03",
         "price_cents": 15000,
         "deposit_cents": 3000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.140Z"
+      },
+      {
+        "id": "b3c30f93-b9da-4b2a-8471-844ce476219b",
+        "tour_id": "tour-sunrise-walking-tour-of-istanbul-with-traditional-breakfast",
+        "start_date": "2026-12-05",
+        "end_date": "2026-12-05",
+        "price_cents": 15000,
+        "deposit_cents": 3000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.140Z"
       }
-    ]
+    ],
+    "updated_at": "2026-08-29T09:31:27"
   },
   {
     "id": "tour-immersive-classic-vietnam",
     "slug": "immersive-classic-vietnam",
-    "title": "immersive Classic Vietnam",
+    "title": "Immersive Classic Vietnam",
     "code": "AGT-IMME",
-    "summary": "Experience the very best of Vietnam on an unforgettable journey from the historic capital of Hanoi to the spectacular limestone islands of Lan Ha Bay, the imperial city of Hue, the lantern-lit streets of Hoi An, and the vibrant energy of Ho Chi Minh City. This carefully designed itinerary combines authentic cultural encounters, UNESCO World Heritage Sites, breathtaking landscapes, delicious cuisine, and immersive local experiences.",
-    "description": "Experience the very best of Vietnam on an unforgettable journey from the historic capital of Hanoi to the spectacular limestone islands of Lan Ha Bay, the imperial city of Hue, the lantern-lit streets of Hoi An, and the vibrant energy of Ho Chi Minh City. This carefully designed itinerary combines authentic cultural encounters, UNESCO World Heritage Sites, breathtaking landscapes, delicious cuisine, and immersive local experiences.\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
+    "summary": "Experience the very best of Vietnam on an unforgettable journey from the historic capital of Hanoi to the spectacular limestone islands of Lan Ha Bay, the imperial city of Hue, the lantern-lit streets of Hoi An, and the vibrant energy of Ho Chi Minh City. This carefully designed itinerary combines authentic cultural en",
+    "description": "Experience the very best of Vietnam on an unforgettable journey from the historic capital of Hanoi to the spectacular limestone islands of Lan Ha Bay, the imperial city of Hue, the lantern-lit streets of Hoi An, and the vibrant energy of Ho Chi Minh City. This carefully designed itinerary combines authentic cultural encounters, UNESCO World Heritage Sites, breathtaking landscapes, delicious cuisine, and immersive local experiences.",
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2026/07/beautiful-woman-with-vietnam-culture-traditional-d-2026-03-26-11-57-00-utc-scaled.jpg",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2026/07/beautiful-woman-with-vietnam-culture-traditional-d-2026-03-26-11-57-00-utc-scaled.jpg",
+      "/countries/vietnam.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/07/hanoi-pagoda-and-lake-at-night-2026-01-08-01-43-38-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/07/ha-long-bay-south-china-sea-vietnam-2026-01-05-04-56-16-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/07/floating-markets-are-a-common-tradition-throughout-2026-03-25-00-57-45-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/07/beautiful-limestone-rocks-and-secluded-beaches-in-2026-03-24-22-45-36-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/07/back-view-of-a-woman-meditating-on-the-stone-by-th-2026-01-07-07-20-00-utc-scaled.jpeg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/07/hoi-an-vietnam-street-view-with-traditional-boat-2026-03-16-02-45-45-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/07/kaohsiung-lotus-pond-2026-03-24-11-16-29-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/07/old-temple-in-the-middle-of-vietnamese-nature-2026-03-18-20-44-59-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/07/panorama-of-yuantong-temple-refletion-with-waterfr-2026-03-10-02-09-57-utc-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2026/07/sarmat-batagov-cuZbrYoimv8-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/07/shashank-hudkar-KYBc1eq0dJo-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/07/skyline-of-hanoi-at-dusk-turtle-tower-on-hoan-kie-2026-03-18-17-45-51-utc-scaled.jpg"
     ],
     "days": 10,
     "nights": 9,
     "price_cents": 235000,
     "deposit_cents": 47000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Halong Bay Cruise",
@@ -15486,19 +15573,50 @@ export const TOURS_DATA: Tour[] = [
       "Vietnam"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "8 Nights 4* Accomodations",
+      "1 overnight premium cruise in Lan Ha Bay",
+      "Daily breakfast (9)",
+      "1 Welcome Dinner in Hanoi",
+      "1 Lunch and 1 Dinner onboard the Lan Ha Bay cruise",
+      "1 Brunch onboard before disembarkation",
+      "Airport transfers on arrival and departure",
+      "Domestic flights:",
+      "Hanoi → Hue",
+      "Da Nang → Ho Chi Minh City",
+      "Comfortable private, air-conditioned transportation throughout the tour",
+      "Professional English-speaking local tour leader and licensed local guides",
+      "All sightseeing and excursions as per itinerary",
+      "Entrance fees to all included attractions",
+      "Visit to the Temple of Literature",
+      "Traditional Vietnamese tea house experience",
+      "Hoan Kiem Lake & Ngoc Son Temple",
+      "Hanoi Train Street visit",
+      "Guided Hanoi Old Quarter Street Food Tour",
+      "Tailor consultation experience in Hanoi",
+      "Lan Ha Bay overnight cruise",
+      "Sea kayaking in Lan Ha Bay",
+      "Visit to the Imperial Citadel of Hue",
+      "Ba Na Hills Cable Car",
+      "Golden Bridge",
+      "Dragon Bridge visit in Da Nang",
+      "Guided walking tour of Hoi An Ancient Town (UNESCO World Heritage Site)",
+      "Tailor consultation experience in Hoi An",
+      "Cu Chi Tunnels excursion",
+      "Full-day Mekong Delta experience",
+      "Bottled drinking water during sightseeing and transfers",
+      "All applicable taxes and service charges"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "International airfare",
+      "Vietnam visa (if required)",
+      "Travel insurance (highly recommended)",
+      "Meals not mentioned in the itinerary",
+      "Alcoholic beverages and personal expenses",
+      "Optional excursions and activities",
+      "Tips and gratuities for guides, drivers, and cruise staff",
+      "Laundry, telephone, and minibar expenses",
+      "Personal shopping and tailor-made clothing purchases",
+      "Early check-in and late check-out (unless specified)"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -15517,160 +15635,183 @@ export const TOURS_DATA: Tour[] = [
     "daysList": [
       {
         "id": "day-immersive-classic-vietnam-1",
-        "tour_id": "immersive-classic-vietnam",
+        "tour_id": "tour-immersive-classic-vietnam",
         "day_number": 1,
-        "title": "Welcome to Hanoi | Welcome Meeting & Traditional Vietnamese Dinner ",
-        "body": "Upon arrival in Vietnam&#039;s charming capital, you&#039;ll be transferred to your hotel where you can relax before meeting your fellow travelers.\n\n\n\nIn the evening, join your tour leader for a welcome meeting introducing the adventure ahead, followed by a traditional Vietnamese dinner at one of Hanoi&#039;s carefully selected local restaurants. Enjoy your first taste of Vietnam&#039;s rich culinary heritage while learning about local customs and culture.\n\n\n\nMeals: Welcome Dinner \n\n\n\nAccommodation :  The Ann Hanoi Hotel & Spa or Similar"
+        "title": "Welcome to Hanoi | Welcome Meeting & Traditional Vietnamese Dinner",
+        "body": "Upon arrival in Vietnam's charming capital, you'll be transferred to your hotel where you can relax before meeting your fellow travelers.\n\nIn the evening, join your tour leader for a welcome meeting introducing the adventure ahead, followed by a traditional Vietnamese dinner at one of Hanoi's carefully selected local restaurants. Enjoy your first taste of Vietnam's rich culinary heritage while learning about local customs and culture.\n\nMeals: Welcome Dinner\n\nAccommodation :  The Ann Hanoi Hotel & Spa or Similar"
       },
       {
         "id": "day-immersive-classic-vietnam-2",
-        "tour_id": "immersive-classic-vietnam",
+        "tour_id": "tour-immersive-classic-vietnam",
         "day_number": 2,
         "title": "Discover the Soul of Hanoi | History • Culture • Local Life • Street Food",
-        "body": "Begin your day with a visit to the Temple of Literature, Vietnam&#039;s first national university and one of Hanoi&#039;s most beautiful historical landmarks.\n\n\n\nContinue to a traditional local tea house where you&#039;ll discover Vietnam&#039;s centuries-old tea culture while enjoying a relaxing tasting experience.\n\n\n\nStroll around the peaceful Hoan Kiem Lake before visiting the picturesque Ngoc Son Temple, located on a small island connected by the iconic red bridge.\n\n\n\nLater, explore the famous Train Street, where local life unfolds just inches from the railway tracks.\n\n\n\nIn the afternoon, enjoy free time for a tailor-made clothing experience, with skilled Vietnamese artisans creating custom garments to your measurements.\n\n\n\nAs evening falls, dive into Hanoi&#039;s legendary food scene on a guided Old Quarter Street Food Tour, sampling authentic Vietnamese specialties including pho, bun cha, fresh spring rolls, banh mi, egg coffee, and many local favorites.\n\n\n\nMeals: Breakfast\n\n\n\nAccommodation : The Ann Hanoi Hotel & Spa or Similar"
+        "body": "Begin your day with a visit to the Temple of Literature, Vietnam's first national university and one of Hanoi's most beautiful historical landmarks.\n\nContinue to a traditional local tea house where you'll discover Vietnam's centuries-old tea culture while enjoying a relaxing tasting experience.\n\nStroll around the peaceful Hoan Kiem Lake before visiting the picturesque Ngoc Son Temple, located on a small island connected by the iconic red bridge.\n\nLater, explore the famous Train Street, where local life unfolds just inches from the railway tracks.\n\nIn the afternoon, enjoy free time for a tailor-made clothing experience, with skilled Vietnamese artisans creating custom garments to your measurements.\n\nAs evening falls, dive into Hanoi's legendary food scene on a guided Old Quarter Street Food Tour, sampling authentic Vietnamese specialties including pho, bun cha, fresh spring rolls, banh mi, egg coffee, and many local favorites.\n\nMeals: Breakfast\n\nAccommodation : The Ann Hanoi Hotel & Spa or Similar"
       },
       {
         "id": "day-immersive-classic-vietnam-3",
-        "tour_id": "immersive-classic-vietnam",
+        "tour_id": "tour-immersive-classic-vietnam",
         "day_number": 3,
         "title": "Hanoi to Ha Long & Lan Ha Bay | Luxury Cruise • Sea Kayaking • Overnight on Board",
-        "body": "After breakfast, travel through northern Vietnam&#039;s countryside to the spectacular coastline.\n\n\n\nBoard your premium cruise and begin sailing through the emerald waters of Lan Ha Bay, a quieter and equally beautiful extension of the famous Ha Long Bay.\n\n\n\nFollowing lunch onboard, paddle through hidden lagoons and dramatic limestone formations during an included sea kayaking adventure, allowing you to experience the bay from a unique perspective.\n\n\n\nEnjoy sunset on deck before an elegant dinner onboard. Spend the evening surrounded by one of Vietnam&#039;s most spectacular natural landscapes.\n\n\n\nOvernight: Cruise Ship\n\n\n\nMeals: Breakfast, Lunch, Dinner"
+        "body": "After breakfast, travel through northern Vietnam's countryside to the spectacular coastline.\n\nBoard your premium cruise and begin sailing through the emerald waters of Lan Ha Bay, a quieter and equally beautiful extension of the famous Ha Long Bay.\n\nFollowing lunch onboard, paddle through hidden lagoons and dramatic limestone formations during an included sea kayaking adventure, allowing you to experience the bay from a unique perspective.\n\nEnjoy sunset on deck before an elegant dinner onboard. Spend the evening surrounded by one of Vietnam's most spectacular natural landscapes.\n\nOvernight: Cruise Ship\n\nMeals: Breakfast, Lunch, Dinner"
       },
       {
         "id": "day-immersive-classic-vietnam-4",
-        "tour_id": "immersive-classic-vietnam",
+        "tour_id": "tour-immersive-classic-vietnam",
         "day_number": 4,
         "title": "Lan Ha Bay to Hanoi | Cruising the Limestone Islands",
-        "body": "Wake up surrounded by breathtaking scenery and enjoy a peaceful morning cruise through the tranquil waters of Lan Ha Bay.\n\n\n\nTake advantage of the final hours onboard before returning to the harbor.\n\n\n\nTravel back to Hanoi where the remainder of the afternoon is yours to relax or explore independently.\n\n\n\nMeals: Breakfast, Brunch\n\n\n\nAccommodation : The Ann Hanoi Hotel & Spa or Similar"
+        "body": "Wake up surrounded by breathtaking scenery and enjoy a peaceful morning cruise through the tranquil waters of Lan Ha Bay.\n\nTake advantage of the final hours onboard before returning to the harbor.\n\nTravel back to Hanoi where the remainder of the afternoon is yours to relax or explore independently.\n\nMeals: Breakfast, Brunch\n\nAccommodation : The Ann Hanoi Hotel & Spa or Similar"
       },
       {
         "id": "day-immersive-classic-vietnam-5",
-        "tour_id": "immersive-classic-vietnam",
+        "tour_id": "tour-immersive-classic-vietnam",
         "day_number": 5,
         "title": "Hanoi to Hue | Flight Included • Imperial Heritage",
-        "body": "After breakfast, transfer to the airport for your included domestic flight to Hue, Vietnam&#039;s former imperial capital.\n\n\n\nUpon arrival, explore the magnificent Imperial Citadel, a UNESCO World Heritage Site that served as the political and cultural heart of the Nguyen Dynasty.\n\n\n\nWalk through impressive gates, royal palaces, temples, and beautifully landscaped gardens while discovering Vietnam&#039;s fascinating imperial history.\n\n\n\nEnjoy the relaxed atmosphere of this historic riverside city during the evening.\n\n\n\nMeals: Breakfast\n\n\n\nAccommodation : Legacy Hoi An Resort or similar"
+        "body": "After breakfast, transfer to the airport for your included domestic flight to Hue, Vietnam's former imperial capital.\n\nUpon arrival, explore the magnificent Imperial Citadel, a UNESCO World Heritage Site that served as the political and cultural heart of the Nguyen Dynasty.\n\nWalk through impressive gates, royal palaces, temples, and beautifully landscaped gardens while discovering Vietnam's fascinating imperial history.\n\nEnjoy the relaxed atmosphere of this historic riverside city during the evening.\n\nMeals: Breakfast\n\nAccommodation : Legacy Hoi An Resort or similar"
       },
       {
         "id": "day-immersive-classic-vietnam-6",
-        "tour_id": "immersive-classic-vietnam",
+        "tour_id": "tour-immersive-classic-vietnam",
         "day_number": 6,
         "title": "Hue to Da Nang | Coastal Journey • Beach Resort • Ba Na Hills",
-        "body": "Travel south along one of Vietnam&#039;s most scenic coastal routes toward Da Nang.\n\n\n\nVisit the famous Ba Na Hills, reaching the mountaintop by one of the world&#039;s longest and most spectacular cable car rides.\n\n\n\nWalk across the iconic Golden Bridge, dramatically supported by giant stone hands overlooking the surrounding mountains.\n\n\n\nLater, check into your beach resort where you can relax beside the ocean before visiting Da Nang&#039;s famous Dragon Bridge, particularly impressive after sunset when illuminated.\n\n\n\nMeals: Breakfast\n\n\n\nAccommodation : Legacy Hoi An Resort or similar"
+        "body": "Travel south along one of Vietnam's most scenic coastal routes toward Da Nang.\n\nVisit the famous Ba Na Hills, reaching the mountaintop by one of the world's longest and most spectacular cable car rides.\n\nWalk across the iconic Golden Bridge, dramatically supported by giant stone hands overlooking the surrounding mountains.\n\nLater, check into your beach resort where you can relax beside the ocean before visiting Da Nang's famous Dragon Bridge, particularly impressive after sunset when illuminated.\n\nMeals: Breakfast\n\nAccommodation : Legacy Hoi An Resort or similar"
       },
       {
         "id": "day-immersive-classic-vietnam-7",
-        "tour_id": "immersive-classic-vietnam",
+        "tour_id": "tour-immersive-classic-vietnam",
         "day_number": 7,
         "title": "Explore Hoi An | UNESCO Heritage • Tailor Experience",
-        "body": "Today visit the enchanting ancient town of Hoi An, one of Southeast Asia&#039;s best-preserved trading ports and a UNESCO World Heritage Site.\n\n\n\nExplore its charming pedestrian streets lined with beautifully preserved merchant houses, temples, colorful lanterns, local markets, and riverside cafés.\n\n\n\nVisit the town&#039;s historic landmarks while learning about its multicultural trading history.\n\n\n\nHoi An is internationally renowned for its exceptional tailoring. Enjoy time to visit one of the city&#039;s famous tailor shops where custom clothing can be created in just a day or two.\n\n\n\nSpend the evening soaking in the magical atmosphere as thousands of lanterns illuminate the ancient streets.\n\n\n\nMeals: Breakfast\n\n\n\nAccommodation : Legacy Hoi An Resort or similar"
+        "body": "Today visit the enchanting ancient town of Hoi An, one of Southeast Asia's best-preserved trading ports and a UNESCO World Heritage Site.\n\nExplore its charming pedestrian streets lined with beautifully preserved merchant houses, temples, colorful lanterns, local markets, and riverside cafés.\n\nVisit the town's historic landmarks while learning about its multicultural trading history.\n\nHoi An is internationally renowned for its exceptional tailoring. Enjoy time to visit one of the city's famous tailor shops where custom clothing can be created in just a day or two.\n\nSpend the evening soaking in the magical atmosphere as thousands of lanterns illuminate the ancient streets.\n\nMeals: Breakfast\n\nAccommodation : Legacy Hoi An Resort or similar"
       },
       {
         "id": "day-immersive-classic-vietnam-8",
-        "tour_id": "immersive-classic-vietnam",
+        "tour_id": "tour-immersive-classic-vietnam",
         "day_number": 8,
         "title": "Hoi An to Ho Chi Minh City | Morning Flight • Cu Chi Tunnels",
-        "body": "Transfer to the airport for your included morning flight to vibrant Ho Chi Minh City.\n\n\n\nThis afternoon, visit the remarkable Cu Chi Tunnels, an extensive underground network used during the Vietnam War.\n\n\n\nDiscover hidden entrances, command centers, living quarters, and learn about the extraordinary resilience and resourcefulness of those who lived and fought here.\n\n\n\nReturn to Ho Chi Minh City for an evening at leisure.\n\n\n\nMeals: Breakfast\n\n\n\nAccommodation : Rex Saigon Hotel or Similar"
+        "body": "Transfer to the airport for your included morning flight to vibrant Ho Chi Minh City.\n\nThis afternoon, visit the remarkable Cu Chi Tunnels, an extensive underground network used during the Vietnam War.\n\nDiscover hidden entrances, command centers, living quarters, and learn about the extraordinary resilience and resourcefulness of those who lived and fought here.\n\nReturn to Ho Chi Minh City for an evening at leisure.\n\nMeals: Breakfast\n\nAccommodation : Rex Saigon Hotel or Similar"
       },
       {
         "id": "day-immersive-classic-vietnam-9",
-        "tour_id": "immersive-classic-vietnam",
+        "tour_id": "tour-immersive-classic-vietnam",
         "day_number": 9,
         "title": "Mekong Delta Experience | Floating Villages • River Life • Local Culture",
-        "body": "Today journey into the lush landscapes of the Mekong Delta, known as Vietnam&#039;s &quot;Rice Bowl.&quot;\n\n\n\nCruise along the intricate waterways while witnessing everyday life on the river.\n\n\n\nVisit traditional villages, tropical orchards, local workshops, and family-run businesses producing regional specialties.\n\n\n\nExperience authentic Delta hospitality while learning about the unique culture that has flourished along the Mekong River for generations.\n\n\n\nReturn to Ho Chi Minh City in the evening for your final night in Vietnam.\n\n\n\nMeals: Breakfast\n\n\n\nAccommodation : Rex Saigon hotel or similar"
+        "body": "Today journey into the lush landscapes of the Mekong Delta, known as Vietnam's \"Rice Bowl.\"\n\nCruise along the intricate waterways while witnessing everyday life on the river.\n\nVisit traditional villages, tropical orchards, local workshops, and family-run businesses producing regional specialties.\n\nExperience authentic Delta hospitality while learning about the unique culture that has flourished along the Mekong River for generations.\n\nReturn to Ho Chi Minh City in the evening for your final night in Vietnam.\n\nMeals: Breakfast\n\nAccommodation : Rex Saigon hotel or similar"
       },
       {
         "id": "day-immersive-classic-vietnam-10",
-        "tour_id": "immersive-classic-vietnam",
+        "tour_id": "tour-immersive-classic-vietnam",
         "day_number": 10,
         "title": "Departure | Farewell Vietnam",
-        "body": "After breakfast, your unforgettable Vietnamese adventure comes to an end.\n\n\n\nAt the appropriate time, transfer to the airport for your onward flight.\n\n\n\nThank you for choosing Atlas Global Tours. We hope to welcome you again on another immersive journey around the world.\n\n\n\nMeals: Breakfast"
+        "body": "After breakfast, your unforgettable Vietnamese adventure comes to an end.\n\nAt the appropriate time, transfer to the airport for your onward flight.\n\nThank you for choosing Atlas Global Tours. We hope to welcome you again on another immersive journey around the world.\n\nMeals: Breakfast"
       }
     ],
     "departuresList": [
       {
-        "id": "dep-immersive-classic-vietnam-1",
-        "tour_id": "immersive-classic-vietnam",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-19",
+        "id": "6dbaaada-ede7-4a6a-b8e1-0b9d18eed968",
+        "tour_id": "tour-immersive-classic-vietnam",
+        "start_date": "2026-12-04",
+        "end_date": "2026-12-13",
         "price_cents": 235000,
         "deposit_cents": 47000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.141Z"
       },
       {
-        "id": "dep-immersive-classic-vietnam-2",
-        "tour_id": "immersive-classic-vietnam",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-24",
+        "id": "44e7ed7b-bf04-4ae5-886f-5b522c0a33ff",
+        "tour_id": "tour-immersive-classic-vietnam",
+        "start_date": "2026-12-06",
+        "end_date": "2026-12-15",
         "price_cents": 235000,
         "deposit_cents": 47000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.141Z"
       },
       {
-        "id": "dep-immersive-classic-vietnam-3",
-        "tour_id": "immersive-classic-vietnam",
-        "start_date": "2026-09-20",
-        "end_date": "2026-09-29",
+        "id": "74ea0255-ae04-42f4-9470-41e74a79ddae",
+        "tour_id": "tour-immersive-classic-vietnam",
+        "start_date": "2026-12-08",
+        "end_date": "2026-12-17",
         "price_cents": 235000,
         "deposit_cents": 47000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.141Z"
       },
       {
-        "id": "dep-immersive-classic-vietnam-4",
-        "tour_id": "immersive-classic-vietnam",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-19",
+        "id": "b200b4d0-e79b-475b-a04f-d8ceb1bea153",
+        "tour_id": "tour-immersive-classic-vietnam",
+        "start_date": "2026-12-10",
+        "end_date": "2026-12-19",
         "price_cents": 235000,
         "deposit_cents": 47000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.141Z"
       },
       {
-        "id": "dep-immersive-classic-vietnam-5",
-        "tour_id": "immersive-classic-vietnam",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-24",
+        "id": "e8db5cdd-205c-408b-b641-92481d472e4c",
+        "tour_id": "tour-immersive-classic-vietnam",
+        "start_date": "2026-12-12",
+        "end_date": "2026-12-21",
         "price_cents": 235000,
         "deposit_cents": 47000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.141Z"
+      },
+      {
+        "id": "6642e8e6-233f-453b-8164-9d16aad563ce",
+        "tour_id": "tour-immersive-classic-vietnam",
+        "start_date": "2026-12-14",
+        "end_date": "2026-12-23",
+        "price_cents": 235000,
+        "deposit_cents": 47000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.141Z"
       }
-    ]
+    ],
+    "single_supplement_cents": 65000,
+    "single_supplement_percent": 28,
+    "updated_at": "2026-07-15T10:27:06"
   },
   {
     "id": "tour-immersive-kenya-safari",
     "slug": "immersive-kenya-safari",
-    "title": "immersive Kenya safari",
+    "title": "Immersive Kenya safari",
     "code": "AGT-IMME",
-    "summary": "Discover the very best of Kenya on this carefully crafted 8-day private safari, combining breathtaking landscapes, exceptional wildlife encounters, and authentic cultural experiences. From the bustling capital of Nairobi to the elephant-rich plains of Amboseli, the tranquil waters of Lake Naivasha, the wildlife haven of Lake Nakuru, and the legendary Masai Mara, this journey showcases Kenya's most iconic safari destinations.",
-    "description": "Discover the very best of Kenya on this carefully crafted 8-day private safari, combining breathtaking landscapes, exceptional wildlife encounters, and authentic cultural experiences. From the bustling capital of Nairobi to the elephant-rich plains of Amboseli, the tranquil waters of Lake Naivasha, the wildlife haven of Lake Nakuru, and the legendary Masai Mara, this journey showcases Kenya's most iconic safari destinations.\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
+    "summary": "Immerse yourself in the breathtaking landscapes and extraordinary wildlife of Kenya on this carefully designed 8-day private safari. Combining iconic national parks with exceptional wildlife encounters and scenic beauty, this journey offers the perfect balance of adventure, comfort, and authentic East African experienc",
+    "description": "Immerse yourself in the breathtaking landscapes and extraordinary wildlife of Kenya on this carefully designed 8-day private safari. Combining iconic national parks with exceptional wildlife encounters and scenic beauty, this journey offers the perfect balance of adventure, comfort, and authentic East African experiences.\n\nYour safari begins in Nairobi, before travelling to Amboseli National Park, one of Kenya's most spectacular wildlife destinations. Renowned for its impressive elephant herds and magnificent views of Mount Kilimanjaro, Amboseli provides one of Africa's most iconic safari settings. Over two unforgettable days, enjoy expertly guided game drives in a private 4x4 Land Cruiser, searching for elephants, lions, cheetahs, buffaloes, giraffes, zebras, and an abundance of other wildlife against the backdrop of Africa's highest peak.\n\nFrom Amboseli, continue to the tranquil shores of Lake Naivasha, a freshwater lake nestled within the Great Rift Valley. Here, enjoy a relaxing boat cruise among resident hippos and abundant birdlife, followed by a guided nature walk on Crescent Island, where giraffes, zebras, wildebeests, antelopes, and other free-roaming wildlife can be observed on foot. This peaceful interlude offers a refreshing contrast to the traditional safari experience.\n\nYour journey then takes you to Lake Nakuru National Park, celebrated for its diverse ecosystems and remarkable concentration of wildlife. The park is one of Kenya's premier destinations for spotting both black and white rhinos, while also offering excellent opportunities to see Rothschild's giraffes, lions, leopards, buffaloes, zebras, flamingos, and hundreds of bird species amidst beautiful lake scenery.\n\nThe adventure culminates in the legendary Masai Mara National Reserve, Kenya's most celebrated safari destination and one of Africa's finest wildlife reserves. Famed for its exceptional concentration of big cats and the legendary Big Five, the Masai Mara delivers unforgettable game-viewing opportunities across its vast savannahs. Depending on the season, guests may also witness the spectacular Great Migration, one of the world's greatest natural phenomena.\n\nThroughout the journey, travel in the comfort of a private safari vehicle accompanied by an experienced professional guide, allowing complete flexibility to tailor game drive schedules according to your interests and wildlife sightings.\n\nThis 8-day private Kenya safari is ideal for couples, families, photographers, first-time visitors, small groups, and discerning travellers seeking a comprehensive safari experience. Blending world-renowned wildlife reserves, dramatic landscapes, serene lakes, and authentic nature experiences, this itinerary showcases the very best of Kenya in comfort and style.",
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2026/06/a-beautiful-tanzania-wildlife-picture-of-world-2026-03-19-02-06-52-utc-scaled.jpg",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/a-beautiful-tanzania-wildlife-picture-of-world-2026-03-19-02-06-52-utc-scaled.jpg",
+      "/countries/kenya.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/cheetah-sitting-atop-a-fallen-tree-branch-2026-03-19-01-51-51-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/elephant-in-savannah-with-buffalo-herd-and-trees-2026-03-18-06-42-11-utc-scaled.jpeg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/06/elephants-at-sunrise-in-thailand-2026-01-08-08-24-18-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/elephants-in-park-2026-03-19-10-44-57-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/giraffes-in-wilderness-habitat-green-foliage-2026-03-26-10-25-55-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/herd-of-zebra-standing-on-dry-grass-field-2026-03-26-23-49-42-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/herd-of-zebras-and-ostrich-in-the-wild-in-park-on-2026-03-25-00-06-46-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/lion-and-lioness-greeting-each-other-in-masai-mara-2026-03-27-01-34-09-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/06/rothschild-giraffe-in-lake-nakuru-kenya-2026-03-09-04-52-25-utc-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2026/06/rothschild-giraffe-in-lake-nakuru-kenya-2026-03-09-04-52-25-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/06/two-elephants-fighting-at-the-savannah-in-kenya-2026-03-13-01-53-40-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/06/zebras-and-wildebeests-in-the-serengeti-national-p-2026-03-26-01-00-39-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/06/zebras-grazing-under-the-shade-of-a-tree-2026-03-09-07-58-36-utc-scaled.jpg"
     ],
     "days": 8,
     "nights": 7,
     "price_cents": 485000,
     "deposit_cents": 97000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Big Five Safari",
@@ -15685,19 +15826,38 @@ export const TOURS_DATA: Tour[] = [
       "Kenya"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "All transfers by safari pop-up roof Land Cruiser",
+      "All listed activities",
+      "Meals as per itinerary",
+      "Accommodations as per itinerary",
+      "All national park entry fees",
+      "Professional English-speaking safari guide",
+      "Non-alcoholic beverages in safari vehicle",
+      "Government taxes and VAT",
+      "Drinking water throughout the safari",
+      "Airport pickup and drop-off",
+      "Wi-Fi in safari vehicle",
+      "Charging ports in vehicle",
+      "Fire extinguisher",
+      "RF radio communication system",
+      "First aid kit",
+      "Safari gift pack for every guest",
+      "Cooler box",
+      "24/7 emergency contact support",
+      "Binoculars available on request",
+      "Amref Flying Doctors emergency evacuation insurance",
+      "Complimentary mineral water",
+      "Boat safari as per itinerary"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "International flights",
+      "Laundry",
+      "Visa and travel documentation fees",
+      "Tips and gratuities (suggested $10+ per person per day)",
+      "Activities or meals not specified in the itinerary",
+      "Optional hot air balloon safari",
+      "Extra activities not listed",
+      "Travel insurance"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -15719,14 +15879,14 @@ export const TOURS_DATA: Tour[] = [
         "tour_id": "immersive-kenya-safari",
         "day_number": 1,
         "title": "Nairobi Wildlife Experience | Nairobi & Sheldrick Wild Life | Giraffe Centre",
-        "body": "Welcome to Kenya! Upon arrival at Jomo Kenyatta International Airport, you will be warmly welcomed by your private safari guide before setting off on your first wildlife adventure.\n\n\n\nBegin with a game drive through Nairobi National Park, the world&#039;s only national park bordering a capital city. Despite its urban setting, the park is home to lions, rhinos, buffaloes, giraffes, zebras, antelopes, and a remarkable variety of birdlife.\n\n\n\nContinue to the renowned Sheldrick Wildlife Trust, where you&#039;ll learn about the inspiring rescue and rehabilitation of orphaned elephants. Afterwards, visit the Giraffe Centre for a close encounter with the endangered Rothschild&#039;s giraffe and discover the conservation efforts dedicated to protecting this remarkable species.\n\n\n\nLater, transfer to your carefully selected hotel in Nairobi and enjoy a relaxing evening before your unforgettable safari journey begins.\n\n\n\nWildlife You may see ( 12 ) : African Lion | African Leopard | Black Rhinoceros | Cheetah | Hyena | Masai Giraffe | Reticulated Giraffe | Cape Buffalo | Eland | Common Ostrich | Ostrich | Vulture \n\n\n\nMeals: Lunch | DinnerOvernight: Double Tree By Hilton or Similar ( 4 * )"
+        "body": "Welcome to Kenya! Upon arrival at Jomo Kenyatta International Airport, you will be warmly welcomed by your private safari guide before setting off on your first wildlife adventure.\n\n\n\nBegin with a game drive through Nairobi National Park, the world's only national park bordering a capital city. Despite its urban setting, the park is home to lions, rhinos, buffaloes, giraffes, zebras, antelopes, and a remarkable variety of birdlife.\n\n\n\nContinue to the renowned Sheldrick Wildlife Trust, where you'll learn about the inspiring rescue and rehabilitation of orphaned elephants. Afterwards, visit the Giraffe Centre for a close encounter with the endangered Rothschild's giraffe and discover the conservation efforts dedicated to protecting this remarkable species.\n\n\n\nLater, transfer to your carefully selected hotel in Nairobi and enjoy a relaxing evening before your unforgettable safari journey begins.\n\n\n\nWildlife You may see ( 12 ) : African Lion | African Leopard | Black Rhinoceros | Cheetah | Hyena | Masai Giraffe | Reticulated Giraffe | Cape Buffalo | Eland | Common Ostrich | Ostrich | Vulture \n\n\n\nMeals: Lunch | DinnerOvernight: Double Tree By Hilton or Similar ( 4 * )"
       },
       {
         "id": "day-immersive-kenya-safari-2",
         "tour_id": "immersive-kenya-safari",
         "day_number": 2,
         "title": "Amboseli National Park – Evening Game Drive",
-        "body": "After breakfast, depart Nairobi for the scenic drive to Amboseli National Park, enjoying views of Kenya&#039;s countryside and rural landscapes along the way. Arrive at your safari lodge in time for lunch and a chance to relax before your first wildlife adventure.\n\n\n\nIn the late afternoon, embark on an exciting game drive through Amboseli, renowned for its magnificent elephant herds, sweeping plains, wetlands, and breathtaking views of Mount Kilimanjaro. Keep watch for elephants, giraffes, zebras, buffaloes, wildebeests, and, with a little luck, predators such as lions and cheetahs.\n\n\n\nReturn to your lodge for dinner and a relaxing overnight stay in the heart of the African wilderness.\n\n\n\nWildlife You May See ( 7 ) : African Elephant | African Leopard | African Lion | Black Rhinoceros | Cape Buffalo | Hyena | Cheetah\n\n\n\nMeals: Breakfast, Lunch & DinnerAccommodation : Amboseli Sopa Lodge or similar"
+        "body": "After breakfast, depart Nairobi for the scenic drive to Amboseli National Park, enjoying views of Kenya's countryside and rural landscapes along the way. Arrive at your safari lodge in time for lunch and a chance to relax before your first wildlife adventure.\n\n\n\nIn the late afternoon, embark on an exciting game drive through Amboseli, renowned for its magnificent elephant herds, sweeping plains, wetlands, and breathtaking views of Mount Kilimanjaro. Keep watch for elephants, giraffes, zebras, buffaloes, wildebeests, and, with a little luck, predators such as lions and cheetahs.\n\n\n\nReturn to your lodge for dinner and a relaxing overnight stay in the heart of the African wilderness.\n\n\n\nWildlife You May See ( 7 ) : African Elephant | African Leopard | African Lion | Black Rhinoceros | Cape Buffalo | Hyena | Cheetah\n\n\n\nMeals: Breakfast, Lunch & DinnerAccommodation : Amboseli Sopa Lodge or similar"
       },
       {
         "id": "day-immersive-kenya-safari-3",
@@ -15747,21 +15907,21 @@ export const TOURS_DATA: Tour[] = [
         "tour_id": "immersive-kenya-safari",
         "day_number": 5,
         "title": "Lake Naivasha to Lake Nakuru National Park",
-        "body": "After breakfast, visit Hell&#039;s Gate National Park, renowned for its dramatic cliffs, volcanic landscapes, and geothermal scenery. Depending on your preference, enjoy sightseeing, a guided walk, or an optional cycling experience through the park.\n\n\n\nContinue to Lake Nakuru National Park, arriving in time for lunch and check-in at your lodge. In the late afternoon, embark on an exciting game drive in one of Kenya&#039;s finest wildlife reserves, home to black and white rhinos, Rothschild&#039;s giraffes, buffaloes, zebras, lions, and a rich variety of birdlife, including seasonal flamingos.\n\n\n\nReturn to your lodge for dinner and a relaxing overnight stay.\n\n\n\nWildlife You May See ( 9) : African Lion | African Leopard | Black Rhinoceros | Cape Buffalo | Hyena | Reticulated Giraffe | Plains Zebra | WaterBuck | Eland\n\n\n\nMeals: Breakfast, Lunch & DinnerAccommodation : Ziwa Bush Lodge or Similar"
+        "body": "After breakfast, visit Hell's Gate National Park, renowned for its dramatic cliffs, volcanic landscapes, and geothermal scenery. Depending on your preference, enjoy sightseeing, a guided walk, or an optional cycling experience through the park.\n\n\n\nContinue to Lake Nakuru National Park, arriving in time for lunch and check-in at your lodge. In the late afternoon, embark on an exciting game drive in one of Kenya's finest wildlife reserves, home to black and white rhinos, Rothschild's giraffes, buffaloes, zebras, lions, and a rich variety of birdlife, including seasonal flamingos.\n\n\n\nReturn to your lodge for dinner and a relaxing overnight stay.\n\n\n\nWildlife You May See ( 9) : African Lion | African Leopard | Black Rhinoceros | Cape Buffalo | Hyena | Reticulated Giraffe | Plains Zebra | WaterBuck | Eland\n\n\n\nMeals: Breakfast, Lunch & DinnerAccommodation : Ziwa Bush Lodge or Similar"
       },
       {
         "id": "day-immersive-kenya-safari-6",
         "tour_id": "immersive-kenya-safari",
         "day_number": 6,
         "title": "Lake Nakuru to Maasai Mara National Reserve",
-        "body": "After breakfast, depart Lake Nakuru National Park for the legendary Maasai Mara National Reserve, travelling through the scenic Great Rift Valley and Kenya&#039;s picturesque countryside. Arrive at your safari lodge in time for lunch and a chance to relax.\n\n\n\nIn the late afternoon, visit a traditional Maasai village, where you&#039;ll gain insight into the customs, traditions, and daily life of one of Africa&#039;s most iconic communities. Enjoy cultural performances and learn about the Maasai&#039;s rich heritage before returning to your lodge.\n\n\n\nSpend the evening at leisure, followed by dinner and an overnight stay in the heart of the Masai Mara.\n\n\n\nWildlife You may See ( 7 ) : African Elephant | African Leopard | African Lion | Cape Buffalo | Cheetah | Hyena | Plains Zebra\n\n\n\nMeals: Breakfast, Lunch & DinnerAccommodation :  Maasai Kimana Camp or Similar"
+        "body": "After breakfast, depart Lake Nakuru National Park for the legendary Maasai Mara National Reserve, travelling through the scenic Great Rift Valley and Kenya's picturesque countryside. Arrive at your safari lodge in time for lunch and a chance to relax.\n\n\n\nIn the late afternoon, visit a traditional Maasai village, where you'll gain insight into the customs, traditions, and daily life of one of Africa's most iconic communities. Enjoy cultural performances and learn about the Maasai's rich heritage before returning to your lodge.\n\n\n\nSpend the evening at leisure, followed by dinner and an overnight stay in the heart of the Masai Mara.\n\n\n\nWildlife You may See ( 7 ) : African Elephant | African Leopard | African Lion | Cape Buffalo | Cheetah | Hyena | Plains Zebra\n\n\n\nMeals: Breakfast, Lunch & DinnerAccommodation :  Maasai Kimana Camp or Similar"
       },
       {
         "id": "day-immersive-kenya-safari-7",
         "tour_id": "immersive-kenya-safari",
         "day_number": 7,
         "title": "Full Day Safari in Masai Mara National Reserve",
-        "body": "After an early breakfast, set out with picnic lunches for a full-day safari in the world-renowned Masai Mara National Reserve. Explore its vast savannahs and wildlife-rich landscapes alongside your expert guide, maximizing your chances of spotting the Big Five as well as cheetahs, giraffes, zebras, wildebeests, hyenas, and an abundance of birdlife.\n\n\n\nDepending on the season, you may also witness the spectacular Great Migration, one of the world&#039;s greatest natural events. Enjoy a picnic lunch at a scenic location within the reserve before continuing your afternoon game drive in search of more unforgettable wildlife encounters.\n\n\n\nReturn to your lodge in the evening for dinner and a relaxing overnight stay.\n\n\n\nWildlife You May See ( 8 ) : African Leopard | African Elephant | African Lion | Black Rhinoceros | Cape Buffalo | Cheetah | Hyena | Plains Zebra\n\n\n\nMeals: Breakfast, Lunch & DinnerAccommodation :  Mara Kimana Camp or Similar"
+        "body": "After an early breakfast, set out with picnic lunches for a full-day safari in the world-renowned Masai Mara National Reserve. Explore its vast savannahs and wildlife-rich landscapes alongside your expert guide, maximizing your chances of spotting the Big Five as well as cheetahs, giraffes, zebras, wildebeests, hyenas, and an abundance of birdlife.\n\n\n\nDepending on the season, you may also witness the spectacular Great Migration, one of the world's greatest natural events. Enjoy a picnic lunch at a scenic location within the reserve before continuing your afternoon game drive in search of more unforgettable wildlife encounters.\n\n\n\nReturn to your lodge in the evening for dinner and a relaxing overnight stay.\n\n\n\nWildlife You May See ( 8 ) : African Leopard | African Elephant | African Lion | Black Rhinoceros | Cape Buffalo | Cheetah | Hyena | Plains Zebra\n\n\n\nMeals: Breakfast, Lunch & DinnerAccommodation :  Mara Kimana Camp or Similar"
       },
       {
         "id": "day-immersive-kenya-safari-8",
@@ -15773,89 +15933,110 @@ export const TOURS_DATA: Tour[] = [
     ],
     "departuresList": [
       {
-        "id": "dep-immersive-kenya-safari-1",
-        "tour_id": "immersive-kenya-safari",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-17",
+        "id": "e0718617-bfbd-47ff-9e1f-333965959f3d",
+        "tour_id": "tour-immersive-kenya-safari",
+        "start_date": "2026-12-04",
+        "end_date": "2026-12-11",
         "price_cents": 485000,
         "deposit_cents": 97000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.143Z"
       },
       {
-        "id": "dep-immersive-kenya-safari-2",
-        "tour_id": "immersive-kenya-safari",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-22",
+        "id": "40e2b8cc-2748-44c8-9f50-71b7937e74bd",
+        "tour_id": "tour-immersive-kenya-safari",
+        "start_date": "2026-12-06",
+        "end_date": "2026-12-13",
         "price_cents": 485000,
         "deposit_cents": 97000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.143Z"
       },
       {
-        "id": "dep-immersive-kenya-safari-3",
-        "tour_id": "immersive-kenya-safari",
-        "start_date": "2026-09-20",
-        "end_date": "2026-09-27",
+        "id": "78bcc0e8-b141-4c66-8836-a8f1892884a7",
+        "tour_id": "tour-immersive-kenya-safari",
+        "start_date": "2026-12-08",
+        "end_date": "2026-12-15",
         "price_cents": 485000,
         "deposit_cents": 97000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.143Z"
       },
       {
-        "id": "dep-immersive-kenya-safari-4",
-        "tour_id": "immersive-kenya-safari",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-17",
+        "id": "961db1df-3d0d-4e41-b856-a3964205be05",
+        "tour_id": "tour-immersive-kenya-safari",
+        "start_date": "2026-12-10",
+        "end_date": "2026-12-17",
         "price_cents": 485000,
         "deposit_cents": 97000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.143Z"
       },
       {
-        "id": "dep-immersive-kenya-safari-5",
-        "tour_id": "immersive-kenya-safari",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-22",
+        "id": "9552db73-16f1-4840-8824-4e24d04a1940",
+        "tour_id": "tour-immersive-kenya-safari",
+        "start_date": "2026-12-12",
+        "end_date": "2026-12-19",
         "price_cents": 485000,
         "deposit_cents": 97000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.143Z"
+      },
+      {
+        "id": "017a5b3b-43aa-47e4-a5fb-3a3c343423f1",
+        "tour_id": "tour-immersive-kenya-safari",
+        "start_date": "2026-12-14",
+        "end_date": "2026-12-21",
+        "price_cents": 485000,
+        "deposit_cents": 97000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.143Z"
       }
-    ]
+    ],
+    "single_supplement_cents": 115000,
+    "single_supplement_percent": 24,
+    "updated_at": "2026-06-29T17:30:07"
   },
   {
     "id": "tour-immersive-sri-lanka-tour",
     "slug": "immersive-sri-lanka-tour",
-    "title": "immersive Sri Lanka : Culture, Nature & Wildlife",
+    "title": "Immersive Sri Lanka : Culture, Nature & Wildlife",
     "code": "AGT-IMME",
-    "summary": "Upon arrival at Colombo Bandaranaike International Airport, you will be warmly welcomed by your Atlas Global Tour representative and transferred to your hotel in Negombo.",
-    "description": "Upon arrival at Colombo Bandaranaike International Airport, you will be warmly welcomed by your Atlas Global Tour representative and transferred to your hotel in Negombo.\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
+    "summary": "Discover the highlights of Sri Lanka on this immersive 10-day journey through the island’s rich cultural heritage, lush landscapes, and stunning coastline. Explore the ancient cities of the Cultural Triangle, visit sacred temples and UNESCO-listed sites, enjoy a scenic train journey through the tea-covered hills of the",
+    "description": "Discover the highlights of Sri Lanka on this immersive 10-day journey through the island’s rich cultural heritage, lush landscapes, and stunning coastline. Explore the ancient cities of the Cultural Triangle, visit sacred temples and UNESCO-listed sites, enjoy a scenic train journey through the tea-covered hills of the central highlands, and encounter wildlife in a national park safari. Relax on golden beaches, experience vibrant local culture, and savor Sri Lanka’s renowned cuisine. This well-balanced itinerary offers the perfect introduction to one of Asia’s most captivating destinations.",
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2026/06/elephants-bathing-in-the-river-pinnawala-elephant-2026-03-17-00-02-19-utc-scaled.jpg",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/elephants-bathing-in-the-river-pinnawala-elephant-2026-03-17-00-02-19-utc-scaled.jpg",
+      "/countries/sri-lanka.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/siarhei-palishchuk-kSUDzuVslS0-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/hendrik-cornelissen-jpTT_SAU034-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/fishing-boat-on-the-beach-at-sunset-sri-lanka-2026-03-17-08-40-15-utc-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/06/elephants-bathing-in-the-river-pinnawala-elephant-2026-03-17-00-02-19-utc-1-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/elephants-bathing-in-the-river-2026-03-09-22-25-59-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/daniel-klein-Qx8_d5dGhrs-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/ancient-dagoba-with-detailed-sky-in-sri-lanka-2026-03-10-01-02-28-utc-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2026/06/alex-azabache-hZhhVLLKJQ4-unsplash-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2026/06/woman-enjoying-freedom-in-scenic-rural-landscape-2026-03-20-01-02-31-utc-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2026/06/woman-enjoying-freedom-in-scenic-rural-landscape-2026-03-20-01-02-31-utc-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2026/06/girl-meets-sunrise-in-the-mountains-girl-travelin-2026-03-16-22-44-46-utc-scaled.jpg"
     ],
     "days": 10,
     "nights": 9,
     "price_cents": 200000,
     "deposit_cents": 40000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Cultural Triangle",
@@ -15870,19 +16051,38 @@ export const TOURS_DATA: Tour[] = [
       "Sri Lanka"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "• Airport pick-up & drop-off",
+      "• English-speaking chauffeur guide for the entire tour (other language-speaking chauffeur guides",
+      "can be arranged on request)",
+      "• Complimentary water bottles",
+      "• Complimentary dinner on the first day of arrival",
+      "• 24/7 emergency local contact & assistance",
+      "• All days breakfast",
+      "• Dambulla cave temple entrance fees",
+      "• Sigiriya village tour",
+      "• Traditional bullock cart ride",
+      "• Catamaran boat ride",
+      "• village home hospitality experience",
+      "• Authentic Sri Lankan cooking session with ancient methods",
+      "• Traditional Sri Lankan lunch",
+      "• Visit Matale spice garden",
+      "• Tea plantation visit",
+      "• Tea tasting & factory experience",
+      "• Tea making process",
+      "• From Nanuoya to Ella train tickets",
+      "• Complimentary Ravana pool club voucher"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "• Airfare",
+      "• Insurance",
+      "• All entrance Tickets excluding Dambulla cave temple",
+      "• Traditional Kandyan dance show",
+      "• Ella spice garden cooking demonstration",
+      "• Ravana pool club additional activities",
+      "• Any expense of a personal nature",
+      "• Yala jeep safari",
+      "• Water sports in bentota",
+      "• Sea turtle hatchery"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -15925,7 +16125,7 @@ export const TOURS_DATA: Tour[] = [
         "tour_id": "immersive-sri-lanka-tour",
         "day_number": 4,
         "title": "KANDY: THE CULTURAL HEART OF SRI LANKA",
-        "body": "Journey into Sri Lanka’s scenic hill country and the cultural heart of Kandy. En route, visit a fragrant spice garden in Matale, where you&#039;ll discover the island’s famous spices and traditional Ayurvedic practices.\n\n\n\nUpon arrival, explore the peaceful Kandy Lake and visit the sacred Temple of the Tooth Relic, Sri Lanka’s most revered Buddhist shrine.\n\n\n\nThis evening, experience the energy of a traditional Kandyan cultural performance before enjoying free time to wander Kandy’s vibrant streets and local markets.\n\n\n\nACCOMMODATION: Thilanka Hotel (4-5 Star) Or Similar\n\n\n\nMEALS: Breakfast\n\n\n\nACTIVITIES: Matale Spice Garden, Kandy Lake, Temple Of Tooth Relic, Kandy View Point, Kandy Traditional Dance \n\n\n\nPHYSICAL RATING: Medium (Walk Around spice Garden and Kandy Lake)"
+        "body": "Journey into Sri Lanka’s scenic hill country and the cultural heart of Kandy. En route, visit a fragrant spice garden in Matale, where you'll discover the island’s famous spices and traditional Ayurvedic practices.\n\n\n\nUpon arrival, explore the peaceful Kandy Lake and visit the sacred Temple of the Tooth Relic, Sri Lanka’s most revered Buddhist shrine.\n\n\n\nThis evening, experience the energy of a traditional Kandyan cultural performance before enjoying free time to wander Kandy’s vibrant streets and local markets.\n\n\n\nACCOMMODATION: Thilanka Hotel (4-5 Star) Or Similar\n\n\n\nMEALS: Breakfast\n\n\n\nACTIVITIES: Matale Spice Garden, Kandy Lake, Temple Of Tooth Relic, Kandy View Point, Kandy Traditional Dance \n\n\n\nPHYSICAL RATING: Medium (Walk Around spice Garden and Kandy Lake)"
       },
       {
         "id": "day-immersive-sri-lanka-tour-5",
@@ -15972,69 +16172,89 @@ export const TOURS_DATA: Tour[] = [
     ],
     "departuresList": [
       {
-        "id": "dep-immersive-sri-lanka-tour-1",
-        "tour_id": "immersive-sri-lanka-tour",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-19",
+        "id": "9cf2e1f5-502b-4b92-a15c-9edf5705052f",
+        "tour_id": "tour-immersive-sri-lanka-tour",
+        "start_date": "2026-12-04",
+        "end_date": "2026-12-13",
         "price_cents": 200000,
         "deposit_cents": 40000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.144Z"
       },
       {
-        "id": "dep-immersive-sri-lanka-tour-2",
-        "tour_id": "immersive-sri-lanka-tour",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-24",
+        "id": "2ce9b98f-ebff-4b80-bac9-0e7c4716bc63",
+        "tour_id": "tour-immersive-sri-lanka-tour",
+        "start_date": "2026-12-06",
+        "end_date": "2026-12-15",
         "price_cents": 200000,
         "deposit_cents": 40000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.144Z"
       },
       {
-        "id": "dep-immersive-sri-lanka-tour-3",
-        "tour_id": "immersive-sri-lanka-tour",
-        "start_date": "2026-09-20",
-        "end_date": "2026-09-29",
+        "id": "c0f508e6-0e27-46bf-84fa-bcf496edbf89",
+        "tour_id": "tour-immersive-sri-lanka-tour",
+        "start_date": "2026-12-08",
+        "end_date": "2026-12-17",
         "price_cents": 200000,
         "deposit_cents": 40000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.144Z"
       },
       {
-        "id": "dep-immersive-sri-lanka-tour-4",
-        "tour_id": "immersive-sri-lanka-tour",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-19",
+        "id": "2c63b377-e23e-4829-96ae-4a703675ce37",
+        "tour_id": "tour-immersive-sri-lanka-tour",
+        "start_date": "2026-12-10",
+        "end_date": "2026-12-19",
         "price_cents": 200000,
         "deposit_cents": 40000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.144Z"
       },
       {
-        "id": "dep-immersive-sri-lanka-tour-5",
-        "tour_id": "immersive-sri-lanka-tour",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-24",
+        "id": "2d413bb9-7e69-4485-b066-1228334515b6",
+        "tour_id": "tour-immersive-sri-lanka-tour",
+        "start_date": "2026-12-12",
+        "end_date": "2026-12-21",
         "price_cents": 200000,
         "deposit_cents": 40000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.144Z"
+      },
+      {
+        "id": "8e89bc39-d111-4368-a3a4-868246596ace",
+        "tour_id": "tour-immersive-sri-lanka-tour",
+        "start_date": "2026-12-14",
+        "end_date": "2026-12-23",
+        "price_cents": 200000,
+        "deposit_cents": 40000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.144Z"
       }
-    ]
+    ],
+    "single_supplement_cents": 50000,
+    "single_supplement_percent": 25,
+    "updated_at": "2026-06-16T12:25:09"
   },
   {
     "id": "tour-immersive-jordan",
     "slug": "immersive-jordan",
     "title": "IMMERSIVE JORDAN : Petra to Wadi Rum",
     "code": "AGT-IMME",
-    "summary": "Arrive in Amman. We have Welcome Meeting at 2 pm Meet with your guide and travel mates. We are Embark on a captivating Jordan tour, starting in Amman with visit to the Citadel and Roman Theater. Get ready for an orientation walk through the city’s lively streets. Discover local cafes, markets, and the historic charm of the Jordanian capital. Evening at leisure.",
-    "description": "Arrive in Amman. We have Welcome Meeting at 2 pm Meet with your guide and travel mates. We are Embark on a captivating Jordan tour, starting in Amman with visit to the Citadel and Roman Theater. Get ready for an orientation walk through the city’s lively streets. Discover local cafes, markets, and the historic charm of the Jordanian capital. Evening at leisure.\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
+    "summary": "Merhaban ( Hello ) everyone. Welcome to Breath-taking natural wonders and ancient ruins of Jordan. We are Embark on a captivating Jordan tour, starting in Amman with visits to the Citadel and Roman Theater. Explore the ancient ruins of Jerash and the hilltop Ajloun Castle before discovering Madaba’s famous mosaics and ",
+    "description": "Merhaban ( Hello ) everyone. Welcome to Breath-taking natural wonders and ancient ruins of Jordan. We are Embark on a captivating Jordan tour, starting in Amman with visits to the Citadel and Roman Theater. Explore the ancient ruins of Jerash and the hilltop Ajloun Castle before discovering Madaba’s famous mosaics and the views from Mount Nebo. Spend a full day in Petra, marveling at its rock-carved architecture. Experience the breathtaking landscapes of Wadi Rum with a jeep tour and a night under the stars in a Bedouin camp. Finally, relax in Aqaba by the Red Sea before returning to Amman for your departure.\n\nDay 1 -  Amman City ( Orientation walk )\n\nDay 2 - Amman City ( jerash Amman visit, Ajloun Castle, Cooking Class )\n\nDay 3 - Amman Wadi Rum ( Lawrence's Spring, Seven Pillars of Wisdom, Dramatic Sand Dunes, Ancient Rock petroglyphs ) UNESCO\n\nDay 4 - Amman City ( Petra & Paraoh's Castle, triumphal Arch, Amphitheatre ) UNESCO\n\nDay 5 - Amman City ( Dead Sea, Swimming Stop, Shobakcastle )\n\nDay 6 - Departure Day",
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-spencer-4388167-scaled.jpg",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-spencer-4388167-scaled.jpg",
@@ -16045,16 +16265,16 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-vincent-ma-janssen-3258236-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-bycmdcrey-13458330-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-marco-casella-370088636-14743453-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-axp-photography-500641970-18717329-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-bycmdcrey-13458338-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-alexazabache-3214958-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-vincent-pelletier-113252-720254-scaled.jpg"
     ],
     "days": 6,
     "nights": 5,
     "price_cents": 300000,
     "deposit_cents": 60000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Rose-Red Petra",
@@ -16069,19 +16289,26 @@ export const TOURS_DATA: Tour[] = [
       "Jordan"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "5 nights’ accommodation in carefully selected hotels and 1 night in a Wadi Rum desert camp",
+      "Daily breakfast and selected dinners as per itinerary",
+      "Private transportation with air-conditioned vehicle",
+      "Professional English-speaking tour guide",
+      "All entrance fees to mentioned sites (Jerash, Ajloun Castle, Wadi Rum, Petra, Shobak Castle, Dead Sea access)",
+      "Guided orientation walk in Amman",
+      "Jordanian cooking class experience",
+      "Wadi Rum jeep tour and desert activities",
+      "Airport transfers on arrival and departure",
+      "Bottled water during tours"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "International airfare to/from Jordan",
+      "Travel insurance (highly recommended)",
+      "Visa fees and border taxes (if applicable)",
+      "Meals not specified in the itinerary",
+      "Optional activities or excursions not listed as included",
+      "Tips for guides, drivers, and hotel staff",
+      "Personal expenses (souvenirs, laundry, minibar, etc.)",
+      "Beverages other than those provided during meals"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -16138,74 +16365,94 @@ export const TOURS_DATA: Tour[] = [
         "tour_id": "immersive-jordan",
         "day_number": 6,
         "title": "Farewell from Jordan – Until We Meet Again",
-        "body": "The Tour Ends where it starts in Amman. \n\n\n\nAs you embark on your journey home, may the memories you&#039;ve gathered during our trip stay with you like treasures in your heart. \n\n\n\nSafe travels and may your path ahead be as enriching and joyful as your time here. Until we meet again, cherish the moments and carry a piece of JORDAN&#039;S spirit with you wherever you go.\n\n\n\nFarewell and best wishes for your future adventures!\n\n\n\nWarm regards\n\n\n\nAGT GROUP LLC TEAM"
+        "body": "The Tour Ends where it starts in Amman. \n\n\n\nAs you embark on your journey home, may the memories you've gathered during our trip stay with you like treasures in your heart. \n\n\n\nSafe travels and may your path ahead be as enriching and joyful as your time here. Until we meet again, cherish the moments and carry a piece of JORDAN'S spirit with you wherever you go.\n\n\n\nFarewell and best wishes for your future adventures!\n\n\n\nWarm regards\n\n\n\nAGT GROUP LLC TEAM"
       }
     ],
     "departuresList": [
       {
-        "id": "dep-immersive-jordan-1",
-        "tour_id": "immersive-jordan",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-15",
+        "id": "b6a5ac42-5217-4414-85dd-f21777101d24",
+        "tour_id": "tour-immersive-jordan",
+        "start_date": "2026-12-04",
+        "end_date": "2026-12-09",
         "price_cents": 300000,
         "deposit_cents": 60000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.171Z"
       },
       {
-        "id": "dep-immersive-jordan-2",
-        "tour_id": "immersive-jordan",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-20",
+        "id": "9477c2c7-a69c-4a9e-8738-d6e97b42c93c",
+        "tour_id": "tour-immersive-jordan",
+        "start_date": "2026-12-06",
+        "end_date": "2026-12-11",
         "price_cents": 300000,
         "deposit_cents": 60000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.171Z"
       },
       {
-        "id": "dep-immersive-jordan-3",
-        "tour_id": "immersive-jordan",
-        "start_date": "2026-09-20",
-        "end_date": "2026-09-25",
+        "id": "69ee0935-f16f-4e06-816a-54e71a42f20e",
+        "tour_id": "tour-immersive-jordan",
+        "start_date": "2026-12-08",
+        "end_date": "2026-12-13",
         "price_cents": 300000,
         "deposit_cents": 60000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.171Z"
       },
       {
-        "id": "dep-immersive-jordan-4",
-        "tour_id": "immersive-jordan",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-15",
+        "id": "bb400824-99bb-4a53-8f3a-7e271ce37fd3",
+        "tour_id": "tour-immersive-jordan",
+        "start_date": "2026-12-10",
+        "end_date": "2026-12-15",
         "price_cents": 300000,
         "deposit_cents": 60000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.171Z"
       },
       {
-        "id": "dep-immersive-jordan-5",
-        "tour_id": "immersive-jordan",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-20",
+        "id": "ec9823c3-4a8d-4abc-b6ec-965770e31447",
+        "tour_id": "tour-immersive-jordan",
+        "start_date": "2026-12-12",
+        "end_date": "2026-12-17",
         "price_cents": 300000,
         "deposit_cents": 60000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.171Z"
+      },
+      {
+        "id": "62b8afc9-be14-4e75-b732-f989c0cad491",
+        "tour_id": "tour-immersive-jordan",
+        "start_date": "2026-12-14",
+        "end_date": "2026-12-19",
+        "price_cents": 300000,
+        "deposit_cents": 60000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.171Z"
       }
-    ]
+    ],
+    "single_supplement_cents": 100000,
+    "single_supplement_percent": 33,
+    "updated_at": "2026-06-03T18:27:15"
   },
   {
     "id": "tour-immersive-egypt-jordan",
     "slug": "immersive-egypt-jordan",
     "title": "Immersive Egypt Tour : Abu Simbel Temple & Luxury Dahabia Cruise",
     "code": "AGT-IMME",
-    "summary": "Embark on an extraordinary 15-day journey through two of the world’s most fascinating lands — Egypt and Jordan — where ancient wonders, desert adventures, and cultural treasures come together in one unforgettable experience.",
-    "description": "Embark on an extraordinary 15-day journey through two of the world’s most fascinating lands — Egypt and Jordan — where ancient wonders, desert adventures, and cultural treasures come together in one unforgettable experience.\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
+    "summary": "Embark on an extraordinary 15-day journey through two of the world’s most fascinating lands — Egypt and Jordan — where ancient wonders, desert adventures, and cultural treasures come together in one unforgettable experience.\nBegin in Cairo, Egypt’s bustling capital where ancient history and modern life blend seamlessly",
+    "description": "Embark on an extraordinary 15-day journey through two of the world’s most fascinating lands — Egypt and Jordan — where ancient wonders, desert adventures, and cultural treasures come together in one unforgettable experience.\nBegin in Cairo, Egypt’s bustling capital where ancient history and modern life blend seamlessly. Stand in awe before the Great Pyramids of Giza and the enigmatic Sphinx, marvels of human achievement that have captivated travelers for millennia. Explore Historic Cairo, a UNESCO World Heritage Site, and visit the Grand Egyptian Museum, home to the glittering treasures of Tutankhamun.\nContinue to Aswan, where the tranquil waters of Lake Nasser cradle the Temple of Philae, and the rhythm of Nubian culture fills the air. Set sail on a luxurious Nile River cruise, following in the footsteps of pharaohs as you visit the monumental temples of Abu Simbel, Kom Ombo, Edfu, and Karnak. On the West Bank of Luxor, explore the Valley of the Kings, the Temple of Queen Hatshepsut, and the towering Colossi of Memnon.\nTravel onward to Hurghada, a Red Sea paradise offering crystal-clear waters, vibrant coral reefs, and opportunities for full day boat trip snorkeling, or simply relaxing by the sea.\nFly to Amman, the capital of Jordan, where the ancient world meets modern Middle Eastern culture. Discover the Roman ruins of Jerash, the medieval fortress of Ajloun, and Amman’s lively downtown.\nContinue to the vast desert of Wadi Rum, a UNESCO World Heritage Site, to explore Lawrence’s Spring, the Seven Pillars of Wisdom, and ancient rock petroglyphs among dramatic sand dunes. Journey onward to the legendary Rose City of Petra, a UNESCO treasure carved into rose-red cliffs — see the Pharaoh’s Castle, Triumphal Arch, and Roman Amphitheatre.\nYour adventure concludes at the Dead Sea, the lowest point on Earth, where you can float effortlessly in mineral-rich waters and visit the Shobak Castle before your departure.",
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2025/02/RamsesEgypt_1.jpeg",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2025/02/RamsesEgypt_1.jpeg",
@@ -16217,15 +16464,29 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/02/adil-elouardii-cUHMAFyaprU-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/02/betty-sun-vHwXbVAGfRU-unsplash-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/02/camping-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/02/cem-sagisman-yW8cnvDW6bA-unsplash-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/cem-sagisman-yW8cnvDW6bA-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/egypt-river-boat-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/heba-alwahsh-Y8XfKhqKNGc-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/isis-temple-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/ismail-basidi-25jxwBFsgE4-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/jordan1-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/jordan2-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/karnak-temple-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/mostafa-rzq-3JNYT7arNck-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/petra1-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/petra2-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/petra3-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/phiale-temple-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/samer-khodeir-Hx5dPjnED14-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/tommaso-delton-RmEYq3TCWY0-unsplash-scaled.jpg"
     ],
     "days": 15,
     "nights": 14,
     "price_cents": 850000,
     "deposit_cents": 170000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Pyramids & Dahabiya",
@@ -16241,19 +16502,20 @@ export const TOURS_DATA: Tour[] = [
       "Jordan"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "Accomodation - Unique Boutique Hotels or Brand Hotels",
+      "Transportations - Private Mini Bus with A/C. & Nile River Cruise Ship & Domestic Flight",
+      "Meals - All Breakfasts & 2 Lunches & 6 Dinners",
+      "Entrance Fees",
+      "Complimentary Arrival Transfer",
+      "Tour Leader / Tour Guide Escorts during the tour",
+      "Cooking Class",
+      "Some domestic flight Cairo to Abu Simbel",
+      "international flight Cairo to amman"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "Travel insurance",
+      "Tips & Gestures",
+      "Personal Expenses"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -16378,89 +16640,110 @@ export const TOURS_DATA: Tour[] = [
     ],
     "departuresList": [
       {
-        "id": "dep-immersive-egypt-jordan-1",
-        "tour_id": "immersive-egypt-jordan",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-24",
+        "id": "0cb855a8-e456-46a2-a787-9ed39fabbfd4",
+        "tour_id": "tour-immersive-egypt-jordan",
+        "start_date": "2026-11-27",
+        "end_date": "2026-12-11",
         "price_cents": 850000,
         "deposit_cents": 170000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.172Z"
       },
       {
-        "id": "dep-immersive-egypt-jordan-2",
-        "tour_id": "immersive-egypt-jordan",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-29",
+        "id": "e68e7f3b-3f8b-4029-9555-cf1dddb76bb3",
+        "tour_id": "tour-immersive-egypt-jordan",
+        "start_date": "2026-11-29",
+        "end_date": "2026-12-13",
         "price_cents": 850000,
         "deposit_cents": 170000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.172Z"
       },
       {
-        "id": "dep-immersive-egypt-jordan-3",
-        "tour_id": "immersive-egypt-jordan",
-        "start_date": "2026-09-20",
-        "end_date": "2026-10-04",
+        "id": "f85de2ff-61d3-4c39-8f4d-aa6ef58c4d7a",
+        "tour_id": "tour-immersive-egypt-jordan",
+        "start_date": "2026-12-01",
+        "end_date": "2026-12-15",
         "price_cents": 850000,
         "deposit_cents": 170000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.172Z"
       },
       {
-        "id": "dep-immersive-egypt-jordan-4",
-        "tour_id": "immersive-egypt-jordan",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-24",
+        "id": "5f935602-2bd1-418d-9ce7-233968f6213c",
+        "tour_id": "tour-immersive-egypt-jordan",
+        "start_date": "2026-12-03",
+        "end_date": "2026-12-17",
         "price_cents": 850000,
         "deposit_cents": 170000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.172Z"
       },
       {
-        "id": "dep-immersive-egypt-jordan-5",
-        "tour_id": "immersive-egypt-jordan",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-29",
+        "id": "9319ca29-0926-4b2c-b35c-c94086536eaf",
+        "tour_id": "tour-immersive-egypt-jordan",
+        "start_date": "2026-12-05",
+        "end_date": "2026-12-19",
         "price_cents": 850000,
         "deposit_cents": 170000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.172Z"
+      },
+      {
+        "id": "601c104d-df2e-4a40-aa15-1bc2e3a46f82",
+        "tour_id": "tour-immersive-egypt-jordan",
+        "start_date": "2026-12-07",
+        "end_date": "2026-12-21",
+        "price_cents": 850000,
+        "deposit_cents": 170000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.172Z"
       }
-    ]
+    ],
+    "single_supplement_cents": 100000,
+    "single_supplement_percent": 12,
+    "updated_at": "2026-08-28T13:52:48"
   },
   {
     "id": "tour-immersive-transylvania",
     "slug": "immersive-transylvania",
     "title": "Immersive Transylvania Tour : Dracula's Land & Carpathians",
     "code": "AGT-IMME",
-    "summary": "Welcome meeting at 1pm then orientation walk starts. Explore Buda Castle District (UNESCO) with panoramic views of the Danube.",
-    "description": "Welcome meeting at 1pm then orientation walk starts. Explore Buda Castle District (UNESCO) with panoramic views of the Danube.\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
+    "summary": "A Transylvania tour offers an unforgettable journey through one of Europe's most captivating and mystical regions. Located in central Romania, Transylvania is famous for its dramatic landscapes, medieval castles, fortified churches, and rich history steeped in myths and legends, including the story of Dracula. Brașov, ",
+    "description": "A Transylvania tour offers an unforgettable journey through one of Europe's most captivating and mystical regions. Located in central Romania, Transylvania is famous for its dramatic landscapes, medieval castles, fortified churches, and rich history steeped in myths and legends, including the story of Dracula. Brașov, a charming medieval town known for its Gothic architecture and proximity to Bran Castle, often associated with Dracula. The tour might also include a visit to Peleș Castle, a stunning royal residence in the Carpathian Mountains, and Sighişoara, a UNESCO-listed fortified citadel that is the birthplace of Vlad the Impaler, the real-life inspiration for Dracula. Throughout the tour, visitors will have the opportunity to learn about the region's diverse cultural influences, including Hungarian, Saxon, and Romanian traditions.\n\nOverall, a Transylvania tour provides a blend of historical intrigue, natural beauty, folklore, and adventure, making it a must-see destination for travelers seeking both a cultural and thrilling experience.",
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2022/03/536de799-0f9c-44be-9bd5-48d9514c32a7.webp",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/536de799-0f9c-44be-9bd5-48d9514c32a7.webp",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/dome-monumento-los-caidos-1-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/ferry-boat-river-quebec-city-with-blue-sky-scaled.jpg",
+      "/countries/romania.jpg",
+      "/countries/hungary.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/young-adults-having-fun-while-folk-dancing-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/aerial-drone-view-historic-centre-sighisoara-romania-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/aerial-drone-view-council-square-brasov-romania-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/church-from-sucevita-monastery-bucovina-romania-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/beautiful-historical-castle-dark-cloudy-sky-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/dome-monumento-los-caidos-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/aerial-drone-view-rupea-fortress-romania.webp"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/aerial-drone-view-rupea-fortress-romania.webp",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/aerial-drone-view-prefecture-tower-targu-mures-romania.webp",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/aerial-drone-view-fagaras-romania-church-saint-john-baptist-buildings-scaled.webp"
     ],
     "days": 10,
     "nights": 9,
     "price_cents": 500000,
     "deposit_cents": 100000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Bran Castle",
@@ -16476,19 +16759,24 @@ export const TOURS_DATA: Tour[] = [
       "Hungary"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "International flights to Budapest and from Sofia",
+      "Visa fees (if required)",
+      "Travel insurance (highly recommended)",
+      "Lunches and dinners not specified in the itinerary",
+      "Drinks, personal expenses, and optional activities",
+      "Tips for guides and drivers",
+      "Porterage at hotels",
+      "Any entrance fees or services not explicitly mentioned under “Inclusions”"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "International flights to Budapest and from Sofia",
+      "Visa fees (if required)",
+      "Travel insurance (highly recommended)",
+      "Lunches and dinners not specified in the itinerary",
+      "Drinks, personal expenses, and optional activities",
+      "Tips for guides and drivers",
+      "Porterage at hotels",
+      "Any entrance fees or services not explicitly mentioned under “Inclusions”"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -16551,7 +16839,7 @@ export const TOURS_DATA: Tour[] = [
         "id": "day-immersive-transylvania-7",
         "tour_id": "immersive-transylvania",
         "day_number": 7,
-        "title": "BUCHAREST CITY - Dracula&#039;s Castle&#039; (Bran) & Capital Bucharest",
+        "title": "BUCHAREST CITY - Dracula's Castle (Bran) & Capital Bucharest",
         "body": "Day excursion to Bran Castle (Dracula’s Castle).\n\n\n\nContinue to the fairy-tale Peleș Castle in Sinaia.\n\n\n\nEvening in Bucharest with free time in the Old Town.\n\n\n\nOvernight in Bucharest."
       },
       {
@@ -16573,94 +16861,116 @@ export const TOURS_DATA: Tour[] = [
         "tour_id": "immersive-transylvania",
         "day_number": 10,
         "title": "DEPARTURE DAY - The Last Day",
-        "body": "As you embark on your journey home, may the memories you&#039;ve gathered during our trip stay with you like treasures in your heart. \n\n\n\nSafe travels and may your path ahead be as enriching and joyful as your time here. Until we meet again, cherish the moments and carry a piece of TRANSYLVANIA&#039;s spirit with you wherever you go.\n\n\n\nFarewell and best wishes for your future adventures!\n\n\n\nWarm regards\n\n\n\nAGT GROUP LLC TEAM"
+        "body": "As you embark on your journey home, may the memories you've gathered during our trip stay with you like treasures in your heart. \n\n\n\nSafe travels and may your path ahead be as enriching and joyful as your time here. Until we meet again, cherish the moments and carry a piece of TRANSYLVANIA's spirit with you wherever you go.\n\n\n\nFarewell and best wishes for your future adventures!\n\n\n\nWarm regards\n\n\n\nAGT GROUP LLC TEAM"
       }
     ],
     "departuresList": [
       {
-        "id": "dep-immersive-transylvania-1",
-        "tour_id": "immersive-transylvania",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-19",
+        "id": "e84a7d88-1739-43ba-9a98-954c1856c633",
+        "tour_id": "tour-immersive-transylvania",
+        "start_date": "2026-11-27",
+        "end_date": "2026-12-06",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.173Z"
       },
       {
-        "id": "dep-immersive-transylvania-2",
-        "tour_id": "immersive-transylvania",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-24",
+        "id": "888bff55-b707-47d0-b5ec-03d837b796c8",
+        "tour_id": "tour-immersive-transylvania",
+        "start_date": "2026-11-29",
+        "end_date": "2026-12-08",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.173Z"
       },
       {
-        "id": "dep-immersive-transylvania-3",
-        "tour_id": "immersive-transylvania",
-        "start_date": "2026-09-20",
-        "end_date": "2026-09-29",
+        "id": "be6d9ef5-7d22-44a8-a6cc-2c54922fb23e",
+        "tour_id": "tour-immersive-transylvania",
+        "start_date": "2026-12-01",
+        "end_date": "2026-12-10",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.173Z"
       },
       {
-        "id": "dep-immersive-transylvania-4",
-        "tour_id": "immersive-transylvania",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-19",
+        "id": "ee789372-8b0c-45ee-b829-3ea6d8f9e551",
+        "tour_id": "tour-immersive-transylvania",
+        "start_date": "2026-12-03",
+        "end_date": "2026-12-12",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.173Z"
       },
       {
-        "id": "dep-immersive-transylvania-5",
-        "tour_id": "immersive-transylvania",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-24",
+        "id": "7056b1c6-69eb-431f-ada8-f76768a4f6d3",
+        "tour_id": "tour-immersive-transylvania",
+        "start_date": "2026-12-05",
+        "end_date": "2026-12-14",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.173Z"
+      },
+      {
+        "id": "a33fcf74-1f58-4a75-8926-7cf2105982c3",
+        "tour_id": "tour-immersive-transylvania",
+        "start_date": "2026-12-07",
+        "end_date": "2026-12-16",
+        "price_cents": 500000,
+        "deposit_cents": 100000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.173Z"
       }
-    ]
+    ],
+    "single_supplement_cents": 100000,
+    "single_supplement_percent": 20,
+    "updated_at": "2026-06-03T18:29:42"
   },
   {
     "id": "tour-immersive-tunisia",
     "slug": "immersive-tunisia",
-    "title": "Immersive Tunisia Tour : From Carthage to the Sahara",
+    "title": "Immersive Tunisia Tour: From Carthage to the Sahara",
     "code": "AGT-IMME",
-    "summary": "Welcome to Tunis. Welcome meeting at 1 pm. then out half day tour starts.",
-    "description": "Welcome to Tunis. Welcome meeting at 1 pm. then out half day tour starts.\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
+    "summary": "This itinerary combines Tunisia's Mediterranean coastline, ancient Roman heritage, traditional Berber villages, Sahara Desert landscapes, oasis towns, and historic Islamic architecture.",
+    "description": "This itinerary combines Tunisia's Mediterranean coastline, ancient Roman heritage, traditional Berber villages, Sahara Desert landscapes, oasis towns, and historic Islamic architecture.\n\nThe route is designed around your selected accommodation plan, with a balance of sightseeing, cultural experiences, and comfortable travel.",
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-mahmoud-yahyaoui-20190775-scaled.jpg",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-mahmoud-yahyaoui-20190775-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-samiro-2215787-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-robinvansergi-3274752-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-mahmoud-yahyaoui-20143211-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-mahmoud-yahyaoui-27967575-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-usaidphotos-14564077-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-bedis-elacheche-310026-891126-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-agallego007-2096866-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-chermitove-19862651-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-bedis-elacheche-310026-891116-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-burcin-sahin-1241783210-27592156-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-baha-ferchichi-627772199-17420645-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-mahdi-arfa-1299283169-27546755-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-mahmoud-yahyaoui-27685453-scaled-e1736430059480.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-nomino-12815872-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-moujahed-jouini-806696-6603374-scaled.jpg"
     ],
-    "days": 11,
-    "nights": 10,
-    "price_cents": 550000,
-    "deposit_cents": 110000,
+    "days": 8,
+    "nights": 7,
+    "price_cents": 360000,
+    "deposit_cents": 72000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Carthage Ruins",
@@ -16675,19 +16985,17 @@ export const TOURS_DATA: Tour[] = [
       "Tunisia"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "Accommodation: 7 nights: 5 nights on half board (breakfast and dinner) and 2 nights on bed and breakfast.",
+      "Guiding: English-speaking guide for 6 days.",
+      "Transportation: Transportation for 8 days, including arrival and departure airport transfers.",
+      "Entrance fees: Carthage, Bardo National Museum, Dougga, Kairouan, Sbeitla and El Jem Amphitheatre.",
+      "Mountain oasis excursion: Half-day 4×4 tour to Chebika and Tamerza, combining rocky landscapes and oasis scenery.",
+      "All Breakfasts, 1 lunch & 7 Dinners"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "Travel Insurances",
+      "Tips & Gestures",
+      "Optional Activities"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -16700,173 +17008,172 @@ export const TOURS_DATA: Tour[] = [
     "activity_level": "Moderate",
     "travel_style": "Small Group Cultural Immersion",
     "best_time": "October – May",
-    "meals_breakfasts": 10,
+    "meals_breakfasts": 7,
     "meals_lunches": 6,
     "meals_dinners": 5,
     "daysList": [
       {
         "id": "day-immersive-tunisia-1",
-        "tour_id": "immersive-tunisia",
+        "tour_id": "tour-immersive-tunisia",
         "day_number": 1,
-        "title": "WELCOME DAY - Tunis City",
-        "body": "Welcome to Tunis. Welcome meeting at 1 pm. then out half day tour starts. \n\n\n\nExplore the Medina of Tunis (UNESCO), a labyrinth of souks, palaces, and historic houses.\n\n\n\nVisit the Zitouna Mosque, the spiritual heart of the city.\n\n\n\nAfternoon tour of the Archaeological Site of Carthage (UNESCO), once the seat of the mighty Carthaginian Empire.\n\n\n\nOvernight in Tunis."
+        "title": "Arrival in Tunis – Transfer to Hammamet",
+        "body": "Arrival at Tunis Carthage International Airport at anytime. Meet your local representative and comlimentay transfer to Hammamet. Check in at Le Sultan Hotel or similar. Enjoy the Mediterranean atmosphere and relax after your journey. Free time to explore Hammamet's old medina and seaside promenade. 7 pm Welcome Meeting & Dinner ( included )\n\nOvernight: Hammamet – Royal Azur 5★  or similar"
       },
       {
         "id": "day-immersive-tunisia-2",
-        "tour_id": "immersive-tunisia",
+        "tour_id": "tour-immersive-tunisia",
         "day_number": 2,
-        "title": "TUNIS CITY - Punic Town of Kerkuane and its Necropolis ( UNESCO )",
-        "body": "Full-day excursion to the Punic Town of Kerkouane and its Necropolis (UNESCO), offering a rare glimpse into Punic civilization.\n\n\n\nReturn to Tunis for free time in the evening.\n\n\n\nEnjoy traditional Tunisian cuisine with Local family. Try dishes like couscous or Erik.\n\n\n\nOvernight in Tunis."
+        "title": "ANCIENT HISTORY - Carthage, Sidi Bou Said & Tunis",
+        "body": "Discover the ancient city of Carthage, once one of the most powerful civilizations of the Mediterranean. Visit the impressive Antonine Baths and explore the archaeological remains. Continue to Sidi Bou Said, the picturesque blue and white village overlooking the Mediterranean. Enjoy a traditional Tunisian lunch. Explore the historic Medina of Tunis, with its traditional souks, architecture, and lively streets.\n\nimmersive Activity: Lunch with local Tunisian Family\n\nOvernight: Hammamet – Royal Azur 5★  or similar"
       },
       {
         "id": "day-immersive-tunisia-3",
-        "tour_id": "immersive-tunisia",
+        "tour_id": "tour-immersive-tunisia",
         "day_number": 3,
-        "title": "UTICA / DOUGGA  - Exploring Archaeological Site ( UNESCO )",
-        "body": "Morning visit to the ancient port city of Utica, one of North Africa’s earliest Phoenician settlements.\n\n\n\nContinue to Dougga (UNESCO), a remarkably preserved Roman town with temples, theatres, and baths.\n\n\n\nOvernight in Dougga or return to Tunis."
+        "title": "ROMAN HERITAGE - Dougga & Bulla Regia",
+        "body": "After breakfast, travel inland to explore Tunisia's remarkable Roman heritage. Visit Dougga, one of North Africa's best-preserved Roman archaeological cities and a UNESCO World Heritage Site. Discover its ancient Capitol, theatre, temples, and Roman streets. Depending on timing and road conditions, continue to Bulla Regia, famous for its remarkable underground Roman villas.\n\nImmersive Activity : Enjoy a traditional Tunisian countryside break in a nearby village. Meet local residents, discover traditional rural life, and enjoy authentic Tunisian mint tea accompanied by homemade local pastries. Learn about regional traditions and the connection between local communities, agriculture, and the surrounding landscape.\n\nOvernight: Hammamet – Royal Azur 5★  or similar"
       },
       {
         "id": "day-immersive-tunisia-4",
-        "tour_id": "immersive-tunisia",
+        "tour_id": "tour-immersive-tunisia",
         "day_number": 4,
-        "title": "KAIROUAN CITY ( UNESCO )",
-        "body": "Journey to Kairouan, the spiritual capital of Tunisia. Visit the Medina of Kairouan (UNESCO), filled with historic mosques and artisan workshops. See the Aghlabid Basins, impressive 9th-century waterworks. Explore Roman archaeological remains and local Islamic art.\n\n\n\nOvernight in Kairouan.\n\n\n\nWe Join a facinating workshop that focuses on traditional Tunisian Calligraphy Art. This immersive experience allows you to learn about the cultural heritage of Kairouan in a fun and interactive way."
+        "title": "INTO THE SAHARA - Hammamet – Matmata – Ksar Ghilane",
+        "body": "Depart Hammamet and travel south towards the Sahara region. Discover Matmata, famous for its traditional underground Berber homes carved into the earth. Visit a traditional troglodyte house and learn about local life and architecture. Continue towards Ksar Ghilane, a beautiful desert oasis surrounded by golden dunes. Enjoy free time to relax at the natural hot spring. Experience the magic of the Sahara at sunset, with an optional camel ride or 4x4 desert excursion. Dinner and overnight at the desert camp.\n\nImmersive Activity: Camel Ride or 4x4 drive\n\nOvernight: Ksar Ghilane – Campement Pansy or similar"
       },
       {
         "id": "day-immersive-tunisia-5",
-        "tour_id": "immersive-tunisia",
+        "tour_id": "tour-immersive-tunisia",
         "day_number": 5,
-        "title": "TOZEUR CITY - Exploring Old Medina",
-        "body": "Arrive in Tozeur, an oasis town on the edge of the Sahara. Guided walk through the Medina of Tozeur, with its unique brickwork architecture. Sample sweets at a traditional pastry shop.\n\n\n\nOvernight in Tozeur."
+        "title": "SAHARA LANDSCAPES - Ksar Ghilane – Douz – Chott el Jerid – Tozeur",
+        "body": "Enjoy breakfast at the desert camp. Travel towards Douz, traditionally known as the gateway to the Sahara. Discover the local markets and experience the atmosphere of this desert town. Cross Chott el Jerid, Tunisia's spectacular salt lake, famous for its changing colours and mirage like landscapes. Continue to Tozeur, an oasis town surrounded by thousands of date palms. Explore the old town and admire its distinctive traditional brick architecture. Check in and enjoy the evening at leisure.\n\nImmersive Activity: Special local experience, visit a traditional artisan workshop and meet a local craftsman. Discover the techniques behind Tozeur's distinctive decorative brickwork and learn how these traditional skills have been passed down through generations.\n\nOvernight: Tozeur – Dar Saida Beya or similar"
       },
       {
         "id": "day-immersive-tunisia-6",
-        "tour_id": "immersive-tunisia",
+        "tour_id": "tour-immersive-tunisia",
         "day_number": 6,
-        "title": "TOZEUR CITY - Mountain Oases & Star Wars film Set ",
-        "body": "Excursion to the desert landscapes around Tozeur.\n\n\n\nVisit the Star Wars movie sets, used in the original saga.\n\n\n\nEvening wine-tasting & sunset experience in the oasis.\n\n\n\nOvernight in Tozeur."
+        "title": "OASIS & DESERT CULTURE - Tozeur – Mountain Oases – Sbeitla – Kairouan",
+        "body": "After breakfast, explore the spectacular mountain oases of southwest Tunisia. Visit Chebika, known for its natural springs, palm groves, and dramatic mountain scenery. Continue to Tamerza, where beautiful landscapes and traditional village ruins reveal another side of Tunisia. Travel towards Sbeitla and discover the impressive Roman archaeological site of Sufetula, featuring remarkably preserved temples and ancient streets. Continue to Kairouan, one of the most important historic cities in the Islamic world. Check in and enjoy the evening.\n\nimmersive Activity: Visit a traditional pastry workshop to discover how Kairouan's famous Makroudh is prepared. Meet local artisans, learn about the ingredients and traditional techniques, and enjoy a tasting of freshly prepared pastries accompanied by Tunisian mint tea.\n\nOvernight: Kairouan – La Kasbah 5★ or similar"
       },
       {
         "id": "day-immersive-tunisia-7",
-        "tour_id": "immersive-tunisia",
+        "tour_id": "tour-immersive-tunisia",
         "day_number": 7,
-        "title": "SAHARA CAMP - Explore Salt Lake",
-        "body": "Journey into the Sahara.\n\n\n\nExperience a camel trek across the dunes.\n\n\n\nEnjoy a desert sunset at the Chott el Jerid salt lake.\n\n\n\nOvernight under the stars in a traditional Sahara camp."
+        "title": "ISLAMIC HERITAGE & MEDITERRANEAN COAST - Kairouan – El Jem – Sousse",
+        "body": "Discover Kairouan, Tunisia's historic spiritual and cultural heartland. Visit the Great Mosque of Kairouan, one of the most significant Islamic monuments in North Africa. Explore the historic Medina and its traditional streets. Continue to El Jem to visit its magnificent Roman amphitheatre, one of the best-preserved examples in the world. Travel to Sousse, a beautiful coastal city overlooking the Mediterranean.\n\nimmersive Activity: Discover local craftsmanship and the city's famous traditional carpets\n\nOvernight: Sousse – Marriott 5★ or similar"
       },
       {
         "id": "day-immersive-tunisia-8",
-        "tour_id": "immersive-tunisia",
+        "tour_id": "tour-immersive-tunisia",
         "day_number": 8,
-        "title": "MATMATA CITY - Underground city & Troglodyte Cave",
-        "body": "Explore the troglodyte cave dwellings of Matmata, a remarkable underground city still inhabited by Berber families.\n\n\n\nOptional visit to homes featured in the Star Wars saga.\n\n\n\nOvernight in Matmata."
-      },
-      {
-        "id": "day-immersive-tunisia-9",
-        "tour_id": "immersive-tunisia",
-        "day_number": 9,
-        "title": "SAFAKES CITY - Day of Traditional Cooking Class ",
-        "body": "Travel to Sfax, Tunisia’s commercial hub with an authentic medina.\n\n\n\nTake part in a Tunisian cooking class, learning traditional recipes with local chefs.\n\n\n\nOvernight in Sfax."
-      },
-      {
-        "id": "day-immersive-tunisia-10",
-        "tour_id": "immersive-tunisia",
-        "day_number": 10,
-        "title": "SOUSSE CITY - Medina of Sousse ( UNESCO ) & Amphitheatre of El Jem (UNESCO )",
-        "body": "Visit the Medina of Sousse (UNESCO), a historic port city with walls, souks, and ribats.\n\n\n\nExplore the Amphitheater of El Jem (UNESCO), one of the grandest Roman arenas outside Italy."
-      },
-      {
-        "id": "day-immersive-tunisia-11",
-        "tour_id": "immersive-tunisia",
-        "day_number": 11,
-        "title": "DEPARTURE DAY",
-        "body": "Drive Back to Tunis Capital. \n\n\n\nAs you embark on your journey home, may the memories you&#039;ve gathered during our trip stay with you like treasures in your heart. \n\n\n\nSafe travels and may your path ahead be as enriching and joyful as your time here. Until we meet again, cherish the moments and carry a piece of TUNISIA&#039;S spirit with you wherever you go.\n\n\n\nFarewell and best wishes for your future adventures!"
+        "title": "DEPARTURE - Sousse & Tunis Airport",
+        "body": "Enjoy breakfast at the hotel. Depending on your flight schedule, enjoy some free time in Sousse. Private transfer to Tunis-Carthage International Airport. Departure and end of your Tunisian journey.\n\nThank you for choosing for Atlas Global Tours"
       }
     ],
     "departuresList": [
       {
-        "id": "dep-immersive-tunisia-1",
-        "tour_id": "immersive-tunisia",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-20",
-        "price_cents": 550000,
-        "deposit_cents": 110000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "id": "65126745-7884-4d12-8d81-0c2c2bf105a0",
+        "tour_id": "tour-immersive-tunisia",
+        "start_date": "2026-12-04",
+        "end_date": "2026-12-11",
+        "price_cents": 360000,
+        "deposit_cents": 72000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.174Z"
       },
       {
-        "id": "dep-immersive-tunisia-2",
-        "tour_id": "immersive-tunisia",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-25",
-        "price_cents": 550000,
-        "deposit_cents": 110000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "id": "72c48e23-99b2-4570-8469-e9948c56b19c",
+        "tour_id": "tour-immersive-tunisia",
+        "start_date": "2026-12-06",
+        "end_date": "2026-12-13",
+        "price_cents": 360000,
+        "deposit_cents": 72000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.174Z"
       },
       {
-        "id": "dep-immersive-tunisia-3",
-        "tour_id": "immersive-tunisia",
-        "start_date": "2026-09-20",
-        "end_date": "2026-09-30",
-        "price_cents": 550000,
-        "deposit_cents": 110000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "id": "9372a780-bd32-4346-94fe-141530f7e2e9",
+        "tour_id": "tour-immersive-tunisia",
+        "start_date": "2026-12-08",
+        "end_date": "2026-12-15",
+        "price_cents": 360000,
+        "deposit_cents": 72000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.174Z"
       },
       {
-        "id": "dep-immersive-tunisia-4",
-        "tour_id": "immersive-tunisia",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-20",
-        "price_cents": 550000,
-        "deposit_cents": 110000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "id": "06540f93-40d0-4fc5-a7da-4a8d5226f94a",
+        "tour_id": "tour-immersive-tunisia",
+        "start_date": "2026-12-10",
+        "end_date": "2026-12-17",
+        "price_cents": 360000,
+        "deposit_cents": 72000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.174Z"
       },
       {
-        "id": "dep-immersive-tunisia-5",
-        "tour_id": "immersive-tunisia",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-25",
-        "price_cents": 550000,
-        "deposit_cents": 110000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "id": "0b1fe776-765f-4792-9ed0-72e8be29a6bf",
+        "tour_id": "tour-immersive-tunisia",
+        "start_date": "2026-12-12",
+        "end_date": "2026-12-19",
+        "price_cents": 360000,
+        "deposit_cents": 72000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.174Z"
+      },
+      {
+        "id": "cccfa047-c83a-4a50-93bd-96e004b24ee9",
+        "tour_id": "tour-immersive-tunisia",
+        "start_date": "2026-12-14",
+        "end_date": "2026-12-21",
+        "price_cents": 360000,
+        "deposit_cents": 72000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.174Z"
       }
-    ]
+    ],
+    "single_supplement_cents": 60000,
+    "single_supplement_percent": 17,
+    "updated_at": "2026-11-14T18:45:24"
   },
   {
     "id": "tour-immersive-morocco",
     "slug": "immersive-morocco",
     "title": "Immersive Morocco Tour",
     "code": "AGT-IMME",
-    "summary": "This 12-day journey through Morocco offers the perfect balance of culture, history and Experience of local Tastes. We don’t believe in ordinary travel — we believe in experiencing Morocco with all your senses. Taste the country through its rich culinary traditions, share stories and meals with welcoming locals, and explore the layers of history hidden in ancient medinas, kasbahs, and desert paths. This journey is designed to connect you with authentic flavors, genuine people, and the timeless heritage that makes Morocco unforgettable. Begin in Casablanca with the grand Hassan II Mosque before continuing to the capital city of Rabat, a UNESCO World Heritage site. Travel north into the Rif Mountains to explore the enchanting blue-washed medina of Chefchaouen, then head to Fes, Morocco’s spiritual heart, where the medieval medina of Fes el-Bali (UNESCO) comes alive with vibrant souks, tanneries, and Islamic architecture.&nbsp;",
-    "description": "This 12-day journey through Morocco offers the perfect balance of culture, history and Experience of local Tastes. We don’t believe in ordinary travel — we believe in experiencing Morocco with all your senses. Taste the country through its rich culinary traditions, share stories and meals with welcoming locals, and explore the layers of history hidden in ancient medinas, kasbahs, and desert paths. This journey is designed to connect you with authentic flavors, genuine people, and the timeless heritage that makes Morocco unforgettable. Begin in Casablanca with the grand Hassan II Mosque before continuing to the capital city of Rabat, a UNESCO World Heritage site. Travel north into the Rif Mountains to explore the enchanting blue-washed medina of Chefchaouen, then head to Fes, Morocco’s spiritual heart, where the medieval medina of Fes el-Bali (UNESCO) comes alive with vibrant souks, tanneries, and Islamic architecture.&nbsp;\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
+    "summary": "This 12-day journey through Morocco offers the perfect balance of culture, history and Experience of local Tastes. We don’t believe in ordinary travel — we believe in experiencing Morocco with all your senses. Taste the country through its rich culinary traditions, share stories and meals with welcoming locals, and exp",
+    "description": "This 12-day journey through Morocco offers the perfect balance of culture, history and Experience of local Tastes. We don’t believe in ordinary travel — we believe in experiencing Morocco with all your senses. Taste the country through its rich culinary traditions, share stories and meals with welcoming locals, and explore the layers of history hidden in ancient medinas, kasbahs, and desert paths. This journey is designed to connect you with authentic flavors, genuine people, and the timeless heritage that makes Morocco unforgettable. Begin in Casablanca with the grand Hassan II Mosque before continuing to the capital city of Rabat, a UNESCO World Heritage site. Travel north into the Rif Mountains to explore the enchanting blue-washed medina of Chefchaouen, then head to Fes, Morocco’s spiritual heart, where the medieval medina of Fes el-Bali (UNESCO) comes alive with vibrant souks, tanneries, and Islamic architecture.\n\nThe adventure continues south through the Middle Atlas Mountains to Merzouga, where you’ll ride camels into the Sahara and spend a magical night in a desert camp under the stars. From there, journey through the dramatic landscapes of the Todra Gorge and the Dades Valley, visit the iconic fortified ksar of Ait Ben Haddou (UNESCO), and cross the High Atlas to arrive in lively Marrakech. End your trip with a guided exploration of its colorful medina, palaces, and the famous Jemaa el-Fnaa Square. This itinerary captures the essence of Morocco in just one week — from imperial cities to desert dreams.",
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-postiglioni-943541-scaled.jpg",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-postiglioni-943541-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-taryn-elliott-3889986-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-taryn-elliott-3889827-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-salahkuro28-2960752-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-taryn-elliott-3889849-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-taryn-elliott-3889764-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-henrik-le-botos-1588507-3878114-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-taryn-elliott-4652060-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-taryn-elliott-3889829-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-ryutaro-5472524-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-ryutaro-5472524-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-mographe-30081999-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-khalil-moufadil-2147765969-30046120-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-mahmoud-ezzaoutane-2148330047-30039516-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-flaviophotart-28356797-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-mehdi-el-marouazi-884979055-20700637-scaled.jpg"
     ],
     "days": 12,
     "nights": 11,
     "price_cents": 500000,
     "deposit_cents": 100000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Imperial Cities",
@@ -16881,19 +17188,20 @@ export const TOURS_DATA: Tour[] = [
       "Morocco"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "Compimentary Arrival transfer",
+      "Daily Breakfast at Hotels",
+      "Private transportation in an air-conditioned vehicle",
+      "Professional English-speaking local guide",
+      "Airport transfers on arrival (Casablanca)",
+      "All Entrance fees",
+      "Camel trek into the Sahara Desert (sunset ride)",
+      "Overnight stay in a traditional desert camp with dinner & cultural experience"
     ],
     "excludes": [
-      "International flights to/from starting city",
+      "International flights to/from Morocco",
       "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "Visa fees (if applicable)",
+      "Tips for guides, drivers, and hotel staff"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -16992,77 +17300,101 @@ export const TOURS_DATA: Tour[] = [
         "tour_id": "immersive-morocco",
         "day_number": 12,
         "title": "Departure Day",
-        "body": "As you embark on your journey home, may the memories you&#039;ve gathered during our trip stay with you like treasures in your heart.\n\n\n\nSafe travels and may your path ahead be as enriching and joyful as your time here. Until we meet again, cherish the moments and carry a piece of Morocco&#039;s spirit with you wherever you go.\n\n\n\nFarewell and best wishes for your future adventures!\n\n\n\nWarm regards\n\n\n\nAGT GROUP LLC TEAM"
+        "body": "As you embark on your journey home, may the memories you've gathered during our trip stay with you like treasures in your heart.\n\n\n\nSafe travels and may your path ahead be as enriching and joyful as your time here. Until we meet again, cherish the moments and carry a piece of Morocco's spirit with you wherever you go.\n\n\n\nFarewell and best wishes for your future adventures!\n\n\n\nWarm regards\n\n\n\nAGT GROUP LLC TEAM"
       }
     ],
     "departuresList": [
       {
-        "id": "dep-immersive-morocco-1",
-        "tour_id": "immersive-morocco",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-21",
+        "id": "986a6110-22fe-4bce-a312-e963a6e9b544",
+        "tour_id": "tour-immersive-morocco",
+        "start_date": "2026-12-04",
+        "end_date": "2026-12-15",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.176Z"
       },
       {
-        "id": "dep-immersive-morocco-2",
-        "tour_id": "immersive-morocco",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-26",
+        "id": "04e50d0f-e10d-4640-ae1b-1adeedffd75a",
+        "tour_id": "tour-immersive-morocco",
+        "start_date": "2026-12-06",
+        "end_date": "2026-12-17",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.176Z"
       },
       {
-        "id": "dep-immersive-morocco-3",
-        "tour_id": "immersive-morocco",
-        "start_date": "2026-09-20",
-        "end_date": "2026-10-01",
+        "id": "236c8dd1-a95a-495c-a66b-70302abd62eb",
+        "tour_id": "tour-immersive-morocco",
+        "start_date": "2026-12-08",
+        "end_date": "2026-12-19",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.176Z"
       },
       {
-        "id": "dep-immersive-morocco-4",
-        "tour_id": "immersive-morocco",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-21",
+        "id": "dad69d96-4b3c-4571-b26e-30b18b6fbcc7",
+        "tour_id": "tour-immersive-morocco",
+        "start_date": "2026-12-10",
+        "end_date": "2026-12-21",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.176Z"
       },
       {
-        "id": "dep-immersive-morocco-5",
-        "tour_id": "immersive-morocco",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-26",
+        "id": "124e392c-d285-433d-9d89-3eb6b00f96b6",
+        "tour_id": "tour-immersive-morocco",
+        "start_date": "2026-12-12",
+        "end_date": "2026-12-23",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.176Z"
+      },
+      {
+        "id": "779558c6-2d92-462d-8f07-3ad3e11c5694",
+        "tour_id": "tour-immersive-morocco",
+        "start_date": "2026-12-14",
+        "end_date": "2026-12-25",
+        "price_cents": 500000,
+        "deposit_cents": 100000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.176Z"
       }
-    ]
+    ],
+    "single_supplement_cents": 100000,
+    "single_supplement_percent": 20,
+    "updated_at": "2026-11-14T13:31:16"
   },
   {
     "id": "tour-immersive-balkans",
     "slug": "immersive-balkans",
     "title": "Immersive Balkans : From Budapest to Kotor",
     "code": "AGT-IMME",
-    "summary": "Balkan Adventure: From Budapest to Kotor",
-    "description": "Balkan Adventure: From Budapest to Kotor\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
-    "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2022/03/philippines-2429845_1920.jpg",
+    "summary": "Embark on an unforgettable journey through the heart of the Balkans, where history, culture, and natural beautyintertwine to create a truly remarkable travel experience.",
+    "description": "Embark on an unforgettable journey through the heart of the Balkans, where history, culture, and natural beautyintertwine to create a truly remarkable travel experience.\n\nBegin in Budapest, Hungary’s grand capital, where the Danube River elegantly divides Buda and Pest. Admire the stunning Buda Castle, the iconic Parliament Building, and soak in the city’s vibrant atmosphere. Continue south to Pécs, a charming Hungarian gem known for its Roman ruins, Ottoman mosques, and Mediterranean flair.\n\nCross into Serbia and discover Belgrade, an energetic capital where the Kalemegdan Fortress offers sweeping river views and Skadarlija Street captures the city’s bohemian soul. Nature enthusiasts will be captivated by Tara National Park, a pristine landscape of mountains, forests, and wildlife.\n\nIn Sarajevo, experience a unique blend of East and West, exploring the city’s historic bazaar, the poignant Tunnel Museum, and streets steeped in resilience and culture. Travel onward to Mostar, famed for its elegant Stari Most bridge, where cobblestone alleys and riverside cafés create a timeless atmosphere.\n\nContinue your adventure along the Adriatic coast to Split, where Diocletian’s Palace forms the living heart of the city, before reaching Dubrovnik, the “Pearl of the Adriatic.” Stroll its medieval walls, enjoy panoramic sea views, and feel the charm of its UNESCO-listed Old Town.\n\nConclude your journey in Kotor, Montenegro, a peaceful bay town surrounded by dramatic mountains and centuries-old fortifications. With its blend of ancient history, scenic landscapes, and coastal serenity, Kotor provides the perfect finale to your Balkan adventure.",
+    "hero_image": "/countries/croatia.jpg",
     "gallery": [
-      "https://atlasglobaltours.com/wp-content/uploads/2022/03/philippines-2429845_1920.jpg",
+      "/countries/croatia.jpg",
+      "/countries/bosnia.jpg",
+      "/countries/montenegro.jpg",
+      "/countries/serbia.jpg",
+      "/countries/hungary.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/02/Dubrovnik_Croatia5.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/02/Dubrovnik_Croatia6.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/02/Dubrovnik_Croatia8.jpg",
@@ -17070,16 +17402,15 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/02/Dubrovnik_Croatia11.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/02/Dubrovnik_Croatia3.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/02/Mostar6Bosnia.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/02/Mostar3Bosnia.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2022/03/536de799-0f9c-44be-9bd5-48d9514c32a7-374x226.webp"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/Mostar3Bosnia.jpg"
     ],
     "days": 10,
     "nights": 9,
     "price_cents": 500000,
     "deposit_cents": 100000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Adriatic Bay of Kotor",
@@ -17098,19 +17429,18 @@ export const TOURS_DATA: Tour[] = [
       "Croatia"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "Accommodations :  Unique Boutique Hotels or Brand Hotels",
+      "Meals : All Breakfasts",
+      "Transportations : Private Mini Bus with A/C.",
+      "Tour Leader / Tour Guide : 5+ More Years Experience",
+      "Entrance Fees : Sites Stated Above"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "International Airfare",
+      "Visa Charges",
+      "Travel insurance",
+      "Tips & Gestures",
+      "Personal Expenses"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -17146,7 +17476,7 @@ export const TOURS_DATA: Tour[] = [
         "tour_id": "immersive-balkans",
         "day_number": 3,
         "title": "BELGRADE CITY - Explore old city",
-        "body": "Begin your day with a guided walking tour, Where the heart of Belgrade will unfold before you. Stroll through the bustling Republic Square, where history and culture converge, and wander along Knez Mihailova Street, the city&#039;s vibrant pedestrian thoroughfare. Let the charm of the city lead you to the peaceful Kalemegdan Park, perched above the meeting of the Danube and Sava Rivers. Here, in the shadow of the Belgrade Fortress, you&#039;ll witness stunning views that tell tales of centuries past.\n\n\n\nAs evening falls, immerse yourself in the atmosphere of Skadarska Street, Belgrade&#039;s bohemian heart, where traditional restaurants serve up authentic Serbian cuisine, and the air is thick with the hum of folk music. Here, among the cobblestone streets and colorful facades, you’ll join your group for a warm and welcoming dinner, embracing the city&#039;s rich culinary heritage in one of its most iconic quarters."
+        "body": "Begin your day with a guided walking tour, Where the heart of Belgrade will unfold before you. Stroll through the bustling Republic Square, where history and culture converge, and wander along Knez Mihailova Street, the city's vibrant pedestrian thoroughfare. Let the charm of the city lead you to the peaceful Kalemegdan Park, perched above the meeting of the Danube and Sava Rivers. Here, in the shadow of the Belgrade Fortress, you'll witness stunning views that tell tales of centuries past.\n\n\n\nAs evening falls, immerse yourself in the atmosphere of Skadarska Street, Belgrade's bohemian heart, where traditional restaurants serve up authentic Serbian cuisine, and the air is thick with the hum of folk music. Here, among the cobblestone streets and colorful facades, you’ll join your group for a warm and welcoming dinner, embracing the city's rich culinary heritage in one of its most iconic quarters."
       },
       {
         "id": "day-immersive-balkans-4",
@@ -17200,72 +17530,95 @@ export const TOURS_DATA: Tour[] = [
     ],
     "departuresList": [
       {
-        "id": "dep-immersive-balkans-1",
-        "tour_id": "immersive-balkans",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-19",
+        "id": "15df77d3-8e9e-44fb-aefe-20f19f7c310a",
+        "tour_id": "tour-immersive-balkans",
+        "start_date": "2026-11-25",
+        "end_date": "2026-12-04",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.177Z"
       },
       {
-        "id": "dep-immersive-balkans-2",
-        "tour_id": "immersive-balkans",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-24",
+        "id": "9fd65f30-818d-4ed8-be91-08f58e72764f",
+        "tour_id": "tour-immersive-balkans",
+        "start_date": "2026-11-27",
+        "end_date": "2026-12-06",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.177Z"
       },
       {
-        "id": "dep-immersive-balkans-3",
-        "tour_id": "immersive-balkans",
-        "start_date": "2026-09-20",
-        "end_date": "2026-09-29",
+        "id": "7997a610-8cca-417d-adb9-8b2ba93558bb",
+        "tour_id": "tour-immersive-balkans",
+        "start_date": "2026-11-29",
+        "end_date": "2026-12-08",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.177Z"
       },
       {
-        "id": "dep-immersive-balkans-4",
-        "tour_id": "immersive-balkans",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-19",
+        "id": "425fe2f0-5b16-4f79-acb3-407fe74a18ba",
+        "tour_id": "tour-immersive-balkans",
+        "start_date": "2026-12-01",
+        "end_date": "2026-12-10",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.177Z"
       },
       {
-        "id": "dep-immersive-balkans-5",
-        "tour_id": "immersive-balkans",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-24",
+        "id": "507fff83-3189-48db-89e8-7468e3b05240",
+        "tour_id": "tour-immersive-balkans",
+        "start_date": "2026-12-03",
+        "end_date": "2026-12-12",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.177Z"
+      },
+      {
+        "id": "1475b89d-6e00-49c3-8d48-281ecb31b045",
+        "tour_id": "tour-immersive-balkans",
+        "start_date": "2026-12-05",
+        "end_date": "2026-12-14",
+        "price_cents": 500000,
+        "deposit_cents": 100000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.177Z"
       }
-    ]
+    ],
+    "single_supplement_cents": 100000,
+    "single_supplement_percent": 20,
+    "updated_at": "2026-06-03T18:35:29"
   },
   {
     "id": "tour-immersive-georgia-armenia-azarbaijan",
     "slug": "immersive-georgia-armenia-azarbaijan",
     "title": "Immersive Georgia & Armenia & Azarbaijan",
     "code": "AGT-IMME",
-    "summary": "Welcome to Capital of Armenia. Experience the warmth of Armenia's hospitality and enjoy your Free Arrival transfer. This Afternoon we have a welcome meeting at 1 pm &nbsp;where you will meet with your Tour Leader and Travel Mates. After welcome meeting explore the Genosite Memorial Museum and History Museum of Armenia.&nbsp;",
-    "description": "Welcome to Capital of Armenia. Experience the warmth of Armenia's hospitality and enjoy your Free Arrival transfer. This Afternoon we have a welcome meeting at 1 pm &nbsp;where you will meet with your Tour Leader and Travel Mates. After welcome meeting explore the Genosite Memorial Museum and History Museum of Armenia.&nbsp;\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
+    "summary": "Embark on an unforgettable tour of Armenia & Georgia & Azarbaijan, where ancient history meets stunning landscapes. From the towering peaks of the Caucasus Mountains to the vibrant streets of Tbilisi and Yerevan, this journey will immerse you in the rich cultural tapestry of both countries. Explore iconic sites like th",
+    "description": "Embark on an unforgettable tour of Armenia & Georgia & Azarbaijan, where ancient history meets stunning landscapes. From the towering peaks of the Caucasus Mountains to the vibrant streets of Tbilisi and Yerevan, this journey will immerse you in the rich cultural tapestry of both countries. Explore iconic sites like the ancient monasteries of Armenia and the wine region of Kakheti in Georgia, savoring each moment as you delve into the local traditions.\n\nOne of the most delightful aspects of your tour will be the chance to indulge in the diverse and mouthwatering cuisines of Armenia and Georgia. Sample Armenian specialties like khorovats (grilled meats) and dolma (stuffed grape leaves), paired with rich, full-bodied wines. In Georgia, don’t miss out on traditional dishes such as khachapuri (cheese-filled bread) and khinkali (dumplings). Food is not just sustenance here; it’s a celebration of hospitality and culture, making every meal a memorable experience.\nWhether you're enjoying a home-cooked meal in a local guesthouse or dining at a charming restaurant with sweeping views, the culinary journey will be a highlight of your adventure. Pack your appetite and prepare for a feast that reflects the heart and soul of these remarkable countries!\n\nDay 1  - Yerevan City ( Genosite Memorial - History Museum - Yerevan Brandy Factory )\n\nDay 2 - Yerevan City ( Garni Temple - Zvarnosti site - Geghard church ) 2 UNESCO\n\nDay 3 - Haghpat City ( Lake Seven - Haghpat & Sanahin Monasteries ) UNESCO\n\nDay 4 - Kakheti City ( Vineyard & Winery visit )\n\nDay 5 - Tbilisi City ( Vine & Vineyards )\n\nDay 6 - Tbilisi City ( Cable-Car Ride - Narikala Fortress - Sulfur Bath, Jvari Monastery - Svetitskhoveli Cathedral ) UNESCO\n\nDay 7 - Kazbegi Mountain ( Kazbegi and High Peaks of Caucasus Mountain Range )\n\nDay 8 - Baku City ( Gori & Birth Place of Stalin & Uplistsikhe )\n\nDay 9 - Baku City ( Walled city of Baku with the Shirvanshah's palace and Maiden Tower ) UNESCO\n\nDay 10 - Departure Day",
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2022/03/85939147-b912-4ee3-a608-e2835d4b8df0.webp",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2022/03/85939147-b912-4ee3-a608-e2835d4b8df0.webp",
+      "/countries/georgia.jpg",
+      "/countries/armenia.jpg",
+      "/countries/azerbaijan.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-niksenges-3559972-2-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-tomas-malik-793526-2990848-2-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-orlovamaria-4916521-2-scaled.jpg",
@@ -17274,15 +17627,16 @@ export const TOURS_DATA: Tour[] = [
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-hatice-baran-153179658-20335180-2-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-marina-m-8349009-2-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/02/Monastery-of-Haghpat5Armenia.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/02/Monastery-of-HaghpatArmenia.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/Monastery-of-HaghpatArmenia.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/02/Monastery-of-Haghpat2Armenia.jpg"
     ],
     "days": 10,
     "nights": 9,
     "price_cents": 500000,
     "deposit_cents": 100000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Ancient Monasteries",
@@ -17299,19 +17653,21 @@ export const TOURS_DATA: Tour[] = [
       "Azerbaijan"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "Pick-up Complimentary service from Airport to Hotel (in our own vehicle)",
+      "Accomodations : Unique Boutique Hotels or Brand Hotels",
+      "Meals : All Breakfasts & 3 Dinner",
+      "Transportations : Private Mini Bus With A/C.",
+      "Tour Guide / Tour Leader : 5+ More Years Experience",
+      "Cooking Class",
+      "Entrance Fees : Sites Stated Above"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "International Airfare",
+      "Visa Charges",
+      "Travel insurance",
+      "Personal Expenses such as shopping, bar bills, hot shower, telephone, laundry, titbits etc",
+      "Tips & Gestures",
+      "Flights not Stated above :"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -17330,132 +17686,152 @@ export const TOURS_DATA: Tour[] = [
     "daysList": [
       {
         "id": "day-immersive-georgia-armenia-azarbaijan-1",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
         "day_number": 1,
-        "title": "YEREVAN CITY - Exploring the Capital ",
-        "body": "Welcome to Capital of Armenia. Experience the warmth of Armenia&#039;s hospitality and enjoy your Free Arrival transfer. This Afternoon we have a welcome meeting at 1 pm  where you will meet with your Tour Leader and Travel Mates. After welcome meeting explore the Genosite Memorial Museum and History Museum of Armenia. \n\n\n\nThis evening you will have traditional Armenien dinner.  Immerse yourself in the rich heritage of Armenian brandy, a cherished part of the country’s social and culinary life since 1887. It’s a perfect way to experience the essence of Armenian tradition and craftsmanship!\n\n\n\nDriving Time \n\n\n\n30 min. \n\n\n\ninclusions\n\n\n\nGenosite Memorial - Visit\n\n\n\nHistory Museum of Armenia\n\n\n\nYerevan Brandy Factory - visit\n\n\n\nMeals\n\n\n\nBreakfast ( included )\n\n\n\nDinner ( optional )\n\n\n\nHotel \n\n\n\nArmenia Marriott Hotel Yerevan or Similar"
+        "title": "YEREVAN CITY - Exploring the Capital",
+        "body": "Welcome to Capital of Armenia. Experience the warmth of Armenia's hospitality and enjoy your Free Arrival transfer. This Afternoon we have a welcome meeting at 1 pm  where you will meet with your Tour Leader and Travel Mates. After welcome meeting explore the Genosite Memorial Museum and History Museum of Armenia.\n\nThis evening you will have traditional Armenien dinner.  Immerse yourself in the rich heritage of Armenian brandy, a cherished part of the country’s social and culinary life since 1887. It’s a perfect way to experience the essence of Armenian tradition and craftsmanship!\n\nDriving Time\n\n30 min.\n\ninclusions\n\nGenosite Memorial - Visit\n\nHistory Museum of Armenia\n\nYerevan Brandy Factory - visit\n\nMeals\n\nBreakfast ( included )\n\nDinner ( optional )\n\nHotel\n\nArmenia Marriott Hotel Yerevan or Similar"
       },
       {
         "id": "day-immersive-georgia-armenia-azarbaijan-2",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
         "day_number": 2,
         "title": "YEREVAN CITY - ZVARTNOTS SITE & MONASTERY GEGHARD ( UNESCO )",
-        "body": "Embark on a scenic drive to Echmiadzin, home to the renowned Echmiadzin Cathedral, one of the world’s oldest Christian churches, built in 301 AD. it is unesco heritage site. Enjoy the serene surroundings and learn about Armenia’s spiritual heritage in this beautiful, historic city. After a short drive ,  Delight in a visit to the stunning Roman temple of Garni, dedicated to the sun god Mithra. This remarkable site is one of the last surviving pagan structures in Armenia, offering a glimpse into ancient history and Archaeological site of Zvartnots waits for you. \n\n\n\nEnjoy a warm meal with a local family in Kond. Savor Armenia&#039;s famous lavash bread, freshly baked and shared in a cozy, inviting atmosphere. It&#039;s a wonderful opportunity to connect with the heart of Armenian culture and hospitality!\n\n\n\ninclusions \n\n\n\nGarni Temple\n\n\n\nCathedral and Churches of Echmiatsin and the Archaeological site of Zvartnots ( UNESCO ) - Visit\n\n\n\nMonastery of Geghard and Upper Azar Valley ( UNESCO ) - Visit\n\n\n\nHotel\n\n\n\nArmenia Marriott Hotel Yerevan or Similar\n\n\n\nDriving Time \n\n\n\n3 hours \n\n\n\nMeals\n\n\n\nBreakfast & Dinner with Local Armenian family ( included )"
+        "body": "Embark on a scenic drive to Echmiadzin, home to the renowned Echmiadzin Cathedral, one of the world’s oldest Christian churches, built in 301 AD. it is unesco heritage site. Enjoy the serene surroundings and learn about Armenia’s spiritual heritage in this beautiful, historic city. After a short drive ,  Delight in a visit to the stunning Roman temple of Garni, dedicated to the sun god Mithra. This remarkable site is one of the last surviving pagan structures in Armenia, offering a glimpse into ancient history and Archaeological site of Zvartnots waits for you.\n\nEnjoy a warm meal with a local family in Kond. Savor Armenia's famous lavash bread, freshly baked and shared in a cozy, inviting atmosphere. It's a wonderful opportunity to connect with the heart of Armenian culture and hospitality!\n\ninclusions\n\nGarni Temple\n\nCathedral and Churches of Echmiatsin and the Archaeological site of Zvartnots ( UNESCO ) - Visit\n\nMonastery of Geghard and Upper Azar Valley ( UNESCO ) - Visit\n\nHotel\n\nArmenia Marriott Hotel Yerevan or Similar\n\nDriving Time\n\n3 hours\n\nMeals\n\nBreakfast & Dinner with Local Armenian family ( included )"
       },
       {
         "id": "day-immersive-georgia-armenia-azarbaijan-3",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
         "day_number": 3,
         "title": "HAGHPAT CITY - Monasteries of Haghpat and Sanahin ( UNESCO )",
-        "body": "Today, venture to the stunning shores of Lake Sevan, the largest lake in the Caucasus region. Along the way, visit picturesque monasteries that offer insights into the rich history of the area. Enjoy the breathtaking scenery and the serene atmosphere as you delve into the cultural heritage of this remarkable region!\n\n\n\nOn your way to Haghpat, visit two iconic monasteries founded by King Ashot I in 874 AD. These sites served as both pilgrimage destinations and places of exile for disgraced Armenian noblemen. Continue your drive to the charming, forested town of Dilijan. Finally, venture into the heart of the forest to uncover the enchanting Haghartsin Monastery\n\n\n\nJoin a welcoming Molokan family for a delightful dinner, where you&#039;ll get to immerse yourself in their unique beliefs and traditions. Savor delicious Russian-influenced dishes, including hearty borscht, flavorful pirozhki (savory pies), and warm tea served from a traditional samovar. It’s a wonderful opportunity to connect, share stories, and experience the rich flavors of their culinary heritage!\n\n\n\nHotel\n\n\n\nTufenkian Avan Dzoraget Hotel\n\n\n\ninclusions\n\n\n\nLake Sevan - visit  \n\n\n\nMonasteries of Haghpat and Sanahin ( UNESCO )\n\n\n\nMeals\n\n\n\nBreakfast & Local Dinner ( included )\n\n\n\nDriving Time \n\n\n\n3 hours 30 min."
+        "body": "Today, venture to the stunning shores of Lake Sevan, the largest lake in the Caucasus region. Along the way, visit picturesque monasteries that offer insights into the rich history of the area. Enjoy the breathtaking scenery and the serene atmosphere as you delve into the cultural heritage of this remarkable region!\n\nOn your way to Haghpat, visit two iconic monasteries founded by King Ashot I in 874 AD. These sites served as both pilgrimage destinations and places of exile for disgraced Armenian noblemen. Continue your drive to the charming, forested town of Dilijan. Finally, venture into the heart of the forest to uncover the enchanting Haghartsin Monastery\n\nJoin a welcoming Molokan family for a delightful dinner, where you'll get to immerse yourself in their unique beliefs and traditions. Savor delicious Russian-influenced dishes, including hearty borscht, flavorful pirozhki (savory pies), and warm tea served from a traditional samovar. It’s a wonderful opportunity to connect, share stories, and experience the rich flavors of their culinary heritage!\n\nHotel\n\nTufenkian Avan Dzoraget Hotel\n\ninclusions\n\nLake Sevan - visit\n\nMonasteries of Haghpat and Sanahin ( UNESCO )\n\nMeals\n\nBreakfast & Local Dinner ( included )\n\nDriving Time\n\n3 hours 30 min."
       },
       {
         "id": "day-immersive-georgia-armenia-azarbaijan-4",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
         "day_number": 4,
         "title": "KAKHETİ CITY - Vine & Vineyards",
-        "body": "Start your day with a delightful breakfast at the hotel, featuring local produce and homemade specialties. Take a guided tour of the vineyard and winery at Chateau Artwine. Learn about their winemaking process and the unique qvevri method.\n\n\n\nHead to the nearby town of Telavi (about 30 minutes). Enjoy a meal at a nearby restaurant. Try traditional dishes like khachapuri or khinkali paired with local wines. Wander through the vibrant market, where you can sample local cheeses, bread, and fruits. Head back and unwind at the chateau. Enjoy a relaxing dinner at the hotel, sampling more local dishes and paired wines. If the sky is clear, take some time to stargaze from the terrace, as the region is known for its beautiful night skies. \n\n\n\nHotel\n\n\n\nChateau Artwine or similar\n\n\n\nDriving Time \n\n\n\n4 hours\n\n\n\nMeal\n\n\n\nBreakfast ( included )\n\n\n\ninclusions\n\n\n\nVineyard and winery - Guided Tour"
+        "body": "Start your day with a delightful breakfast at the hotel, featuring local produce and homemade specialties. Take a guided tour of the vineyard and winery at Chateau Artwine. Learn about their winemaking process and the unique qvevri method.\n\nHead to the nearby town of Telavi (about 30 minutes). Enjoy a meal at a nearby restaurant. Try traditional dishes like khachapuri or khinkali paired with local wines. Wander through the vibrant market, where you can sample local cheeses, bread, and fruits. Head back and unwind at the chateau. Enjoy a relaxing dinner at the hotel, sampling more local dishes and paired wines. If the sky is clear, take some time to stargaze from the terrace, as the region is known for its beautiful night skies.\n\nHotel\n\nChateau Artwine or similar\n\nDriving Time\n\n4 hours\n\nMeal\n\nBreakfast ( included )\n\ninclusions\n\nVineyard and winery - Guided Tour"
       },
       {
         "id": "day-immersive-georgia-armenia-azarbaijan-5",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
         "day_number": 5,
         "title": "KAKHETI CITY - Vine & Vineyards",
-        "body": "After a delightful breakfast at the hotel, Drive to the charming town of Sighnaghi (about 1 hour ). Enjoy a tasting session at this renowned winery, known for its organic wines.  Explore the cobblestone streets, art galleries, and enjoy panoramic views of the Alazani Valley. Head back and unwind at the chateau. \n\n\n\nHotel \n\n\n\nChateau Artwine or similar\n\n\n\nDriving Time \n\n\n\n2 hours\n\n\n\ninclusions\n\n\n\nWine Tasting at Pheasant’s Tears \n\n\n\nMeal\n\n\n\nBreakfast ( included )"
+        "body": "After a delightful breakfast at the hotel, Drive to the charming town of Sighnaghi (about 1 hour ). Enjoy a tasting session at this renowned winery, known for its organic wines.  Explore the cobblestone streets, art galleries, and enjoy panoramic views of the Alazani Valley. Head back and unwind at the chateau.\n\nHotel\n\nChateau Artwine or similar\n\nDriving Time\n\n2 hours\n\ninclusions\n\nWine Tasting at Pheasant’s Tears\n\nMeal\n\nBreakfast ( included )"
       },
       {
         "id": "day-immersive-georgia-armenia-azarbaijan-6",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
         "day_number": 6,
         "title": "TBILISI CITY - From Armenia to Georgia",
-        "body": "Today we are heading to Capital Of Georgia. it will take 2 hours 30 min. with stunning views. This afternoon embark on a sightseeing tour of Tbilisi with a local guide. Wander through the charming streets of Old Tbilisi. Don’t miss the colorful balconies and unique architecture. Enjoy a scenic cable car ride from Rike Park up to Narikala Fortress, where you can soak in breathtaking views of Tbilisi. After exploring the fortress, make your way down to the sulfur baths, nestled in the historic district, where the thermal springs that give the city its name await you. It’s a perfect blend of stunning sights and relaxation!\n\n\n\nHotel\n\n\n\nCourtyard Tbilisi Marriott hotel or similar \n\n\n\ninclusions\n\n\n\nOld Tbilisi - visit\n\n\n\nCable Car Ride\n\n\n\nnarikala Fortress - visit\n\n\n\nSulfur Baths \n\n\n\nDriving Time \n\n\n\n2 hours 30 min\n\n\n\nMeals\n\n\n\nBreakfast ( included )"
+        "body": "Today we are heading to Capital Of Georgia. it will take 2 hours 30 min. with stunning views. This afternoon embark on a sightseeing tour of Tbilisi with a local guide. Wander through the charming streets of Old Tbilisi. Don’t miss the colorful balconies and unique architecture. Enjoy a scenic cable car ride from Rike Park up to Narikala Fortress, where you can soak in breathtaking views of Tbilisi. After exploring the fortress, make your way down to the sulfur baths, nestled in the historic district, where the thermal springs that give the city its name await you. It’s a perfect blend of stunning sights and relaxation!\n\nHotel\n\nCourtyard Tbilisi Marriott hotel or similar\n\ninclusions\n\nOld Tbilisi - visit\n\nCable Car Ride\n\nnarikala Fortress - visit\n\nSulfur Baths\n\nDriving Time\n\n2 hours 30 min\n\nMeals\n\nBreakfast ( included )"
       },
       {
         "id": "day-immersive-georgia-armenia-azarbaijan-7",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
         "day_number": 7,
         "title": "TBILISI CITY - Exploring unesco sites",
-        "body": "Start your day with a picturesque drive to Mtskheta, just 20 km from Tbilisi. Enjoy the rolling hills and charming landscapes as you make your way to this historic town.\n\n\n\nUpon arrival, head to Jvari Monastery, perched on a hilltop. Take a moment to soak in the breathtaking views of the confluence of the Aragvi and Mtkvari rivers. Explore the 6th-century church, a masterpiece of early Georgian architecture, and feel the serene atmosphere that surrounds this sacred site.\n\n\n\nNext, make your way to Svetitskhoveli Cathedral, renowned for its stunning architecture and deep spiritual significance. Wander through the intricate frescoes and marvel at the impressive columns. Take your time to appreciate the history and culture that this UNESCO World Heritage site embodies.\n\n\n\nTreat yourself to a leisurely lunch at a local café or restaurant. Savor some traditional Georgian dishes, like khachapuri (cheese-filled bread) or khinkali (dumplings), while enjoying the lovely ambiance of this charming town.\n\n\n\nHotel\n\n\n\nCourtyard Tbilisi Marriott hotel or similar \n\n\n\nMeals\n\n\n\nBreakfast ( included )\n\n\n\nDriving Time\n\n\n\n1 hour\n\n\n\ninclusions\n\n\n\nHistorical monuments of Mtskheta ( unesco )"
+        "body": "Start your day with a picturesque drive to Mtskheta, just 20 km from Tbilisi. Enjoy the rolling hills and charming landscapes as you make your way to this historic town.\n\nUpon arrival, head to Jvari Monastery, perched on a hilltop. Take a moment to soak in the breathtaking views of the confluence of the Aragvi and Mtkvari rivers. Explore the 6th-century church, a masterpiece of early Georgian architecture, and feel the serene atmosphere that surrounds this sacred site.\n\nNext, make your way to Svetitskhoveli Cathedral, renowned for its stunning architecture and deep spiritual significance. Wander through the intricate frescoes and marvel at the impressive columns. Take your time to appreciate the history and culture that this UNESCO World Heritage site embodies.\n\nTreat yourself to a leisurely lunch at a local café or restaurant. Savor some traditional Georgian dishes, like khachapuri (cheese-filled bread) or khinkali (dumplings), while enjoying the lovely ambiance of this charming town.\n\nHotel\n\nCourtyard Tbilisi Marriott hotel or similar\n\nMeals\n\nBreakfast ( included )\n\nDriving Time\n\n1 hour\n\ninclusions\n\nHistorical monuments of Mtskheta ( unesco )"
       },
       {
         "id": "day-immersive-georgia-armenia-azarbaijan-8",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
         "day_number": 8,
         "title": "BAKU CITY - Gori & Birth Place of Stalin & Uplistsikhe",
-        "body": "Today we have early departure from Kazbeki Region to Gori. Visit Stalin museum and uplistsikhe - an unusual cave town dating back to 1st millennium BC. \n\n\n\nWe have a late 1 hour flight to BAKU today. We check-in to our hotel and having rest and get ready for an amazing day in Capital city of Azerbaijan tomorrow. \n\n\n\nHotel \n\n\n\nShareton Baku Intourist or Similar\n\n\n\nMeal\n\n\n\nBreakfast ( included )\n\n\n\ninclusions\n\n\n\nGori - Stain Museum visit\n\n\n\nCave Town Visit \n\n\n\nTransportation\n\n\n\n1 hour Flight"
+        "body": "Today we have early departure from Kazbeki Region to Gori. Visit Stalin museum and uplistsikhe - an unusual cave town dating back to 1st millennium BC.\n\nWe have a late 1 hour flight to BAKU today. We check-in to our hotel and having rest and get ready for an amazing day in Capital city of Azerbaijan tomorrow.\n\nHotel\n\nShareton Baku Intourist or Similar\n\nMeal\n\nBreakfast ( included )\n\ninclusions\n\nGori - Stain Museum visit\n\nCave Town Visit\n\nTransportation\n\n1 hour Flight"
       },
       {
         "id": "day-immersive-georgia-armenia-azarbaijan-9",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
         "day_number": 9,
-        "title": "BAKU CITY - Walled city of Baku with the Shirvanshah&#039;s palace and Maiden Tower ",
-        "body": "Explore the oOld town Baku, called Cheri Shelter. In the afternoon explore Absheron Peninsula; visit Ateshgah - fire worshipper&#039;s temple and Burning Mountain - Yanar Dagh. Walled city of Baku with the Shirvanshah&#039;s palace and Maiden Tower.\n\n\n\nHotel \n\n\n\nShareton Baku Intourist or Similar\n\n\n\nMeal\n\n\n\nBreakfast ( included )\n\n\n\nFarewell Dinner ( included )"
+        "title": "BAKU CITY - Walled city of Baku with the Shirvanshah's palace and Maiden Tower",
+        "body": "Explore the oOld town Baku, called Cheri Shelter. In the afternoon explore Absheron Peninsula; visit Ateshgah - fire worshipper's temple and Burning Mountain - Yanar Dagh. Walled city of Baku with the Shirvanshah's palace and Maiden Tower.\n\nHotel\n\nShareton Baku Intourist or Similar\n\nMeal\n\nBreakfast ( included )\n\nFarewell Dinner ( included )"
       },
       {
         "id": "day-immersive-georgia-armenia-azarbaijan-10",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
         "day_number": 10,
         "title": "DEPARTURE DAY",
-        "body": "As you embark on your journey home, may the memories you&#039;ve gathered during our trip stay with you like treasures in your heart. \n\n\n\nSafe travels and may your path ahead be as enriching and joyful as your time here. Until we meet again, cherish the moments and carry a piece of GEORGIA & ARMENIA&#039;s spirit with you wherever you go.\n\n\n\nFarewell and best wishes for your future adventures!\n\n\n\nWarm regards\n\n\n\nAGT GROUP LLC TEAM"
+        "body": "As you embark on your journey home, may the memories you've gathered during our trip stay with you like treasures in your heart.\n\nSafe travels and may your path ahead be as enriching and joyful as your time here. Until we meet again, cherish the moments and carry a piece of GEORGIA & ARMENIA's spirit with you wherever you go.\n\nFarewell and best wishes for your future adventures!\n\nWarm regards\n\nAGT GROUP LLC TEAM"
       }
     ],
     "departuresList": [
       {
-        "id": "dep-immersive-georgia-armenia-azarbaijan-1",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-19",
+        "id": "74dadb9b-6689-4423-8cd1-f0977eaad1f9",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
+        "start_date": "2026-11-27",
+        "end_date": "2026-12-06",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.178Z"
       },
       {
-        "id": "dep-immersive-georgia-armenia-azarbaijan-2",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-24",
+        "id": "6311dcc2-dad2-4c5f-9dd9-977f78ae0f9b",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
+        "start_date": "2026-11-29",
+        "end_date": "2026-12-08",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.178Z"
       },
       {
-        "id": "dep-immersive-georgia-armenia-azarbaijan-3",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
-        "start_date": "2026-09-20",
-        "end_date": "2026-09-29",
+        "id": "a5a6eee7-7547-49fc-9fab-b947ef061caf",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
+        "start_date": "2026-12-01",
+        "end_date": "2026-12-10",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.178Z"
       },
       {
-        "id": "dep-immersive-georgia-armenia-azarbaijan-4",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-19",
+        "id": "9d842653-63b7-4640-a3c2-d0498ae704e3",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
+        "start_date": "2026-12-03",
+        "end_date": "2026-12-12",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.178Z"
       },
       {
-        "id": "dep-immersive-georgia-armenia-azarbaijan-5",
-        "tour_id": "immersive-georgia-armenia-azarbaijan",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-24",
+        "id": "570cb853-9177-4112-8c5b-2272f653db8d",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
+        "start_date": "2026-12-05",
+        "end_date": "2026-12-14",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.178Z"
+      },
+      {
+        "id": "245f322d-ca43-48a6-b2fa-9752234ed7bb",
+        "tour_id": "tour-immersive-georgia-armenia-azarbaijan",
+        "start_date": "2026-12-07",
+        "end_date": "2026-12-16",
+        "price_cents": 500000,
+        "deposit_cents": 100000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.178Z"
       }
-    ]
+    ],
+    "single_supplement_cents": 100000,
+    "single_supplement_percent": 20,
+    "updated_at": "2026-06-03T18:42:35"
   },
   {
     "id": "tour-immersive-egypt",
@@ -17463,27 +17839,27 @@ export const TOURS_DATA: Tour[] = [
     "title": "Immersive Egypt Tour: A Luxury Journey Through Ancient Wonders",
     "code": "AGT-IMME",
     "summary": "Begin your journey in Cairo, the bustling capital where ancient history and modern life intertwine. Stand in awe before the Great Pyramids of Giza and the enigmatic Sphinx, marvels of engineering that have captivated travelers for millennia. Explore Historic Cairo and wander through the Egyptian Museum, home to the golden treasures of Tutankhamun and countless artifacts from Egypt’s illustrious past.",
-    "description": "Begin your journey in Cairo, the bustling capital where ancient history and modern life intertwine. Stand in awe before the Great Pyramids of Giza and the enigmatic Sphinx, marvels of engineering that have captivated travelers for millennia. Explore Historic Cairo and wander through the Egyptian Museum, home to the golden treasures of Tutankhamun and countless artifacts from Egypt’s illustrious past.\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
+    "description": "Welcome to Egypt – Land of Timeless Wonders\n\nBegin your journey in Cairo, the bustling capital where ancient history and modern life intertwine. Stand in awe before the Great Pyramids of Giza and the enigmatic Sphinx, marvels of engineering that have captivated travelers for millennia. Explore Historic Cairo and wander through the Egyptian Museum, home to the golden treasures of Tutankhamun and countless artifacts from Egypt’s illustrious past.\n\nTravel south to Aswan, where the tranquil waters of Lake Nasser cradle the ancient Temple of Philae, and the rich Nubian culture adds vibrant color to the landscape. Embark on a Nile River cruise, a journey along a river of legends, where each day unveils new vistas and echoes of ancient civilizations.\n\nVisit Abu Simbel, where the colossal statues of Ramses II stand guard over the desert sands, and explore the unique Kom Ombo Temple, a rare dual sanctuary dedicated to the crocodile god Sobek and the falcon god Haroeris. On the West Bank of Luxor, discover the Valley of the Kings, one of the richest archaeological sites in the world, along with the striking Temple of Queen Hatshepsut and the iconic Colossi of Memnon.\n\nConclude your adventure in Hurghada, a coastal paradise on the Red Sea, perfect for Boat Trip snorkeling, swimming or simply relaxing under the sun. With its pristine beaches, vibrant marine life, and excellent dining, Hurghada offers the ideal balance of adventure, culture, and leisure.",
     "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-thais-cordeiro-2213281-3873663-scaled.jpg",
     "gallery": [
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-thais-cordeiro-2213281-3873663-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-pixabay-33571.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-davidmceachan-71241-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-pixabay-262780.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-simon73-931881-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-davidmceachan-91409-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-ozgomz-1755390-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-alexazabache-3185480-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-alexazabache-3243027-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-alexazabache-3214972-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-taryn-elliott-3889891-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-padrinan-2076370-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-yasmine-qasem-1054896-2034684-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-frans-van-heerden-201846-631339-scaled.jpg"
     ],
     "days": 9,
     "nights": 8,
     "price_cents": 550000,
     "deposit_cents": 110000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Giza Pyramids",
@@ -17498,19 +17874,20 @@ export const TOURS_DATA: Tour[] = [
       "Egypt"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "Complimentary arrival transfer",
+      "Unique Boutique Hotels or Brand Hotels",
+      "All Breakfasts & Some Lunches & Some Dinners",
+      "Entrance Fees",
+      "Licensed Tour Guide",
+      "Private Mini Bus with A/C.",
+      "Luxury River Cruise"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "International Airfare",
+      "Visa Charges",
+      "Travel insurance",
+      "Personal Expenses such as shopping, bar bills, hot shower, telephone, laundry, titbits etc",
+      "Tips & Gestures"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -17593,89 +17970,112 @@ export const TOURS_DATA: Tour[] = [
     ],
     "departuresList": [
       {
-        "id": "dep-immersive-egypt-1",
-        "tour_id": "immersive-egypt",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-18",
+        "id": "55170e6e-bb07-4277-b8e5-9f31a58805cd",
+        "tour_id": "tour-immersive-egypt",
+        "start_date": "2026-12-04",
+        "end_date": "2026-12-12",
         "price_cents": 550000,
         "deposit_cents": 110000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.178Z"
       },
       {
-        "id": "dep-immersive-egypt-2",
-        "tour_id": "immersive-egypt",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-23",
+        "id": "11e708be-387a-4821-96ad-7ea42ca1327d",
+        "tour_id": "tour-immersive-egypt",
+        "start_date": "2026-12-06",
+        "end_date": "2026-12-14",
         "price_cents": 550000,
         "deposit_cents": 110000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.178Z"
       },
       {
-        "id": "dep-immersive-egypt-3",
-        "tour_id": "immersive-egypt",
-        "start_date": "2026-09-20",
-        "end_date": "2026-09-28",
+        "id": "04322c20-bdfb-49cd-bbc7-75ca0987b2e6",
+        "tour_id": "tour-immersive-egypt",
+        "start_date": "2026-12-08",
+        "end_date": "2026-12-16",
         "price_cents": 550000,
         "deposit_cents": 110000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.178Z"
       },
       {
-        "id": "dep-immersive-egypt-4",
-        "tour_id": "immersive-egypt",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-18",
+        "id": "3a86e36d-f8b6-482e-9c7a-ec3494026239",
+        "tour_id": "tour-immersive-egypt",
+        "start_date": "2026-12-10",
+        "end_date": "2026-12-18",
         "price_cents": 550000,
         "deposit_cents": 110000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.178Z"
       },
       {
-        "id": "dep-immersive-egypt-5",
-        "tour_id": "immersive-egypt",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-23",
+        "id": "701aa775-381c-4c85-b075-300080280299",
+        "tour_id": "tour-immersive-egypt",
+        "start_date": "2026-12-12",
+        "end_date": "2026-12-20",
         "price_cents": 550000,
         "deposit_cents": 110000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.178Z"
+      },
+      {
+        "id": "9080a8a0-dde1-4412-8f69-de94ed4a9c8b",
+        "tour_id": "tour-immersive-egypt",
+        "start_date": "2026-12-14",
+        "end_date": "2026-12-22",
+        "price_cents": 550000,
+        "deposit_cents": 110000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.178Z"
       }
-    ]
+    ],
+    "single_supplement_cents": 100000,
+    "single_supplement_percent": 18,
+    "updated_at": "2026-08-21T16:22:45"
   },
   {
     "id": "tour-immersive-oman-emirates",
     "slug": "immersive-oman-emirates",
     "title": "Immersive Oman & Emirates",
     "code": "AGT-IMME",
-    "summary": "Experience the dynamic fusion of history, culture, and modernity that defines Oman and the UAE.",
-    "description": "Experience the dynamic fusion of history, culture, and modernity that defines Oman and the UAE.\n\nThis small-group expedition is designed to immerse you deeply in the land, authentic local communities, and captivating heritage. Enjoy relaxed pacing, intimate family meals, and the guidance of dedicated experts.",
-    "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2022/03/mamun-srizon-MxzWG1tuFaw-unsplash.jpeg",
+    "summary": "These two nations offer a journey where ultra-modern cities coexist with timeless traditions, inviting travelers to uncover the rich stories of the past while embracing the excitement of the present.",
+    "description": "These two nations offer a journey where ultra-modern cities coexist with timeless traditions, inviting travelers to uncover the rich stories of the past while embracing the excitement of the present.\n\nBegin in the bustling ports of Muscat and Muttrah, where Oman's vibrant heritage comes alive. Explore magnificent Islamic forts, ancient mud-brick homes, and aromatic souqs filled with spices, textiles, and local crafts. Embark on thrilling adventures in the Wahiba Sands, meet the Bedouins, and soak in the breathtaking landscapes of Jebel Shams and Wadi Bani Awf. Conclude your journey back in the charming seaside capital, where the blend of tradition and modernity leaves a lasting impression.",
+    "hero_image": "/countries/oman.jpg",
     "gallery": [
-      "https://atlasglobaltours.com/wp-content/uploads/2022/03/mamun-srizon-MxzWG1tuFaw-unsplash.jpeg",
+      "/countries/oman.jpg",
+      "/countries/uae.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-mohamed-hamdi-510308652-20117731-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-cleireny-19840387-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-theoriginalpem-691552-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-mauricio-k-1141363850-30052188-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-mauricio-k-1141363850-30052185-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-thais-cordeiro-2213281-3873659-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-saud-aloufi-1576572527-27307136-scaled.jpg",
       "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-pareekshith-indeever-155333695-10919548-scaled.jpg",
-      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-vincent-ma-janssen-19786030-scaled.jpg"
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-vincent-ma-janssen-19786030-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-franck-lemozy-704616779-30023502-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-darrian-bryan-24827991-16126147-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2022/03/christoph-schulz-7tb-b37yHx4-unsplash-scaled.jpg"
     ],
     "days": 10,
     "nights": 9,
     "price_cents": 500000,
     "deposit_cents": 100000,
     "currency": "USD",
-    "min_pax": 1,
-    "max_pax": 12,
+    "min_pax": 2,
+    "max_pax": 10,
     "difficulty": "Moderate",
     "themes": [
       "Muscat & Nizwa Forts",
@@ -17691,19 +18091,20 @@ export const TOURS_DATA: Tour[] = [
       "United Arab Emirates"
     ],
     "includes": [
-      "Small group travel (Maximum 12 travellers)",
-      "Licensed English-speaking expert local guides",
-      "Handpicked boutique, heritage or 4-5 star hotels",
-      "All internal flights, high-speed trains & private A/C transport",
-      "All monument, park & museum entrance fees",
-      "Daily breakfast and specially selected regional culinary meals",
-      "24/7 on-ground assistance and emergency support"
+      "Complimentary Pick-up service from Airport (in our own vehicle)",
+      "Accomodations : Unique Boutique Hotels or Brand Hotels",
+      "Meals : All Breakfast & 1 Lunch & 3 Dinner",
+      "Transportation : Private Mini Bus with A/C.",
+      "Tour Leader / Tour Guide : 5+ More Years Experience",
+      "Local Activities : Camel Ride or 4x4 Drive - Omani Family Dinner",
+      "Entrance fees"
     ],
     "excludes": [
-      "International flights to/from starting city",
-      "Travel insurance (mandatory)",
-      "Personal expenses & optional activities",
-      "Gratuities for local guides and drivers"
+      "International Airfare",
+      "Visa Charges",
+      "Your travel insurance",
+      "Personal Expenses such as shopping, bar bills, hot shower, telephone, laundry, titbits etc",
+      "Tips & Gestures"
     ],
     "adventure_level": 3,
     "culture_level": 5,
@@ -17793,64 +18194,427 @@ export const TOURS_DATA: Tour[] = [
     ],
     "departuresList": [
       {
-        "id": "dep-immersive-oman-emirates-1",
-        "tour_id": "immersive-oman-emirates",
-        "start_date": "2026-05-10",
-        "end_date": "2026-05-19",
+        "id": "0dbef014-2db9-4e53-a972-4bdba4f25bb8",
+        "tour_id": "tour-immersive-oman-emirates",
+        "start_date": "2026-12-04",
+        "end_date": "2026-12-13",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 2,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.179Z"
       },
       {
-        "id": "dep-immersive-oman-emirates-2",
-        "tour_id": "immersive-oman-emirates",
-        "start_date": "2026-06-15",
-        "end_date": "2026-06-24",
+        "id": "704f56dc-00ff-4591-8591-0ad54222d093",
+        "tour_id": "tour-immersive-oman-emirates",
+        "start_date": "2026-12-06",
+        "end_date": "2026-12-15",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 3,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.179Z"
       },
       {
-        "id": "dep-immersive-oman-emirates-3",
-        "tour_id": "immersive-oman-emirates",
-        "start_date": "2026-09-20",
-        "end_date": "2026-09-29",
+        "id": "edd364d4-8d8e-4560-aece-e86fa9b134de",
+        "tour_id": "tour-immersive-oman-emirates",
+        "start_date": "2026-12-08",
+        "end_date": "2026-12-17",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 4,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.179Z"
       },
       {
-        "id": "dep-immersive-oman-emirates-4",
-        "tour_id": "immersive-oman-emirates",
-        "start_date": "2026-10-10",
-        "end_date": "2026-10-19",
+        "id": "22cf50d2-3035-4ee5-b401-66ade8d4f0ff",
+        "tour_id": "tour-immersive-oman-emirates",
+        "start_date": "2026-12-10",
+        "end_date": "2026-12-19",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 5,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.179Z"
       },
       {
-        "id": "dep-immersive-oman-emirates-5",
-        "tour_id": "immersive-oman-emirates",
-        "start_date": "2026-11-15",
-        "end_date": "2026-11-24",
+        "id": "6d3cf0a5-881e-4f63-b5d6-219918c6dcf9",
+        "tour_id": "tour-immersive-oman-emirates",
+        "start_date": "2026-12-12",
+        "end_date": "2026-12-21",
         "price_cents": 500000,
         "deposit_cents": 100000,
-        "capacity": 12,
-        "seats_booked": 6,
-        "status": "open"
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.179Z"
+      },
+      {
+        "id": "8d9b6f78-9d1a-4a0e-bbae-8340271770ac",
+        "tour_id": "tour-immersive-oman-emirates",
+        "start_date": "2026-12-14",
+        "end_date": "2026-12-23",
+        "price_cents": 500000,
+        "deposit_cents": 100000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.179Z"
+      }
+    ],
+    "single_supplement_cents": 100000,
+    "single_supplement_percent": 20,
+    "updated_at": "2026-11-13T10:51:41"
+  },
+  {
+    "id": "85bb014e-7994-464d-8820-1224b2032450",
+    "slug": "cairo-old-town-walking-tour-with-local-guide",
+    "title": "Cairo Old Town Walking Tour with Local Guide",
+    "code": "WTE-9612",
+    "summary": "Discover Cairo’s fascinating history on a private half day tour with a knowledgeable local guide and comfortable transportation. Explore iconic landmarks at your own pace, with no compulsory shopping stops, no hidden costs, and a seamless pickup and drop-off experience.",
+    "description": "Discover Cairo’s fascinating history on a private half day tour with a knowledgeable local guide and comfortable transportation. Explore iconic landmarks at your own pace, with no compulsory shopping stops, no hidden costs, and a seamless pickup and drop-off experience.",
+    "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-thais-cordeiro-2213281-3873663-scaled.jpg",
+    "gallery": [
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-thais-cordeiro-2213281-3873663-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-alexazabache-3185480-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-frans-van-heerden-201846-631339-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-yasmine-qasem-1054896-2034684-scaled.jpg"
+    ],
+    "days": 1,
+    "nights": 0,
+    "price_cents": 15000,
+    "deposit_cents": 15000,
+    "currency": "USD",
+    "min_pax": 1,
+    "max_pax": 10,
+    "difficulty": "Easy",
+    "themes": [
+      "Cairo & Giza",
+      "Private Day Tour",
+      "Ancient Egypt",
+      "No Shopping Stops"
+    ],
+    "region": "Egypt & Nile Valley",
+    "continent": "Africa",
+    "place": "Cairo & Giza Plateau",
+    "countries": [
+      "Egypt"
+    ],
+    "includes": [
+      "Local Tour Guide",
+      "Transportation"
+    ],
+    "excludes": [
+      "Entrance Fees",
+      "Travel Insurance",
+      "Tips & Gestures"
+    ],
+    "adventure_level": 2,
+    "culture_level": 5,
+    "relaxation_level": 3,
+    "is_featured": false,
+    "is_published": true,
+    "created_at": "2026-10-19T11:41:56Z",
+    "updated_at": "2026-10-19T11:56:05Z",
+    "tour_type": "day",
+    "duration_hours": 4,
+    "meeting_point": "Cairo / Giza Hotel Pickup",
+    "activity_level": "2 - Light Walking",
+    "travel_style": "Private & Small Group",
+    "best_time": "Year-round",
+    "meals_breakfasts": 0,
+    "meals_lunches": 0,
+    "meals_dinners": 0,
+    "daysList": [
+      {
+        "id": "40275e53-3a40-4d56-8e06-554ac8512c2a",
+        "tour_id": "85bb014e-7994-464d-8820-1224b2032450",
+        "day_number": 1,
+        "title": "Hotel Pickup",
+        "body": "Meet your guide and driver at your hotel and travel comfortably to the Giza Plateau."
+      },
+      {
+        "id": "a72a3749-3f16-405f-9a87-c5a79a21a516",
+        "tour_id": "85bb014e-7994-464d-8820-1224b2032450",
+        "day_number": 2,
+        "title": "Explore the Great Pyramids of Giza",
+        "body": "Discover the legendary pyramids of Khufu, Khafre, and Menkaure while learning about their construction, history, and significance in ancient Egyptian civilization."
+      },
+      {
+        "id": "b8a5829b-b093-48e4-8eb2-f9a1a64cfcaa",
+        "tour_id": "85bb014e-7994-464d-8820-1224b2032450",
+        "day_number": 3,
+        "title": "Visit the Great Sphinx",
+        "body": "Admire the iconic monument with the body of a lion and the face of a pharaoh. Learn about the mysteries and legends surrounding this remarkable ancient statue."
+      },
+      {
+        "id": "a69849fb-3b3a-45a5-ba8b-44e7508152e7",
+        "tour_id": "85bb014e-7994-464d-8820-1224b2032450",
+        "day_number": 4,
+        "title": "Discover the Valley Temple",
+        "body": "Explore the ancient Valley Temple of Khafre and learn about the funerary rituals of Egypt’s Old Kingdom."
+      },
+      {
+        "id": "adcf0540-0c19-44a5-b502-7e33a9b1aa4f",
+        "tour_id": "85bb014e-7994-464d-8820-1224b2032450",
+        "day_number": 5,
+        "title": "Panoramic Photo Stop",
+        "body": "Enjoy a spectacular panoramic view of the pyramids and take memorable photographs of one of the world’s most famous archaeological sites."
+      },
+      {
+        "id": "0fe57b20-16fa-4a60-98dc-ac06be1282e7",
+        "tour_id": "85bb014e-7994-464d-8820-1224b2032450",
+        "day_number": 6,
+        "title": "Return to Your Hotel",
+        "body": "Relax during your comfortable transfer back to your hotel, concluding your half-day Cairo experience."
+      }
+    ],
+    "departuresList": [
+      {
+        "id": "3ec639ac-f4c1-444b-ba90-a8f0d14c6f49",
+        "tour_id": "85bb014e-7994-464d-8820-1224b2032450",
+        "start_date": "2026-12-05",
+        "end_date": "2026-12-05",
+        "price_cents": 15000,
+        "deposit_cents": 15000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.133Z"
+      },
+      {
+        "id": "de2b8314-b976-4ae3-9b66-500e12f0f51d",
+        "tour_id": "85bb014e-7994-464d-8820-1224b2032450",
+        "start_date": "2026-12-12",
+        "end_date": "2026-12-12",
+        "price_cents": 15000,
+        "deposit_cents": 15000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.134Z"
+      },
+      {
+        "id": "35d420bf-8505-40dd-881e-f1480b255a7b",
+        "tour_id": "85bb014e-7994-464d-8820-1224b2032450",
+        "start_date": "2026-12-19",
+        "end_date": "2026-12-19",
+        "price_cents": 15000,
+        "deposit_cents": 15000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.134Z"
+      },
+      {
+        "id": "a24ca0e5-91dc-4c3a-948e-c93e419242be",
+        "tour_id": "85bb014e-7994-464d-8820-1224b2032450",
+        "start_date": "2027-01-09",
+        "end_date": "2027-01-09",
+        "price_cents": 15000,
+        "deposit_cents": 15000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.134Z"
+      },
+      {
+        "id": "41cecfac-657f-434e-8ecb-4cf031165d74",
+        "tour_id": "85bb014e-7994-464d-8820-1224b2032450",
+        "start_date": "2027-01-23",
+        "end_date": "2027-01-23",
+        "price_cents": 15000,
+        "deposit_cents": 15000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.134Z"
+      },
+      {
+        "id": "3000d1ce-47ac-48e6-ba6c-a9c67bbb95df",
+        "tour_id": "85bb014e-7994-464d-8820-1224b2032450",
+        "start_date": "2027-02-06",
+        "end_date": "2027-02-06",
+        "price_cents": 15000,
+        "deposit_cents": 15000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.134Z"
+      }
+    ]
+  },
+  {
+    "id": "d152c48e-49b3-46d9-93eb-ae97058fe4c0",
+    "slug": "pure-ephesus-shore-excursion-avoid-the-carpet-leather-factory-stops",
+    "title": "Pure Ephesus Shore Excursion: Avoid the Carpet & Leather Factory Stops",
+    "code": "WTE-9583",
+    "summary": "Discover the wonders of ancient Ephesus on a hassle-free shore excursion from Kusadasi Cruise Port, with no carpet or leather factory stops.",
+    "description": "Discover the wonders of ancient Ephesus on a hassle-free shore excursion from Kusadasi Cruise Port, with no carpet or leather factory stops.\n\nYour guide will meet you at the cruise port upon arrival and take you comfortably to Ephesus. Explore the magnificent Library of Celsus, the Great Theatre, and ancient marble streets while learning about the city's fascinating Roman history.\n\nDepending on your selected tour option and available time, you may also visit the House of the Virgin Mary or the charming village of Şirince.\n\nAfter your visit, enjoy a comfortable transfer back to Kusadasi Cruise Port, with return timing planned around your ship's departure schedule.\n\nNo shopping detours — just history, culture, and an authentic Ephesus experience.",
+    "hero_image": "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278533-scaled.jpg",
+    "gallery": [
+      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278533-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-okan-demi-rcan-694014155-33278525-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/03/pexels-ayse-58498816-17314051-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/03/vladyslav-cherkasenko-xH-cy_RP0tI-unsplash-scaled.jpg",
+      "https://atlasglobaltours.com/wp-content/uploads/2025/03/smryna-scaled.jpg"
+    ],
+    "days": 1,
+    "nights": 0,
+    "price_cents": 60000,
+    "deposit_cents": 60000,
+    "currency": "USD",
+    "min_pax": 1,
+    "max_pax": 10,
+    "difficulty": "Easy",
+    "themes": [
+      "Shore Excursion",
+      "Ancient Ephesus",
+      "UNESCO Heritage",
+      "No Shopping Stops"
+    ],
+    "region": "Aegean & Turquoise Coast",
+    "continent": "Europe",
+    "place": "Ephesus & Kuşadası Port",
+    "countries": [
+      "Türkiye"
+    ],
+    "includes": [
+      "Port pickup and drop-off at Kusadasi Cruise Port",
+      "Private air-conditioned transportation",
+      "Professional licensed local guide",
+      "Parking Fees"
+    ],
+    "excludes": [
+      "Ephesus & Mother Mary's House Entrance Tickets",
+      "Tips & Gestures"
+    ],
+    "adventure_level": 2,
+    "culture_level": 5,
+    "relaxation_level": 3,
+    "is_featured": false,
+    "is_published": true,
+    "created_at": "2026-10-08T15:45:12Z",
+    "updated_at": "2026-10-13T12:23:53Z",
+    "tour_type": "day",
+    "duration_hours": 4,
+    "meeting_point": "Kuşadası Cruise Port Terminal",
+    "activity_level": "2 - Light Walking",
+    "travel_style": "Shore Excursion",
+    "best_time": "Year-round",
+    "meals_breakfasts": 0,
+    "meals_lunches": 0,
+    "meals_dinners": 0,
+    "daysList": [
+      {
+        "id": "90fdda98-1d4c-4b39-9b3c-0b9103b5baee",
+        "tour_id": "d152c48e-49b3-46d9-93eb-ae97058fe4c0",
+        "day_number": 1,
+        "title": "Kuşadası Cruise Port Meet & Greet",
+        "body": "Your licensed local historian guide meets you directly outside Kuşadası Cruise Port terminal upon ship arrival, bypassing queues in a private air-conditioned vehicle."
+      },
+      {
+        "id": "8aa80d66-e497-4194-8337-ee8d3520c5fe",
+        "tour_id": "d152c48e-49b3-46d9-93eb-ae97058fe4c0",
+        "day_number": 2,
+        "title": "Ancient City of Ephesus",
+        "body": "Walk along the marble Curetes Street to explore the magnificent Library of Celsus, the Great Theatre (25,000 seats), Temple of Hadrian, Trajan Fountain, and Roman Agora — with zero carpet or leather factory sales stops."
+      },
+      {
+        "id": "ad9cb204-6c85-4e41-865d-eb94a9102c98",
+        "tour_id": "d152c48e-49b3-46d9-93eb-ae97058fe4c0",
+        "day_number": 3,
+        "title": "Optional House of the Virgin Mary or Şirince Village",
+        "body": "Depending on your ship schedule and chosen option, visit the peaceful hillside sanctuary of the House of the Virgin Mary or stroll the stone lanes of historic Şirince village."
+      },
+      {
+        "id": "f67980fc-c0f2-492f-8ce3-7a04f50964d9",
+        "tour_id": "d152c48e-49b3-46d9-93eb-ae97058fe4c0",
+        "day_number": 4,
+        "title": "Guaranteed On-Time Port Return",
+        "body": "Relax on your private transfer back to Kuşadası Cruise Port well ahead of your ship's all-aboard departure time."
+      }
+    ],
+    "departuresList": [
+      {
+        "id": "73393532-2d13-42c7-8369-f571079c9e8d",
+        "tour_id": "d152c48e-49b3-46d9-93eb-ae97058fe4c0",
+        "start_date": "2026-11-25",
+        "end_date": "2026-11-25",
+        "price_cents": 60000,
+        "deposit_cents": 60000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.136Z"
+      },
+      {
+        "id": "2ca09a0d-24df-43fc-878d-1d052f05da0f",
+        "tour_id": "d152c48e-49b3-46d9-93eb-ae97058fe4c0",
+        "start_date": "2026-11-26",
+        "end_date": "2026-11-26",
+        "price_cents": 60000,
+        "deposit_cents": 60000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.136Z"
+      },
+      {
+        "id": "3115c34c-4180-4da1-b88f-412a30b81b21",
+        "tour_id": "d152c48e-49b3-46d9-93eb-ae97058fe4c0",
+        "start_date": "2026-11-27",
+        "end_date": "2026-11-27",
+        "price_cents": 60000,
+        "deposit_cents": 60000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.136Z"
+      },
+      {
+        "id": "a4c8339d-75ba-44bb-97eb-74819da16a93",
+        "tour_id": "d152c48e-49b3-46d9-93eb-ae97058fe4c0",
+        "start_date": "2026-11-28",
+        "end_date": "2026-11-28",
+        "price_cents": 60000,
+        "deposit_cents": 60000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.136Z"
+      },
+      {
+        "id": "b176c4de-792c-4c7b-8be8-c4cf80907df3",
+        "tour_id": "d152c48e-49b3-46d9-93eb-ae97058fe4c0",
+        "start_date": "2026-11-29",
+        "end_date": "2026-11-29",
+        "price_cents": 60000,
+        "deposit_cents": 60000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.136Z"
+      },
+      {
+        "id": "6bc31ce9-6228-4c81-874c-330e5c97295a",
+        "tour_id": "d152c48e-49b3-46d9-93eb-ae97058fe4c0",
+        "start_date": "2026-11-30",
+        "end_date": "2026-11-30",
+        "price_cents": 60000,
+        "deposit_cents": 60000,
+        "capacity": 10,
+        "seats_booked": 0,
+        "status": "open",
+        "created_at": "2026-11-20T15:00:03.137Z"
       }
     ]
   }
 ];
-
 
 export interface DestinationRegion {
   id: string;
@@ -17870,7 +18634,7 @@ export const DESTINATION_REGIONS: DestinationRegion[] = [
     continent: "Europe",
     subtitle: "Byzantine & Ottoman Crossroads",
     description: "The imperial capital where East meets West — historic Sultanahmet, secret rooftop passages, Bosphorus ferries, Galata, and the Princes Islands.",
-    heroImage: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/turkiye-europe.jpg",
     places: ["Sultanahmet & Old City", "Topkapı Palace", "Galata, Fener & Balat", "Taksim & Pera", "Princes Islands"]
   },
   {
@@ -17879,7 +18643,7 @@ export const DESTINATION_REGIONS: DestinationRegion[] = [
     continent: "Europe",
     subtitle: "Ancient Ionia, Olive Groves & Mediterranean Coves",
     description: "Classical marble cities of Ephesus and Aphrodisias, crystalline Lycian coves for sea kayaking in Kaş, and private gulet cruises.",
-    heroImage: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "https://atlasglobaltours.com/wp-content/uploads/2025/01/pexels-gokhan-gok-2092229628-30315233-scaled.jpg",
     places: ["Ephesus & Selçuk", "Kaş & Kekova", "Lycian Way Trail", "Dalyan Turtle Beach", "Pamukkale & Hierapolis"]
   },
   {
@@ -17888,45 +18652,46 @@ export const DESTINATION_REGIONS: DestinationRegion[] = [
     continent: "Europe",
     subtitle: "Medieval Castles, Fjord-Like Bays & Forest Ranges",
     description: "From Danube riverfronts in Budapest through Sarajevo and the Bay of Kotor, to Transylvania fortified Saxon churches and the Carpathian range.",
-    heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/montenegro.jpg",
     places: ["Budapest & Danube", "Sarajevo & Mostar", "Bay of Kotor Montenegro", "Transylvania Bran Castle", "Maramureș"]
   },
 
-  // ASIA
   {
     id: "cappadocia-central",
     name: "Cappadocia & Central Anatolia",
-    continent: "Asia",
+    continent: "Europe",
     subtitle: "Land of Fairy Chimneys & Underground Cities",
     description: "Surreal volcanic valleys, troglodyte rock-carved churches, subterranean labyrinth settlements, and dawn balloon flights over Göreme.",
-    heroImage: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/turkiye-asia.jpg",
     places: ["Göreme & Rose Valley", "Pigeon Valley", "Uçhisar", "Derinkuyu Underground City", "Hattusa Hittite Capital"]
   },
   {
     id: "eastern-southeastern",
     name: "Eastern & Southeastern Türkiye",
-    continent: "Asia",
+    continent: "Europe",
     subtitle: "Cradle of Civilization & Mesopotamia",
     description: "The 12,000-year-old sanctuary of Göbeklitepe, Mount Nemrut summit statues, UNESCO gastronomy in Gaziantep, Urfa bazaars, and the ruins of Ani.",
-    heroImage: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "https://atlasglobaltours.com/wp-content/uploads/2025/01/Mount-Nemrut-Turkey.jpg",
     places: ["Göbeklitepe", "Gaziantep", "Şanlıurfa & Harran", "Mount Nemrut", "Kars & Ancient Ani", "Trabzon & Sümela"]
   },
   {
     id: "grand-turkiye-rail",
     name: "Grand Türkiye & Rail",
-    continent: "Asia",
+    continent: "Europe",
     subtitle: "Epic Cross-Country Journeys",
     description: "Travel Türkiye the poetic way — onboard historic railways across Anatolian plateaus, or embark on seamless multi-region grand expeditions.",
-    heroImage: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/turkiye-asia.jpg",
     places: ["Eastern Express Route", "Ankara to Kars", "Western & Eastern Combined Circuit", "All-Türkiye Expedition"]
   },
+
+  // ASIA
   {
     id: "caucasus",
     name: "The Caucasus",
     continent: "Asia",
     subtitle: "Cradle of Wine & Mountain Strongholds",
     description: "Old Tbilisi balconies, 8,000 years of Georgian winemaking in Kakheti, Armenia cliff-hanging monasteries beneath Mount Ararat, and Baku.",
-    heroImage: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/georgia.jpg",
     places: ["Tbilisi & Kazbegi", "Khor Virap Armenia", "Baku Old City", "Caucasus Mountain Passes"]
   },
   {
@@ -17935,7 +18700,7 @@ export const DESTINATION_REGIONS: DestinationRegion[] = [
     continent: "Asia",
     subtitle: "Rose-Red Canyons, Bedouin Glamping & Desert Forts",
     description: "The ancient rock-hewn treasury of Petra, lunar red sands of Wadi Rum, dramatic fjords of Musandam in Oman, and traditional spice souqs.",
-    heroImage: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/jordan.jpg",
     places: ["Jordan (Petra & Wadi Rum)", "Dead Sea", "Oman (Muscat & Nizwa)", "Wahiba Sands Desert", "Dubai Heritage"]
   },
   {
@@ -17944,7 +18709,7 @@ export const DESTINATION_REGIONS: DestinationRegion[] = [
     continent: "Asia",
     subtitle: "Emerald Waters, Ancient Citadels & Spice Hills",
     description: "Limestone karsts of Halong Bay and Hoi An lantern streets in Vietnam; Sigiriya Lion Rock and wild elephant sanctuaries in Sri Lanka.",
-    heroImage: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/vietnam.jpg",
     places: ["Halong Bay & Hanoi", "Ancient Hoi An", "Sigiriya Rock Fortress", "Kandy & Tea Hills", "Yala National Park"]
   },
 
@@ -17955,7 +18720,7 @@ export const DESTINATION_REGIONS: DestinationRegion[] = [
     continent: "Africa",
     subtitle: "Pyramids, Sahara Dunes & Imperial Medinas",
     description: "Giza Pyramids and private Dahabiya Nile river sailing in Egypt; labyrinth souqs and Erg Chebbi dunes in Morocco; Carthage and troglodyte ksars in Tunisia.",
-    heroImage: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/egypt.jpg",
     places: ["Egypt (Giza Pyramids & Nile)", "Morocco (Marrakech & Sahara)", "Tunisia (Carthage & El Jem)", "Abu Simbel"]
   },
   {
@@ -17964,7 +18729,7 @@ export const DESTINATION_REGIONS: DestinationRegion[] = [
     continent: "Africa",
     subtitle: "The Great Migration & Savanna Wildlife",
     description: "Unfiltered wilderness in Masai Mara and Lake Nakuru — witness the Great Migration, tracking the Big Five with expert Maasai naturalists.",
-    heroImage: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/kenya.jpg",
     places: ["Masai Mara National Reserve", "Lake Nakuru", "Great Rift Valley", "Nairobi Heritage"]
   }
 ];
@@ -17983,14 +18748,14 @@ export interface DestinationCountry {
 export const DESTINATION_COUNTRIES: DestinationCountry[] = [
   // EUROPE
   {
-    id: "turkiye-europe",
+    id: "turkiye",
     name: "Türkiye",
     continent: "Europe",
     flag: "🇹🇷",
-    subtitle: "Byzantine Crossroads & Aegean Turquoise Coast",
-    description: "Imperial Sultanahmet, secret rooftop passages, Bosphorus waterways, ancient Ephesus, and crystal-clear Lycian coves in Kaş.",
-    heroImage: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1200&q=80",
-    places: ["Istanbul Sultanahmet", "Galata & Balat", "Ephesus & Aegean", "Kaş Sea Kayaking", "Pamukkale"]
+    subtitle: "Istanbul Crossroads, Cappadocia & Turquoise Coast",
+    description: "Imperial Sultanahmet, dawn hot air balloons over Cappadocia's fairy chimneys, ancient Ephesus, crystal-clear Lycian coves, and 12,000-year-old Göbeklitepe.",
+    heroImage: "/countries/turkiye-europe.jpg",
+    places: ["Istanbul & Bosphorus", "Cappadocia & Göreme", "Ephesus & Pamukkale", "Kaş & Lycian Way", "Göbeklitepe & Mount Nemrut"]
   },
   {
     id: "hungary",
@@ -17999,7 +18764,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇭🇺",
     subtitle: "Danube Pearl & Central European Splendor",
     description: "The grand Danube riverfront in Budapest, Gothic Parliament, historic thermal baths, and royal castle vistas.",
-    heroImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/hungary.jpg",
     places: ["Budapest Danube Riverfront", "Buda Castle District", "Fisherman's Bastion"]
   },
   {
@@ -18009,7 +18774,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇷🇴",
     subtitle: "Transylvanian Castles & Carpathian Vistas",
     description: "Legendary Bran Castle, Saxon fortified churches, medieval Brașov, and wild Carpathian mountain routes.",
-    heroImage: "https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/romania.jpg",
     places: ["Transylvania Bran Castle", "Brașov Citadel", "Carpathian Ranges", "Sighișoara"]
   },
   {
@@ -18019,7 +18784,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇧🇦",
     subtitle: "Ottoman Bridges & Emerald Neretva Valley",
     description: "Historic Mostar Old Bridge, cobblestone Baščaršija in Sarajevo, and lush Balkan gorge landscapes.",
-    heroImage: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/bosnia.jpg",
     places: ["Mostar Old Bridge", "Sarajevo Old Town", "Neretva River Canyon"]
   },
   {
@@ -18029,7 +18794,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇲🇪",
     subtitle: "Fjord of Kotor & Dinaric Alps",
     description: "Sublime fjord-like Bay of Kotor, Venetian coastal citadels, and dramatic mountain peaks meeting the Adriatic.",
-    heroImage: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/montenegro.jpg",
     places: ["Bay of Kotor", "Perast Islets", "Kotor Old Town Fortress"]
   },
   {
@@ -18039,7 +18804,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇭🇷",
     subtitle: "Dalmatian Coast & Adriatic Heritage",
     description: "The fortified marble walls of Dubrovnik, pristine Adriatic archipelagos, and ancient Roman palace cities.",
-    heroImage: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/croatia.jpg",
     places: ["Dubrovnik Old City Walls", "Dalmatian Coastline", "Pelješac Peninsula"]
   },
   {
@@ -18049,21 +18814,11 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇷🇸",
     subtitle: "Belgrade Fortress & Danube Confluence",
     description: "Where the Sava meets the Danube — historic Kalemegdan fortress, lively Bohemian quarters, and riverside culture.",
-    heroImage: "https://images.unsplash.com/photo-1584448141569-69f342da535c?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/serbia.jpg",
     places: ["Belgrade Kalemegdan", "Skadarlija Quarter", "Danube Riverbanks"]
   },
 
   // ASIA
-  {
-    id: "turkiye-asia",
-    name: "Türkiye",
-    continent: "Asia",
-    flag: "🇹🇷",
-    subtitle: "Cappadocia Fairy Chimneys & Mesopotamian Antiquities",
-    description: "Dawn hot air balloons over Göreme valleys, underground cities, 12,000-year-old Göbeklitepe, and Mount Nemrut.",
-    heroImage: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=1200&q=80",
-    places: ["Göreme & Rose Valley", "Derinkuyu Underground City", "Göbeklitepe Sanctuary", "Mount Nemrut", "Ani Silk Road"]
-  },
   {
     id: "jordan",
     name: "Jordan",
@@ -18071,7 +18826,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇯🇴",
     subtitle: "Rose-Red Petra & Mars-Like Wadi Rum",
     description: "Walk the Siq to the Treasury in ancient Nabataean Petra, sleep under desert stars in Wadi Rum, and float in the Dead Sea.",
-    heroImage: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/jordan.jpg",
     places: ["Petra Rock Treasury", "Wadi Rum Red Dunes", "Dead Sea Floating", "Amman Citadel", "Jerash Ruins"]
   },
   {
@@ -18081,7 +18836,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇬🇪",
     subtitle: "High Caucasus Peaks & 8,000-Year Wine Cradles",
     description: "Gergeti Trinity Church beneath Mount Kazbek, ancient amphora wine cellars of Kakheti, and Tbilisi's carved balconies.",
-    heroImage: "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/georgia.jpg",
     places: ["Tbilisi Old Town", "Kazbegi Mount Gergeti", "Kakheti Wine Valley", "Gudauri Pass"]
   },
   {
@@ -18091,7 +18846,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇦🇲",
     subtitle: "Monasteries in the Shadow of Mount Ararat",
     description: "Cliffside Khor Virap monastery, pagan temple of Garni, azure Lake Sevan, and millennia of UNESCO sacred architecture.",
-    heroImage: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/armenia.jpg",
     places: ["Khor Virap Monastery", "Yerevan Cascade", "Lake Sevan", "Garni Temple & Geghard"]
   },
   {
@@ -18101,7 +18856,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇦🇿",
     subtitle: "Land of Fire, Silk Road & Caspian Winds",
     description: "Walled medieval fortress of Icherisheher in Baku, ancient Gobustan petroglyphs, bubbling mud volcanoes, and Sheki palaces.",
-    heroImage: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/azerbaijan.jpg",
     places: ["Baku Icherisheher", "Gobustan Rock Art", "Sheki Silk Road Palace", "Ateshgah Fire Temple"]
   },
   {
@@ -18111,7 +18866,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇴🇲",
     subtitle: "Frankincense Canyons, Oases & Wahiba Dunes",
     description: "Grand Sultan Qaboos Mosque, swimming through emerald pools of Wadi Shab, historic Nizwa fort, and Bedouin desert camps.",
-    heroImage: "https://images.unsplash.com/photo-1549144511-f099e773c147?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/oman.jpg",
     places: ["Muscat Grand Mosque", "Wadi Shab Canyon Pools", "Wahiba Sands Desert", "Nizwa Fort Souq"]
   },
   {
@@ -18121,7 +18876,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇦🇪",
     subtitle: "Futuristic Skylines & Arabian Heritage",
     description: "The gleaming white marble domes of Sheikh Zayed Grand Mosque, historic Al Fahidi creekside, and golden dunes.",
-    heroImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/uae.jpg",
     places: ["Abu Dhabi Sheikh Zayed Mosque", "Dubai Old Creek & Souqs", "Liwa Desert Oasis"]
   },
   {
@@ -18131,7 +18886,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇻🇳",
     subtitle: "Halong Bay Limestone Karsts & Hoi An Lanterns",
     description: "Sail emerald waters among towering karst islands in Halong Bay, explore Hanoi's French-colonial quarters, and stroll lantern-lit Hoi An.",
-    heroImage: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/vietnam.jpg",
     places: ["Halong Bay Overnight Junk", "Hanoi Old Quarter", "Hoi An Ancient Town", "Mekong Delta"]
   },
   {
@@ -18141,7 +18896,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇱🇰",
     subtitle: "Lion Rock Citadel, Tea Hills & Leopard Safaris",
     description: "Climb the ancient fifth-century palace fortress of Sigiriya, ride the scenic mountain tea train, and track leopards in Yala.",
-    heroImage: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/sri-lanka.jpg",
     places: ["Sigiriya Rock Fortress", "Kandy Temple of Tooth", "Ella Scenic Tea Train", "Yala Wildlife Safari"]
   },
 
@@ -18153,7 +18908,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇪🇬",
     subtitle: "Pyramids of Giza & Private Dahabiya Nile Cruise",
     description: "The Great Pyramids and Sphinx, royal tombs in the Valley of the Kings, serene Nile sailing on a traditional Dahabiya, and colossal Abu Simbel.",
-    heroImage: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/egypt.jpg",
     places: ["Giza Pyramids & Sphinx", "Valley of the Kings Luxor", "Nile Dahabiya Sailing", "Abu Simbel Sun Temples", "Aswan Philae"]
   },
   {
@@ -18163,7 +18918,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇲🇦",
     subtitle: "Imperial Medinas, Atlas Passes & Sahara Erg Chebbi",
     description: "Spice-scented alleys of Marrakech and Fez, mudbrick kasbahs of Ouarzazate, and camel treks across shifting Sahara dunes.",
-    heroImage: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/morocco.jpg",
     places: ["Marrakech Jemaa el-Fnaa", "Fez Ancient Medina", "Aït Benhaddou Kasbah", "Merzouga Sahara Dunes"]
   },
   {
@@ -18173,7 +18928,7 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇹🇳",
     subtitle: "Carthage Antiquities & Blue-and-White Sidi Bou Said",
     description: "Legendary Roman Carthage, seaside cobblestones of Sidi Bou Said, magnificent Roman amphitheater of El Jem, and desert ksars.",
-    heroImage: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/tunisia.jpg",
     places: ["Carthage Archaeological Site", "Sidi Bou Said Cliffs", "El Jem Roman Amphitheater", "Kairouan Medina"]
   },
   {
@@ -18183,24 +18938,16 @@ export const DESTINATION_COUNTRIES: DestinationCountry[] = [
     flag: "🇰🇪",
     subtitle: "Maasai Mara Big Five & Great Rift Valley",
     description: "Witness the legendary Great Migration across the endless plains of the Maasai Mara, guided by native naturalist trackers.",
-    heroImage: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=80",
+    heroImage: "/countries/kenya.jpg",
     places: ["Masai Mara National Reserve", "Lake Nakuru Rhino Sanctuary", "Great Rift Valley Scarp", "Amboseli Kilimanjaro Views"]
   }
 ];
 
-export function tourMatchesCountry(tour: Tour, countryName: string, continent?: string): boolean {
+export function tourMatchesCountry(tour: Tour, countryName: string, _continent?: string): boolean {
   if (!tour.countries || tour.countries.length === 0) return false;
   const target = countryName.toLowerCase().trim();
   if (target === "türkiye" || target === "turkey") {
-    const hasTurk = tour.countries.some(c => c.toLowerCase() === "türkiye" || c.toLowerCase() === "turkey");
-    if (!hasTurk) return false;
-    if (continent === "Europe") {
-      return tour.continent === "Europe" || tour.region === "Istanbul & Marmara" || tour.region === "Aegean & Turquoise Coast";
-    }
-    if (continent === "Asia") {
-      return tour.continent === "Asia" || tour.region === "Cappadocia & Central Anatolia" || tour.region === "Eastern & Southeastern Türkiye" || tour.region === "Grand Türkiye & Rail";
-    }
-    return true;
+    return tour.countries.some(c => c.toLowerCase().trim() === "türkiye" || c.toLowerCase().trim() === "turkey");
   }
   return tour.countries.some(c => {
     const cLower = c.toLowerCase().trim();
