@@ -64,6 +64,15 @@ export const DepartureDropdown: React.FC<DepartureDropdownProps> = ({
     );
   }
 
+  const openDeparturesCount = departures.filter(
+    (d) => d.status !== 'sold_out' && Math.max(0, d.capacity - d.seats_booked) > 0
+  ).length;
+  const selectedSpotsLeft = selectedDeparture
+    ? Math.max(0, selectedDeparture.capacity - selectedDeparture.seats_booked)
+    : 0;
+  const isSelectedSoldOut =
+    !selectedDeparture || selectedDeparture.status === 'sold_out' || selectedSpotsLeft <= 0;
+
   return (
     <div className={`relative ${className}`} ref={dropdownRef}>
       {label && (
@@ -73,7 +82,7 @@ export const DepartureDropdown: React.FC<DepartureDropdownProps> = ({
             <span>{label}</span>
           </label>
           <span className="text-[0.7rem] font-medium text-muted-foreground bg-muted/60 px-2 py-0.5 rounded-full">
-            {departures.length} available
+            {openDeparturesCount} available
           </span>
         </div>
       )}
@@ -99,13 +108,21 @@ export const DepartureDropdown: React.FC<DepartureDropdownProps> = ({
               <span className="text-xs font-bold text-foreground truncate">
                 {selectedDeparture ? formatDateRange(selectedDeparture) : 'Choose departure date'}
               </span>
-              <span className="inline-flex items-center gap-0.5 text-[0.62rem] font-semibold text-success bg-success/10 px-1.5 py-0.2 rounded">
-                <Sparkles className="size-2.5" /> Guaranteed
-              </span>
-              {selectedDeparture && (selectedDeparture.capacity - selectedDeparture.seats_booked) < 4 && (
-                <span className="inline-flex items-center gap-1 text-[0.62rem] font-bold text-amber-700 dark:text-amber-300 bg-amber-500/15 border border-amber-500/30 px-1.5 py-0.2 rounded animate-pulse">
-                  <Flame className="size-2.5 text-amber-600 dark:text-amber-400" /> Filling fast ({selectedDeparture.capacity - selectedDeparture.seats_booked} left)
+              {isSelectedSoldOut ? (
+                <span className="inline-flex items-center gap-1 text-[0.62rem] font-bold text-destructive bg-destructive/10 border border-destructive/30 px-1.5 py-0.2 rounded">
+                  <AlertCircle className="size-2.5" /> Sold Out
                 </span>
+              ) : (
+                <>
+                  <span className="inline-flex items-center gap-0.5 text-[0.62rem] font-semibold text-success bg-success/10 px-1.5 py-0.2 rounded">
+                    <Sparkles className="size-2.5" /> Guaranteed
+                  </span>
+                  {selectedSpotsLeft < 4 && (
+                    <span className="inline-flex items-center gap-1 text-[0.62rem] font-bold text-amber-700 dark:text-amber-300 bg-amber-500/15 border border-amber-500/30 px-1.5 py-0.2 rounded animate-pulse">
+                      <Flame className="size-2.5 text-amber-600 dark:text-amber-400" /> Filling fast ({selectedSpotsLeft} left)
+                    </span>
+                  )}
+                </>
               )}
             </div>
             {selectedDeparture && (
@@ -116,9 +133,11 @@ export const DepartureDropdown: React.FC<DepartureDropdownProps> = ({
                 {showSpotCount && (
                   <>
                     <span>•</span>
-                    <span className="flex items-center gap-1">
+                    <span className={`flex items-center gap-1 ${isSelectedSoldOut ? 'text-destructive font-semibold' : ''}`}>
                       <Users className="size-3" />
-                      {Math.max(1, selectedDeparture.capacity - selectedDeparture.seats_booked)} spots remaining
+                      {isSelectedSoldOut
+                        ? '0 spots remaining'
+                        : `${selectedSpotsLeft} spot${selectedSpotsLeft === 1 ? '' : 's'} remaining`}
                     </span>
                   </>
                 )}
@@ -145,21 +164,26 @@ export const DepartureDropdown: React.FC<DepartureDropdownProps> = ({
           <div className="space-y-1">
             {departures.map((dep) => {
               const isSelected = selectedDeparture?.id === dep.id;
-              const spotsLeft = Math.max(1, dep.capacity - dep.seats_booked);
-              const isFillingFast = spotsLeft < 4;
+              const spotsLeft = Math.max(0, dep.capacity - dep.seats_booked);
+              const isSoldOut = dep.status === 'sold_out' || spotsLeft <= 0;
+              const isFillingFast = !isSoldOut && spotsLeft < 4;
 
               return (
                 <button
                   key={dep.id}
                   type="button"
+                  disabled={isSoldOut}
                   onClick={() => {
+                    if (isSoldOut) return;
                     onSelectDeparture(dep.id);
                     setIsOpen(false);
                   }}
-                  className={`w-full text-left rounded-lg p-2.5 transition-all cursor-pointer flex items-center justify-between gap-3 ${
-                    isSelected
-                      ? 'bg-primary/10 border border-primary/30 text-foreground font-semibold shadow-xs'
-                      : 'hover:bg-muted text-foreground border border-transparent'
+                  className={`w-full text-left rounded-lg p-2.5 transition-all flex items-center justify-between gap-3 ${
+                    isSoldOut
+                      ? 'opacity-50 cursor-not-allowed bg-muted/40 border border-transparent'
+                      : isSelected
+                      ? 'bg-primary/10 border border-primary/30 text-foreground font-semibold shadow-xs cursor-pointer'
+                      : 'hover:bg-muted text-foreground border border-transparent cursor-pointer'
                   }`}
                   role="option"
                   aria-selected={isSelected}
@@ -167,14 +191,18 @@ export const DepartureDropdown: React.FC<DepartureDropdownProps> = ({
                   <div className="flex items-center gap-2.5 min-w-0">
                     <div
                       className={`flex size-7 shrink-0 items-center justify-center rounded-md ${
-                        isSelected
+                        isSoldOut
+                          ? 'bg-destructive/10 text-destructive'
+                          : isSelected
                           ? 'bg-primary text-primary-foreground font-bold'
                           : isFillingFast
                           ? 'bg-amber-500/15 text-amber-600 dark:text-amber-400'
                           : 'bg-muted text-muted-foreground'
                       }`}
                     >
-                      {isSelected ? (
+                      {isSoldOut ? (
+                        <AlertCircle className="size-3.5" />
+                      ) : isSelected ? (
                         <Check className="size-3.5" />
                       ) : isFillingFast ? (
                         <Flame className="size-3.5 text-amber-600 dark:text-amber-400" />
@@ -184,9 +212,14 @@ export const DepartureDropdown: React.FC<DepartureDropdownProps> = ({
                     </div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <p className={`text-xs truncate ${isSelected ? 'font-bold text-primary' : 'font-medium'}`}>
+                        <p className={`text-xs truncate ${isSoldOut ? 'line-through text-muted-foreground' : isSelected ? 'font-bold text-primary' : 'font-medium'}`}>
                           {formatDateRange(dep)}
                         </p>
+                        {isSoldOut && (
+                          <span className="inline-flex items-center gap-1 text-[0.6rem] font-bold uppercase tracking-wider text-destructive bg-destructive/10 border border-destructive/20 px-1.5 py-0.2 rounded">
+                            Sold Out
+                          </span>
+                        )}
                         {isFillingFast && (
                           <span className="inline-flex items-center gap-1 text-[0.6rem] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300 bg-amber-500/15 border border-amber-500/30 px-1.5 py-0.2 rounded">
                             <Flame className="size-2.5 text-amber-600 dark:text-amber-400" /> Filling fast
@@ -194,11 +227,17 @@ export const DepartureDropdown: React.FC<DepartureDropdownProps> = ({
                         )}
                       </div>
                       <div className="flex items-center gap-2 text-[0.68rem] text-muted-foreground mt-0.5">
-                        <span className="text-success font-medium">Guaranteed</span>
-                        <span>•</span>
-                        <span className={isFillingFast ? 'font-semibold text-amber-700 dark:text-amber-300' : ''}>
-                          {spotsLeft} spot{spotsLeft === 1 ? '' : 's'} remaining
-                        </span>
+                        {isSoldOut ? (
+                          <span className="text-destructive font-medium">No spots remaining</span>
+                        ) : (
+                          <>
+                            <span className="text-success font-medium">Guaranteed</span>
+                            <span>•</span>
+                            <span className={isFillingFast ? 'font-semibold text-amber-700 dark:text-amber-300' : ''}>
+                              {spotsLeft} spot{spotsLeft === 1 ? '' : 's'} remaining
+                            </span>
+                          </>
+                        )}
                       </div>
                     </div>
                   </div>

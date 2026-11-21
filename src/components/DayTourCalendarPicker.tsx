@@ -169,7 +169,8 @@ export const DayTourCalendarPicker: React.FC<DayTourCalendarPickerProps> = ({
       const dateString = formatDateString(year, month, d);
       const departure = departuresByDate.get(dateString) || null;
       const isSelected = selectedDeparture?.start_date === dateString;
-      const isAvailable = !!departure && departure.status !== 'sold_out';
+      const spotsLeft = departure ? Math.max(0, departure.capacity - departure.seats_booked) : 0;
+      const isAvailable = !!departure && departure.status !== 'sold_out' && spotsLeft > 0;
 
       days.push({
         day: d,
@@ -242,7 +243,9 @@ export const DayTourCalendarPicker: React.FC<DayTourCalendarPickerProps> = ({
         </label>
         <span className="text-[0.68rem] font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 px-2 py-0.5 rounded-full inline-flex items-center gap-1">
           <Sparkles className="size-2.5" />
-          <span>{departures.length} Dates Available</span>
+          <span>
+            {departures.filter((d) => d.status !== 'sold_out' && d.capacity - d.seats_booked > 0).length} Dates Available
+          </span>
         </span>
       </div>
 
@@ -392,12 +395,21 @@ export const DayTourCalendarPicker: React.FC<DayTourCalendarPickerProps> = ({
               {selectedDateFormatted}
             </div>
             <div className="text-[0.7rem] text-muted-foreground flex items-center gap-2">
-              <span className="text-success font-medium">Guaranteed Departure</span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <Users className="size-3" />
-                <span>Max 12 guests</span>
-              </span>
+              {Math.max(0, selectedDeparture.capacity - selectedDeparture.seats_booked) > 0 ? (
+                <>
+                  <span className="text-success font-medium">Guaranteed Departure</span>
+                  <span>•</span>
+                  <span className="flex items-center gap-1 font-medium text-foreground">
+                    <Users className="size-3 text-primary" />
+                    <span>
+                      {Math.max(0, selectedDeparture.capacity - selectedDeparture.seats_booked)} spot
+                      {Math.max(0, selectedDeparture.capacity - selectedDeparture.seats_booked) === 1 ? '' : 's'} remaining
+                    </span>
+                  </span>
+                </>
+              ) : (
+                <span className="text-destructive font-semibold">Sold Out — please select another date</span>
+              )}
             </div>
           </div>
 

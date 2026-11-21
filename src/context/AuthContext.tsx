@@ -855,6 +855,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const cancelBooking = (reference: string) => {
+    const target = bookings.find((b) => b.reference === reference);
+    if (target && target.status !== 'cancelled') {
+      setDepartures((prev) =>
+        prev.map((d) => {
+          if (d.tourId === target.tourId && d.startDate === target.departureDate) {
+            const nextBooked = Math.max(0, d.bookedSeats - target.guests);
+            return {
+              ...d,
+              bookedSeats: nextBooked,
+              status: nextBooked >= d.capacity ? 'sold_out' : nextBooked >= d.capacity - 2 ? 'filling_fast' : 'guaranteed',
+            };
+          }
+          return d;
+        })
+      );
+    }
     updateBooking(reference, { status: 'cancelled' });
   };
 

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   MapPin,
   Calendar,
@@ -90,8 +90,23 @@ export const TourDetailPage: React.FC<TourDetailPageProps> = ({
     if (selectedDepartureId) {
       return availableDepartures.find((d) => d.id === selectedDepartureId) || availableDepartures[0];
     }
-    return availableDepartures[0];
+    return (
+      availableDepartures.find((d) => d.status !== 'sold_out' && d.capacity - d.seats_booked > 0) ||
+      availableDepartures[0]
+    );
   }, [availableDepartures, selectedDepartureId]);
+
+  const availableSeats = useMemo(() => {
+    if (!selectedDeparture) return tour.max_pax || 12;
+    if (selectedDeparture.status === 'sold_out') return 0;
+    return Math.max(0, selectedDeparture.capacity - selectedDeparture.seats_booked);
+  }, [selectedDeparture, tour.max_pax]);
+
+  useEffect(() => {
+    if (availableSeats > 0 && passengers > availableSeats) {
+      setPassengers(availableSeats);
+    }
+  }, [availableSeats, passengers]);
 
   const allExpanded = useMemo(() => {
     return (
@@ -793,17 +808,22 @@ export const TourDetailPage: React.FC<TourDetailPageProps> = ({
               <DayTourPricingSelector
                 baseAdultPriceCents={basePricePerPersonCents}
                 passengers={passengers}
-                onChangePassengers={(count) => setPassengers(count)}
+                onChangePassengers={(count) => setPassengers(Math.min(Math.max(1, availableSeats), count))}
                 currency={tour.currency}
-                maxPax={tour.max_pax || 12}
+                maxPax={Math.max(1, availableSeats)}
               />
             ) : (
               <>
                 {/* Number of Passengers Counter */}
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-                    Number of Travellers
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      Number of Travellers
+                    </label>
+                    <span className={`text-[0.68rem] font-semibold ${availableSeats <= 3 ? 'text-amber-700 dark:text-amber-400' : 'text-muted-foreground'}`}>
+                      {availableSeats > 0 ? `${availableSeats} spot${availableSeats === 1 ? '' : 's'} left` : 'Sold out'}
+                    </span>
+                  </div>
                   <div className="flex items-center justify-between rounded-lg border border-border bg-background p-2">
                     <span className="text-sm font-medium pl-2">
                       {passengers} {passengers === 1 ? 'Guest' : 'Guests'}
@@ -820,8 +840,8 @@ export const TourDetailPage: React.FC<TourDetailPageProps> = ({
                       <span className="w-6 text-center text-sm font-bold">{passengers}</span>
                       <button
                         type="button"
-                        onClick={() => setPassengers(Math.min(tour.max_pax || 12, passengers + 1))}
-                        disabled={passengers >= (tour.max_pax || 12)}
+                        onClick={() => setPassengers(Math.min(availableSeats, passengers + 1))}
+                        disabled={passengers >= availableSeats || availableSeats <= 0}
                         className="size-7 rounded border border-border bg-card text-foreground font-bold hover:bg-muted disabled:opacity-40 cursor-pointer flex items-center justify-center"
                       >
                         +
@@ -897,18 +917,19 @@ export const TourDetailPage: React.FC<TourDetailPageProps> = ({
             <div className="space-y-2.5">
               <button
                 type="button"
+                disabled={availableSeats <= 0}
                 onClick={() =>
                   onBookTour(
                     tour.slug,
                     selectedDeparture?.id,
-                    passengers,
-                    isDayTour ? [] : roomSelections.slice(0, passengers)
+                    Math.min(passengers, availableSeats),
+                    isDayTour ? [] : roomSelections.slice(0, Math.min(passengers, availableSeats))
                   )
                 }
-                className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-primary py-3 text-sm font-bold text-primary-foreground shadow hover:bg-primary/90 transition-colors cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-primary py-3 text-sm font-bold text-primary-foreground shadow hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors cursor-pointer"
               >
-                <span>Book this tour</span>
-                <ArrowRight className="size-4" />
+                <span>{availableSeats <= 0 ? 'Departure Sold Out' : 'Book this tour'}</span>
+                {availableSeats > 0 && <ArrowRight className="size-4" />}
               </button>
 
               <button

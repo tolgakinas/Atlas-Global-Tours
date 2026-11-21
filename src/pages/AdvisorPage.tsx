@@ -30,6 +30,7 @@ import { useCurrency } from '../context/CurrencyContext';
 import { AdvisorClientVoucher } from '../components/AdvisorClientVoucher';
 import { DepartureDropdown } from '../components/DepartureDropdown';
 import { calculateDayTourPricing } from '../utils/dayTourPricing';
+import { sendAdminBookingNotification } from '../utils/bookingNotifications';
 
 interface AdvisorPageProps {
   onNavigate: (path: string) => void;
@@ -47,7 +48,7 @@ export const AdvisorPage: React.FC<AdvisorPageProps> = ({ onNavigate, onSelectTo
     createAdvisorBooking,
   } = useAuth();
 
-  const { tours } = useTours();
+  const { tours, bookDepartureSeats } = useTours();
   const { formatPrice, currency } = useCurrency();
 
   // Login & Registration state
@@ -255,24 +256,26 @@ export const AdvisorPage: React.FC<AdvisorPageProps> = ({ onNavigate, onSelectTo
   const handleBookSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!commissionAgreed) {
-      alert('Please agree with the commission rate and net amount terms before booking.');
       return;
     }
 
     // Validate that passenger 1 has a name
     if (!clients[0]?.firstName || !clients[0]?.lastName) {
-      alert('Please enter at least the First and Last name for Passenger 1.');
       return;
     }
 
+    const departureDateStr = selectedDate || '2026-10-25';
     const cardLast4 = cardNumber.replace(/\D/g, '').slice(-4) || '4242';
+
+    // Decrement live tour departure availability by number of passengers
+    const seatUpdate = bookDepartureSeats(selectedTour.id, departureDateStr, guestCount);
 
     const newBooking = createAdvisorBooking({
       tourId: selectedTour.id,
       tourSlug: selectedTour.slug,
       tourTitle: selectedTour.title,
       tourImage: selectedTour.hero_image,
-      departureDate: selectedDate || '2026-10-25',
+      departureDate: departureDateStr,
       guests: guestCount,
       totalPriceCents: grossTotalCents,
       currency: selectedTour.currency || 'USD',
@@ -282,6 +285,28 @@ export const AdvisorPage: React.FC<AdvisorPageProps> = ({ onNavigate, onSelectTo
       cardLast4,
       cardholderName: cardholderName || currentAdvisor?.name || 'Authorized Advisor',
       specialRequests,
+    });
+
+    // Notify admin email (bookings@atlasglobaltours.com)
+    void sendAdminBookingNotification({
+      reference: newBooking.reference,
+      tourTitle: selectedTour.title,
+      tourSlug: selectedTour.slug,
+      departureDate: departureDateStr,
+      guests: guestCount,
+      remainingSeats: seatUpdate?.remainingSeats,
+      capacity: seatUpdate?.capacity,
+      totalPriceFormatted: formatPrice(grossTotalCents, selectedTour.currency || 'USD'),
+      currency: selectedTour.currency || 'USD',
+      leadName: `${clients[0].firstName} ${clients[0].lastName}`.trim(),
+      leadEmail: clients[0].email || currentAdvisor?.email || 'bookings@atlasglobaltours.com',
+      leadPhone: clients[0].phone || currentAdvisor?.phone || '',
+      paymentMethod: cardType === 'debit_card' ? 'Debit Card' : 'Credit Card',
+      specialRequests,
+      isAdvisorBooking: true,
+      advisorName: currentAdvisor?.name || cardholderName,
+      agencyName: currentAdvisor?.agencyName,
+      commissionRatePercent: commissionPercent,
     });
 
     setCreatedBooking(newBooking);

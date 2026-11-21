@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   Check,
   Calendar,
@@ -10,7 +10,9 @@ import {
   Building,
   CheckCircle2,
   Lock,
-  Download
+  Download,
+  AlertCircle,
+  Loader2
 } from 'lucide-react';
 import { Tour, TOURS_DATA, RoomingSelection } from '../data/toursData';
 import { useTours } from '../context/ToursContext';
@@ -21,6 +23,7 @@ import { RoomingSelector } from '../components/RoomingSelector';
 import { DayTourCalendarPicker } from '../components/DayTourCalendarPicker';
 import { DayTourPricingSelector } from '../components/DayTourPricingSelector';
 import { calculateDayTourPricing } from '../utils/dayTourPricing';
+import { sendAdminBookingNotification } from '../utils/bookingNotifications';
 
 interface BookTourPageProps {
   slug: string;
@@ -39,7 +42,7 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
   onNavigate,
   onSelectTour,
 }) => {
-  const { tours, siteContent } = useTours();
+  const { tours, siteContent, bookDepartureSeats } = useTours();
   const { formatPrice } = useCurrency();
   const { user, addBooking } = useAuth();
 
@@ -49,9 +52,13 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
 
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [guests, setGuests] = useState(initialGuests);
-  const [selectedDepartureId, setSelectedDepartureId] = useState(
-    initialDepartureId || (tour.departuresList?.[0]?.id ?? '')
-  );
+  const [selectedDepartureId, setSelectedDepartureId] = useState(() => {
+    if (initialDepartureId) return initialDepartureId;
+    const firstOpen = tour.departuresList?.find(
+      (d) => d.status !== 'sold_out' && d.capacity - d.seats_booked > 0
+    );
+    return firstOpen?.id || tour.departuresList?.[0]?.id || '';
+  });
 
   const [roomSelections, setRoomSelections] = useState<RoomingSelection[]>(() => {
     if (initialRoomSelections && initialRoomSelections.length > 0) {
@@ -77,7 +84,10 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
   const [agreeTerms, setAgreeTerms] = useState(false);
 
   // Confirmed booking state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [availabilityError, setAvailabilityError] = useState<string | null>(null);
   const [confirmedBookingRef, setConfirmedBookingRef] = useState<string | null>(null);
+  const [confirmedRemainingSeats, setConfirmedRemainingSeats] = useState<number | null>(null);
 
   const selectedDeparture = useMemo(() => {
     if (selectedDepartureId && tour.departuresList) {
@@ -85,6 +95,22 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
     }
     return tour.departuresList?.[0];
   }, [tour, selectedDepartureId]);
+
+  const availableSeats = useMemo(() => {
+    if (!selectedDeparture) return tour.max_pax || 12;
+    if (selectedDeparture.status === 'sold_out') return 0;
+    return Math.max(0, selectedDeparture.capacity - selectedDeparture.seats_booked);
+  }, [selectedDeparture, tour.max_pax]);
+
+  useEffect(() => {
+    if (availableSeats > 0 && guests > availableSeats) {
+      setGuests(availableSeats);
+    }
+  }, [availableSeats, guests]);
+
+  useEffect(() => {
+    setAvailabilityError(null);
+  }, [selectedDepartureId, guests]);
 
   const isDayTour = tour.tour_type === 'day' || tour.days === 1;
 
@@ -132,9 +158,21 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
     return parts.join(', ') || 'Standard rooming';
   }, [isDayTour, doubleCount, twinCount, singleRoomsCount, singleSupplementPercent]);
 
-  const handleCompleteBooking = (e: React.FormEvent) => {
+  const handleCompleteBooking = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!agreeTerms) return;
+    if (!agreeTerms || isSubmitting) return;
+
+    if (selectedDeparture && (availableSeats <= 0 || guests > availableSeats)) {
+      setAvailabilityError(
+        availableSeats <= 0
+          ? 'This departure date is now sold out. Please select another available date.'
+          : `Only ${availableSeats} spot${availableSeats === 1 ? '' : 's'} remaining on this departure. Please adjust your passenger count or choose another date.`
+      );
+      return;
+    }
+
+    setIsSubmitting(true);
+    setAvailabilityError(null);
 
     const fullSpecialRequests = [
       `Room Configuration: ${roomSummaryString}`,
@@ -143,6 +181,12 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
       .filter(Boolean)
       .join('\n');
 
+    // 1. Reduce live seat availability on the selected tour departure by the passenger count
+    const seatUpdate = selectedDeparture
+      ? bookDepartureSeats(tour.id, selectedDeparture.id || selectedDeparture.start_date, guests)
+      : null;
+
+    // 2. Record the confirmed booking in AuthContext
     const newBooking = addBooking({
       tourId: tour.id,
       tourSlug: tour.slug,
@@ -158,7 +202,30 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
       specialRequests: fullSpecialRequests,
     });
 
+    // 3. Send booking details to admin email (bookings@atlasglobaltours.com) via backend API
+    await sendAdminBookingNotification({
+      reference: newBooking.reference,
+      tourTitle: tour.title,
+      tourSlug: tour.slug,
+      departureDate: selectedDeparture ? selectedDeparture.start_date : 'Flexible',
+      guests,
+      remainingSeats: seatUpdate?.remainingSeats,
+      capacity: seatUpdate?.capacity,
+      totalPriceFormatted: formatPrice(totalPriceCents, tour.currency),
+      depositFormatted: formatPrice(depositCents, tour.currency),
+      currency: tour.currency,
+      leadName,
+      leadEmail,
+      leadPhone,
+      leadNationality,
+      paymentMethod: paymentMethod === 'wire' ? 'Bank Wire Transfer' : 'Credit / Debit Card',
+      roomSummary: roomSummaryString,
+      specialRequests: fullSpecialRequests,
+    });
+
+    setConfirmedRemainingSeats(seatUpdate ? seatUpdate.remainingSeats : null);
     setConfirmedBookingRef(newBooking.reference);
+    setIsSubmitting(false);
   };
 
   if (confirmedBookingRef) {
@@ -212,6 +279,17 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
                 <span className="text-muted-foreground">Travellers:</span>
                 <span className="font-semibold text-foreground">{guests} guest{guests > 1 ? 's' : ''}</span>
               </div>
+
+              {confirmedRemainingSeats !== null && (
+                <div className="flex items-center justify-between text-xs sm:text-sm">
+                  <span className="text-muted-foreground">Departure Availability:</span>
+                  <span className="font-semibold text-foreground">
+                    {confirmedRemainingSeats === 0
+                      ? 'Now sold out (last seats reserved)'
+                      : `${confirmedRemainingSeats} spot${confirmedRemainingSeats === 1 ? '' : 's'} remaining`}
+                  </span>
+                </div>
+              )}
 
               <div className="flex items-center justify-between text-xs sm:text-sm pt-2 border-t border-border/80">
                 <span className="text-muted-foreground">Total Tour Fare:</span>
@@ -331,9 +409,9 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
                     <DayTourPricingSelector
                       baseAdultPriceCents={pricePerPersonCents}
                       passengers={guests}
-                      onChangePassengers={(count) => setGuests(count)}
+                      onChangePassengers={(count) => setGuests(Math.min(Math.max(1, availableSeats), count))}
                       currency={tour.currency}
-                      maxPax={tour.max_pax || 12}
+                      maxPax={Math.max(1, availableSeats)}
                     />
                   </>
                 ) : (
@@ -346,6 +424,45 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
                       currency={tour.currency}
                       label="Select Departure Date"
                     />
+
+                    {/* Passenger counter capped to live departure availability */}
+                    <div className="pt-2 border-t border-border">
+                      <div className="flex items-center justify-between mb-2">
+                        <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                          <Users className="size-3.5 text-primary" />
+                          <span>Number of Travellers</span>
+                        </label>
+                        <span className={`text-xs font-semibold ${availableSeats <= 3 ? 'text-amber-700 dark:text-amber-400' : 'text-muted-foreground'}`}>
+                          {availableSeats > 0
+                            ? `${availableSeats} spot${availableSeats === 1 ? '' : 's'} remaining`
+                            : 'Sold out'}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between rounded-lg border border-border bg-background p-2.5">
+                        <span className="text-sm font-medium pl-1">
+                          {guests} {guests === 1 ? 'Guest' : 'Guests'}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => setGuests(Math.max(1, guests - 1))}
+                            disabled={guests <= 1}
+                            className="size-8 rounded-md border border-border bg-card text-foreground font-bold hover:bg-muted disabled:opacity-40 cursor-pointer flex items-center justify-center"
+                          >
+                            -
+                          </button>
+                          <span className="w-6 text-center text-sm font-bold">{guests}</span>
+                          <button
+                            type="button"
+                            onClick={() => setGuests(Math.min(availableSeats, guests + 1))}
+                            disabled={guests >= availableSeats || availableSeats <= 0}
+                            className="size-8 rounded-md border border-border bg-card text-foreground font-bold hover:bg-muted disabled:opacity-40 cursor-pointer flex items-center justify-center"
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                    </div>
 
                     {/* Rooming selection */}
                     <div className="pt-2 border-t border-border">
@@ -363,11 +480,19 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
                   </>
                 )}
 
+                {availableSeats <= 0 && (
+                  <div className="flex items-center gap-2 rounded-lg border border-destructive/30 bg-destructive/10 px-3.5 py-2.5 text-xs font-medium text-destructive">
+                    <AlertCircle className="size-4 shrink-0" />
+                    <span>This departure date is sold out. Please select another available date to continue.</span>
+                  </div>
+                )}
+
                 <div className="flex justify-end pt-4 border-t border-border">
                   <button
                     type="button"
+                    disabled={availableSeats <= 0}
                     onClick={() => setStep(2)}
-                    className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-2.5 text-xs font-semibold text-primary-foreground hover:bg-primary/90 transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-2.5 text-xs font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
                   >
                     <span>Next: Traveller Details</span>
                     <ArrowRight className="size-3.5" />
@@ -554,21 +679,38 @@ export const BookTourPage: React.FC<BookTourPageProps> = ({
                   </label>
                 </div>
 
+                {availabilityError && (
+                  <div className="flex items-center gap-2 rounded-lg border border-destructive/30 bg-destructive/10 px-3.5 py-2.5 text-xs font-medium text-destructive">
+                    <AlertCircle className="size-4 shrink-0" />
+                    <span>{availabilityError}</span>
+                  </div>
+                )}
+
                 <div className="flex items-center justify-between pt-4 border-t border-border">
                   <button
                     type="button"
                     onClick={() => setStep(2)}
-                    className="rounded-md border border-input bg-background px-4 py-2 text-xs font-semibold text-foreground hover:bg-muted cursor-pointer"
+                    disabled={isSubmitting}
+                    className="rounded-md border border-input bg-background px-4 py-2 text-xs font-semibold text-foreground hover:bg-muted disabled:opacity-40 cursor-pointer"
                   >
                     Back
                   </button>
                   <button
                     type="submit"
-                    disabled={!agreeTerms}
+                    disabled={!agreeTerms || isSubmitting || availableSeats <= 0}
                     className="inline-flex items-center gap-2 rounded-md bg-primary px-8 py-3 text-xs font-bold text-primary-foreground hover:bg-primary/90 disabled:opacity-40 transition-colors shadow-lg cursor-pointer"
                   >
-                    <Lock className="size-3.5" />
-                    <span>Confirm & Guarantee Booking</span>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="size-3.5 animate-spin" />
+                        <span>Confirming Booking...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Lock className="size-3.5" />
+                        <span>Confirm & Guarantee Booking</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </form>

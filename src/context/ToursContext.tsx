@@ -54,7 +54,7 @@ const DEFAULT_SITE_CONTENT: SiteContent = {
   maxPaxStat: 'Max 10 Travellers per group',
   officeIstanbul: 'Sultanahmet Mah., Divanyolu Cad. No: 42, Fatih, Istanbul, Türkiye',
   officeUS: '1201 3rd Ave, Suite 2200, Seattle, WA 98101, United States',
-  contactEmail: 'contact@atlasglobaltours.com',
+  contactEmail: 'info@atlasglobaltours.com',
   contactPhone: '+90 (212) 518 84 92',
   emergencyPhone: '+90 (532) 745 19 82 (24/7 Operations Duty Manager)',
   defaultSingleSupplementPercent: 15,
@@ -95,6 +95,16 @@ interface ToursContextType {
   updateItineraryDay: (tourId: string, dayNumber: number, dayData: Partial<TourDay>) => void;
   addItineraryDay: (tourId: string, newDay: TourDay) => void;
   deleteItineraryDay: (tourId: string, dayNumber: number) => void;
+  bookDepartureSeats: (
+    tourIdOrSlug: string,
+    departureIdOrStartDate: string,
+    passengers: number
+  ) => { remainingSeats: number; capacity: number; departureId: string } | null;
+  releaseDepartureSeats: (
+    tourIdOrSlug: string,
+    departureIdOrStartDate: string,
+    passengers: number
+  ) => void;
   updateDestinationRegion: (id: string, updated: Partial<DestinationRegion>) => void;
   addDestinationRegion: (newRegion: DestinationRegion) => void;
   deleteDestinationRegion: (id: string) => void;
@@ -274,6 +284,97 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     );
   };
 
+  // Decrement available seats on a specific tour departure when a booking is completed
+  const bookDepartureSeats = (
+    tourIdOrSlug: string,
+    departureIdOrStartDate: string,
+    passengers: number
+  ): { remainingSeats: number; capacity: number; departureId: string } | null => {
+    const pax = Math.max(1, Math.floor(passengers));
+    let result: { remainingSeats: number; capacity: number; departureId: string } | null = null;
+
+    const currentTour = tours.find((t) => t.id === tourIdOrSlug || t.slug === tourIdOrSlug);
+    const currentDep = currentTour?.departuresList?.find(
+      (d) => d.id === departureIdOrStartDate || d.start_date === departureIdOrStartDate
+    );
+    if (currentDep) {
+      const nextBooked = Math.min(currentDep.capacity, currentDep.seats_booked + pax);
+      result = {
+        remainingSeats: Math.max(0, currentDep.capacity - nextBooked),
+        capacity: currentDep.capacity,
+        departureId: currentDep.id,
+      };
+    }
+
+    setTours((prev) =>
+      prev.map((t) => {
+        if (t.id !== tourIdOrSlug && t.slug !== tourIdOrSlug) return t;
+        if (!t.departuresList || t.departuresList.length === 0) return t;
+
+        const updatedDepartures = t.departuresList.map((dep) => {
+          if (dep.id !== departureIdOrStartDate && dep.start_date !== departureIdOrStartDate) {
+            return dep;
+          }
+          const nextBooked = Math.min(dep.capacity, dep.seats_booked + pax);
+          const remaining = Math.max(0, dep.capacity - nextBooked);
+          const nextStatus =
+            remaining <= 0 ? 'sold_out' : remaining <= 3 ? 'filling_fast' : dep.status;
+
+          return {
+            ...dep,
+            seats_booked: nextBooked,
+            status: nextStatus,
+          };
+        });
+
+        return {
+          ...t,
+          departuresList: updatedDepartures,
+          updated_at: new Date().toISOString(),
+        };
+      })
+    );
+
+    return result;
+  };
+
+  // Restore seats if a booking is cancelled
+  const releaseDepartureSeats = (
+    tourIdOrSlug: string,
+    departureIdOrStartDate: string,
+    passengers: number
+  ) => {
+    const pax = Math.max(1, Math.floor(passengers));
+    setTours((prev) =>
+      prev.map((t) => {
+        if (t.id !== tourIdOrSlug && t.slug !== tourIdOrSlug) return t;
+        if (!t.departuresList || t.departuresList.length === 0) return t;
+
+        const updatedDepartures = t.departuresList.map((dep) => {
+          if (dep.id !== departureIdOrStartDate && dep.start_date !== departureIdOrStartDate) {
+            return dep;
+          }
+          const nextBooked = Math.max(0, dep.seats_booked - pax);
+          const remaining = Math.max(0, dep.capacity - nextBooked);
+          const nextStatus =
+            remaining <= 0 ? 'sold_out' : remaining <= 3 ? 'filling_fast' : 'guaranteed';
+
+          return {
+            ...dep,
+            seats_booked: nextBooked,
+            status: nextStatus,
+          };
+        });
+
+        return {
+          ...t,
+          departuresList: updatedDepartures,
+          updated_at: new Date().toISOString(),
+        };
+      })
+    );
+  };
+
   // Destination Region actions
   const updateDestinationRegion = (id: string, updated: Partial<DestinationRegion>) => {
     setDestinationRegions((prev) =>
@@ -418,6 +519,8 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         updateItineraryDay,
         addItineraryDay,
         deleteItineraryDay,
+        bookDepartureSeats,
+        releaseDepartureSeats,
         updateDestinationRegion,
         addDestinationRegion,
         deleteDestinationRegion,

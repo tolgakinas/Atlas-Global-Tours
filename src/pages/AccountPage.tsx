@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { useAuth, Booking } from '../context/AuthContext';
 import { useCurrency } from '../context/CurrencyContext';
+import { useTours } from '../context/ToursContext';
 
 interface AccountPageProps {
   onNavigate: (path: string) => void;
@@ -29,6 +30,7 @@ interface AccountPageProps {
 export const AccountPage: React.FC<AccountPageProps> = ({ onNavigate, onSelectTour }) => {
   const { user, bookings, updateBooking, cancelBooking, logout } = useAuth();
   const { formatPrice } = useCurrency();
+  const { releaseDepartureSeats } = useTours();
 
   // Active modal state
   const [selectedVoucher, setSelectedVoucher] = useState<Booking | null>(null);
@@ -286,6 +288,7 @@ export const AccountPage: React.FC<AccountPageProps> = ({ onNavigate, onSelectTo
                           onClick={() => {
                             if (window.confirm(`Are you sure you want to cancel booking ${booking.reference}? Operations will be notified.`)) {
                               cancelBooking(booking.reference);
+                              releaseDepartureSeats(booking.tourId, booking.departureDate, booking.guests);
                             }
                           }}
                           className="text-[0.7rem] text-muted-foreground hover:text-destructive transition-colors text-center py-1 cursor-pointer"
