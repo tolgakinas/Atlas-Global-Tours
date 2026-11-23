@@ -746,7 +746,9 @@ export const TourDetailPage: React.FC<TourDetailPageProps> = ({
         <div className="lg:sticky lg:top-24 h-fit">
           <div className="rounded-xl border border-border bg-card p-6 shadow-xl space-y-6">
             <div>
-              <span className="eyebrow text-primary">Guaranteed Departures</span>
+              <span className="eyebrow text-primary">
+                {tour.departure_days ? `Guaranteed · ${tour.departure_days}` : 'Guaranteed Departures'}
+              </span>
               <div className="mt-2 flex items-baseline justify-between">
                 <div>
                   <span className="text-xs uppercase tracking-wider text-muted-foreground">From</span>
@@ -800,6 +802,7 @@ export const TourDetailPage: React.FC<TourDetailPageProps> = ({
                 onSelectDeparture={(depId) => setSelectedDepartureId(depId)}
                 currency={tour.currency}
                 label="Select Departure Date"
+                departureSchedule={tour.departure_days}
               />
             )}
 

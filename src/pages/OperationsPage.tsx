@@ -36,6 +36,7 @@ import { useTours } from '../context/ToursContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { AdvisorClientVoucher } from '../components/AdvisorClientVoucher';
 import { calculateDayTourPricing, DAY_TOUR_GROUP_TIERS } from '../utils/dayTourPricing';
+import { resolveTourCode } from '../utils/bookingReference';
 
 interface OperationsPageProps {
   onNavigate: (path: string) => void;
@@ -118,11 +119,14 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({ onNavigate, onSe
 
   // Filtered Departures
   const filteredDepartures = useMemo(() => {
+    const q = depSearch.toLowerCase();
     return departures.filter((d) => {
+      const code = (d.tourCode || resolveTourCode(d)).toLowerCase();
       const matchSearch =
-        d.tourTitle.toLowerCase().includes(depSearch.toLowerCase()) ||
+        d.tourTitle.toLowerCase().includes(q) ||
+        code.includes(q) ||
         d.startDate.includes(depSearch) ||
-        (d.assignedGuide && d.assignedGuide.toLowerCase().includes(depSearch.toLowerCase()));
+        (d.assignedGuide && d.assignedGuide.toLowerCase().includes(q));
       const matchStatus = depStatusFilter === 'All' || d.status === depStatusFilter;
       return matchSearch && matchStatus;
     });
@@ -130,14 +134,17 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({ onNavigate, onSe
 
   // Filtered Bookings
   const filteredBookings = useMemo(() => {
+    const q = bookingSearch.toLowerCase();
     return bookings.filter((b) => {
+      const code = (b.tourCode || resolveTourCode(b)).toLowerCase();
       const matchSearch =
-        b.reference.toLowerCase().includes(bookingSearch.toLowerCase()) ||
-        b.leadName.toLowerCase().includes(bookingSearch.toLowerCase()) ||
-        b.leadEmail.toLowerCase().includes(bookingSearch.toLowerCase()) ||
-        b.tourTitle.toLowerCase().includes(bookingSearch.toLowerCase()) ||
-        (b.advisorDetails?.agencyName && b.advisorDetails.agencyName.toLowerCase().includes(bookingSearch.toLowerCase())) ||
-        (b.advisorDetails?.advisorName && b.advisorDetails.advisorName.toLowerCase().includes(bookingSearch.toLowerCase()));
+        b.reference.toLowerCase().includes(q) ||
+        code.includes(q) ||
+        b.leadName.toLowerCase().includes(q) ||
+        b.leadEmail.toLowerCase().includes(q) ||
+        b.tourTitle.toLowerCase().includes(q) ||
+        (b.advisorDetails?.agencyName && b.advisorDetails.agencyName.toLowerCase().includes(q)) ||
+        (b.advisorDetails?.advisorName && b.advisorDetails.advisorName.toLowerCase().includes(q));
       const matchStatus = bookingStatusFilter === 'All' || b.status === bookingStatusFilter;
       const matchChannel =
         bookingChannelFilter === 'All' ||
@@ -170,6 +177,7 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({ onNavigate, onSe
     const tour = tours.find((t) => t.id === newDepTourId) || tours[0];
     const newDep: Departure = {
       id: 'dep-' + Math.random().toString(36).substring(2, 9),
+      tourCode: resolveTourCode(tour),
       tourId: tour.id,
       tourTitle: tour.title,
       tourSlug: tour.slug,
@@ -197,6 +205,7 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({ onNavigate, onSe
       : tour.price_cents * newBkGuests;
 
     addBooking({
+      tourCode: resolveTourCode(tour),
       tourId: tour.id,
       tourSlug: tour.slug,
       tourTitle: tour.title,
@@ -463,14 +472,19 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({ onNavigate, onSe
                             </span>
                           </td>
                           <td className="px-4 py-3">
-                            <span
-                              onClick={() => onSelectTour(dep.tourSlug)}
-                              className="font-bold text-foreground hover:text-primary transition-colors cursor-pointer line-clamp-1"
-                            >
-                              {dep.tourTitle}
-                            </span>
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono text-[0.65rem] font-bold text-primary bg-primary/10 border border-primary/20 px-1.5 py-0.5 rounded shrink-0">
+                                {dep.tourCode || resolveTourCode(dep)}
+                              </span>
+                              <span
+                                onClick={() => onSelectTour(dep.tourSlug)}
+                                className="font-bold text-foreground hover:text-primary transition-colors cursor-pointer line-clamp-1"
+                              >
+                                {dep.tourTitle}
+                              </span>
+                            </div>
                             {dep.notes && (
-                              <span className="text-[0.65rem] text-muted-foreground block line-clamp-1">
+                              <span className="text-[0.65rem] text-muted-foreground block line-clamp-1 mt-0.5">
                                 {dep.notes}
                               </span>
                             )}
@@ -643,6 +657,9 @@ export const OperationsPage: React.FC<OperationsPageProps> = ({ onNavigate, onSe
                         <td className="px-4 py-3 whitespace-nowrap">
                           <span className="font-mono font-bold text-primary block">
                             {b.reference}
+                          </span>
+                          <span className="inline-flex items-center rounded bg-muted text-foreground border border-border font-mono text-[0.62rem] font-bold px-1.5 py-0.2 my-0.5 mr-1">
+                            {b.tourCode || resolveTourCode(b)}
                           </span>
                           {b.isAdvisorBooking && (
                             <span className="inline-flex items-center gap-1 rounded bg-primary/10 text-primary border border-primary/25 text-[0.6rem] font-bold px-1.5 py-0.2 my-0.5">

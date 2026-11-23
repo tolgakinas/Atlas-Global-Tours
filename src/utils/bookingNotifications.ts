@@ -1,5 +1,6 @@
 export interface BookingEmailNotificationRequest {
   reference: string;
+  tourCode?: string;
   tourTitle: string;
   tourSlug: string;
   departureDate: string;

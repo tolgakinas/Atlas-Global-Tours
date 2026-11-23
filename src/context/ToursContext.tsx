@@ -132,9 +132,42 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // 1. Tours State
   const [tours, setTours] = useState<Tour[]>(() => {
     try {
-      const saved = localStorage.getItem('agt_tours_data_v5');
-      if (saved) return JSON.parse(saved);
-      return TOURS_DATA;
+      const seatOverridesRaw = localStorage.getItem('agt_seat_bookings_v1');
+      const seatOverrides: Record<string, Record<string, number>> = seatOverridesRaw
+        ? JSON.parse(seatOverridesRaw)
+        : {};
+      const defaultToursById = new Map(TOURS_DATA.map((t) => [t.id, t]));
+
+      const applySeatOverrides = (list: Tour[]) =>
+        list.map((t) => {
+          const defaultTour = defaultToursById.get(t.id);
+          const baseDepartures =
+            t.departuresList && t.departuresList.length > 0
+              ? t.departuresList
+              : defaultTour?.departuresList || [];
+          const tourSeats = seatOverrides[t.id];
+          if (!tourSeats) {
+            return baseDepartures === t.departuresList ? t : { ...t, departuresList: baseDepartures };
+          }
+          return {
+            ...t,
+            departuresList: baseDepartures.map((dep) => {
+              const booked = tourSeats[dep.id];
+              if (typeof booked !== 'number') return dep;
+              const clamped = Math.min(dep.capacity, Math.max(0, booked));
+              const remaining = Math.max(0, dep.capacity - clamped);
+              return {
+                ...dep,
+                seats_booked: clamped,
+                status: remaining <= 0 ? 'sold_out' : remaining <= 3 ? 'filling_fast' : 'guaranteed',
+              };
+            }),
+          };
+        });
+
+      const saved = localStorage.getItem('agt_tours_data_v8');
+      if (saved) return applySeatOverrides(JSON.parse(saved));
+      return applySeatOverrides(TOURS_DATA);
     } catch {
       return TOURS_DATA;
     }
@@ -182,10 +215,29 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   });
 
-  // Sync to LocalStorage
+  // Sync to LocalStorage (strip auto-generated day-tour dates to stay well below browser storage quota,
+  // while saving all booked seat counts in a tiny dedicated map)
   useEffect(() => {
     try {
-      localStorage.setItem('agt_tours_data_v5', JSON.stringify(tours));
+      const seatOverrides: Record<string, Record<string, number>> = {};
+      const compactTours = tours.map((t) => {
+        const bookedMap: Record<string, number> = {};
+        (t.departuresList || []).forEach((dep) => {
+          if (dep.seats_booked > 0) {
+            bookedMap[dep.id] = dep.seats_booked;
+          }
+        });
+        if (Object.keys(bookedMap).length > 0) {
+          seatOverrides[t.id] = bookedMap;
+        }
+        const isGeneratedDayTour =
+          (t.tour_type === 'day' || t.days === 1) &&
+          (t.departuresList || []).length > 60 &&
+          t.departuresList[0]?.id?.startsWith('dep-day-');
+        return isGeneratedDayTour ? { ...t, departuresList: [] } : t;
+      });
+      localStorage.setItem('agt_seat_bookings_v1', JSON.stringify(seatOverrides));
+      localStorage.setItem('agt_tours_data_v8', JSON.stringify(compactTours));
     } catch (e) {
       console.error('Failed to save tours to localStorage', e);
     }
@@ -492,7 +544,8 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const resetAllToDefaults = () => {
     if (window.confirm('Reset all website tours, destinations, and settings to original defaults?')) {
-      localStorage.removeItem('agt_tours_data_v5');
+      localStorage.removeItem('agt_tours_data_v8');
+      localStorage.removeItem('agt_seat_bookings_v1');
       localStorage.removeItem('agt_destinations_data_v4');
       localStorage.removeItem('agt_posts_data_v2');
       localStorage.removeItem('agt_site_content_v2');

@@ -21,6 +21,7 @@ import {
 import { useAuth, Booking } from '../context/AuthContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useTours } from '../context/ToursContext';
+import { resolveTourCode } from '../utils/bookingReference';
 
 interface AccountPageProps {
   onNavigate: (path: string) => void;
@@ -188,6 +189,9 @@ export const AccountPage: React.FC<AccountPageProps> = ({ onNavigate, onSelectTo
                         <div className="flex flex-wrap items-center gap-2">
                           <span className="font-mono text-xs font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded border border-primary/20">
                             {booking.reference}
+                          </span>
+                          <span className="font-mono text-[0.7rem] font-bold text-foreground bg-muted px-2 py-0.5 rounded border border-border">
+                            Code: {booking.tourCode || resolveTourCode(booking)}
                           </span>
                           <span
                             className={`rounded-full px-2.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider ${
@@ -367,6 +371,9 @@ export const AccountPage: React.FC<AccountPageProps> = ({ onNavigate, onSelectTo
                 <div className="text-right">
                   <span className="font-mono text-sm font-bold text-primary block bg-primary/10 px-2.5 py-1 rounded border border-primary/20">
                     {selectedVoucher.reference}
+                  </span>
+                  <span className="font-mono text-[0.7rem] font-bold text-foreground mt-1 block">
+                    Tour Code: {selectedVoucher.tourCode || resolveTourCode(selectedVoucher)}
                   </span>
                   <span className="text-[0.65rem] text-muted-foreground mt-0.5 block">
                     Issued: {new Date(selectedVoucher.createdAt).toLocaleDateString()}

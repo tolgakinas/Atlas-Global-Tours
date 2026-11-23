@@ -58,6 +58,7 @@ function isValidEmail(email: string): boolean {
 
 interface BookingNotificationPayload {
   reference: string;
+  tourCode?: string;
   tourTitle: string;
   tourSlug: string;
   departureDate: string;
@@ -82,7 +83,8 @@ interface BookingNotificationPayload {
 
 function buildAdminEmailContent(data: BookingNotificationPayload): { subject: string; html: string; text: string } {
   const bookingTypeLabel = data.isAdvisorBooking ? 'B2B Advisor Booking' : 'Direct Traveler Booking';
-  const subject = `[New Booking ${data.reference}] ${data.tourTitle} (${data.guests} pax · ${data.departureDate})`;
+  const codeTag = data.tourCode ? `${data.tourCode} · ` : '';
+  const subject = `[New Booking ${data.reference}] ${codeTag}${data.tourTitle} (${data.guests} pax · ${data.departureDate})`;
 
   const availabilityLine =
     typeof data.remainingSeats === 'number' && typeof data.capacity === 'number'
@@ -92,7 +94,8 @@ function buildAdminEmailContent(data: BookingNotificationPayload): { subject: st
       : 'Updated in system';
 
   const rows: Array<[string, string]> = [
-    ['Booking Reference', data.reference],
+    ['Booking / Voucher Ref', data.reference],
+    ...(data.tourCode ? [['Tour Code', data.tourCode] as [string, string]] : []),
     ['Channel', bookingTypeLabel],
     ['Tour', data.tourTitle],
     ['Departure Date', data.departureDate],
@@ -181,6 +184,7 @@ async function startServer() {
 
     const body = req.body ?? {};
     const reference = cleanSingleLine(body.reference, 60);
+    const tourCode = cleanSingleLine(body.tourCode, 20) || undefined;
     const tourTitle = cleanSingleLine(body.tourTitle, 180);
     const tourSlug = cleanSingleLine(body.tourSlug, 160);
     const departureDate = cleanSingleLine(body.departureDate, 60);
@@ -201,6 +205,7 @@ async function startServer() {
 
     const payload: BookingNotificationPayload = {
       reference,
+      tourCode,
       tourTitle,
       tourSlug,
       departureDate,

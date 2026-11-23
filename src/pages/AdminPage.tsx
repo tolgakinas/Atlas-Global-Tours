@@ -51,6 +51,7 @@ import { useReviews } from '../context/ReviewsContext';
 import { Review } from '../data/reviewsData';
 import { AdvisorClientVoucher } from '../components/AdvisorClientVoucher';
 import { StarRating } from '../components/StarRating';
+import { resolveTourCode } from '../utils/bookingReference';
 
 interface AdminPageProps {
   onSelectTour: (slug: string) => void;
@@ -123,14 +124,17 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onSelectTour, onNavigate }
   }, [bookings]);
 
   const filteredAdvisorBookings = useMemo(() => {
+    const q = advisorSearch.toLowerCase();
     return advisorBookings.filter((b) => {
+      const code = (b.tourCode || resolveTourCode(b)).toLowerCase();
       const matchSearch =
-        b.reference.toLowerCase().includes(advisorSearch.toLowerCase()) ||
-        b.leadName.toLowerCase().includes(advisorSearch.toLowerCase()) ||
-        b.tourTitle.toLowerCase().includes(advisorSearch.toLowerCase()) ||
-        (b.advisorDetails?.agencyName && b.advisorDetails.agencyName.toLowerCase().includes(advisorSearch.toLowerCase())) ||
-        (b.advisorDetails?.advisorName && b.advisorDetails.advisorName.toLowerCase().includes(advisorSearch.toLowerCase())) ||
-        (b.advisorDetails?.advisorEmail && b.advisorDetails.advisorEmail.toLowerCase().includes(advisorSearch.toLowerCase()));
+        b.reference.toLowerCase().includes(q) ||
+        code.includes(q) ||
+        b.leadName.toLowerCase().includes(q) ||
+        b.tourTitle.toLowerCase().includes(q) ||
+        (b.advisorDetails?.agencyName && b.advisorDetails.agencyName.toLowerCase().includes(q)) ||
+        (b.advisorDetails?.advisorName && b.advisorDetails.advisorName.toLowerCase().includes(q)) ||
+        (b.advisorDetails?.advisorEmail && b.advisorDetails.advisorEmail.toLowerCase().includes(q));
 
       const matchFinance =
         advisorFinanceFilter === 'All' ||
@@ -1902,6 +1906,9 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onSelectTour, onNavigate }
                             <td className="px-4 py-3 whitespace-nowrap">
                               <span className="font-mono font-bold text-primary block">
                                 {b.reference}
+                              </span>
+                              <span className="inline-flex items-center rounded bg-muted text-foreground border border-border font-mono text-[0.62rem] font-bold px-1.5 py-0.2 my-0.5 mr-1">
+                                {b.tourCode || resolveTourCode(b)}
                               </span>
                               <span className="inline-flex items-center gap-1 rounded bg-primary/10 text-primary border border-primary/20 text-[0.6rem] font-bold px-1.5 py-0.2 my-0.5">
                                 <Briefcase className="size-2.5" /> B2B Partner

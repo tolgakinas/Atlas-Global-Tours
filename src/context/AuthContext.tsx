@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { generateBookingReference, resolveTourCode } from '../utils/bookingReference';
 import { TOURS_DATA } from '../data/toursData';
 
 export type UserRole = 'traveller' | 'operations' | 'admin' | 'advisor';
@@ -52,6 +53,7 @@ export interface AdvisorBookingDetails {
 export interface Booking {
   id: string;
   reference: string;
+  tourCode?: string;
   tourId: string;
   tourSlug: string;
   tourTitle: string;
@@ -78,6 +80,7 @@ export interface Booking {
 
 export interface Departure {
   id: string;
+  tourCode?: string;
   tourId: string;
   tourTitle: string;
   tourSlug: string;
@@ -160,6 +163,7 @@ interface AuthContextType {
   advisorRegister: (data: Omit<RegisteredAdvisor, 'id' | 'joinedDate'>) => RegisteredAdvisor;
   advisorLogout: () => void;
   createAdvisorBooking: (params: {
+    tourCode?: string;
     tourId: string;
     tourSlug: string;
     tourTitle: string;
@@ -265,13 +269,14 @@ const INITIAL_GUIDES: Guide[] = [
 const INITIAL_DEPARTURES: Departure[] = [
   {
     id: 'dep-1',
+    tourCode: 'ISET',
     tourId: 'cac84395-f80e-4bd0-a2e8-108f3748f752',
-    tourTitle: 'immersive South Eastern Turkiye : Culinary & Cultural tour',
+    tourTitle: 'Immersive South Eastern Turkiye : Culinary & Cultural tour',
     tourSlug: 'shortbreak-eastern-turkiye',
-    startDate: '2026-10-15',
-    endDate: '2026-10-21',
-    capacity: 12,
-    bookedSeats: 8,
+    startDate: '2026-11-30',
+    endDate: '2026-12-05',
+    capacity: 10,
+    bookedSeats: 4,
     priceCents: 210000,
     depositCents: 42000,
     status: 'guaranteed',
@@ -281,45 +286,48 @@ const INITIAL_DEPARTURES: Departure[] = [
   },
   {
     id: 'dep-2',
+    tourCode: 'CAT',
     tourId: '10cf2e26-f782-411a-85d7-fca835069b82',
     tourTitle: 'Cappadocia 7-Day Hiking Adventure',
     tourSlug: 'cappadocia-hiking-adventure',
-    startDate: '2026-10-24',
-    endDate: '2026-10-30',
-    capacity: 12,
-    bookedSeats: 11,
+    startDate: '2026-11-29',
+    endDate: '2026-12-05',
+    capacity: 10,
+    bookedSeats: 2,
     priceCents: 185000,
     depositCents: 37000,
-    status: 'filling_fast',
+    status: 'guaranteed',
     assignedGuide: 'Elif Demir',
     driverVehicle: 'VW Crafter Trekking (50 CPO 412)',
     notes: 'Dawn balloon flight slot reserved for Day 3. Cave hotel rooms locked.',
   },
   {
     id: 'dep-3',
+    tourCode: 'DTR',
     tourId: 'turkiye-by-rail',
     tourTitle: 'Discover Turkiye By Rail',
     tourSlug: 'turkiye-by-rail',
-    startDate: '2026-11-04',
-    endDate: '2026-11-13',
-    capacity: 12,
-    bookedSeats: 12,
+    startDate: '2026-11-25',
+    endDate: '2026-12-04',
+    capacity: 10,
+    bookedSeats: 6,
     priceCents: 260000,
     depositCents: 52000,
-    status: 'sold_out',
+    status: 'guaranteed',
     assignedGuide: 'Serkan Yılmaz',
     driverVehicle: 'Rail Sleeper Car + Local Sprinter',
     notes: 'Sleeper cabins 1 to 6 booked on Eastern Express to Kars.',
   },
   {
     id: 'dep-4',
+    tourCode: 'KAS',
     tourId: 'ae9b341d-cb39-4458-941c-b26a64016a2d',
     tourTitle: 'Kaş : Hike, Bike, Kayak & Dive',
     tourSlug: 'hike-bike-kayak-in-kas-turkey',
-    startDate: '2026-11-12',
-    endDate: '2026-11-18',
+    startDate: '2026-11-29',
+    endDate: '2026-12-05',
     capacity: 10,
-    bookedSeats: 6,
+    bookedSeats: 4,
     priceCents: 165000,
     depositCents: 33000,
     status: 'confirmed',
@@ -329,13 +337,14 @@ const INITIAL_DEPARTURES: Departure[] = [
   },
   {
     id: 'dep-5',
+    tourCode: 'IJT',
     tourId: 'immersive-jordan',
     tourTitle: 'IMMERSIVE JORDAN : Petra to Wadi Rum',
     tourSlug: 'immersive-jordan',
-    startDate: '2026-11-20',
-    endDate: '2026-11-25',
-    capacity: 12,
-    bookedSeats: 7,
+    startDate: '2026-11-27',
+    endDate: '2026-12-02',
+    capacity: 10,
+    bookedSeats: 5,
     priceCents: 245000,
     depositCents: 49000,
     status: 'guaranteed',
@@ -345,13 +354,14 @@ const INITIAL_DEPARTURES: Departure[] = [
   },
   {
     id: 'dep-6',
+    tourCode: 'IEG',
     tourId: 'immersive-egypt',
     tourTitle: 'Immersive Egypt Tour: A Luxury Journey Through Ancient Wonders',
     tourSlug: 'immersive-egypt',
-    startDate: '2026-12-05',
-    endDate: '2026-12-13',
-    capacity: 12,
-    bookedSeats: 5,
+    startDate: '2026-11-25',
+    endDate: '2026-12-03',
+    capacity: 10,
+    bookedSeats: 3,
     priceCents: 290000,
     depositCents: 58000,
     status: 'confirmed',
@@ -365,12 +375,13 @@ const INITIAL_DEPARTURES: Departure[] = [
 const INITIAL_BOOKINGS: Booking[] = [
   {
     id: 'b-seed-adv-1',
-    reference: 'AGT-ADV-7740',
+    reference: 'ISET261130-774',
+    tourCode: 'ISET',
     tourId: 'cac84395-f80e-4bd0-a2e8-108f3748f752',
     tourSlug: 'shortbreak-eastern-turkiye',
-    tourTitle: 'immersive South Eastern Turkiye : Culinary & Cultural tour',
+    tourTitle: 'Immersive South Eastern Turkiye : Culinary & Cultural tour',
     tourImage: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80',
-    departureDate: '2026-10-15',
+    departureDate: '2026-11-30',
     guests: 2,
     totalPriceCents: 420000,
     currency: 'USD',
@@ -443,12 +454,13 @@ const INITIAL_BOOKINGS: Booking[] = [
   },
   {
     id: 'b-seed-1',
-    reference: 'AGT-2026-8492',
+    reference: 'ISET261130-849',
+    tourCode: 'ISET',
     tourId: 'cac84395-f80e-4bd0-a2e8-108f3748f752',
     tourSlug: 'shortbreak-eastern-turkiye',
-    tourTitle: 'immersive South Eastern Turkiye : Culinary & Cultural tour',
+    tourTitle: 'Immersive South Eastern Turkiye : Culinary & Cultural tour',
     tourImage: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80',
-    departureDate: '2026-10-15',
+    departureDate: '2026-11-30',
     guests: 2,
     totalPriceCents: 420000,
     currency: 'EUR',
@@ -467,12 +479,13 @@ const INITIAL_BOOKINGS: Booking[] = [
   },
   {
     id: 'b-seed-2',
-    reference: 'AGT-2026-3914',
+    reference: 'CAT261129-391',
+    tourCode: 'CAT',
     tourId: '10cf2e26-f782-411a-85d7-fca835069b82',
     tourSlug: 'cappadocia-hiking-adventure',
     tourTitle: 'Cappadocia 7-Day Hiking Adventure',
     tourImage: 'https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=800&q=80',
-    departureDate: '2026-10-24',
+    departureDate: '2026-11-29',
     guests: 2,
     totalPriceCents: 370000,
     currency: 'USD',
@@ -557,8 +570,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Bookings
   const [bookings, setBookings] = useState<Booking[]>(() => {
     try {
-      const saved = localStorage.getItem('agt_bookings_v2');
-      return saved ? JSON.parse(saved) : INITIAL_BOOKINGS;
+      const saved = localStorage.getItem('agt_bookings_v3');
+      if (saved) return JSON.parse(saved);
+      return INITIAL_BOOKINGS;
     } catch {
       return INITIAL_BOOKINGS;
     }
@@ -567,8 +581,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Departures
   const [departures, setDepartures] = useState<Departure[]>(() => {
     try {
-      const saved = localStorage.getItem('agt_departures_v2');
-      return saved ? JSON.parse(saved) : INITIAL_DEPARTURES;
+      const saved = localStorage.getItem('agt_departures_v3');
+      if (saved) return JSON.parse(saved);
+      return INITIAL_DEPARTURES;
     } catch {
       return INITIAL_DEPARTURES;
     }
@@ -616,11 +631,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [registeredAdvisors]);
 
   useEffect(() => {
-    localStorage.setItem('agt_bookings_v2', JSON.stringify(bookings));
+    localStorage.setItem('agt_bookings_v3', JSON.stringify(bookings));
   }, [bookings]);
 
   useEffect(() => {
-    localStorage.setItem('agt_departures_v2', JSON.stringify(departures));
+    localStorage.setItem('agt_departures_v3', JSON.stringify(departures));
   }, [departures]);
 
   useEffect(() => {
@@ -677,6 +692,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Create Consultant Booking with client passenger manifest and adjusted commission
   const createAdvisorBooking = (params: {
+    tourCode?: string;
     tourId: string;
     tourSlug: string;
     tourTitle: string;
@@ -692,8 +708,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     cardholderName: string;
     specialRequests?: string;
   }): Booking => {
-    const randSuffix = Math.floor(1000 + Math.random() * 9000);
-    const reference = `AGT-ADV-${randSuffix}`;
+    const resolvedTourCode = resolveTourCode({
+      tourCode: params.tourCode,
+      tourId: params.tourId,
+      tourSlug: params.tourSlug,
+    });
+    const reference = generateBookingReference(resolvedTourCode, params.departureDate);
 
     const advisor = currentAdvisor || {
       id: 'adv-guest',
@@ -725,6 +745,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const newBooking: Booking = {
       id: 'b-adv-' + Math.random().toString(36).substring(2, 9),
       reference,
+      tourCode: resolvedTourCode,
       tourId: params.tourId,
       tourSlug: params.tourSlug,
       tourTitle: params.tourTitle,
@@ -815,12 +836,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const addBooking = (bookingData: Omit<Booking, 'id' | 'reference' | 'status' | 'createdAt' | 'paymentStatus'>): Booking => {
-    const year = new Date().getFullYear();
-    const rand = Math.floor(1000 + Math.random() * 9000);
-    const reference = `AGT-${year}-${rand}`;
+    const resolvedTourCode = resolveTourCode({
+      tourCode: bookingData.tourCode,
+      tourId: bookingData.tourId,
+      tourSlug: bookingData.tourSlug,
+    });
+    const reference = generateBookingReference(resolvedTourCode, bookingData.departureDate);
 
     const newBooking: Booking = {
       ...bookingData,
+      tourCode: resolvedTourCode,
       id: 'b-' + Math.random().toString(36).substring(2, 9),
       reference,
       status: 'confirmed',

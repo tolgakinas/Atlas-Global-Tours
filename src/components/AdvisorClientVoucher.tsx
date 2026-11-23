@@ -2,6 +2,7 @@ import React from 'react';
 import { Printer, X, CheckCircle, ShieldCheck, MapPin, Calendar, Users, QrCode, Phone, Mail, Award } from 'lucide-react';
 import { Booking, ClientPassengerInfo } from '../context/AuthContext';
 import { TOURS_DATA } from '../data/toursData';
+import { resolveTourCode } from '../utils/bookingReference';
 
 interface AdvisorClientVoucherProps {
   booking: Booking;
@@ -10,6 +11,12 @@ interface AdvisorClientVoucherProps {
 
 export const AdvisorClientVoucher: React.FC<AdvisorClientVoucherProps> = ({ booking, onClose }) => {
   const tour = TOURS_DATA.find((t) => t.id === booking.tourId || t.slug === booking.tourSlug) || TOURS_DATA[0];
+  const tourCode = resolveTourCode({
+    tourCode: booking.tourCode,
+    code: tour.code,
+    tourId: booking.tourId,
+    tourSlug: booking.tourSlug,
+  });
   const advisor = booking.advisorDetails;
 
   const handlePrint = () => {
@@ -95,7 +102,10 @@ export const AdvisorClientVoucher: React.FC<AdvisorClientVoucherProps> = ({ book
               <div className="mt-2 text-xs text-zinc-500 font-mono">
                 Voucher Ref: <strong className="text-zinc-900 font-bold text-sm">{booking.reference}</strong>
               </div>
-              <div className="text-[0.7rem] text-zinc-400">
+              <div className="mt-0.5 text-xs text-zinc-500 font-mono">
+                Tour Code: <strong className="text-emerald-800 font-bold">{tourCode}</strong>
+              </div>
+              <div className="text-[0.7rem] text-zinc-400 mt-0.5">
                 Issued Date: {new Date(booking.createdAt).toLocaleDateString()}
               </div>
             </div>
@@ -124,13 +134,18 @@ export const AdvisorClientVoucher: React.FC<AdvisorClientVoucherProps> = ({ book
 
           {/* Tour Journey Overview */}
           <div className="rounded-xl border border-zinc-200 bg-white p-5 space-y-4">
-            <div>
-              <span className="text-[0.65rem] uppercase font-bold tracking-widest text-emerald-700">
-                Confirmed Expedition Itinerary
+            <div className="flex flex-wrap items-start justify-between gap-2">
+              <div>
+                <span className="text-[0.65rem] uppercase font-bold tracking-widest text-emerald-700">
+                  Confirmed Expedition Itinerary
+                </span>
+                <h1 className="font-serif text-2xl sm:text-3xl font-bold text-zinc-900 mt-0.5">
+                  {booking.tourTitle}
+                </h1>
+              </div>
+              <span className="rounded-md border border-emerald-200 bg-emerald-50 px-2.5 py-1 font-mono text-xs font-bold text-emerald-800">
+                Code: {tourCode}
               </span>
-              <h1 className="font-serif text-2xl sm:text-3xl font-bold text-zinc-900 mt-0.5">
-                {booking.tourTitle}
-              </h1>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-3 border-t border-zinc-100 text-xs">
@@ -144,7 +159,7 @@ export const AdvisorClientVoucher: React.FC<AdvisorClientVoucherProps> = ({ book
               </div>
               <div>
                 <span className="text-zinc-400 block text-[0.7rem]">Expedition Style</span>
-                <span className="font-bold text-zinc-900 text-sm">Small Group (Max 12)</span>
+                <span className="font-bold text-zinc-900 text-sm">Small Group (Max {tour.max_pax || 10})</span>
               </div>
               <div>
                 <span className="text-zinc-400 block text-[0.7rem]">Guiding Language</span>

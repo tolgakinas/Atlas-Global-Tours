@@ -16,7 +16,7 @@ export const TravelerLoginPage: React.FC<TravelerLoginPageProps> = ({ onNavigate
   const [password, setPassword] = useState('');
 
   // Booking Lookup state
-  const [lookupRef, setLookupRef] = useState('AGT-2026-8492');
+  const [lookupRef, setLookupRef] = useState('ISET261130-849');
   const [lookupEmail, setLookupEmail] = useState('jane.cooper@example.com');
   const [lookupError, setLookupError] = useState('');
 
@@ -181,12 +181,12 @@ export const TravelerLoginPage: React.FC<TravelerLoginPageProps> = ({ onNavigate
                     required
                     value={lookupRef}
                     onChange={(e) => setLookupRef(e.target.value.toUpperCase())}
-                    placeholder="e.g. AGT-2026-8492"
+                    placeholder="e.g. ISET261130-849"
                     className="w-full font-mono uppercase rounded-md border border-input bg-background pl-9 pr-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                 </div>
                 <span className="text-[0.65rem] text-muted-foreground mt-1 block">
-                  Check confirmation email format: AGT-2026-XXXX
+                  Format: Tour Code + YYMMDD-XXX (e.g. CAT261129-391)
                 </span>
               </div>
 

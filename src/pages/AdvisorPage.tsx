@@ -31,6 +31,7 @@ import { AdvisorClientVoucher } from '../components/AdvisorClientVoucher';
 import { DepartureDropdown } from '../components/DepartureDropdown';
 import { calculateDayTourPricing } from '../utils/dayTourPricing';
 import { sendAdminBookingNotification } from '../utils/bookingNotifications';
+import { resolveTourCode } from '../utils/bookingReference';
 
 interface AdvisorPageProps {
   onNavigate: (path: string) => void;
@@ -270,7 +271,9 @@ export const AdvisorPage: React.FC<AdvisorPageProps> = ({ onNavigate, onSelectTo
     // Decrement live tour departure availability by number of passengers
     const seatUpdate = bookDepartureSeats(selectedTour.id, departureDateStr, guestCount);
 
+    const tourCode = resolveTourCode(selectedTour);
     const newBooking = createAdvisorBooking({
+      tourCode,
       tourId: selectedTour.id,
       tourSlug: selectedTour.slug,
       tourTitle: selectedTour.title,
@@ -290,6 +293,7 @@ export const AdvisorPage: React.FC<AdvisorPageProps> = ({ onNavigate, onSelectTo
     // Notify admin email (bookings@atlasglobaltours.com)
     void sendAdminBookingNotification({
       reference: newBooking.reference,
+      tourCode,
       tourTitle: selectedTour.title,
       tourSlug: selectedTour.slug,
       departureDate: departureDateStr,
@@ -763,6 +767,7 @@ export const AdvisorPage: React.FC<AdvisorPageProps> = ({ onNavigate, onSelectTo
                     }}
                     currency={selectedTour?.currency}
                     label="Select Departure Date"
+                    departureSchedule={selectedTour?.departure_days}
                   />
                 ) : (
                   <div>
@@ -1338,9 +1343,12 @@ export const AdvisorPage: React.FC<AdvisorPageProps> = ({ onNavigate, onSelectTo
                     className="rounded-xl border border-border bg-card p-5 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-5 hover:border-primary/40 transition-colors"
                   >
                     <div className="space-y-2">
-                      <div className="flex items-center gap-2.5">
+                      <div className="flex flex-wrap items-center gap-2.5">
                         <span className="font-mono font-bold text-primary text-sm">
                           {b.reference}
+                        </span>
+                        <span className="font-mono text-[0.68rem] font-bold text-foreground bg-muted px-2 py-0.5 rounded border border-border">
+                          {b.tourCode || resolveTourCode(b)}
                         </span>
                         <span className="rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider">
                           Confirmed & Paid

@@ -10,6 +10,7 @@ interface DepartureDropdownProps {
   currency?: string;
   className?: string;
   label?: string;
+  departureSchedule?: string;
   showSpotCount?: boolean;
 }
 
@@ -20,11 +21,35 @@ export const DepartureDropdown: React.FC<DepartureDropdownProps> = ({
   currency,
   className = '',
   label = 'Select Departure Date',
+  departureSchedule,
   showSpotCount = true,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedYear, setSelectedYear] = useState<string>('ALL');
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { formatPrice } = useCurrency();
+
+  const availableYears = React.useMemo(() => {
+    const years = new Set<string>();
+    departures.forEach((d) => {
+      if (d.start_date && d.start_date.length >= 4) {
+        years.add(d.start_date.slice(0, 4));
+      }
+    });
+    return Array.from(years).sort();
+  }, [departures]);
+
+  const filteredDepartures = React.useMemo(() => {
+    if (selectedYear === 'ALL') return departures;
+    return departures.filter((d) => d.start_date.startsWith(selectedYear));
+  }, [departures, selectedYear]);
+
+  const yearRangeLabel =
+    availableYears.length > 1
+      ? `${availableYears[0]} – ${availableYears[availableYears.length - 1]} Dates`
+      : availableYears.length === 1
+      ? `${availableYears[0]} Dates`
+      : 'Upcoming Dates';
 
   const selectedDeparture =
     departures.find((d) => d.id === selectedDepartureId) || departures[0];
@@ -39,18 +64,21 @@ export const DepartureDropdown: React.FC<DepartureDropdownProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const formatDateRange = (dep: TourDeparture) => {
-    const start = new Date(dep.start_date).toLocaleDateString('en-US', {
+  const formatIsoDate = (isoDate: string) => {
+    const normalized = isoDate.includes('T') ? isoDate : `${isoDate}T00:00:00Z`;
+    return new Date(normalized).toLocaleDateString('en-US', {
+      weekday: 'short',
       month: 'short',
       day: 'numeric',
       year: 'numeric',
+      timeZone: 'UTC',
     });
+  };
+
+  const formatDateRange = (dep: TourDeparture) => {
+    const start = formatIsoDate(dep.start_date);
     if (dep.end_date && dep.end_date !== dep.start_date) {
-      const end = new Date(dep.end_date).toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-      });
+      const end = formatIsoDate(dep.end_date);
       return `${start} – ${end}`;
     }
     return start;
@@ -76,13 +104,13 @@ export const DepartureDropdown: React.FC<DepartureDropdownProps> = ({
   return (
     <div className={`relative ${className}`} ref={dropdownRef}>
       {label && (
-        <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center justify-between gap-2 mb-2">
           <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
             <Calendar className="size-3.5 text-primary" />
             <span>{label}</span>
           </label>
           <span className="text-[0.7rem] font-medium text-muted-foreground bg-muted/60 px-2 py-0.5 rounded-full">
-            {openDeparturesCount} available
+            {departureSchedule ? `${departureSchedule} · ${openDeparturesCount} dates` : `${openDeparturesCount} available`}
           </span>
         </div>
       )}
@@ -157,12 +185,45 @@ export const DepartureDropdown: React.FC<DepartureDropdownProps> = ({
       {isOpen && (
         <div className="absolute left-0 right-0 top-full mt-1.5 z-50 max-h-72 overflow-y-auto rounded-xl border border-border bg-card p-1.5 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-150 custom-scrollbar">
           <div className="px-2.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-wider text-muted-foreground border-b border-border/70 mb-1 flex items-center justify-between">
-            <span>Guaranteed Departures</span>
-            <span>All 2026/2027 Dates</span>
+            <span>{departureSchedule ? `Departs ${departureSchedule}` : 'Guaranteed Departures'}</span>
+            <span>{yearRangeLabel}</span>
           </div>
 
+          {availableYears.length > 1 && (
+            <div className="flex items-center gap-1 px-1.5 py-1 mb-1.5 border-b border-border/60">
+              <button
+                type="button"
+                onClick={() => setSelectedYear('ALL')}
+                className={`px-2 py-0.5 rounded text-[0.68rem] font-semibold transition-colors cursor-pointer ${
+                  selectedYear === 'ALL'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-muted/70 text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                All ({departures.length})
+              </button>
+              {availableYears.map((yr) => {
+                const yrCount = departures.filter((d) => d.start_date.startsWith(yr)).length;
+                return (
+                  <button
+                    key={yr}
+                    type="button"
+                    onClick={() => setSelectedYear(yr)}
+                    className={`px-2 py-0.5 rounded text-[0.68rem] font-semibold transition-colors cursor-pointer ${
+                      selectedYear === yr
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-muted/70 text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    {yr} ({yrCount})
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
           <div className="space-y-1">
-            {departures.map((dep) => {
+            {filteredDepartures.map((dep) => {
               const isSelected = selectedDeparture?.id === dep.id;
               const spotsLeft = Math.max(0, dep.capacity - dep.seats_booked);
               const isSoldOut = dep.status === 'sold_out' || spotsLeft <= 0;
