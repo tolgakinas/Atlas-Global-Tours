@@ -11,6 +11,7 @@ import { ReviewsProvider } from './context/ReviewsContext';
 import { ComparisonProvider, useComparison } from './context/ComparisonContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { ScrollUpDown } from './components/ScrollUpDown';
 import { TourComparisonBar } from './components/TourComparisonBar';
 import { TourComparisonModal } from './components/TourComparisonModal';
@@ -300,22 +301,24 @@ export default function App() {
   };
 
   return (
-    <AuthProvider>
-      <ToursProvider>
-        <ReviewsProvider>
-          <CurrencyProvider>
-            <ComparisonProvider>
-              <AppLayout
-                currentPath={currentPath}
-                navigate={navigate}
-                renderCurrentPage={renderCurrentPage}
-                handleSelectTour={handleSelectTour}
-                handleBookTour={handleBookTour}
-              />
-            </ComparisonProvider>
-          </CurrencyProvider>
-        </ReviewsProvider>
-      </ToursProvider>
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider>
+        <ToursProvider>
+          <ReviewsProvider>
+            <CurrencyProvider>
+              <ComparisonProvider>
+                <AppLayout
+                  currentPath={currentPath}
+                  navigate={navigate}
+                  renderCurrentPage={renderCurrentPage}
+                  handleSelectTour={handleSelectTour}
+                  handleBookTour={handleBookTour}
+                />
+              </ComparisonProvider>
+            </CurrencyProvider>
+          </ReviewsProvider>
+        </ToursProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }

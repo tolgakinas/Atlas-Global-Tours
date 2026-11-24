@@ -128,46 +128,98 @@ interface ToursContextType {
 
 const ToursContext = createContext<ToursContextType | undefined>(undefined);
 
+const TOURS_OVERRIDES_KEY = 'agt_tours_overrides_v9';
+const POSTS_OVERRIDES_KEY = 'agt_posts_overrides_v3';
+const SEAT_BOOKINGS_KEY = 'agt_seat_bookings_v1';
+const LEGACY_STORAGE_KEYS = [
+  'agt_tours_data_v1',
+  'agt_tours_data_v2',
+  'agt_tours_data_v3',
+  'agt_tours_data_v4',
+  'agt_tours_data_v5',
+  'agt_tours_data_v6',
+  'agt_tours_data_v7',
+  'agt_tours_data_v8',
+  'agt_posts_data_v1',
+  'agt_posts_data_v2',
+];
+
+interface EntityOverrides<T> {
+  updated: Record<string, T>;
+  deletedIds: string[];
+}
+
+function purgeLegacyStorageKeys() {
+  try {
+    LEGACY_STORAGE_KEYS.forEach((k) => localStorage.removeItem(k));
+  } catch {
+    // Ignore storage access errors in restricted frames
+  }
+}
+
 export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // 1. Tours State
+  const defaultToursById = useMemo(() => new Map(TOURS_DATA.map((t) => [t.id, t])), []);
+  const defaultPostsById = useMemo(() => new Map(POSTS_DATA.map((p) => [p.id, p])), []);
+
+  // 1. Tours State (hydrated from static TOURS_DATA + tiny delta overrides + seat bookings)
   const [tours, setTours] = useState<Tour[]>(() => {
+    purgeLegacyStorageKeys();
     try {
-      const seatOverridesRaw = localStorage.getItem('agt_seat_bookings_v1');
+      const seatOverridesRaw = localStorage.getItem(SEAT_BOOKINGS_KEY);
       const seatOverrides: Record<string, Record<string, number>> = seatOverridesRaw
         ? JSON.parse(seatOverridesRaw)
         : {};
-      const defaultToursById = new Map(TOURS_DATA.map((t) => [t.id, t]));
 
-      const applySeatOverrides = (list: Tour[]) =>
-        list.map((t) => {
-          const defaultTour = defaultToursById.get(t.id);
-          const baseDepartures =
-            t.departuresList && t.departuresList.length > 0
-              ? t.departuresList
-              : defaultTour?.departuresList || [];
-          const tourSeats = seatOverrides[t.id];
-          if (!tourSeats) {
-            return baseDepartures === t.departuresList ? t : { ...t, departuresList: baseDepartures };
-          }
-          return {
-            ...t,
-            departuresList: baseDepartures.map((dep) => {
-              const booked = tourSeats[dep.id];
-              if (typeof booked !== 'number') return dep;
-              const clamped = Math.min(dep.capacity, Math.max(0, booked));
-              const remaining = Math.max(0, dep.capacity - clamped);
-              return {
-                ...dep,
-                seats_booked: clamped,
-                status: remaining <= 0 ? 'sold_out' : remaining <= 3 ? 'filling_fast' : 'guaranteed',
-              };
-            }),
-          };
-        });
+      const overridesRaw = localStorage.getItem(TOURS_OVERRIDES_KEY);
+      const overrides: EntityOverrides<Tour> = overridesRaw
+        ? JSON.parse(overridesRaw)
+        : { updated: {}, deletedIds: [] };
+      const deletedSet = new Set(overrides.deletedIds || []);
 
-      const saved = localStorage.getItem('agt_tours_data_v8');
-      if (saved) return applySeatOverrides(JSON.parse(saved));
-      return applySeatOverrides(TOURS_DATA);
+      const baseMap = new Map(TOURS_DATA.map((t) => [t.id, t]));
+      const merged: Tour[] = [];
+
+      // Include custom newly added tours first
+      Object.values(overrides.updated || {}).forEach((customTour) => {
+        if (!baseMap.has(customTour.id) && !deletedSet.has(customTour.id)) {
+          merged.push(customTour);
+        }
+      });
+
+      // Merge default tours with any saved overrides
+      TOURS_DATA.forEach((defaultTour) => {
+        if (deletedSet.has(defaultTour.id)) return;
+        const override = overrides.updated?.[defaultTour.id];
+        if (!override) {
+          merged.push(defaultTour);
+        } else {
+          const departuresList =
+            override.departuresList && override.departuresList.length > 0
+              ? override.departuresList
+              : defaultTour.departuresList;
+          merged.push({ ...defaultTour, ...override, departuresList });
+        }
+      });
+
+      // Apply live seat overrides
+      return merged.map((t) => {
+        const tourSeats = seatOverrides[t.id];
+        if (!tourSeats || !t.departuresList || t.departuresList.length === 0) return t;
+        return {
+          ...t,
+          departuresList: t.departuresList.map((dep) => {
+            const booked = tourSeats[dep.id];
+            if (typeof booked !== 'number') return dep;
+            const clamped = Math.min(dep.capacity, Math.max(0, booked));
+            const remaining = Math.max(0, dep.capacity - clamped);
+            return {
+              ...dep,
+              seats_booked: clamped,
+              status: remaining <= 0 ? 'sold_out' : remaining <= 3 ? 'filling_fast' : 'guaranteed',
+            };
+          }),
+        };
+      });
     } catch {
       return TOURS_DATA;
     }
@@ -184,12 +236,29 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   });
 
-  // 3. Blog Posts State
+  // 3. Blog Posts State (hydrated from static POSTS_DATA + tiny delta overrides)
   const [posts, setPosts] = useState<Post[]>(() => {
     try {
-      const saved = localStorage.getItem('agt_posts_data_v2');
-      if (saved) return JSON.parse(saved);
-      return POSTS_DATA;
+      const overridesRaw = localStorage.getItem(POSTS_OVERRIDES_KEY);
+      if (!overridesRaw) return POSTS_DATA;
+      const overrides: EntityOverrides<Post> = JSON.parse(overridesRaw);
+      const deletedSet = new Set(overrides.deletedIds || []);
+      const baseMap = new Map(POSTS_DATA.map((p) => [p.id, p]));
+      const merged: Post[] = [];
+
+      Object.values(overrides.updated || {}).forEach((customPost) => {
+        if (!baseMap.has(customPost.id) && !deletedSet.has(customPost.id)) {
+          merged.push(customPost);
+        }
+      });
+
+      POSTS_DATA.forEach((defaultPost) => {
+        if (deletedSet.has(defaultPost.id)) return;
+        const override = overrides.updated?.[defaultPost.id];
+        merged.push(override ? { ...defaultPost, ...override } : defaultPost);
+      });
+
+      return merged;
     } catch {
       return POSTS_DATA;
     }
@@ -215,55 +284,115 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   });
 
-  // Sync to LocalStorage (strip auto-generated day-tour dates to stay well below browser storage quota,
-  // while saving all booked seat counts in a tiny dedicated map)
+  // Sync only compact seat counts & modified tour deltas to localStorage (keeps footprint <10KB)
   useEffect(() => {
     try {
       const seatOverrides: Record<string, Record<string, number>> = {};
-      const compactTours = tours.map((t) => {
+      const updatedTours: Record<string, Tour> = {};
+      const currentIds = new Set<string>();
+
+      tours.forEach((t) => {
+        currentIds.add(t.id);
+        const defaultTour = defaultToursById.get(t.id);
+        const defaultDepSeats = new Map(
+          (defaultTour?.departuresList || []).map((d) => [d.id, d.seats_booked])
+        );
+
         const bookedMap: Record<string, number> = {};
         (t.departuresList || []).forEach((dep) => {
-          if (dep.seats_booked > 0) {
+          const defaultSeats = defaultDepSeats.get(dep.id) ?? 0;
+          if (dep.seats_booked !== defaultSeats) {
             bookedMap[dep.id] = dep.seats_booked;
           }
         });
         if (Object.keys(bookedMap).length > 0) {
           seatOverrides[t.id] = bookedMap;
         }
-        const isGeneratedDayTour =
-          (t.tour_type === 'day' || t.days === 1) &&
-          (t.departuresList || []).length > 60 &&
-          t.departuresList[0]?.id?.startsWith('dep-day-');
-        return isGeneratedDayTour ? { ...t, departuresList: [] } : t;
+
+        if (!defaultTour) {
+          // Newly created custom tour
+          updatedTours[t.id] = t;
+        } else {
+          // Only persist if fields outside departuresList changed
+          const { departuresList: _curDeps, ...curRest } = t;
+          const { departuresList: _defDeps, ...defRest } = defaultTour;
+          if (JSON.stringify(curRest) !== JSON.stringify(defRest)) {
+            updatedTours[t.id] = { ...t, departuresList: [] };
+          }
+        }
       });
-      localStorage.setItem('agt_seat_bookings_v1', JSON.stringify(seatOverrides));
-      localStorage.setItem('agt_tours_data_v8', JSON.stringify(compactTours));
+
+      const deletedIds = TOURS_DATA.filter((t) => !currentIds.has(t.id)).map((t) => t.id);
+
+      if (Object.keys(seatOverrides).length > 0) {
+        localStorage.setItem(SEAT_BOOKINGS_KEY, JSON.stringify(seatOverrides));
+      } else {
+        localStorage.removeItem(SEAT_BOOKINGS_KEY);
+      }
+
+      if (Object.keys(updatedTours).length > 0 || deletedIds.length > 0) {
+        localStorage.setItem(
+          TOURS_OVERRIDES_KEY,
+          JSON.stringify({ updated: updatedTours, deletedIds })
+        );
+      } else {
+        localStorage.removeItem(TOURS_OVERRIDES_KEY);
+      }
     } catch (e) {
-      console.error('Failed to save tours to localStorage', e);
+      console.warn('Could not persist tour overrides to localStorage:', e);
     }
-  }, [tours]);
+  }, [tours, defaultToursById]);
 
   useEffect(() => {
     try {
-      localStorage.setItem('agt_destinations_data_v4', JSON.stringify(destinationRegions));
+      if (JSON.stringify(destinationRegions) !== JSON.stringify(DESTINATION_REGIONS)) {
+        localStorage.setItem('agt_destinations_data_v4', JSON.stringify(destinationRegions));
+      } else {
+        localStorage.removeItem('agt_destinations_data_v4');
+      }
     } catch (e) {
-      console.error('Failed to save destination regions to localStorage', e);
+      console.warn('Could not persist destination regions to localStorage:', e);
     }
   }, [destinationRegions]);
 
+  // Sync only modified/created/deleted blog posts (keeps footprint minimal)
   useEffect(() => {
     try {
-      localStorage.setItem('agt_posts_data_v2', JSON.stringify(posts));
+      const updatedPosts: Record<string, Post> = {};
+      const currentIds = new Set<string>();
+
+      posts.forEach((p) => {
+        currentIds.add(p.id);
+        const defaultPost = defaultPostsById.get(p.id);
+        if (!defaultPost || JSON.stringify(p) !== JSON.stringify(defaultPost)) {
+          updatedPosts[p.id] = p;
+        }
+      });
+
+      const deletedIds = POSTS_DATA.filter((p) => !currentIds.has(p.id)).map((p) => p.id);
+
+      if (Object.keys(updatedPosts).length > 0 || deletedIds.length > 0) {
+        localStorage.setItem(
+          POSTS_OVERRIDES_KEY,
+          JSON.stringify({ updated: updatedPosts, deletedIds })
+        );
+      } else {
+        localStorage.removeItem(POSTS_OVERRIDES_KEY);
+      }
     } catch (e) {
-      console.error('Failed to save posts to localStorage', e);
+      console.warn('Could not persist post overrides to localStorage:', e);
     }
-  }, [posts]);
+  }, [posts, defaultPostsById]);
 
   useEffect(() => {
     try {
-      localStorage.setItem('agt_site_content_v2', JSON.stringify(siteContent));
+      if (JSON.stringify(siteContent) !== JSON.stringify(DEFAULT_SITE_CONTENT)) {
+        localStorage.setItem('agt_site_content_v2', JSON.stringify(siteContent));
+      } else {
+        localStorage.removeItem('agt_site_content_v2');
+      }
     } catch (e) {
-      console.error('Failed to save site content to localStorage', e);
+      console.warn('Could not persist site content to localStorage:', e);
     }
   }, [siteContent]);
 
@@ -544,10 +673,11 @@ export const ToursProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const resetAllToDefaults = () => {
     if (window.confirm('Reset all website tours, destinations, and settings to original defaults?')) {
-      localStorage.removeItem('agt_tours_data_v8');
-      localStorage.removeItem('agt_seat_bookings_v1');
+      purgeLegacyStorageKeys();
+      localStorage.removeItem(TOURS_OVERRIDES_KEY);
+      localStorage.removeItem(POSTS_OVERRIDES_KEY);
+      localStorage.removeItem(SEAT_BOOKINGS_KEY);
       localStorage.removeItem('agt_destinations_data_v4');
-      localStorage.removeItem('agt_posts_data_v2');
       localStorage.removeItem('agt_site_content_v2');
       setTours(TOURS_DATA);
       setDestinationRegions(DESTINATION_REGIONS);

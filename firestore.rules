@@ -1,0 +1,585 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // =========================================================================
+    // GLOBAL SAFETY NET (Default Deny Catch-All)
+    // =========================================================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // =========================================================================
+    // PHASE 3: HARDENED GLOBAL PRIMITIVES
+    // =========================================================================
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedUser() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isBootstrappedAdmin() {
+      return isVerifiedUser() && request.auth.token.email == 'tolgakinas@gmail.com';
+    }
+
+    function isAdmin() {
+      return isBootstrappedAdmin() || (
+        isVerifiedUser() && exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isOpsOrAdmin() {
+      return isAdmin() || (
+        isVerifiedUser() && exists(/databases/$(database)/documents/operations_staff/$(request.auth.uid))
+      );
+    }
+
+    function isOptionalString(data, field, maxLen) {
+      return !(field in data) || (data[field] is string && data[field].size() <= maxLen);
+    }
+
+    function isOptionalBool(data, field) {
+      return !(field in data) || data[field] is bool;
+    }
+
+    function isOptionalNumberRange(data, field, minVal, maxVal) {
+      return !(field in data) || (data[field] is number && data[field] >= minVal && data[field] <= maxVal);
+    }
+
+    // =========================================================================
+    // VALIDATION BLUEPRINTS (Verbatim synced with firebase-blueprint.json)
+    // =========================================================================
+    function isValidUserProfile(data, userId) {
+      return data.keys().hasAll(['uid', 'displayName', 'email', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['uid', 'displayName', 'email', 'phone', 'photoURL', 'createdAt', 'updatedAt'])
+        && isValidId(data.uid)
+        && data.uid == userId
+        && data.displayName is string && data.displayName.size() >= 1 && data.displayName.size() <= 120
+        && data.email is string && data.email.size() >= 3 && data.email.size() <= 254
+        && isOptionalString(data, 'phone', 40)
+        && isOptionalString(data, 'photoURL', 500)
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidRoleGrant(data, targetUid) {
+      return data.keys().hasAll(['uid', 'email', 'displayName', 'grantedBy', 'createdAt'])
+        && data.keys().hasOnly(['uid', 'email', 'displayName', 'grantedBy', 'createdAt'])
+        && isValidId(data.uid)
+        && data.uid == targetUid
+        && data.email is string && data.email.size() >= 3 && data.email.size() <= 254
+        && data.displayName is string && data.displayName.size() >= 1 && data.displayName.size() <= 120
+        && isValidId(data.grantedBy)
+        && data.grantedBy == request.auth.uid
+        && data.createdAt is timestamp;
+    }
+
+    function isValidBooking(data, bookingId) {
+      return data.keys().hasAll([
+          'id', 'userId', 'reference', 'tourCode', 'tourId', 'tourSlug', 'tourTitle',
+          'departureDate', 'guests', 'totalPriceCents', 'currency',
+          'leadName', 'leadEmail', 'paymentStatus', 'status', 'createdAt', 'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'id', 'userId', 'reference', 'tourCode', 'tourId', 'tourSlug', 'tourTitle', 'tourImage',
+          'departureDate', 'guests', 'totalPriceCents', 'currency',
+          'leadName', 'leadEmail', 'leadPhone', 'specialRequests',
+          'emergencyContactName', 'emergencyContactPhone', 'dietaryNotes',
+          'paymentStatus', 'status', 'assignedGuide', 'internalNotes',
+          'isAdvisorBooking', 'advisorAgencyName', 'advisorName', 'advisorEmail',
+          'commissionRatePercent', 'financeNotified', 'createdAt', 'updatedAt'
+        ])
+        && isValidId(data.id)
+        && data.id == bookingId
+        && isValidId(data.userId)
+        && data.reference is string && data.reference.size() >= 4 && data.reference.size() <= 40 && data.reference.matches('^[A-Z0-9\\-]+$')
+        && data.tourCode is string && data.tourCode.size() >= 1 && data.tourCode.size() <= 20 && data.tourCode.matches('^[A-Z0-9\\-]+$')
+        && data.tourId is string && data.tourId.size() >= 1 && data.tourId.size() <= 128
+        && data.tourSlug is string && data.tourSlug.size() >= 1 && data.tourSlug.size() <= 160
+        && data.tourTitle is string && data.tourTitle.size() >= 1 && data.tourTitle.size() <= 200
+        && isOptionalString(data, 'tourImage', 500)
+        && data.departureDate is string && data.departureDate.size() >= 8 && data.departureDate.size() <= 20
+        && data.guests is int && data.guests >= 1 && data.guests <= 50
+        && data.totalPriceCents is int && data.totalPriceCents >= 0 && data.totalPriceCents <= 100000000
+        && data.currency in ['USD', 'EUR', 'GBP', 'AUD', 'NZD', 'CAD']
+        && data.leadName is string && data.leadName.size() >= 1 && data.leadName.size() <= 120
+        && data.leadEmail is string && data.leadEmail.size() >= 3 && data.leadEmail.size() <= 254
+        && isOptionalString(data, 'leadPhone', 40)
+        && isOptionalString(data, 'specialRequests', 1000)
+        && isOptionalString(data, 'emergencyContactName', 120)
+        && isOptionalString(data, 'emergencyContactPhone', 40)
+        && isOptionalString(data, 'dietaryNotes', 1000)
+        && data.paymentStatus in ['paid', 'deposit_paid', 'pending', 'refunded']
+        && data.status in ['confirmed', 'pending', 'cancelled']
+        && isOptionalString(data, 'assignedGuide', 120)
+        && isOptionalString(data, 'internalNotes', 2000)
+        && isOptionalBool(data, 'isAdvisorBooking')
+        && isOptionalString(data, 'advisorAgencyName', 160)
+        && isOptionalString(data, 'advisorName', 120)
+        && isOptionalString(data, 'advisorEmail', 254)
+        && isOptionalNumberRange(data, 'commissionRatePercent', 0, 30)
+        && isOptionalBool(data, 'financeNotified')
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidSeatReservation(data, bookingId) {
+      return data.keys().hasAll(['bookingId', 'userId', 'tourId', 'departureDate', 'guests', 'status', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['bookingId', 'userId', 'tourId', 'departureDate', 'guests', 'status', 'createdAt', 'updatedAt'])
+        && isValidId(data.bookingId)
+        && data.bookingId == bookingId
+        && isValidId(data.userId)
+        && data.tourId is string && data.tourId.size() >= 1 && data.tourId.size() <= 128
+        && data.departureDate is string && data.departureDate.size() >= 8 && data.departureDate.size() <= 20
+        && data.guests is int && data.guests >= 1 && data.guests <= 50
+        && data.status in ['active', 'cancelled']
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidDeparture(data, departureId) {
+      return data.keys().hasAll([
+          'id', 'tourId', 'tourTitle', 'tourSlug', 'startDate', 'endDate',
+          'capacity', 'bookedSeats', 'priceCents', 'depositCents', 'status', 'createdAt', 'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'id', 'tourCode', 'tourId', 'tourTitle', 'tourSlug', 'startDate', 'endDate',
+          'capacity', 'bookedSeats', 'priceCents', 'depositCents', 'status',
+          'assignedGuide', 'driverVehicle', 'notes', 'createdAt', 'updatedAt'
+        ])
+        && isValidId(data.id)
+        && data.id == departureId
+        && isOptionalString(data, 'tourCode', 20)
+        && data.tourId is string && data.tourId.size() >= 1 && data.tourId.size() <= 128
+        && data.tourTitle is string && data.tourTitle.size() >= 1 && data.tourTitle.size() <= 200
+        && data.tourSlug is string && data.tourSlug.size() >= 1 && data.tourSlug.size() <= 160
+        && data.startDate is string && data.startDate.size() >= 8 && data.startDate.size() <= 20
+        && data.endDate is string && data.endDate.size() >= 8 && data.endDate.size() <= 20
+        && data.capacity is int && data.capacity >= 1 && data.capacity <= 100
+        && data.bookedSeats is int && data.bookedSeats >= 0 && data.bookedSeats <= 100
+        && data.priceCents is int && data.priceCents >= 0 && data.priceCents <= 100000000
+        && data.depositCents is int && data.depositCents >= 0 && data.depositCents <= 100000000
+        && data.status in ['guaranteed', 'confirmed', 'filling_fast', 'sold_out', 'cancelled']
+        && isOptionalString(data, 'assignedGuide', 120)
+        && isOptionalString(data, 'driverVehicle', 160)
+        && isOptionalString(data, 'notes', 2000)
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidInquiry(data, inquiryId) {
+      return data.keys().hasAll(['id', 'userId', 'name', 'email', 'message', 'status', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly([
+          'id', 'userId', 'name', 'email', 'phone', 'destination', 'travelDate',
+          'guests', 'message', 'status', 'assignedStaff', 'internalNotes', 'createdAt', 'updatedAt'
+        ])
+        && isValidId(data.id)
+        && data.id == inquiryId
+        && isValidId(data.userId)
+        && data.name is string && data.name.size() >= 1 && data.name.size() <= 120
+        && data.email is string && data.email.size() >= 3 && data.email.size() <= 254
+        && isOptionalString(data, 'phone', 40)
+        && isOptionalString(data, 'destination', 160)
+        && isOptionalString(data, 'travelDate', 60)
+        && isOptionalString(data, 'guests', 80)
+        && data.message is string && data.message.size() >= 1 && data.message.size() <= 3000
+        && data.status in ['new', 'contacted', 'quoted', 'booked', 'archived']
+        && isOptionalString(data, 'assignedStaff', 120)
+        && isOptionalString(data, 'internalNotes', 2000)
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidGuide(data, guideId) {
+      return data.keys().hasAll(['id', 'name', 'licenseNo', 'languages', 'speciality', 'phone', 'email', 'status', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['id', 'name', 'licenseNo', 'languages', 'speciality', 'phone', 'email', 'status', 'createdAt', 'updatedAt'])
+        && isValidId(data.id)
+        && data.id == guideId
+        && data.name is string && data.name.size() >= 1 && data.name.size() <= 120
+        && data.licenseNo is string && data.licenseNo.size() >= 1 && data.licenseNo.size() <= 60
+        && data.languages is list && data.languages.size() >= 1 && data.languages.size() <= 10 && data.languages[0] is string && data.languages[0].size() <= 40
+        && data.speciality is string && data.speciality.size() >= 1 && data.speciality.size() <= 300
+        && data.phone is string && data.phone.size() >= 1 && data.phone.size() <= 40
+        && data.email is string && data.email.size() >= 3 && data.email.size() <= 254
+        && data.status in ['available', 'on_tour', 'standby']
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidReview(data, reviewId) {
+      return data.keys().hasAll([
+          'id', 'authorId', 'tourSlug', 'tourTitle', 'authorName',
+          'rating', 'title', 'comment', 'recommended', 'helpfulCount', 'createdAt', 'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'id', 'authorId', 'tourSlug', 'tourTitle', 'authorName', 'authorLocation',
+          'rating', 'title', 'comment', 'travelDate', 'travelerType', 'verifiedBooking',
+          'recommended', 'helpfulCount', 'hostReplyAuthor', 'hostReplyRole',
+          'hostReplyComment', 'hostReplyDate', 'createdAt', 'updatedAt'
+        ])
+        && isValidId(data.id)
+        && data.id == reviewId
+        && isValidId(data.authorId)
+        && data.tourSlug is string && data.tourSlug.size() >= 1 && data.tourSlug.size() <= 160
+        && data.tourTitle is string && data.tourTitle.size() >= 1 && data.tourTitle.size() <= 200
+        && data.authorName is string && data.authorName.size() >= 1 && data.authorName.size() <= 100
+        && isOptionalString(data, 'authorLocation', 100)
+        && data.rating is number && data.rating >= 1 && data.rating <= 5
+        && data.title is string && data.title.size() >= 1 && data.title.size() <= 160
+        && data.comment is string && data.comment.size() >= 1 && data.comment.size() <= 3000
+        && isOptionalString(data, 'travelDate', 40)
+        && isOptionalString(data, 'travelerType', 40)
+        && isOptionalBool(data, 'verifiedBooking')
+        && data.recommended is bool
+        && data.helpfulCount is int && data.helpfulCount >= 0 && data.helpfulCount <= 100000
+        && isOptionalString(data, 'hostReplyAuthor', 120)
+        && isOptionalString(data, 'hostReplyRole', 120)
+        && isOptionalString(data, 'hostReplyComment', 2000)
+        && isOptionalString(data, 'hostReplyDate', 40)
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidAdvisor(data, advisorId) {
+      return data.keys().hasAll(['id', 'userId', 'name', 'email', 'agencyName', 'defaultCommissionRate', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['id', 'userId', 'name', 'email', 'agencyName', 'iataClia', 'phone', 'country', 'defaultCommissionRate', 'createdAt', 'updatedAt'])
+        && isValidId(data.id)
+        && data.id == advisorId
+        && isValidId(data.userId)
+        && data.name is string && data.name.size() >= 1 && data.name.size() <= 120
+        && data.email is string && data.email.size() >= 3 && data.email.size() <= 254
+        && data.agencyName is string && data.agencyName.size() >= 1 && data.agencyName.size() <= 160
+        && isOptionalString(data, 'iataClia', 60)
+        && isOptionalString(data, 'phone', 40)
+        && isOptionalString(data, 'country', 80)
+        && data.defaultCommissionRate is number && data.defaultCommissionRate >= 0 && data.defaultCommissionRate <= 20
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidSiteContent(data) {
+      return data.keys().hasAll(['heroTagline', 'heroHeadline', 'heroSubtitle', 'contactEmail', 'contactPhone', 'emergencyPhone', 'updatedAt'])
+        && data.keys().hasOnly([
+          'heroTagline', 'heroHeadline', 'heroSubtitle', 'contactEmail', 'contactPhone',
+          'emergencyPhone', 'brandEthosTitle', 'brandEthosText1', 'brandEthosText2',
+          'officeIstanbul', 'officeUS', 'updatedAt'
+        ])
+        && data.heroTagline is string && data.heroTagline.size() >= 1 && data.heroTagline.size() <= 200
+        && data.heroHeadline is string && data.heroHeadline.size() >= 1 && data.heroHeadline.size() <= 240
+        && data.heroSubtitle is string && data.heroSubtitle.size() >= 1 && data.heroSubtitle.size() <= 600
+        && data.contactEmail is string && data.contactEmail.size() >= 3 && data.contactEmail.size() <= 254
+        && data.contactPhone is string && data.contactPhone.size() >= 1 && data.contactPhone.size() <= 60
+        && data.emergencyPhone is string && data.emergencyPhone.size() >= 1 && data.emergencyPhone.size() <= 120
+        && isOptionalString(data, 'brandEthosTitle', 240)
+        && isOptionalString(data, 'brandEthosText1', 1000)
+        && isOptionalString(data, 'brandEthosText2', 1000)
+        && isOptionalString(data, 'officeIstanbul', 240)
+        && isOptionalString(data, 'officeUS', 240)
+        && data.updatedAt is timestamp;
+    }
+
+    // =========================================================================
+    // COLLECTION MATCH BLOCKS (100% Blueprint Coverage)
+    // =========================================================================
+
+    // 1. Private User Profiles (PII Isolated)
+    match /users/{userId} {
+      allow get: if isSignedIn() && isValidId(userId) && (isOwner(userId) || isAdmin());
+      allow list: if isBootstrappedAdmin();
+      allow create: if isVerifiedUser()
+        && isValidId(userId)
+        && isValidUserProfile(incoming(), userId)
+        && isOwner(userId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+      allow update: if isVerifiedUser()
+        && isValidId(userId)
+        && isValidUserProfile(incoming(), userId)
+        && incoming().uid == existing().uid
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          isAdmin()
+          || (
+            isOwner(userId)
+            && incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'phone', 'photoURL', 'updatedAt'])
+          )
+        );
+      allow delete: if isAdmin() && isValidId(userId);
+    }
+
+    // 2. Authoritative Admin Registry
+    match /admins/{userId} {
+      allow get: if isSignedIn() && isValidId(userId) && (isOwner(userId) || isAdmin());
+      allow list: if isBootstrappedAdmin();
+      allow create: if isVerifiedUser()
+        && isValidId(userId)
+        && isValidRoleGrant(incoming(), userId)
+        && incoming().createdAt == request.time
+        && isAdmin();
+      allow update: if false;
+      allow delete: if isAdmin() && isValidId(userId);
+    }
+
+    // 3. Authoritative Operations Staff Registry
+    match /operations_staff/{userId} {
+      allow get: if isSignedIn() && isValidId(userId) && (isOwner(userId) || isAdmin());
+      allow list: if isBootstrappedAdmin();
+      allow create: if isVerifiedUser()
+        && isValidId(userId)
+        && isValidRoleGrant(incoming(), userId)
+        && incoming().createdAt == request.time
+        && isAdmin();
+      allow update: if false;
+      allow delete: if isAdmin() && isValidId(userId);
+    }
+
+    // 4. Bookings (PII Isolated, Terminal State Locked)
+    match /bookings/{bookingId} {
+      allow get: if isSignedIn() && isValidId(bookingId) && (existing().userId == request.auth.uid || isOpsOrAdmin());
+      allow list: if isSignedIn() && (resource.data.userId == request.auth.uid || isBootstrappedAdmin());
+      allow create: if isVerifiedUser()
+        && isValidId(bookingId)
+        && isValidBooking(incoming(), bookingId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time
+        && (
+          isOpsOrAdmin()
+          || (
+            incoming().userId == request.auth.uid
+            && incoming().status in ['confirmed', 'pending']
+            && !('internalNotes' in incoming())
+            && !('assignedGuide' in incoming())
+            && (!('financeNotified' in incoming()) || incoming().financeNotified == false)
+          )
+        );
+      allow update: if isVerifiedUser()
+        && isValidId(bookingId)
+        && isValidBooking(incoming(), bookingId)
+        && incoming().id == existing().id
+        && incoming().userId == existing().userId
+        && incoming().reference == existing().reference
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          isOpsOrAdmin()
+          || (
+            // Tier 2 Owner Action: Update traveler preferences (only if not cancelled)
+            existing().userId == request.auth.uid
+            && existing().status != 'cancelled'
+            && incoming().status == existing().status
+            && incoming().diff(existing()).affectedKeys().hasOnly(['dietaryNotes', 'specialRequests', 'emergencyContactName', 'emergencyContactPhone', 'updatedAt'])
+          )
+          || (
+            // Tier 2 Owner Action: Cancel own active booking
+            existing().userId == request.auth.uid
+            && existing().status != 'cancelled'
+            && incoming().status == 'cancelled'
+            && incoming().diff(existing()).affectedKeys().hasOnly(['status', 'updatedAt'])
+          )
+        );
+      allow delete: if isAdmin() && isValidId(bookingId);
+    }
+
+    // 5. Public PII-Free Seat Reservations (Atomic Sync with Bookings via existsAfter)
+    match /seat_reservations/{bookingId} {
+      allow get: if isValidId(bookingId);
+      allow list: if resource.data.status in ['active', 'cancelled'];
+      allow create: if isVerifiedUser()
+        && isValidId(bookingId)
+        && isValidSeatReservation(incoming(), bookingId)
+        && incoming().userId == request.auth.uid
+        && incoming().status == 'active'
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time
+        && existsAfter(/databases/$(database)/documents/bookings/$(bookingId))
+        && getAfter(/databases/$(database)/documents/bookings/$(bookingId)).data.userId == incoming().userId
+        && getAfter(/databases/$(database)/documents/bookings/$(bookingId)).data.tourId == incoming().tourId
+        && getAfter(/databases/$(database)/documents/bookings/$(bookingId)).data.guests == incoming().guests;
+      allow update: if isVerifiedUser()
+        && isValidId(bookingId)
+        && isValidSeatReservation(incoming(), bookingId)
+        && incoming().bookingId == existing().bookingId
+        && incoming().userId == existing().userId
+        && incoming().tourId == existing().tourId
+        && incoming().departureDate == existing().departureDate
+        && incoming().guests == existing().guests
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          isOpsOrAdmin()
+          || (
+            existing().userId == request.auth.uid
+            && existing().status == 'active'
+            && incoming().status == 'cancelled'
+            && incoming().diff(existing()).affectedKeys().hasOnly(['status', 'updatedAt'])
+          )
+        );
+      allow delete: if isAdmin() && isValidId(bookingId);
+    }
+
+    // 6. Operational Departures Schedule (No Customer PII)
+    match /departures/{departureId} {
+      allow get: if isValidId(departureId);
+      allow list: if resource.data.status in ['guaranteed', 'confirmed', 'filling_fast', 'sold_out', 'cancelled'];
+      allow create: if isVerifiedUser()
+        && isValidId(departureId)
+        && isValidDeparture(incoming(), departureId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time
+        && isOpsOrAdmin();
+      allow update: if isVerifiedUser()
+        && isValidId(departureId)
+        && isValidDeparture(incoming(), departureId)
+        && incoming().id == existing().id
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && isOpsOrAdmin();
+      allow delete: if isOpsOrAdmin() && isValidId(departureId);
+    }
+
+    // 7. Customer Inquiries (PII Isolated)
+    match /inquiries/{inquiryId} {
+      allow get: if isSignedIn() && isValidId(inquiryId) && (existing().userId == request.auth.uid || isOpsOrAdmin());
+      allow list: if isSignedIn() && (resource.data.userId == request.auth.uid || isBootstrappedAdmin());
+      allow create: if isVerifiedUser()
+        && isValidId(inquiryId)
+        && isValidInquiry(incoming(), inquiryId)
+        && incoming().userId == request.auth.uid
+        && incoming().status == 'new'
+        && !('assignedStaff' in incoming())
+        && !('internalNotes' in incoming())
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+      allow update: if isVerifiedUser()
+        && isValidId(inquiryId)
+        && isValidInquiry(incoming(), inquiryId)
+        && incoming().id == existing().id
+        && incoming().userId == existing().userId
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && isOpsOrAdmin();
+      allow delete: if isOpsOrAdmin() && isValidId(inquiryId);
+    }
+
+    // 8. Licensed Guides Roster (Staff-Only PII)
+    match /guides/{guideId} {
+      allow get: if isValidId(guideId) && isOpsOrAdmin();
+      allow list: if isBootstrappedAdmin();
+      allow create: if isVerifiedUser()
+        && isValidId(guideId)
+        && isValidGuide(incoming(), guideId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time
+        && isOpsOrAdmin();
+      allow update: if isVerifiedUser()
+        && isValidId(guideId)
+        && isValidGuide(incoming(), guideId)
+        && incoming().id == existing().id
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && isOpsOrAdmin();
+      allow delete: if isAdmin() && isValidId(guideId);
+    }
+
+    // 9. Public Tour Reviews (No Private PII)
+    match /reviews/{reviewId} {
+      allow get: if isValidId(reviewId);
+      allow list: if resource.data.rating >= 1 && resource.data.rating <= 5;
+      allow create: if isVerifiedUser()
+        && isValidId(reviewId)
+        && isValidReview(incoming(), reviewId)
+        && incoming().authorId == request.auth.uid
+        && incoming().helpfulCount == 0
+        && !('hostReplyAuthor' in incoming())
+        && !('hostReplyRole' in incoming())
+        && !('hostReplyComment' in incoming())
+        && !('hostReplyDate' in incoming())
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+      allow update: if isVerifiedUser()
+        && isValidId(reviewId)
+        && isValidReview(incoming(), reviewId)
+        && incoming().id == existing().id
+        && incoming().authorId == existing().authorId
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          isOpsOrAdmin()
+          || (
+            // Author edits own review text/rating
+            existing().authorId == request.auth.uid
+            && incoming().diff(existing()).affectedKeys().hasOnly(['rating', 'title', 'comment', 'recommended', 'updatedAt'])
+          )
+          || (
+            // Verified user votes helpful (+1 or -1)
+            incoming().diff(existing()).affectedKeys().hasOnly(['helpfulCount', 'updatedAt'])
+            && (incoming().helpfulCount == existing().helpfulCount + 1 || incoming().helpfulCount == existing().helpfulCount - 1)
+          )
+        );
+      allow delete: if isVerifiedUser() && isValidId(reviewId) && (existing().authorId == request.auth.uid || isAdmin());
+    }
+
+    // 10. Registered Travel Advisors (PII Isolated)
+    match /advisors/{advisorId} {
+      allow get: if isSignedIn() && isValidId(advisorId) && (existing().userId == request.auth.uid || isOpsOrAdmin());
+      allow list: if isSignedIn() && (resource.data.userId == request.auth.uid || isBootstrappedAdmin());
+      allow create: if isVerifiedUser()
+        && isValidId(advisorId)
+        && isValidAdvisor(incoming(), advisorId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time
+        && (isAdmin() || incoming().userId == request.auth.uid);
+      allow update: if isVerifiedUser()
+        && isValidId(advisorId)
+        && isValidAdvisor(incoming(), advisorId)
+        && incoming().id == existing().id
+        && incoming().userId == existing().userId
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && (
+          isAdmin()
+          || (
+            existing().userId == request.auth.uid
+            && incoming().diff(existing()).affectedKeys().hasOnly(['name', 'agencyName', 'iataClia', 'phone', 'country', 'updatedAt'])
+          )
+        );
+      allow delete: if isAdmin() && isValidId(advisorId);
+    }
+
+    // 11. Public CMS Site Content (Single Document Get Only)
+    match /site_content/{docId} {
+      allow get: if isValidId(docId);
+      allow list: if false;
+      allow create: if isVerifiedUser()
+        && isValidId(docId)
+        && isValidSiteContent(incoming())
+        && incoming().updatedAt == request.time
+        && isAdmin();
+      allow update: if isVerifiedUser()
+        && isValidId(docId)
+        && isValidSiteContent(incoming())
+        && incoming().updatedAt == request.time
+        && isAdmin();
+      allow delete: if isAdmin() && isValidId(docId);
+    }
+  }
+}

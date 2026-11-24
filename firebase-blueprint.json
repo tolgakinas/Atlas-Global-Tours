@@ -1,0 +1,954 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Private authenticated user profile storing contact details (PII isolated to owner and admin).",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Firebase Auth UID matching the document ID."
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "description": "User full display name."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 254,
+          "description": "User email address."
+        },
+        "phone": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 40,
+          "description": "Optional phone number."
+        },
+        "photoURL": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500,
+          "description": "Optional profile avatar URL."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of profile creation."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last profile update."
+        }
+      },
+      "required": ["uid", "displayName", "email", "createdAt", "updatedAt"]
+    },
+    "RoleGrant": {
+      "title": "RoleGrant",
+      "description": "Authoritative RBAC role grant record for admin or operations staff.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Firebase Auth UID of the staff member."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 254,
+          "description": "Staff email address."
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "description": "Staff member display name."
+        },
+        "grantedBy": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Admin UID who granted this role."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the role was granted."
+        }
+      },
+      "required": ["uid", "email", "displayName", "grantedBy", "createdAt"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "Tour reservation record including passenger PII, status, and optional advisor metadata.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Unique booking document ID."
+        },
+        "userId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Owner Firebase Auth UID."
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 40,
+          "pattern": "^[A-Z0-9\\-]+$",
+          "description": "Booking voucher reference code (TourCodeYYMMDD-XXX)."
+        },
+        "tourCode": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20,
+          "pattern": "^[A-Z0-9\\-]+$",
+          "description": "Standardized tour code."
+        },
+        "tourId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "description": "Tour identifier."
+        },
+        "tourSlug": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "description": "URL slug of the tour."
+        },
+        "tourTitle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "Human-readable tour title."
+        },
+        "tourImage": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500,
+          "description": "Tour thumbnail image URL."
+        },
+        "departureDate": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 20,
+          "description": "Departure date ISO string."
+        },
+        "guests": {
+          "type": "integer",
+          "description": "Number of passengers booked."
+        },
+        "totalPriceCents": {
+          "type": "integer",
+          "description": "Total booking amount in minor currency units."
+        },
+        "currency": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 6,
+          "enum": ["USD", "EUR", "GBP", "AUD", "NZD", "CAD"],
+          "description": "ISO 4217 currency code."
+        },
+        "leadName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "description": "Lead passenger full name."
+        },
+        "leadEmail": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 254,
+          "description": "Lead passenger email."
+        },
+        "leadPhone": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 40,
+          "description": "Lead passenger phone number."
+        },
+        "specialRequests": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000,
+          "description": "Optional special requests."
+        },
+        "emergencyContactName": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120,
+          "description": "Optional emergency contact name."
+        },
+        "emergencyContactPhone": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 40,
+          "description": "Optional emergency contact phone."
+        },
+        "dietaryNotes": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000,
+          "description": "Optional dietary requirements."
+        },
+        "paymentStatus": {
+          "type": "string",
+          "enum": ["paid", "deposit_paid", "pending", "refunded"],
+          "description": "Payment reconciliation status."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["confirmed", "pending", "cancelled"],
+          "description": "Booking lifecycle state; cancelled is terminal for non-staff."
+        },
+        "assignedGuide": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120,
+          "description": "Assigned licensed guide name."
+        },
+        "internalNotes": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000,
+          "description": "Operations internal notes."
+        },
+        "isAdvisorBooking": {
+          "type": "boolean",
+          "description": "Whether the reservation was created through the Travel Advisor portal."
+        },
+        "advisorAgencyName": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 160,
+          "description": "Travel advisor agency name."
+        },
+        "advisorName": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120,
+          "description": "Travel advisor full name."
+        },
+        "advisorEmail": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 254,
+          "description": "Travel advisor email address."
+        },
+        "commissionRatePercent": {
+          "type": "number",
+          "description": "Travel advisor commission rate percentage."
+        },
+        "financeNotified": {
+          "type": "boolean",
+          "description": "Whether finance reconciliation has been notified."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of booking creation."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last booking update."
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "reference",
+        "tourCode",
+        "tourId",
+        "tourSlug",
+        "tourTitle",
+        "departureDate",
+        "guests",
+        "totalPriceCents",
+        "currency",
+        "leadName",
+        "leadEmail",
+        "paymentStatus",
+        "status",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "SeatReservation": {
+      "title": "SeatReservation",
+      "description": "Public, PII-free seat reservation counter atomically synced with a Booking document.",
+      "type": "object",
+      "properties": {
+        "bookingId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Matching Booking document ID."
+        },
+        "userId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Owner Firebase Auth UID."
+        },
+        "tourId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "description": "Tour ID."
+        },
+        "departureDate": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 20,
+          "description": "Departure start date."
+        },
+        "guests": {
+          "type": "integer",
+          "description": "Reserved seat count."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "cancelled"],
+          "description": "Whether seats are actively held or released."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of seat hold."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update."
+        }
+      },
+      "required": ["bookingId", "userId", "tourId", "departureDate", "guests", "status", "createdAt", "updatedAt"]
+    },
+    "Departure": {
+      "title": "Departure",
+      "description": "Operational departure dispatch schedule managed by Operations and Admin staff.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Departure document ID."
+        },
+        "tourCode": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20,
+          "description": "Tour code."
+        },
+        "tourId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "description": "Associated tour ID."
+        },
+        "tourTitle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "Tour title."
+        },
+        "tourSlug": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "description": "Tour slug."
+        },
+        "startDate": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 20,
+          "description": "Start date ISO string."
+        },
+        "endDate": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 20,
+          "description": "End date ISO string."
+        },
+        "capacity": {
+          "type": "integer",
+          "description": "Maximum group capacity."
+        },
+        "bookedSeats": {
+          "type": "integer",
+          "description": "Currently booked seats."
+        },
+        "priceCents": {
+          "type": "integer",
+          "description": "Per-person price in cents."
+        },
+        "depositCents": {
+          "type": "integer",
+          "description": "Deposit amount in cents."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["guaranteed", "confirmed", "filling_fast", "sold_out", "cancelled"],
+          "description": "Operational status."
+        },
+        "assignedGuide": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120,
+          "description": "Assigned guide name."
+        },
+        "driverVehicle": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 160,
+          "description": "Assigned driver or vehicle."
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000,
+          "description": "Operational dispatch notes."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update."
+        }
+      },
+      "required": [
+        "id",
+        "tourId",
+        "tourTitle",
+        "tourSlug",
+        "startDate",
+        "endDate",
+        "capacity",
+        "bookedSeats",
+        "priceCents",
+        "depositCents",
+        "status",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "Customer travel inquiry and custom trip request (PII isolated to owner and staff).",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Inquiry document ID."
+        },
+        "userId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Submitting user UID."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "description": "Inquirer full name."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 254,
+          "description": "Inquirer email address."
+        },
+        "phone": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 40,
+          "description": "Optional phone number."
+        },
+        "destination": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 160,
+          "description": "Requested destination."
+        },
+        "travelDate": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 60,
+          "description": "Preferred travel dates."
+        },
+        "guests": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 80,
+          "description": "Party size description."
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 3000,
+          "description": "Inquiry message body."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["new", "contacted", "quoted", "booked", "archived"],
+          "description": "CRM inquiry status."
+        },
+        "assignedStaff": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120,
+          "description": "Assigned staff member."
+        },
+        "internalNotes": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000,
+          "description": "Staff internal notes."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update."
+        }
+      },
+      "required": ["id", "userId", "name", "email", "message", "status", "createdAt", "updatedAt"]
+    },
+    "Guide": {
+      "title": "Guide",
+      "description": "Licensed tour guide roster record (staff-only PII).",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Guide document ID."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "description": "Guide full name."
+        },
+        "licenseNo": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "Official ministry license number."
+        },
+        "languages": {
+          "type": "array",
+          "description": "Spoken languages (bounded up to 10 items)."
+        },
+        "speciality": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300,
+          "description": "Regional and thematic speciality."
+        },
+        "phone": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "description": "Guide phone number."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 254,
+          "description": "Guide email address."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["available", "on_tour", "standby"],
+          "description": "Current roster availability."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update."
+        }
+      },
+      "required": ["id", "name", "licenseNo", "languages", "speciality", "phone", "email", "status", "createdAt", "updatedAt"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Public traveler tour review (no private PII stored).",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Review document ID."
+        },
+        "authorId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Author Firebase Auth UID."
+        },
+        "tourSlug": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "description": "Reviewed tour slug."
+        },
+        "tourTitle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "Reviewed tour title."
+        },
+        "authorName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "description": "Public reviewer display name."
+        },
+        "authorLocation": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 100,
+          "description": "Public reviewer city/country."
+        },
+        "rating": {
+          "type": "number",
+          "description": "Overall rating from 1 to 5."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "description": "Review headline."
+        },
+        "comment": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 3000,
+          "description": "Review body text."
+        },
+        "travelDate": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 40,
+          "description": "Month/year traveled."
+        },
+        "travelerType": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 40,
+          "description": "Traveler type label."
+        },
+        "verifiedBooking": {
+          "type": "boolean",
+          "description": "Whether linked to a verified booking."
+        },
+        "recommended": {
+          "type": "boolean",
+          "description": "Whether reviewer recommends the tour."
+        },
+        "helpfulCount": {
+          "type": "integer",
+          "description": "Helpful upvote counter."
+        },
+        "hostReplyAuthor": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120,
+          "description": "Optional staff reply author."
+        },
+        "hostReplyRole": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 120,
+          "description": "Optional staff reply role."
+        },
+        "hostReplyComment": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 2000,
+          "description": "Optional staff reply message."
+        },
+        "hostReplyDate": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 40,
+          "description": "Optional staff reply ISO date."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update."
+        }
+      },
+      "required": [
+        "id",
+        "authorId",
+        "tourSlug",
+        "tourTitle",
+        "authorName",
+        "rating",
+        "title",
+        "comment",
+        "recommended",
+        "helpfulCount",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Advisor": {
+      "title": "Advisor",
+      "description": "Registered B2B travel advisor partner record (PII isolated to owner and staff).",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Advisor document ID."
+        },
+        "userId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$",
+          "description": "Owner Firebase Auth UID."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "description": "Advisor full name."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 254,
+          "description": "Advisor email."
+        },
+        "agencyName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160,
+          "description": "Agency name."
+        },
+        "iataClia": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 60,
+          "description": "IATA/CLIA credential."
+        },
+        "phone": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 40,
+          "description": "Advisor phone."
+        },
+        "country": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 80,
+          "description": "Agency country."
+        },
+        "defaultCommissionRate": {
+          "type": "number",
+          "description": "Commission rate percentage (0 to 20)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of registration."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update."
+        }
+      },
+      "required": ["id", "userId", "name", "email", "agencyName", "defaultCommissionRate", "createdAt", "updatedAt"]
+    },
+    "SiteContent": {
+      "title": "SiteContent",
+      "description": "Public CMS brand content and settings managed by Admin.",
+      "type": "object",
+      "properties": {
+        "heroTagline": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "Hero eyebrow tagline."
+        },
+        "heroHeadline": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "description": "Hero main headline."
+        },
+        "heroSubtitle": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 600,
+          "description": "Hero subheadline."
+        },
+        "contactEmail": {
+          "type": "string",
+          "format": "email",
+          "minLength": 3,
+          "maxLength": 254,
+          "description": "Public contact email."
+        },
+        "contactPhone": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "Public contact phone."
+        },
+        "emergencyPhone": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "description": "24/7 duty manager phone."
+        },
+        "brandEthosTitle": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 240,
+          "description": "Optional brand ethos section title."
+        },
+        "brandEthosText1": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000,
+          "description": "Optional brand ethos paragraph 1."
+        },
+        "brandEthosText2": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000,
+          "description": "Optional brand ethos paragraph 2."
+        },
+        "officeIstanbul": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 240,
+          "description": "Optional Istanbul office address."
+        },
+        "officeUS": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 240,
+          "description": "Optional US office address."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last CMS update."
+        }
+      },
+      "required": ["heroTagline", "heroHeadline", "heroSubtitle", "contactEmail", "contactPhone", "emergencyPhone", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Private user profile documents (owner and admin read/write only)."
+    },
+    "/admins/{userId}": {
+      "schema": { "$ref": "#/entities/RoleGrant" },
+      "description": "Authoritative admin role registry."
+    },
+    "/operations_staff/{userId}": {
+      "schema": { "$ref": "#/entities/RoleGrant" },
+      "description": "Authoritative operations staff role registry."
+    },
+    "/bookings/{bookingId}": {
+      "schema": { "$ref": "#/entities/Booking" },
+      "description": "Tour reservations isolated to booking owner and operations/admin staff."
+    },
+    "/seat_reservations/{bookingId}": {
+      "schema": { "$ref": "#/entities/SeatReservation" },
+      "description": "Public, PII-free seat count reservations atomically linked to /bookings/{bookingId}."
+    },
+    "/departures/{departureId}": {
+      "schema": { "$ref": "#/entities/Departure" },
+      "description": "Operational departure schedules managed by operations and admin staff."
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": { "$ref": "#/entities/Inquiry" },
+      "description": "Customer inquiries isolated to submitter and operations/admin staff."
+    },
+    "/guides/{guideId}": {
+      "schema": { "$ref": "#/entities/Guide" },
+      "description": "Licensed guide roster restricted strictly to operations and admin staff."
+    },
+    "/reviews/{reviewId}": {
+      "schema": { "$ref": "#/entities/Review" },
+      "description": "Public tour reviews with verified traveler authorship and staff replies."
+    },
+    "/advisors/{advisorId}": {
+      "schema": { "$ref": "#/entities/Advisor" },
+      "description": "Registered B2B travel advisors isolated to owner and operations/admin staff."
+    },
+    "/site_content/{docId}": {
+      "schema": { "$ref": "#/entities/SiteContent" },
+      "description": "Public CMS brand configuration document managed by admins."
+    }
+  }
+}

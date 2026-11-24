@@ -4,6 +4,8 @@ import {
   Compass,
   Globe,
   ExternalLink,
+  Lock,
+  CreditCard,
 } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
 import { useTours } from '../context/ToursContext';
@@ -94,6 +96,196 @@ export const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = 'si
     className={className}
   >
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.888 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+  </svg>
+);
+
+// Official-style Payment System Brand Marks
+const VisaLogo: React.FC = () => (
+  <svg viewBox="0 0 78 26" className="h-5 w-auto" role="img" aria-label="Visa">
+    <text
+      x="39"
+      y="20"
+      textAnchor="middle"
+      fill="#1A1F71"
+      fontFamily="Inter, system-ui, -apple-system, sans-serif"
+      fontWeight="900"
+      fontStyle="italic"
+      fontSize="21"
+      letterSpacing="-0.5"
+    >
+      VISA
+    </text>
+  </svg>
+);
+
+const MastercardLogo: React.FC = () => (
+  <svg viewBox="0 0 90 32" className="h-6 w-auto" role="img" aria-label="Mastercard">
+    <circle cx="35" cy="14" r="10.5" fill="#EB001B" />
+    <circle cx="51" cy="14" r="10.5" fill="#F79E1B" />
+    <path
+      d="M43 5.8A10.48 10.48 0 0 0 39 14c0 3.35 1.57 6.33 4 8.2a10.48 10.48 0 0 0 4-8.2c0-3.35-1.57-6.33-4-8.2z"
+      fill="#FF5F00"
+    />
+    <text
+      x="43"
+      y="30.5"
+      textAnchor="middle"
+      fill="#231F20"
+      fontFamily="Inter, system-ui, -apple-system, sans-serif"
+      fontWeight="700"
+      fontSize="6.5"
+      letterSpacing="0.2"
+    >
+      mastercard
+    </text>
+  </svg>
+);
+
+const AmexLogo: React.FC = () => (
+  <svg viewBox="0 0 74 28" className="h-6 w-auto" role="img" aria-label="American Express">
+    <rect x="1" y="1" width="72" height="26" rx="4" fill="#006FCF" />
+    <text
+      x="37"
+      y="12.5"
+      textAnchor="middle"
+      fill="#FFFFFF"
+      fontFamily="Inter, system-ui, -apple-system, sans-serif"
+      fontWeight="800"
+      fontSize="7.4"
+      letterSpacing="0.4"
+    >
+      AMERICAN
+    </text>
+    <text
+      x="37"
+      y="21.5"
+      textAnchor="middle"
+      fill="#FFFFFF"
+      fontFamily="Inter, system-ui, -apple-system, sans-serif"
+      fontWeight="800"
+      fontSize="7.4"
+      letterSpacing="0.6"
+    >
+      EXPRESS
+    </text>
+  </svg>
+);
+
+const DiscoverLogo: React.FC = () => (
+  <svg viewBox="0 0 92 26" className="h-5 w-auto" role="img" aria-label="Discover">
+    <text
+      x="42"
+      y="17.5"
+      textAnchor="middle"
+      fill="#231F20"
+      fontFamily="Inter, system-ui, -apple-system, sans-serif"
+      fontWeight="800"
+      fontSize="12.5"
+      letterSpacing="0.7"
+    >
+      DISC
+      <tspan fill="#F47216">O</tspan>
+      VER
+    </text>
+    <path d="M56 22c12 0 24-3 31-8v8H56z" fill="#F47216" opacity="0.9" />
+  </svg>
+);
+
+const ApplePayLogo: React.FC = () => (
+  <svg viewBox="0 0 82 28" className="h-5.5 w-auto" role="img" aria-label="Apple Pay">
+    <path
+      d="M20.9 10.6c-.9 0-2.3 1-3 1-.7 0-1.9-1-3.1-1-1.6 0-3.1 1-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.4 2.9 2.4 1.2 0 1.6-.8 3.1-.8 1.4 0 1.8.8 3.1.8 1.3 0 2.1-1.1 2.9-2.3.9-1.3 1.3-2.6 1.3-2.7 0-.1-2.5-.9-2.5-3.8 0-2.4 2-3.5 2.1-3.6-1.1-1.7-2.9-1.9-3.5-1.9h-.6zm-1.6-2.4c.7-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.2-.5 2.8-1.3z"
+      fill="#111111"
+    />
+    <text
+      x="53"
+      y="20.5"
+      textAnchor="middle"
+      fill="#111111"
+      fontFamily="Inter, system-ui, -apple-system, sans-serif"
+      fontWeight="600"
+      fontSize="16"
+      letterSpacing="-0.3"
+    >
+      Pay
+    </text>
+  </svg>
+);
+
+const GooglePayLogo: React.FC = () => (
+  <svg viewBox="0 0 88 28" className="h-5.5 w-auto" role="img" aria-label="Google Pay">
+    <path
+      d="M25.6 14.3c0-.7-.1-1.3-.2-1.9h-8.9v3.6h5.1c-.2 1.2-.9 2.2-1.9 2.8v2.3h3.1c1.8-1.7 2.8-4.1 2.8-6.8z"
+      fill="#4285F4"
+    />
+    <path
+      d="M16.5 23.5c2.6 0 4.7-.9 6.3-2.3l-3.1-2.3c-.9.6-1.9.9-3.2.9-2.5 0-4.6-1.7-5.3-3.9H8v2.4c1.6 3.1 4.8 5.2 8.5 5.2z"
+      fill="#34A853"
+    />
+    <path
+      d="M11.2 15.9c-.2-.6-.3-1.2-.3-1.9s.1-1.3.3-1.9V9.7H8C7.4 11 7 12.4 7 14s.4 3 1 4.3l3.2-2.4z"
+      fill="#FBBC05"
+    />
+    <path
+      d="M16.5 8.2c1.4 0 2.7.5 3.6 1.4l2.7-2.7C21.2 5.4 19 4.5 16.5 4.5 12.8 4.5 9.6 6.6 8 9.7l3.2 2.4c.7-2.2 2.8-3.9 5.3-3.9z"
+      fill="#EA4335"
+    />
+    <text
+      x="56"
+      y="20"
+      textAnchor="middle"
+      fill="#3C4043"
+      fontFamily="Inter, system-ui, -apple-system, sans-serif"
+      fontWeight="600"
+      fontSize="15.5"
+      letterSpacing="-0.2"
+    >
+      Pay
+    </text>
+  </svg>
+);
+
+const PayPalLogo: React.FC = () => (
+  <svg viewBox="0 0 96 28" className="h-5.5 w-auto" role="img" aria-label="PayPal">
+    <path
+      d="M14.4 5.2h6.8c3.6 0 5.6 1.8 5 5.3-.6 3.7-3.2 5.7-6.8 5.7h-2.3l-1.1 6.3h-3.6l2-17.3z"
+      fill="#003087"
+    />
+    <path
+      d="M18.2 9.4h5.7c2.9 0 4.6 1.4 4.1 4.4-.5 3.1-2.6 4.7-5.6 4.7h-1.9l-.9 5.3h-3l1.6-14.4z"
+      fill="#009CDE"
+      opacity="0.9"
+    />
+    <text
+      x="61"
+      y="19.5"
+      textAnchor="middle"
+      fontFamily="Inter, system-ui, -apple-system, sans-serif"
+      fontWeight="800"
+      fontStyle="italic"
+      fontSize="15"
+      letterSpacing="-0.4"
+    >
+      <tspan fill="#003087">Pay</tspan>
+      <tspan fill="#009CDE">Pal</tspan>
+    </text>
+  </svg>
+);
+
+const StripeLogo: React.FC = () => (
+  <svg viewBox="0 0 84 28" className="h-5.5 w-auto" role="img" aria-label="Stripe">
+    <text
+      x="42"
+      y="20.5"
+      textAnchor="middle"
+      fill="#635BFF"
+      fontFamily="Inter, system-ui, -apple-system, sans-serif"
+      fontWeight="800"
+      fontSize="19"
+      letterSpacing="-0.8"
+    >
+      stripe
+    </text>
   </svg>
 );
 
@@ -742,6 +934,103 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   </span>
                 </div>
               </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Accepted Payment Systems & Encrypted Checkout Logos */}
+      <div className="border-t border-sidebar-border/40 py-6 bg-sidebar/75">
+        <div className="container-page space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-sidebar-border/30 pb-3">
+            <div>
+              <span className="eyebrow text-sidebar-primary tracking-wider text-[0.6875rem]">
+                Secure Global Payments
+              </span>
+              <h4 className="font-display text-sm font-semibold text-sidebar-foreground">
+                Accepted Payment Methods & Encrypted Checkout
+              </h4>
+            </div>
+            <p className="text-xs text-sidebar-foreground/70 sm:text-right flex items-center sm:justify-end gap-1.5">
+              <Lock className="size-3.5 text-emerald-400 shrink-0" />
+              <span>256-bit SSL encrypted transactions · Instant voucher confirmation</span>
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2.5 sm:gap-3 items-stretch">
+            {/* 1. Stripe */}
+            <div
+              className="flex flex-col items-center justify-center rounded-xl border border-white/20 bg-white px-2.5 py-2 shadow-xs h-13 w-full"
+              title="Stripe Secure Checkout"
+            >
+              <StripeLogo />
+            </div>
+
+            {/* 2. Visa */}
+            <div
+              className="flex flex-col items-center justify-center rounded-xl border border-white/20 bg-white px-2.5 py-2 shadow-xs h-13 w-full"
+              title="Visa Credit & Debit Cards"
+            >
+              <VisaLogo />
+            </div>
+
+            {/* 3. Mastercard */}
+            <div
+              className="flex flex-col items-center justify-center rounded-xl border border-white/20 bg-white px-2.5 py-2 shadow-xs h-13 w-full"
+              title="Mastercard Credit & Debit Cards"
+            >
+              <MastercardLogo />
+            </div>
+
+            {/* 4. American Express */}
+            <div
+              className="flex flex-col items-center justify-center rounded-xl border border-white/20 bg-white px-2.5 py-2 shadow-xs h-13 w-full"
+              title="American Express (Amex)"
+            >
+              <AmexLogo />
+            </div>
+
+            {/* 5. Discover */}
+            <div
+              className="flex flex-col items-center justify-center rounded-xl border border-white/20 bg-white px-2.5 py-2 shadow-xs h-13 w-full"
+              title="Discover Card"
+            >
+              <DiscoverLogo />
+            </div>
+
+            {/* 6. Apple Pay */}
+            <div
+              className="flex flex-col items-center justify-center rounded-xl border border-white/20 bg-white px-2.5 py-2 shadow-xs h-13 w-full"
+              title="Apple Pay"
+            >
+              <ApplePayLogo />
+            </div>
+
+            {/* 7. Google Pay */}
+            <div
+              className="flex flex-col items-center justify-center rounded-xl border border-white/20 bg-white px-2.5 py-2 shadow-xs h-13 w-full"
+              title="Google Pay"
+            >
+              <GooglePayLogo />
+            </div>
+
+            {/* 8. PayPal */}
+            <div
+              className="flex flex-col items-center justify-center rounded-xl border border-white/20 bg-white px-2.5 py-2 shadow-xs h-13 w-full"
+              title="PayPal"
+            >
+              <PayPalLogo />
+            </div>
+
+            {/* 9. Credit & Debit Cards */}
+            <div
+              className="flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white px-2.5 py-2 shadow-xs h-13 w-full col-span-3 sm:col-span-2 lg:col-span-1"
+              title="All Major International Credit & Debit Cards Accepted"
+            >
+              <CreditCard className="size-4 text-neutral-800 shrink-0" />
+              <span className="text-[0.65rem] font-bold text-neutral-900 leading-tight text-left">
+                Credit &amp; Debit
+              </span>
             </div>
           </div>
         </div>
