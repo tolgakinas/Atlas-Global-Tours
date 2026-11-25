@@ -9,6 +9,14 @@ export interface BookingEmailNotificationRequest {
   capacity?: number;
   totalPriceFormatted: string;
   depositFormatted?: string;
+  amountPaidFormatted?: string;
+  remainingBalanceFormatted?: string;
+  discountFormatted?: string;
+  promoCode?: string;
+  promoDiscountFormatted?: string;
+  paymentPlanLabel?: string;
+  stripePaymentIntentId?: string;
+  installmentSummary?: string;
   currency: string;
   leadName: string;
   leadEmail: string;

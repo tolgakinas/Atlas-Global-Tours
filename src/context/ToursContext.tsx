@@ -37,6 +37,8 @@ export interface SiteContent {
   viatorUrl?: string;
   getYourGuideUrl?: string;
   trustpilotUrl?: string;
+  responsibleTravelUrl?: string;
+  tripadvisorUrl?: string;
   trustedSiteUrl?: string;
   trustedSiteLogoUrl?: string;
 }
@@ -76,6 +78,8 @@ const DEFAULT_SITE_CONTENT: SiteContent = {
   viatorUrl: 'https://www.viator.com/operator/5592559',
   getYourGuideUrl: 'https://www.getyourguide.com/atlas-global-tours-s644611/',
   trustpilotUrl: 'https://www.trustpilot.com/review/atlasglobaltours.com',
+  responsibleTravelUrl: 'https://www.responsibletravel.com/',
+  tripadvisorUrl: 'https://www.tripadvisor.com/',
   trustedSiteUrl: 'https://www.trustedsite.com/verify?host=atlasglobaltours.com',
   trustedSiteLogoUrl: '/logos/trustedsite-certified-secure.svg',
 };

@@ -39,6 +39,7 @@ import {
   Award,
   Star,
   Bed,
+  Tag,
 } from 'lucide-react';
 import { Tour, DestinationRegion, TourDay } from '../data/toursData';
 import { Post } from '../data/postsData';
@@ -51,6 +52,7 @@ import { useReviews } from '../context/ReviewsContext';
 import { Review } from '../data/reviewsData';
 import { AdvisorClientVoucher } from '../components/AdvisorClientVoucher';
 import { StarRating } from '../components/StarRating';
+import { AdminPromoCodesTab } from '../components/AdminPromoCodesTab';
 import { resolveTourCode } from '../utils/bookingReference';
 
 interface AdminPageProps {
@@ -89,7 +91,7 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onSelectTour, onNavigate }
   const { reviews, deleteReview, addHostReply } = useReviews();
 
   // Admin Sub-tabs
-  const [activeTab, setActiveTab] = useState<'tours' | 'destinations' | 'advisor_bookings' | 'reviews' | 'site_content' | 'blog' | 'settings'>('tours');
+  const [activeTab, setActiveTab] = useState<'tours' | 'destinations' | 'promo_codes' | 'advisor_bookings' | 'reviews' | 'site_content' | 'blog' | 'settings'>('tours');
 
   // Reviews State
   const [reviewSearch, setReviewSearch] = useState('');
@@ -464,6 +466,17 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onSelectTour, onNavigate }
             Destinations & Continents ({destinationRegions.length})
           </button>
           <button
+            onClick={() => setActiveTab('promo_codes')}
+            className={`flex items-center gap-2 border-b-2 px-5 py-3 text-xs font-bold uppercase tracking-wider cursor-pointer whitespace-nowrap transition-colors ${
+              activeTab === 'promo_codes'
+                ? 'border-primary text-primary'
+                : 'border-transparent text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            <Tag className="size-4" />
+            Promo Codes
+          </button>
+          <button
             onClick={() => setActiveTab('advisor_bookings')}
             className={`flex items-center gap-2 border-b-2 px-5 py-3 text-xs font-bold uppercase tracking-wider cursor-pointer whitespace-nowrap transition-colors ${
               activeTab === 'advisor_bookings'
@@ -524,6 +537,13 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onSelectTour, onNavigate }
             System & Reset
           </button>
         </div>
+
+        {/* ============================================================== */}
+        {/* TAB: PROMO CODES MANAGEMENT & GENERATOR                        */}
+        {/* ============================================================== */}
+        {activeTab === 'promo_codes' && (
+          <AdminPromoCodesTab onBanner={triggerBanner} />
+        )}
 
         {/* ============================================================== */}
         {/* TAB 1: TOURS & TRIPS CMS                                      */}

@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { generateBookingReference, resolveTourCode } from '../utils/bookingReference';
 import { TOURS_DATA } from '../data/toursData';
+import type { InstallmentItem, InstallmentTerms } from '../utils/paymentPlans';
 
 export type UserRole = 'traveller' | 'operations' | 'admin' | 'advisor';
 
@@ -70,6 +71,16 @@ export interface Booking {
   emergencyContactPhone?: string;
   dietaryNotes?: string;
   paymentStatus: 'paid' | 'deposit_paid' | 'pending' | 'refunded';
+  paymentPlan?: 'deposit_installments' | 'full_pay' | 'wire';
+  installmentTerms?: InstallmentTerms;
+  grossTotalCents?: number;
+  promoCode?: string;
+  promoDiscountCents?: number;
+  fullPayDiscountCents?: number;
+  paidAmountCents?: number;
+  remainingBalanceCents?: number;
+  stripePaymentIntentId?: string;
+  installments?: InstallmentItem[];
   status: 'confirmed' | 'pending' | 'cancelled';
   assignedGuide?: string;
   internalNotes?: string;
@@ -140,7 +151,12 @@ interface AuthContextType {
   logout: () => void;
   lookupBooking: (reference: string, email: string) => Booking | null;
   bookings: Booking[];
-  addBooking: (booking: Omit<Booking, 'id' | 'reference' | 'status' | 'createdAt' | 'paymentStatus'>) => Booking;
+  addBooking: (
+    booking: Omit<Booking, 'id' | 'reference' | 'status' | 'createdAt' | 'paymentStatus'> & {
+      paymentStatus?: Booking['paymentStatus'];
+      reference?: string;
+    }
+  ) => Booking;
   updateBooking: (reference: string, updated: Partial<Booking>) => void;
   cancelBooking: (reference: string) => void;
   departures: Departure[];
@@ -835,13 +851,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return found || null;
   };
 
-  const addBooking = (bookingData: Omit<Booking, 'id' | 'reference' | 'status' | 'createdAt' | 'paymentStatus'>): Booking => {
+  const addBooking = (
+    bookingData: Omit<Booking, 'id' | 'reference' | 'status' | 'createdAt' | 'paymentStatus'> & {
+      paymentStatus?: Booking['paymentStatus'];
+      reference?: string;
+    }
+  ): Booking => {
     const resolvedTourCode = resolveTourCode({
       tourCode: bookingData.tourCode,
       tourId: bookingData.tourId,
       tourSlug: bookingData.tourSlug,
     });
-    const reference = generateBookingReference(resolvedTourCode, bookingData.departureDate);
+    const reference =
+      bookingData.reference || generateBookingReference(resolvedTourCode, bookingData.departureDate);
 
     const newBooking: Booking = {
       ...bookingData,
@@ -849,7 +871,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       id: 'b-' + Math.random().toString(36).substring(2, 9),
       reference,
       status: 'confirmed',
-      paymentStatus: 'paid',
+      paymentStatus: bookingData.paymentStatus ?? 'paid',
       createdAt: new Date().toISOString(),
     };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Calendar,
   Users,
@@ -16,12 +16,15 @@ import {
   Mail,
   Utensils,
   Clock,
-  QrCode
+  QrCode,
+  ExternalLink,
+  CalendarClock,
 } from 'lucide-react';
 import { useAuth, Booking } from '../context/AuthContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useTours } from '../context/ToursContext';
 import { resolveTourCode } from '../utils/bookingReference';
+import { formatExactCurrency, formatShortUtcDate } from '../utils/paymentPlans';
 
 interface AccountPageProps {
   onNavigate: (path: string) => void;
@@ -48,6 +51,73 @@ export const AccountPage: React.FC<AccountPageProps> = ({ onNavigate, onSelectTo
   // Message form state
   const [msgContent, setMsgContent] = useState('');
   const [msgSent, setMsgSent] = useState(false);
+  const [installmentPaidNotice, setInstallmentPaidNotice] = useState<string | null>(null);
+
+  // Detect return from a Stripe Installment Payment Link and verify session server-side
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get('installment_paid');
+    const termStr = params.get('term');
+    const sessionId = params.get('session_id');
+    if (!ref || !termStr || !sessionId) return;
+
+    const termNum = Number(termStr);
+    window.history.replaceState({}, '', window.location.pathname);
+
+    if (!Number.isInteger(termNum) || termNum < 1 || termNum > 4) return;
+    const targetBooking = bookings.find((b) => b.reference === ref);
+    if (!targetBooking || !targetBooking.installments) return;
+
+    let cancelled = false;
+    const verifyInstallment = async () => {
+      try {
+        const res = await fetch('/api/stripe/verify-installment-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId,
+            bookingReference: ref,
+            installmentNumber: termNum,
+          }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (cancelled || !res.ok || !data.verified) return;
+
+        const updatedInstallments = targetBooking.installments!.map((inst) =>
+          inst.installmentNumber === termNum
+            ? { ...inst, status: 'paid' as const, paidAt: new Date().toISOString() }
+            : inst
+        );
+
+        const remainingUnpaidCents = updatedInstallments
+          .filter((inst) => inst.status !== 'paid')
+          .reduce((sum, inst) => sum + inst.amountCents, 0);
+
+        const allPaid = remainingUnpaidCents === 0;
+        const paidAmountCents = Math.max(0, targetBooking.totalPriceCents - remainingUnpaidCents);
+
+        updateBooking(ref, {
+          installments: updatedInstallments,
+          paidAmountCents,
+          remainingBalanceCents: remainingUnpaidCents,
+          paymentStatus: allPaid ? 'paid' : 'deposit_paid',
+        });
+
+        setInstallmentPaidNotice(
+          `Installment #${termNum} for booking ${ref} was verified with Stripe and marked paid.${
+            allPaid ? ' Your full balance is now settled!' : ''
+          }`
+        );
+      } catch {
+        // Ignore transient network errors
+      }
+    };
+
+    verifyInstallment();
+    return () => {
+      cancelled = true;
+    };
+  }, [bookings, updateBooking]);
 
   if (!user) {
     return (
@@ -156,6 +226,23 @@ export const AccountPage: React.FC<AccountPageProps> = ({ onNavigate, onSelectTo
 
         {/* Bookings Section */}
         <div className="mt-10">
+          {installmentPaidNotice && (
+            <div className="mb-5 flex items-center justify-between gap-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-xs font-medium text-emerald-800 dark:text-emerald-300">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="size-4 shrink-0" />
+                <span>{installmentPaidNotice}</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setInstallmentPaidNotice(null)}
+                className="text-current opacity-70 hover:opacity-100 cursor-pointer"
+                aria-label="Dismiss notice"
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+          )}
+
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="font-display text-xl font-bold text-foreground">
@@ -243,6 +330,69 @@ export const AccountPage: React.FC<AccountPageProps> = ({ onNavigate, onSelectTo
                                 Requests: {booking.specialRequests}
                               </div>
                             )}
+                          </div>
+                        )}
+
+                        {/* Saved Stripe Installment Schedule & Payment Links */}
+                        {booking.installments && booking.installments.length > 0 && !isCancelled && (
+                          <div className="mt-3 rounded-lg border border-primary/20 bg-primary/5 p-3 space-y-2">
+                            <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+                              <span className="font-semibold text-foreground inline-flex items-center gap-1.5">
+                                <CalendarClock className="size-3.5 text-primary" />
+                                Installment Plan ({booking.installments.length} Terms)
+                              </span>
+                              {typeof booking.remainingBalanceCents === 'number' && (
+                                <span className="text-[0.7rem] text-muted-foreground">
+                                  Remaining:{' '}
+                                  <strong className="text-foreground">
+                                    {formatExactCurrency(booking.remainingBalanceCents, booking.currency)}
+                                  </strong>
+                                </span>
+                              )}
+                            </div>
+
+                            <div className="space-y-1.5">
+                              {booking.installments.map((inst) => {
+                                const isTermPaid = inst.status === 'paid';
+                                return (
+                                  <div
+                                    key={inst.installmentNumber}
+                                    className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-border/70 bg-background px-2.5 py-1.5 text-[0.72rem]"
+                                  >
+                                    <div className="flex items-center gap-2">
+                                      <span className="font-semibold text-foreground">
+                                        #{inst.installmentNumber}/{inst.totalInstallments}
+                                      </span>
+                                      <span className="text-muted-foreground">
+                                        Due {formatShortUtcDate(inst.dueDate)}
+                                      </span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                      <span className="font-mono font-bold text-foreground">
+                                        {formatExactCurrency(inst.amountCents, inst.currency)}
+                                      </span>
+                                      {isTermPaid ? (
+                                        <span className="rounded bg-emerald-500/15 px-1.5 py-0.5 text-[0.65rem] font-bold text-emerald-700 dark:text-emerald-300">
+                                          PAID
+                                        </span>
+                                      ) : inst.paymentLinkUrl ? (
+                                        <a
+                                          href={inst.paymentLinkUrl}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="inline-flex items-center gap-1 rounded bg-primary px-2 py-0.5 text-[0.68rem] font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+                                        >
+                                          <span>Pay via Stripe</span>
+                                          <ExternalLink className="size-2.5" />
+                                        </a>
+                                      ) : (
+                                        <span className="text-[0.65rem] text-muted-foreground">Scheduled</span>
+                                      )}
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
                           </div>
                         )}
                       </div>
