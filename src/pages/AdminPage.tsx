@@ -53,6 +53,7 @@ import { Review } from '../data/reviewsData';
 import { AdvisorClientVoucher } from '../components/AdvisorClientVoucher';
 import { StarRating } from '../components/StarRating';
 import { AdminPromoCodesTab } from '../components/AdminPromoCodesTab';
+import { AdminSoroJournalPanel } from '../components/AdminSoroJournalPanel';
 import { resolveTourCode } from '../utils/bookingReference';
 
 interface AdminPageProps {
@@ -1670,13 +1671,18 @@ export const AdminPage: React.FC<AdminPageProps> = ({ onSelectTour, onNavigate }
         {/* ============================================================== */}
         {activeTab === 'blog' && (
           <div className="mt-6 space-y-6">
-            <div className="flex items-center justify-between">
+            <AdminSoroJournalPanel
+              onBanner={triggerBanner}
+              onPreviewPost={(slug) => onNavigate(`/blog/${slug}`)}
+            />
+
+            <div className="flex items-center justify-between pt-2">
               <div>
                 <h3 className="font-display text-lg font-bold text-foreground">
-                  Travel Journal & Editorial Dispatches
+                  Local Editorial Dispatches
                 </h3>
                 <p className="text-xs text-muted-foreground">
-                  Create, edit, and publish rich field guides, season guides, and regional gastronomy articles.
+                  Create, edit, and publish custom field guides alongside your synced Soro & WordPress articles.
                 </p>
               </div>
               <button

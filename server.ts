@@ -22,6 +22,7 @@ import {
   type PromoScope,
   type PublicPromoSummary,
 } from './src/utils/promoCodes.ts';
+import { registerJournalAndSoroRoutes } from './server/journalStore.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -659,6 +660,13 @@ async function startServer() {
 
     res.status(200).json({ received: true });
   });
+
+  // Soro article publish endpoints allow up to 1MB rich HTML payloads; all other JSON routes stay capped at 64kb
+  app.use(
+    ['/wp-json/soro/v1/publish', '/api/soro/v1/publish'],
+    express.json({ limit: '1mb' }),
+    express.urlencoded({ extended: false, limit: '1mb' })
+  );
 
   app.use(express.json({ limit: '64kb' }));
 
@@ -1496,6 +1504,8 @@ async function startServer() {
       });
     }
   });
+
+  registerJournalAndSoroRoutes(app, requireAdminAuth, getSafeAppBaseUrl);
 
   if (!IS_PROD) {
     const { createServer: createViteServer } = await import('vite');
