@@ -261,6 +261,17 @@ export async function syncWordPressJournalPosts(): Promise<{
   }
 }
 
+/**
+ * Published journal posts for SEO (meta tags, sitemap, legacy redirects).
+ * Reads the local store only — never triggers a network sync — so HTML
+ * responses stay fast.
+ */
+export function getPublishedJournalPostsForSeo(): JournalPost[] {
+  const store = readJournalStore();
+  const posts = store.posts.length > 0 ? store.posts : localFallbackPosts();
+  return posts.filter((p) => p.status === 'published' || p.status === 'publish');
+}
+
 async function getPopulatedJournalStore(): Promise<JournalStoreData> {
   const current = readJournalStore();
   if (current.posts.length > 0) {

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { applyRouteMeta } from '../seo/applyMeta';
+import { buildBlogPostMeta, notFoundMeta } from '../seo/routeMeta';
 import {
   ArrowLeft,
   ArrowRight,
@@ -80,22 +82,12 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
     };
   }, [slug]);
 
+  // Route-level meta (App) can't see articles fetched from the journal API,
+  // so apply article meta and structured data once the post has loaded.
   useEffect(() => {
-    if (!post) return;
-    const prevTitle = document.title;
-    document.title = `${post.title} | Atlas Global Tours Journal`;
-    const metaEl = document.querySelector('meta[name="description"]');
-    const prevDesc = metaEl?.getAttribute('content') || '';
-    if (metaEl && (post.metaDescription || post.excerpt)) {
-      metaEl.setAttribute('content', post.metaDescription || post.excerpt);
-    }
-    return () => {
-      document.title = prevTitle;
-      if (metaEl && prevDesc) {
-        metaEl.setAttribute('content', prevDesc);
-      }
-    };
-  }, [post]);
+    if (post) applyRouteMeta(buildBlogPostMeta(post));
+    else if (notFound) applyRouteMeta(notFoundMeta());
+  }, [post, notFound]);
 
   const handleShare = async () => {
     if (!post) return;

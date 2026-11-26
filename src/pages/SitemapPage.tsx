@@ -39,7 +39,6 @@ export const SitemapPage: React.FC<SitemapPageProps> = ({
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
   useEffect(() => {
-    document.title = 'HTML Sitemap & Directory | Atlas Global Tours';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 

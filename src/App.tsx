@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { CurrencyProvider } from './context/CurrencyContext';
 import { AuthProvider } from './context/AuthContext';
-import { ToursProvider } from './context/ToursContext';
+import { ToursProvider, useTours } from './context/ToursContext';
 import { ReviewsProvider } from './context/ReviewsContext';
 import { ComparisonProvider, useComparison } from './context/ComparisonContext';
 import { Navbar } from './components/Navbar';
@@ -34,6 +34,32 @@ import { PoliciesPage, PolicyTab } from './pages/PoliciesPage';
 import { SitemapPage } from './pages/SitemapPage';
 import { ComparePage } from './pages/ComparePage';
 import { RoomingSelection } from './data/toursData';
+import { POSTS_DATA } from './data/postsData';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { applyRouteMeta } from './seo/applyMeta';
+import { findDestinationCountry, findTourBySlug, resolveRouteMeta } from './seo/routeMeta';
+
+// Route guards: render a real 404 instead of silently falling back to
+// another tour or the homepage (prevents duplicate-content soft 404s).
+const TourRoute: React.FC<{ slug: string; children: React.ReactNode; onNavigate: (p: string) => void }> = ({
+  slug,
+  children,
+  onNavigate,
+}) => {
+  const { tours } = useTours();
+  return findTourBySlug(tours, slug) ? <>{children}</> : <NotFoundPage onNavigate={onNavigate} />;
+};
+
+const DestinationRoute: React.FC<{
+  countryId: string;
+  onNavigate: (p: string) => void;
+  onSelectTour: (slug: string) => void;
+}> = ({ countryId, onNavigate, onSelectTour }) => {
+  const { tours } = useTours();
+  const destination = findDestinationCountry(tours, countryId);
+  if (!destination) return <NotFoundPage onNavigate={onNavigate} />;
+  return <ToursPage key={destination.id} destination={destination} onSelectTour={onSelectTour} />;
+};
 
 // Inner layout component to access comparison context
 const AppLayout: React.FC<{
@@ -44,6 +70,16 @@ const AppLayout: React.FC<{
   handleBookTour: (slug: string) => void;
 }> = ({ currentPath, navigate, renderCurrentPage, handleSelectTour, handleBookTour }) => {
   const { isComparisonModalOpen, closeComparisonModal } = useComparison();
+  const { tours } = useTours();
+
+  // Keep <head> (title, description, canonical, OG, JSON-LD) in sync during
+  // in-app navigation. The server injects the same tags into the initial HTML.
+  // Articles fetched from the journal API return null here; BlogPostPage
+  // applies their meta once loaded.
+  useEffect(() => {
+    const meta = resolveRouteMeta(currentPath, { tours, posts: POSTS_DATA });
+    if (meta) applyRouteMeta(meta);
+  }, [currentPath, tours]);
 
   const isBookingFlow = currentPath.includes('/book');
 
@@ -145,7 +181,9 @@ export default function App() {
     if (currentPath.startsWith('/tours/') && currentPath.endsWith('/book')) {
       const parts = currentPath.split('/');
       const slug = parts[2];
+      if (parts.length !== 4) return <NotFoundPage onNavigate={navigate} />;
       return (
+        <TourRoute slug={slug} onNavigate={navigate}>
         <BookTourPage
           slug={slug}
           initialDepartureId={bookingParams.departureId}
@@ -154,20 +192,32 @@ export default function App() {
           onNavigate={navigate}
           onSelectTour={handleSelectTour}
         />
+        </TourRoute>
       );
     }
 
     // Dynamic tour detail: /tours/:slug
     if (currentPath.startsWith('/tours/')) {
-      const slug = currentPath.replace('/tours/', '').split('/')[0];
+      const rest = currentPath.replace('/tours/', '').replace(/\/+$/, '');
+      const slug = rest.split('/')[0];
+      if (!slug || rest.includes('/')) return <NotFoundPage onNavigate={navigate} />;
       return (
-        <TourDetailPage
-          slug={slug}
-          onNavigate={navigate}
-          onSelectTour={handleSelectTour}
-          onBookTour={handleBookTour}
-        />
+        <TourRoute slug={slug} onNavigate={navigate}>
+          <TourDetailPage
+            slug={slug}
+            onNavigate={navigate}
+            onSelectTour={handleSelectTour}
+            onBookTour={handleBookTour}
+          />
+        </TourRoute>
       );
+    }
+
+    // Destination landing pages: /destinations/:country
+    if (currentPath.startsWith('/destinations/')) {
+      const countryId = currentPath.replace('/destinations/', '').replace(/\/+$/, '');
+      if (!countryId || countryId.includes('/')) return <NotFoundPage onNavigate={navigate} />;
+      return <DestinationRoute countryId={countryId} onNavigate={navigate} onSelectTour={handleSelectTour} />;
     }
 
     // Dynamic blog detail: /blog/:slug
@@ -287,7 +337,6 @@ export default function App() {
           />
         );
       case '/':
-      default:
         return (
           <HomePage
             onNavigate={navigate}
@@ -297,6 +346,8 @@ export default function App() {
             onSelectCountry={handleSelectCountry}
           />
         );
+      default:
+        return <NotFoundPage onNavigate={navigate} />;
     }
   };
 

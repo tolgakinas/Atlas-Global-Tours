@@ -36,7 +36,6 @@ import { TourRouteMap } from '../components/TourRouteMap';
 import { DayTourCalendarPicker } from '../components/DayTourCalendarPicker';
 import { DayTourPricingSelector } from '../components/DayTourPricingSelector';
 import { calculateDayTourPricing } from '../utils/dayTourPricing';
-import { useTourSEO } from '../utils/tourSeo';
 import { ShareTourModal } from '../components/ShareTourModal';
 import { getTourFallbackImage } from '../utils/tourImageFallback';
 
@@ -78,8 +77,6 @@ export const TourDetailPage: React.FC<TourDetailPageProps> = ({
     return getTourRatingStats(tour.slug, tour.title);
   }, [getTourRatingStats, tour.slug, tour.title]);
 
-  // Synchronize Open Graph & Twitter card meta tags for this specific tour page
-  useTourSEO(tour, ratingStats);
 
   // Set default selected departure
   const availableDepartures = useMemo(() => {

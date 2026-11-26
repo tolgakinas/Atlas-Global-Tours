@@ -22,7 +22,14 @@ import {
   type PromoScope,
   type PublicPromoSummary,
 } from './src/utils/promoCodes.ts';
-import { registerJournalAndSoroRoutes } from './server/journalStore.ts';
+import { getPublishedJournalPostsForSeo, registerJournalAndSoroRoutes } from './server/journalStore.ts';
+import {
+  getRouteMetaForRequest,
+  injectRouteMeta,
+  registerSeoFileRoutes,
+  registerSeoRedirects,
+  type SeoDeps,
+} from './server/seo.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -606,6 +613,11 @@ function buildAdminEmailContent(data: BookingNotificationPayload): { subject: st
 async function startServer() {
   const app = express();
   app.set('trust proxy', 1);
+
+  // SEO: canonical-host + legacy WordPress 301s run before everything else
+  const seoDeps: SeoDeps = { getPosts: getPublishedJournalPostsForSeo };
+  registerSeoRedirects(app, seoDeps, { isProd: IS_PROD });
+  registerSeoFileRoutes(app, seoDeps);
 
   // Stripe Webhook MUST receive raw request body before express.json() parses it
   app.post('/api/stripe/webhook', express.raw({ type: 'application/json', limit: '256kb' }), (req: Request, res: Response) => {
@@ -1507,23 +1519,53 @@ async function startServer() {
 
   registerJournalAndSoroRoutes(app, requireAdminAuth, getSafeAppBaseUrl);
 
+  // Every non-API, non-file GET renders the SPA shell with route-specific
+  // <head> tags and the correct HTTP status (404 for unknown routes).
+  const sendAppShell = (req: Request, res: Response, template: string) => {
+    if (req.path.startsWith('/api/')) {
+      res.status(404).json({ ok: false, error: 'Not found.' });
+      return;
+    }
+    const meta = getRouteMetaForRequest(req.path, seoDeps);
+    res
+      .status(meta.status)
+      .set('Content-Type', 'text/html; charset=utf-8')
+      .set('Cache-Control', 'no-cache')
+      .send(injectRouteMeta(template, meta));
+  };
+
   if (!IS_PROD) {
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
-      appType: 'spa',
+      appType: 'custom',
     });
     app.use(vite.middlewares);
+    app.get('*', async (req: Request, res: Response, next: NextFunction) => {
+      try {
+        const raw = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf8');
+        const template = await vite.transformIndexHtml(req.originalUrl, raw);
+        sendAppShell(req, res, template);
+      } catch (err) {
+        vite.ssrFixStacktrace(err as Error);
+        next(err);
+      }
+    });
   } else {
     const distDir = path.resolve(__dirname, 'dist');
-    app.use(express.static(distDir));
-    app.get('*', (_req, res) => {
-      const indexPath = path.join(distDir, 'index.html');
-      if (fs.existsSync(indexPath)) {
-        res.sendFile(indexPath);
-      } else {
-        res.status(404).send('Build output not found. Run npm run build first.');
+    const indexPath = path.join(distDir, 'index.html');
+    // index: false so "/" also goes through the meta-injecting handler below
+    app.use(express.static(distDir, { index: false }));
+    let cachedTemplate: string | null = null;
+    app.get('*', (req: Request, res: Response) => {
+      if (!cachedTemplate) {
+        if (!fs.existsSync(indexPath)) {
+          res.status(404).send('Build output not found. Run npm run build first.');
+          return;
+        }
+        cachedTemplate = fs.readFileSync(indexPath, 'utf8');
       }
+      sendAppShell(req, res, cachedTemplate);
     });
   }
 

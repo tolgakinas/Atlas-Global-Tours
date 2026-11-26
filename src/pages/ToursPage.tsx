@@ -10,6 +10,8 @@ interface ToursPageProps {
   initialContinent?: string;
   initialRegion?: string;
   initialCountry?: string;
+  /** Set on /destinations/:country landing pages: pre-filters and gives the page its own heading. */
+  destination?: DestinationCountry;
 }
 
 export const ToursPage: React.FC<ToursPageProps> = ({
@@ -17,6 +19,7 @@ export const ToursPage: React.FC<ToursPageProps> = ({
   initialContinent,
   initialRegion,
   initialCountry,
+  destination,
 }) => {
   const {
     tours,
@@ -27,8 +30,8 @@ export const ToursPage: React.FC<ToursPageProps> = ({
     clearFilters,
   } = useTours();
   const { comparedSlugs, openComparisonModal } = useComparison();
-  const [selectedContinent, setSelectedContinent] = useState<string>(initialContinent || 'All');
-  const [selectedCountry, setSelectedCountry] = useState<string>(initialCountry || 'All');
+  const [selectedContinent, setSelectedContinent] = useState<string>(destination?.continent || initialContinent || 'All');
+  const [selectedCountry, setSelectedCountry] = useState<string>(destination?.name || initialCountry || 'All');
   const [search, setSearch] = useState(searchQuery || '');
   const [selectedTheme, setSelectedTheme] = useState(
     selectedActivityFilter !== 'All' ? selectedActivityFilter : 'All'
@@ -207,13 +210,27 @@ export const ToursPage: React.FC<ToursPageProps> = ({
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
-            <span className="eyebrow text-primary">Destinations & Places by Continent</span>
-            <h1 className="mt-2 text-4xl font-display font-bold sm:text-5xl text-foreground">
-              Small group journeys by country
-            </h1>
-            <p className="mt-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
-              Curated small group journeys categorized regarding continents and their respective countries. Cross-border expeditions and multi-country itineraries are featured under every country visited.
-            </p>
+            {destination ? (
+              <>
+                <span className="eyebrow text-primary">{destination.subtitle}</span>
+                <h1 className="mt-2 text-4xl font-display font-bold sm:text-5xl text-foreground">
+                  {destination.name} small group tours
+                </h1>
+                <p className="mt-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
+                  {destination.description}
+                </p>
+              </>
+            ) : (
+              <>
+                <span className="eyebrow text-primary">Destinations & Places by Continent</span>
+                <h1 className="mt-2 text-4xl font-display font-bold sm:text-5xl text-foreground">
+                  Small group journeys by country
+                </h1>
+                <p className="mt-3 text-muted-foreground text-sm sm:text-base leading-relaxed">
+                  Curated small group journeys categorized regarding continents and their respective countries. Cross-border expeditions and multi-country itineraries are featured under every country visited.
+                </p>
+              </>
+            )}
           </div>
 
           {/* View Mode Switch */}
